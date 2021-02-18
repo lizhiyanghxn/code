@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { List, Avatar, Skeleton, ConfigProvider } from 'antd';
-import type { ProCardProps } from '@ant-design/pro-card';
-import ProCard from '@ant-design/pro-card';
+import type { ProCardProps } from '@dcp-fe/dcp-card';
+import ProCard from '@dcp-fe/dcp-card';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import type { ListGridType } from 'antd/lib/list';
 import type { ExpandableConfig } from 'antd/lib/table/interface';

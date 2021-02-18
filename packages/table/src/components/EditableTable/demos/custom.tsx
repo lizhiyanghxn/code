@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import type { ProColumns } from '@ant-design/pro-table';
-import { EditableProTable } from '@ant-design/pro-table';
-import type { ActionType } from '@ant-design/pro-table';
-import ProField from '@ant-design/pro-field';
-import ProCard from '@ant-design/pro-card';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import { EditableProTable } from '@dcp-fe/dcp-table';
+import type { ActionType } from '@dcp-fe/dcp-table';
+import ProField from '@dcp-fe/dcp-field';
+import ProCard from '@dcp-fe/dcp-card';
 import { Button, Input, Space, Tag, Form } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 

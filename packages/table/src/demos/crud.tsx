@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Tabs, Tag, Space, message } from 'antd';
-import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
-import ProDescriptions from '@ant-design/pro-descriptions';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import type { ProDescriptionsItemProps } from '@dcp-fe/dcp-descriptions';
+import ProDescriptions from '@dcp-fe/dcp-descriptions';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import ProTable, { TableDropdown } from '@dcp-fe/dcp-table';
 import request from 'umi-request';
 
 type GithubIssueItem = {

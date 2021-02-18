@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import ProCard from '@ant-design/pro-card';
+import ProCard from '@dcp-fe/dcp-card';
 import { waitForComponentToPaint } from '../util';
 import { act } from 'react-dom/test-utils';
 

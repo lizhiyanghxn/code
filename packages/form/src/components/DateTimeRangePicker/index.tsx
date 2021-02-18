@@ -1,7 +1,7 @@
 import React from 'react';
-import ProField from '@ant-design/pro-field';
+import ProField from '@dcp-fe/dcp-field';
 import type { DatePickerProps } from 'antd';
-import { dateArrayFormatter } from '@ant-design/pro-utils';
+import { dateArrayFormatter } from '@dcp-fe/dcp-utils';
 
 import type { ProFormItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';

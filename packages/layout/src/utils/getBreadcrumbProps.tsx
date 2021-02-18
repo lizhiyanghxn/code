@@ -2,7 +2,7 @@ import type H from 'history';
 import type { BreadcrumbProps as AntdBreadcrumbProps } from 'antd';
 import React from 'react';
 import pathToRegexp from 'path-to-regexp';
-import { isBrowser } from '@ant-design/pro-utils';
+import { isBrowser } from '@dcp-fe/dcp-utils';
 
 import type { ProSettings } from '../defaultSettings';
 import type { MenuDataItem, MessageDescriptor, WithFalse } from '../typings';

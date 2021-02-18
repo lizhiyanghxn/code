@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { message } from 'antd';
-import ProForm, { ProFormText, ProFormCaptcha } from '@ant-design/pro-form';
+import ProForm, { ProFormText, ProFormCaptcha } from '@dcp-fe/dcp-form';
 import { MobileTwoTone, MailTwoTone } from '@ant-design/icons';
 
 const waitTime = (time: number = 100) => {

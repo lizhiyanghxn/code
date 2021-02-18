@@ -9,7 +9,7 @@ import {
   ProFormDateTimePicker,
   ProFormTimePicker,
   ProFormRadio,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 import KeyCode from 'rc-util/lib/KeyCode';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint } from '../util';

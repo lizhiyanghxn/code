@@ -1,19 +1,19 @@
-# @ant-design/pro-skeleton
+# @dcp-fe/dcp-skeleton
 
-> @ant-design/pro-skeleton.
+> @dcp-fe/dcp-skeleton.
 
-See our website [@ant-design/pro-skeleton](https://procomponent.ant.design/) for more information.
+See our website [@dcp-fe/dcp-skeleton](https://procomponent.ant.design/) for more information.
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-skeleton
+$ npm install --save  @dcp-fe/dcp-skeleton
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-skeleton
+$ yarn add @dcp-fe/dcp-skeleton
 ```

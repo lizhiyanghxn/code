@@ -3,7 +3,7 @@ import type { DescriptionsProps, FormInstance, FormProps } from 'antd';
 import { Descriptions, Space, Form, ConfigProvider } from 'antd';
 import { EditOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import toArray from 'rc-util/lib/Children/toArray';
-import ProForm, { ProFormField } from '@ant-design/pro-form';
+import ProForm, { ProFormField } from '@dcp-fe/dcp-form';
 import type {
   ProSchema,
   ProCoreActionType,
@@ -11,20 +11,20 @@ import type {
   UseEditableMapUtilType,
   ProFieldValueType,
   ProSchemaComponentTypes,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import {
   InlineErrorFormItem,
   LabelIconTip,
   useEditableMap,
   ErrorBoundary,
   getFieldPropsOrFormItemProps,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import get from 'rc-util/lib/utils/get';
 import { stringify } from 'use-json-comparison';
-import ProSkeleton from '@ant-design/pro-skeleton';
+import ProSkeleton from '@dcp-fe/dcp-skeleton';
 import type { RequestData } from './useFetchData';
 import useFetchData from './useFetchData';
-import type { ProFieldFCMode } from '@ant-design/pro-utils';
+import type { ProFieldFCMode } from '@dcp-fe/dcp-utils';
 import './index.less';
 
 // todo remove it

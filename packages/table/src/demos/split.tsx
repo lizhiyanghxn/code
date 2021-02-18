@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import type { BadgeProps } from 'antd';
 import { Button, Badge } from 'antd';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import ProCard from '@ant-design/pro-card';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
+import ProCard from '@dcp-fe/dcp-card';
 // @ts-ignore
 import styles from './split.less';
 

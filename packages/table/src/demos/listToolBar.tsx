@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Badge, Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import { LightFilter, ProFormDatePicker } from '@ant-design/pro-form';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import { LightFilter, ProFormDatePicker } from '@dcp-fe/dcp-form';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
 
 export type TableListItem = {
   key: number;

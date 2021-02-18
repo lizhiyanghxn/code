@@ -1,8 +1,8 @@
 import React from 'react';
 import type { SelectProps } from 'antd';
-import ProField from '@ant-design/pro-field';
-import type { ProSchema } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+import ProField from '@dcp-fe/dcp-field';
+import type { ProSchema } from '@dcp-fe/dcp-utils';
+import { runFunction } from '@dcp-fe/dcp-utils';
 import type { ProFormItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';
 

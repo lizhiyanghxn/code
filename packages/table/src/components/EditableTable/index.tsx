@@ -1,10 +1,10 @@
 ﻿import React, { useContext, useImperativeHandle, useMemo, useRef } from 'react';
-import type { ParamsType } from '@ant-design/pro-provider';
+import type { ParamsType } from '@dcp-fe/dcp-provider';
 import type { ButtonProps } from 'antd';
 import { Button } from 'antd';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { PlusOutlined } from '@ant-design/icons';
-import { runFunction } from '@ant-design/pro-utils';
+import { runFunction } from '@dcp-fe/dcp-utils';
 import ProTable from '../../Table';
 import type { ProTableProps, ActionType } from '../../typing';
 

@@ -5,8 +5,8 @@ import toArray from 'rc-util/lib/Children/toArray';
 import type { FormProviderProps } from 'antd/lib/form/context';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import classNames from 'classnames';
-import { useIntl } from '@ant-design/pro-provider';
-import { useMountMergeState } from '@ant-design/pro-utils';
+import { useIntl } from '@dcp-fe/dcp-provider';
+import { useMountMergeState } from '@dcp-fe/dcp-utils';
 
 import type { StepFormProps } from './StepForm';
 import StepForm from './StepForm';

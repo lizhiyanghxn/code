@@ -1,7 +1,7 @@
 import type { InputProps } from 'antd';
 import { Input } from 'antd';
 import React, { useRef, useImperativeHandle, useState, useEffect } from 'react';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from '@dcp-fe/dcp-provider';
 
 import type { ProFieldFC } from '../../index';
 

@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-form",
+  "name": "@dcp-fe/dcp-form",
   "version": "1.15.4",
-  "description": "@ant-design/pro-form",
+  "description": "@dcp-fe/dcp-form",
   "keywords": [
     "antd",
     "admin",
@@ -34,9 +34,9 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
-    "@ant-design/pro-field": "1.9.4",
-    "@ant-design/pro-provider": "1.4.4",
-    "@ant-design/pro-utils": "1.12.0",
+    "@dcp-fe/dcp-field": "1.9.4",
+    "@dcp-fe/dcp-provider": "1.4.4",
+    "@dcp-fe/dcp-utils": "1.12.0",
     "classnames": "^2.2.6",
     "omit.js": "^2.0.2",
     "rc-resize-observer": "^0.2.3",

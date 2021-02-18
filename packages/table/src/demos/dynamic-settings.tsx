@@ -6,11 +6,11 @@ import ProForm, {
   ProFormSelect,
   ProFormSwitch,
   ProFormText,
-} from '@ant-design/pro-form';
-import type { ProColumnType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import { useDebounceFn } from '@ant-design/pro-utils';
-import ProCard from '@ant-design/pro-card';
+} from '@dcp-fe/dcp-form';
+import type { ProColumnType } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
+import { useDebounceFn } from '@dcp-fe/dcp-utils';
+import ProCard from '@dcp-fe/dcp-card';
 import { Button } from 'antd';
 
 type DataType = {

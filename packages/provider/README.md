@@ -1,19 +1,19 @@
-# @ant-design/pro-provider
+# @dcp-fe/dcp-provider
 
-> @ant-design/pro-provider.
+> @dcp-fe/dcp-provider.
 
-See our website [@ant-design/pro-provider](https://procomponent.ant.design/) for more information.
+See our website [@dcp-fe/dcp-provider](https://procomponent.ant.design/) for more information.
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-provider
+$ npm install --save  @dcp-fe/dcp-provider
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-provider
+$ yarn add @dcp-fe/dcp-provider
 ```

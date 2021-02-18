@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-provider",
+  "name": "@dcp-fe/dcp-provider",
   "version": "1.4.4",
-  "description": "@ant-design/pro-provider",
+  "description": "@dcp-fe/dcp-provider",
   "keywords": [
     "antd",
     "admin",

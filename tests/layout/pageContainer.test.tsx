@@ -1,7 +1,7 @@
 import { render, mount } from 'enzyme';
 import React from 'react';
-import type { BasicLayoutProps } from '@ant-design/pro-layout';
-import BasicLayout, { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
+import type { BasicLayoutProps } from '@dcp-fe/dcp-layout';
+import BasicLayout, { PageContainer, FooterToolbar } from '@dcp-fe/dcp-layout';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint } from '../util';
 

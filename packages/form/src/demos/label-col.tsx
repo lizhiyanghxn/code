@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import ProForm, { ProFormText, ProFormCheckbox, ProFormRadio } from '@ant-design/pro-form';
+import ProForm, { ProFormText, ProFormCheckbox, ProFormRadio } from '@dcp-fe/dcp-form';
 
 import { Button } from 'antd';
 

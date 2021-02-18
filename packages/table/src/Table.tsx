@@ -8,8 +8,8 @@ import React, {
 } from 'react';
 import type { TablePaginationConfig } from 'antd';
 import { Table, ConfigProvider, Form, Card, Spin } from 'antd';
-import type { ParamsType } from '@ant-design/pro-provider';
-import { useIntl, ConfigProviderWrap } from '@ant-design/pro-provider';
+import type { ParamsType } from '@dcp-fe/dcp-provider';
+import { useIntl, ConfigProviderWrap } from '@dcp-fe/dcp-provider';
 import classNames from 'classnames';
 import { stringify } from 'use-json-comparison';
 import type { TableCurrentDataSource, SorterResult, SortOrder } from 'antd/lib/table/interface';
@@ -19,7 +19,7 @@ import {
   useMountMergeState,
   useEditableArray,
   ErrorBoundary,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import omit from 'omit.js';
 
 import useFetchData from './useFetchData';

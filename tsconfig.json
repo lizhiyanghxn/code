@@ -13,16 +13,16 @@
     "declaration": true,
     "skipLibCheck": true,
     "paths": {
-      "@ant-design/pro-layout": ["./packages/layout/src/index.tsx"],
-      "@ant-design/pro-form": ["./packages/form/src/index.tsx"],
-      "@ant-design/pro-table": ["./packages/table/src/index.tsx"],
-      "@ant-design/pro-field": ["./packages/field/src/index.tsx"],
-      "@ant-design/pro-skeleton": ["./packages/skeleton/src/index.tsx"],
-      "@ant-design/pro-list": ["./packages/list/src/index.tsx"],
-      "@ant-design/pro-provider": ["./packages/provider/src/index.tsx"],
-      "@ant-design/pro-descriptions": ["./packages/descriptions/src/index.tsx"],
-      "@ant-design/pro-utils": ["./packages/utils/src/index.tsx"],
-      "@ant-design/pro-card": ["./packages/card/src/index.tsx"]
+      "@dcp-fe/dcp-layout": ["./packages/layout/src/index.tsx"],
+      "@dcp-fe/dcp-form": ["./packages/form/src/index.tsx"],
+      "@dcp-fe/dcp-table": ["./packages/table/src/index.tsx"],
+      "@dcp-fe/dcp-field": ["./packages/field/src/index.tsx"],
+      "@dcp-fe/dcp-skeleton": ["./packages/skeleton/src/index.tsx"],
+      "@dcp-fe/dcp-list": ["./packages/list/src/index.tsx"],
+      "@dcp-fe/dcp-provider": ["./packages/provider/src/index.tsx"],
+      "@dcp-fe/dcp-descriptions": ["./packages/descriptions/src/index.tsx"],
+      "@dcp-fe/dcp-utils": ["./packages/utils/src/index.tsx"],
+      "@dcp-fe/dcp-card": ["./packages/card/src/index.tsx"]
     }
   },
   "include": [

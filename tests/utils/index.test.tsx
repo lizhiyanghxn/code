@@ -8,7 +8,7 @@ import {
   useDebounceFn,
   pickProProps,
   DropdownFooter,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import { mount } from 'enzyme';
 import { Form, Input } from 'antd';
 import type { Moment } from 'moment';

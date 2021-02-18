@@ -1,6 +1,6 @@
-﻿import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { ProFormProps, QueryFilterProps } from '@ant-design/pro-form';
-import type { ParamsType } from '@ant-design/pro-provider';
+﻿import type { ProFieldEmptyText } from '@dcp-fe/dcp-field';
+import type { ProFormProps, QueryFilterProps } from '@dcp-fe/dcp-form';
+import type { ParamsType } from '@dcp-fe/dcp-provider';
 import type {
   ProCoreActionType,
   ProSchema,
@@ -8,7 +8,7 @@ import type {
   SearchTransformKeyFn,
   ProTableEditableFnType,
   RowEditableConfig,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import type { CardProps } from 'antd/lib/card';
 import type { SpinProps } from 'antd/lib/spin';
 import type { TableProps } from 'antd/lib/table';

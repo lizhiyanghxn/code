@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Button, ConfigProvider, Descriptions, Result, Avatar, Space, Statistic } from 'antd';
 import { LikeOutlined, UserOutlined } from '@ant-design/icons';
 
-import type { ProSettings } from '@ant-design/pro-layout';
-import ProLayout, { PageContainer, SettingDrawer } from '@ant-design/pro-layout';
+import type { ProSettings } from '@dcp-fe/dcp-layout';
+import ProLayout, { PageContainer, SettingDrawer } from '@dcp-fe/dcp-layout';
 import defaultProps from './_defaultProps';
 
 const content = (

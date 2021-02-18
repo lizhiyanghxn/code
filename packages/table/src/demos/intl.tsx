@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Select, ConfigProvider, Space } from 'antd';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import type { ProColumns, ActionType } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
 import moment from 'moment';
 import enUSIntl from 'antd/lib/locale/en_US';
 import zhCNIntl from 'antd/lib/locale/zh_CN';

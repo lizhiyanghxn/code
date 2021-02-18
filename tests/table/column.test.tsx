@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import { ConfigProvider } from 'antd';
-import ProTable from '@ant-design/pro-table';
+import ProTable from '@dcp-fe/dcp-table';
 import { request } from './demo';
 import { waitForComponentToPaint } from '../util';
 

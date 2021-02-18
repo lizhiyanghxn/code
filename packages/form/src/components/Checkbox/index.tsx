@@ -1,9 +1,9 @@
 import React from 'react';
 import type { CheckboxProps } from 'antd';
 import { Checkbox } from 'antd';
-import ProField from '@ant-design/pro-field';
-import type { ProSchema } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+import ProField from '@dcp-fe/dcp-field';
+import type { ProSchema } from '@dcp-fe/dcp-utils';
+import { runFunction } from '@dcp-fe/dcp-utils';
 import type { CheckboxGroupProps } from 'antd/lib/checkbox';
 import createField from '../../BaseForm/createField';
 import type { ProFormItemProps } from '../../interface';

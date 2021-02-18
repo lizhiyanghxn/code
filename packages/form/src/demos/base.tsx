@@ -1,6 +1,6 @@
 import React from 'react';
 import { message } from 'antd';
-import ProForm, { ProFormText, ProFormDateRangePicker, ProFormSelect } from '@ant-design/pro-form';
+import ProForm, { ProFormText, ProFormDateRangePicker, ProFormSelect } from '@dcp-fe/dcp-form';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

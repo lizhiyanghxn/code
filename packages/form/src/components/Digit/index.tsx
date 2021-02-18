@@ -1,6 +1,6 @@
 import React from 'react';
 import type { InputNumberProps } from 'antd';
-import ProField from '@ant-design/pro-field';
+import ProField from '@dcp-fe/dcp-field';
 import type { ProFormItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';
 

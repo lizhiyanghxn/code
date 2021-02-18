@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import BasicLayout from '@ant-design/pro-layout';
+import BasicLayout from '@dcp-fe/dcp-layout';
 import { waitForComponentToPaint } from '../util';
 
 describe('settings.test', () => {

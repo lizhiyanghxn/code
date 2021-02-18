@@ -4,8 +4,8 @@ import React, { useMemo } from 'react';
 import { Row, Col, Form, Divider } from 'antd';
 import type { FormInstance, FormProps } from 'antd/lib/form/Form';
 import RcResizeObserver from 'rc-resize-observer';
-import { useIntl } from '@ant-design/pro-provider';
-import { isBrowser, useMountMergeState } from '@ant-design/pro-utils';
+import { useIntl } from '@dcp-fe/dcp-provider';
+import { isBrowser, useMountMergeState } from '@dcp-fe/dcp-utils';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 
 import type { CommonFormProps } from '../../BaseForm';

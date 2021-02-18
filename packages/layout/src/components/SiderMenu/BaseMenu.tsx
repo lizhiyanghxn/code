@@ -4,7 +4,7 @@ import { Menu } from 'antd';
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import classNames from 'classnames';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import { isUrl, isImg } from '@ant-design/pro-utils';
+import { isUrl, isImg } from '@dcp-fe/dcp-utils';
 
 import type { MenuTheme, MenuProps } from 'antd';
 import type { PureSettings } from '../../defaultSettings';

@@ -3,8 +3,8 @@ import type { FormProps } from 'antd';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 import classNames from 'classnames';
 import { Form, ConfigProvider } from 'antd';
-import { FilterDropdown, FieldLabel } from '@ant-design/pro-utils';
-import { useIntl } from '@ant-design/pro-provider';
+import { FilterDropdown, FieldLabel } from '@dcp-fe/dcp-utils';
+import { useIntl } from '@dcp-fe/dcp-provider';
 import { FilterOutlined } from '@ant-design/icons';
 import omit from 'omit.js';
 

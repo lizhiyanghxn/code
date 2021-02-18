@@ -7,13 +7,13 @@ import type {
   ProSchemaComponentTypes,
   ProTableEditableFnType,
   UseEditableUtilType,
-} from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
-import { isNil, LabelIconTip, omitBoolean, omitUndefinedAndEmptyArr } from '@ant-design/pro-utils';
-import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import { proFieldParsingValueEnumToArray } from '@ant-design/pro-field';
+} from '@dcp-fe/dcp-utils';
+import { runFunction } from '@dcp-fe/dcp-utils';
+import { isNil, LabelIconTip, omitBoolean, omitUndefinedAndEmptyArr } from '@dcp-fe/dcp-utils';
+import type { ProFieldEmptyText } from '@dcp-fe/dcp-field';
+import { proFieldParsingValueEnumToArray } from '@dcp-fe/dcp-field';
 import get from 'rc-util/lib/utils/get';
-import type { IntlType } from '@ant-design/pro-provider';
+import type { IntlType } from '@dcp-fe/dcp-provider';
 
 import type { ActionType, ProColumnGroupType, ProColumns, UseFetchDataAction } from './typing';
 import type { ColumnsState, useContainer } from './container';

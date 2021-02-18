@@ -2,7 +2,7 @@ import React from 'react';
 import type { ListProps, TableColumnType, TableProps } from 'antd';
 import { List } from 'antd';
 import type { GetRowKey } from 'antd/lib/table/interface';
-import type { ActionType } from '@ant-design/pro-table';
+import type { ActionType } from '@dcp-fe/dcp-table';
 import get from 'rc-util/lib/utils/get';
 import useLazyKVMap from 'antd/lib/table/hooks/useLazyKVMap';
 import useSelection from 'antd/lib/table/hooks/useSelection';

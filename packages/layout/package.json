@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-layout",
+  "name": "@dcp-fe/dcp-layout",
   "version": "6.14.1",
-  "description": "@ant-design/pro-layout",
+  "description": "@dcp-fe/dcp-layout",
   "keywords": [
     "antd",
     "admin",
@@ -34,8 +34,8 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
-    "@ant-design/pro-provider": "1.4.4",
-    "@ant-design/pro-utils": "1.12.0",
+    "@dcp-fe/dcp-provider": "1.4.4",
+    "@dcp-fe/dcp-utils": "1.12.0",
     "@umijs/route-utils": "^1.0.35",
     "classnames": "^2.2.6",
     "omit.js": "^2.0.2",

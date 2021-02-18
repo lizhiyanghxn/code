@@ -7,10 +7,10 @@ import type {
   ProRenderFieldPropsType,
   ProFieldFCRenderProps,
   ProFieldTextType,
-} from '@ant-design/pro-utils';
-import { pickProProps, omitUndefined } from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
+import { pickProProps, omitUndefined } from '@dcp-fe/dcp-utils';
 
-import ConfigContext, { useIntl } from '@ant-design/pro-provider';
+import ConfigContext, { useIntl } from '@dcp-fe/dcp-provider';
 import FieldPercent from './components/Percent';
 import FieldIndexColumn from './components/IndexColumn';
 import FieldProgress from './components/Progress';

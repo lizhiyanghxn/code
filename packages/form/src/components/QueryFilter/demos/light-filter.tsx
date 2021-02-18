@@ -12,7 +12,7 @@ import {
   ProFormDateTimeRangePicker,
   ProFormSlider,
   ProFormFieldSet,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 import { Radio } from 'antd';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
 import moment from 'moment';

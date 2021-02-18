@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageContainer } from '@ant-design/pro-layout';
+import { PageContainer } from '@dcp-fe/dcp-layout';
 
 export default () => (
   <div

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Progress, Tag } from 'antd';
-import ProList from '@ant-design/pro-list';
+import ProList from '@dcp-fe/dcp-list';
 
 const data = [
   '语雀的天空',

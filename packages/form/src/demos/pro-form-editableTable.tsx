@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
-import ProForm, { ProFormText } from '@ant-design/pro-form';
-import type { ProColumns } from '@ant-design/pro-table';
-import { EditableProTable } from '@ant-design/pro-table';
+import ProForm, { ProFormText } from '@dcp-fe/dcp-form';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import { EditableProTable } from '@dcp-fe/dcp-table';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

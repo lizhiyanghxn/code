@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Tooltip } from 'antd';
 import { DownOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import ProTable, { TableDropdown } from '@dcp-fe/dcp-table';
 
 const valueEnum = {
   0: 'close',

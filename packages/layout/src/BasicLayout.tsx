@@ -9,7 +9,7 @@ import warning from 'warning';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { stringify } from 'use-json-comparison';
 import useAntdMediaQuery from 'use-media-antd-query';
-import { useDeepCompareEffect, useDocumentTitle, isBrowser } from '@ant-design/pro-utils';
+import { useDeepCompareEffect, useDocumentTitle, isBrowser } from '@dcp-fe/dcp-utils';
 import Omit from 'omit.js';
 import { getMatchMenu } from '@umijs/route-utils';
 

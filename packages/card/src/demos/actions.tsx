@@ -1,5 +1,5 @@
 import React from 'react';
-import ProCard from '@ant-design/pro-card';
+import ProCard from '@dcp-fe/dcp-card';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 
 export default () => {

@@ -5,7 +5,7 @@ import ProForm, {
   ProFormDateRangePicker,
   ProFormSelect,
   ProFormDatePicker,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 
 export default () => {
   return (

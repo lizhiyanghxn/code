@@ -14,11 +14,11 @@ import type {
   ProFieldValueEnumType,
   ProSchemaValueEnumMap,
   ProSchemaValueEnumObj,
-} from '@ant-design/pro-utils';
-import { useDeepCompareEffect } from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
+import { useDeepCompareEffect } from '@dcp-fe/dcp-utils';
 import useSWR from 'swr';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from '@dcp-fe/dcp-provider';
 
 import LightSelect from './LightSelect';
 import type { ProFieldStatusType } from '../Status';

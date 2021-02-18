@@ -4,7 +4,7 @@ import type { TabsProps } from 'antd';
 import { Grid, Tabs, ConfigProvider } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import { LabelIconTip } from '@ant-design/pro-utils';
+import { LabelIconTip } from '@dcp-fe/dcp-utils';
 import classNames from 'classnames';
 import omit from 'omit.js';
 import CardLoading from './components/CardLoading';

@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import ProForm, { ProFormFieldSet, ProFormText, ProFormRate } from '@ant-design/pro-form';
+import ProForm, { ProFormFieldSet, ProFormText, ProFormRate } from '@dcp-fe/dcp-form';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint } from '../util';

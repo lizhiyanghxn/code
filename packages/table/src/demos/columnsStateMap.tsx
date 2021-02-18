@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { ProColumns, ColumnsState } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import type { ProColumns, ColumnsState } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
 
 const valueEnum = {
   0: 'close',

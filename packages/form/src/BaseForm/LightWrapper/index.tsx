@@ -6,7 +6,7 @@ import {
   isDropdownValueType,
   useMountMergeState,
   omitUndefined,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import { ConfigProvider } from 'antd';
 
 import './index.less';

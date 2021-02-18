@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Result, Avatar, Tag, Input } from 'antd';
 import { CrownOutlined, UserOutlined, SmileOutlined } from '@ant-design/icons';
-import ProLayout, { PageContainer } from '@ant-design/pro-layout';
+import ProLayout, { PageContainer } from '@dcp-fe/dcp-layout';
 
 const defaultProps = {
   routes: [

@@ -3,7 +3,7 @@ import React from 'react';
 import MockDate from 'mockdate';
 import { act } from 'react-dom/test-utils';
 import { Input } from 'antd';
-import ProTable from '@ant-design/pro-table';
+import ProTable from '@dcp-fe/dcp-table';
 import { request } from './demo';
 import { waitForComponentToPaint, spyElementPrototypes, waitTime } from '../util';
 

@@ -1,6 +1,6 @@
 import { mount, render } from 'enzyme';
 import React from 'react';
-import { ListToolBar } from '@ant-design/pro-table';
+import { ListToolBar } from '@dcp-fe/dcp-table';
 import { SettingOutlined, FullscreenOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
 import { act } from 'react-dom/test-utils';

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import React from 'react';
 import { Layout } from 'antd';
-import { ConfigProviderWrap } from '@ant-design/pro-provider';
+import { ConfigProviderWrap } from '@dcp-fe/dcp-provider';
 
 const WrapContent: React.FC<{
   isChildrenLayout?: boolean;

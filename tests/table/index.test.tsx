@@ -2,8 +2,8 @@ import { mount, render } from 'enzyme';
 import React, { useRef } from 'react';
 import { Input, Button } from 'antd';
 import { act } from 'react-dom/test-utils';
-import type { ActionType } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import type { ActionType } from '@dcp-fe/dcp-table';
+import ProTable, { TableDropdown } from '@dcp-fe/dcp-table';
 import { columns, request } from './demo';
 import { waitForComponentToPaint, waitTime } from '../util';
 

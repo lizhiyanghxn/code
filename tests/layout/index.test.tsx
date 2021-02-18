@@ -1,8 +1,8 @@
 import { mount, render } from 'enzyme';
 import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
-import type { BasicLayoutProps } from '@ant-design/pro-layout';
-import BasicLayout from '@ant-design/pro-layout';
+import type { BasicLayoutProps } from '@dcp-fe/dcp-layout';
+import BasicLayout from '@dcp-fe/dcp-layout';
 
 import { waitForComponentToPaint } from '../util';
 

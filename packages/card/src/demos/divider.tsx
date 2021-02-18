@@ -1,6 +1,6 @@
 import React from 'react';
 import { Statistic } from 'antd';
-import ProCard from '@ant-design/pro-card';
+import ProCard from '@dcp-fe/dcp-card';
 
 const { Divider } = ProCard;
 

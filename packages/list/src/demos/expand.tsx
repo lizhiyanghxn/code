@@ -1,7 +1,7 @@
 import type { ReactText } from 'react';
 import React, { useState } from 'react';
 import { Button, Progress, Tag, Space } from 'antd';
-import ProList from '@ant-design/pro-list';
+import ProList from '@dcp-fe/dcp-list';
 
 const dataSource = [
   {

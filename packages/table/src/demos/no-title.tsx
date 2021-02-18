@@ -1,7 +1,7 @@
 import { Popconfirm, Space, Menu, Dropdown } from 'antd';
 import React from 'react';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
 import { DownOutlined } from '@ant-design/icons';
 
 export type Member = {

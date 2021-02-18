@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, InputNumber } from 'antd';
-import type { TableRowEditable, ProColumns, ActionType } from '@ant-design/pro-table';
-import { EditableProTable } from '@ant-design/pro-table';
+import type { TableRowEditable, ProColumns, ActionType } from '@dcp-fe/dcp-table';
+import { EditableProTable } from '@dcp-fe/dcp-table';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { mount, render } from 'enzyme';
 import { act } from 'react-dom/test-utils';

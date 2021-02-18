@@ -9,7 +9,7 @@ import ProForm, {
   ProFormField,
   ProFormSlider,
   ProFormUploadDragger,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 import LightWrapper from '../BaseForm/LightWrapper';
 
 const Demo = () => {

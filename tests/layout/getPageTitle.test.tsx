@@ -1,4 +1,4 @@
-﻿import { getPageTitle } from '@ant-design/pro-layout';
+﻿import { getPageTitle } from '@dcp-fe/dcp-layout';
 
 const pageProps = {
   pathname: '/welcome',

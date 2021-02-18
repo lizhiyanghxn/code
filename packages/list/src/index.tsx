@@ -1,9 +1,9 @@
 import React, { useMemo, useContext, useRef, useImperativeHandle } from 'react';
 import type { ListProps, PaginationProps } from 'antd';
 import classNames from 'classnames';
-import type { ProTableProps, ProColumnType, ActionType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import type { ParamsType } from '@ant-design/pro-provider';
+import type { ProTableProps, ProColumnType, ActionType } from '@dcp-fe/dcp-table';
+import ProTable from '@dcp-fe/dcp-table';
+import type { ParamsType } from '@dcp-fe/dcp-provider';
 import { ConfigProvider, Form } from 'antd';
 
 import ListView from './ListView';

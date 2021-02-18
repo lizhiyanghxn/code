@@ -6,7 +6,7 @@ import ProForm, {
   ProFormDigit,
   ProFormSelect,
   ProFormDatePicker,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 
 const Demo = () => {
   return (

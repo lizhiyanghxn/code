@@ -2,18 +2,18 @@
 
 > Umi plugin for access management..
 
-See our website [@ant-design/pro-field](https://procomponent.ant.design/) for more information.
+See our website [@dcp-fe/dcp-field](https://procomponent.ant.design/) for more information.
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-field
+$ npm install --save  @dcp-fe/dcp-field
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add  @ant-design/pro-field
+$ yarn add  @dcp-fe/dcp-field
 ```

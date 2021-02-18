@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProDescriptions from '@ant-design/pro-descriptions';
-import ProProvider from '@ant-design/pro-provider';
+import type { ProColumns } from '@dcp-fe/dcp-table';
+import ProDescriptions from '@dcp-fe/dcp-descriptions';
+import ProProvider from '@dcp-fe/dcp-provider';
 import { Input, Space, Tag } from 'antd';
 
 const valueEnum = {

@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { ProFormText, DrawerForm } from '@ant-design/pro-form';
+import { ProFormText, DrawerForm } from '@dcp-fe/dcp-form';
 import { Button } from 'antd';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';

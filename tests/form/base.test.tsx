@@ -6,7 +6,7 @@ import ProForm, {
   ProFormDatePicker,
   ProFormDependency,
   ProFormSelect,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { waitTime, waitForComponentToPaint } from '../util';

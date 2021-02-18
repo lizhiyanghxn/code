@@ -1,8 +1,8 @@
 import { DatePicker } from 'antd';
 import React from 'react';
 import moment from 'moment';
-import { parseValueToMoment } from '@ant-design/pro-utils';
-import { useIntl } from '@ant-design/pro-provider';
+import { parseValueToMoment } from '@dcp-fe/dcp-utils';
+import { useIntl } from '@dcp-fe/dcp-provider';
 import type { ProFieldFC } from '../../index';
 
 /**

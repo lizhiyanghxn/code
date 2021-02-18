@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ProDescriptions from '@ant-design/pro-descriptions';
+import ProDescriptions from '@dcp-fe/dcp-descriptions';
 
 export default () => {
   return (

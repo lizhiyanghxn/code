@@ -1,19 +1,19 @@
-# @ant-design/pro-utils
+# @dcp-fe/dcp-utils
 
-> @ant-design/pro-utils.
+> @dcp-fe/dcp-utils.
 
-See our website [@ant-design/pro-utils](https://procomponent.ant.design/) for more information.
+See our website [@dcp-fe/dcp-utils](https://procomponent.ant.design/) for more information.
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-utils
+$ npm install --save  @dcp-fe/dcp-utils
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-utils
+$ yarn add @dcp-fe/dcp-utils
 ```

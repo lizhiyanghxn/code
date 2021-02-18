@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-utils",
+  "name": "@dcp-fe/dcp-utils",
   "version": "1.12.0",
-  "description": "@ant-design/pro-utils",
+  "description": "@dcp-fe/dcp-utils",
   "keywords": [
     "antd",
     "admin",
@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
-    "@ant-design/pro-provider": "1.4.4",
+    "@dcp-fe/dcp-provider": "1.4.4",
     "classnames": "^2.2.6",
     "fast-deep-equal": "^3.1.3",
     "moment": "^2.27.0",

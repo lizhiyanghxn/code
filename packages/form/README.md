@@ -1,15 +1,15 @@
-# @ant-design/pro-form
+# @dcp-fe/dcp-form
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-form
+$ npm install --save  @dcp-fe/dcp-form
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-form
+$ yarn add @dcp-fe/dcp-form
 ```

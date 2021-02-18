@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import ProDescriptions from '@ant-design/pro-descriptions';
+import ProDescriptions from '@dcp-fe/dcp-descriptions';
 import { Button } from 'antd';
 
 export default () => {

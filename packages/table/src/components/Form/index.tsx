@@ -1,15 +1,15 @@
 import React, { useContext, useRef, useCallback, useState, useMemo } from 'react';
 import type { FormInstance, FormItemProps } from 'antd';
 import { ConfigProvider } from 'antd';
-import type { IntlType } from '@ant-design/pro-provider';
-import { useIntl } from '@ant-design/pro-provider';
-import type { BaseQueryFilterProps, QueryFilterProps, ProFormProps } from '@ant-design/pro-form';
-import ProForm, { QueryFilter, LightFilter, ProFormField } from '@ant-design/pro-form';
+import type { IntlType } from '@dcp-fe/dcp-provider';
+import { useIntl } from '@dcp-fe/dcp-provider';
+import type { BaseQueryFilterProps, QueryFilterProps, ProFormProps } from '@dcp-fe/dcp-form';
+import ProForm, { QueryFilter, LightFilter, ProFormField } from '@dcp-fe/dcp-form';
 import classNames from 'classnames';
 import omit from 'omit.js';
-import type { ProSchemaComponentTypes, ProFieldValueType } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
-import { useDeepCompareEffect, getFieldPropsOrFormItemProps } from '@ant-design/pro-utils';
+import type { ProSchemaComponentTypes, ProFieldValueType } from '@dcp-fe/dcp-utils';
+import { runFunction } from '@dcp-fe/dcp-utils';
+import { useDeepCompareEffect, getFieldPropsOrFormItemProps } from '@dcp-fe/dcp-utils';
 import type { ProColumns } from '../../index';
 import './index.less';
 

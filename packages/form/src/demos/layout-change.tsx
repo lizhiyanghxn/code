@@ -10,7 +10,7 @@ import ProForm, {
   ProFormDateRangePicker,
   ProFormSelect,
   ProFormRadio,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 import { PlusOutlined } from '@ant-design/icons';
 
 const waitTime = (time: number = 100) => {

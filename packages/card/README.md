@@ -1,19 +1,19 @@
-# @ant-design/pro-card
+# @dcp-fe/dcp-card
 
-> @ant-design/pro-card.
+> @dcp-fe/dcp-card.
 
-See our website [@ant-design/pro-card](https://procomponent.ant.design/) for more information.
+See our website [@dcp-fe/dcp-card](https://procomponent.ant.design/) for more information.
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-card
+$ npm install --save  @dcp-fe/dcp-card
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-card
+$ yarn add @dcp-fe/dcp-card
 ```

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { InputProps } from 'antd';
 import type { PasswordProps } from 'antd/lib/input';
-import ProField from '@ant-design/pro-field';
+import ProField from '@dcp-fe/dcp-field';
 import type { ProFormItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';
 

@@ -7,9 +7,9 @@ import ProForm, {
   ProFormSelect,
   ProFormCheckbox,
   ProFormDigit,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 
-import ProCard from '@ant-design/pro-card';
+import ProCard from '@dcp-fe/dcp-card';
 import { message } from 'antd';
 
 const waitTime = (time: number = 100) => {

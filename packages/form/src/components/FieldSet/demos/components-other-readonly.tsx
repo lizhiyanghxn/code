@@ -15,7 +15,7 @@ import ProForm, {
   ProFormUploadButton,
   ProFormUploadDragger,
   ProFormFieldSet,
-} from '@ant-design/pro-form';
+} from '@dcp-fe/dcp-form';
 
 const Demo = () => (
   <div

@@ -5,7 +5,7 @@ import {
   useDeepCompareEffect,
   useMountMergeState,
   runFunction,
-} from '@ant-design/pro-utils';
+} from '@dcp-fe/dcp-utils';
 import { unstable_batchedUpdates } from 'react-dom';
 import type { PageInfo, RequestData, UseFetchProps, UseFetchDataAction } from './typing';
 import { postDataPipeline } from './utils';

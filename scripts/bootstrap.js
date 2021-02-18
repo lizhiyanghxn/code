@@ -9,7 +9,7 @@ const { yParser } = require('@umijs/utils');
   const pkgs = readdirSync(join(__dirname, '../packages')).filter((pkg) => pkg.charAt(0) !== '.');
 
   pkgs.forEach((shortName) => {
-    const name = `@ant-design/pro-${shortName}`;
+    const name = `@dcp-fe/dcp-${shortName}`;
 
     const pkgJSONPath = join(__dirname, '..', 'packages', shortName, 'package.json');
     const pkgJSONExists = existsSync(pkgJSONPath);

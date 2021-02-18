@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from '@dcp-fe/dcp-provider';
 import {
   SettingOutlined,
   VerticalAlignMiddleOutlined,

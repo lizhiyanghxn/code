@@ -1,5 +1,5 @@
 import React from 'react';
-import ProTable from '@ant-design/pro-table';
+import ProTable from '@dcp-fe/dcp-table';
 
 const valueEnum = {
   0: 'close',

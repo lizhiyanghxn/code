@@ -1,5 +1,5 @@
 import React from 'react';
-import ProField from '@ant-design/pro-field';
+import ProField from '@dcp-fe/dcp-field';
 import type { MonthPickerProps } from 'antd/lib/date-picker';
 import createField from '../../BaseForm/createField';
 import type { ProFormItemProps } from '../../interface';
