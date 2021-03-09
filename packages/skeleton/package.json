@@ -1,6 +1,6 @@
 {
   "name": "@dcp-fe/dcp-skeleton",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0",
   "description": "@dcp-fe/dcp-skeleton",
   "keywords": [
     "antd",
