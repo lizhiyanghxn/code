@@ -33,9 +33,9 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
-    "@dcp-fe/dcp-card": "1.10.2",
-    "@dcp-fe/dcp-field": "1.9.4",
-    "@dcp-fe/dcp-table": "2.29.0",
+    "@dcp-fe/dcp-card": "1.0.0",
+    "@dcp-fe/dcp-field": "1.0.0",
+    "@dcp-fe/dcp-table": "1.0.0",
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
     "rc-resize-observer": "^0.1.3",
