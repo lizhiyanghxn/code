@@ -1,0 +1,50 @@
+import React from 'react';
+import type { ProCardProps } from 'dcp-card';
+import type { ListGridType } from 'antd/lib/list';
+import type { ExpandableConfig } from 'antd/lib/table/interface';
+export declare type RenderExpandIconProps<RecordType> = {
+    prefixCls: string;
+    expanded: boolean;
+    expandIcon: React.ReactNode | ((props: {
+        onExpand: (expanded: boolean) => void;
+        expanded: boolean;
+        record: RecordType;
+    }) => React.ReactNode);
+    onExpand: (expanded: boolean) => void;
+    record: RecordType;
+};
+export declare function renderExpandIcon<RecordType>({ prefixCls, expandIcon, onExpand, expanded, record, }: RenderExpandIconProps<RecordType>): JSX.Element;
+export declare type ItemProps<RecordType> = {
+    title?: React.ReactNode;
+    subTitle?: React.ReactNode;
+    checkbox?: React.ReactNode;
+    className?: string;
+    prefixCls?: string;
+    item?: any;
+    subheader?: {
+        title: React.ReactNode;
+        actions: React.ReactNode[];
+    };
+    index?: number;
+    selected?: boolean;
+    avatar?: React.ReactNode;
+    extra?: React.ReactNode;
+    content?: React.ReactNode;
+    actions?: React.ReactNode[];
+    description?: React.ReactNode;
+    loading?: boolean;
+    style?: React.CSSProperties;
+    grid?: ListGridType;
+    expand?: boolean;
+    rowSupportExpand?: boolean;
+    onExpand?: (expand: boolean) => void;
+    expandable?: ExpandableConfig<any>;
+    showActions?: 'hover' | 'always';
+    type?: 'new' | 'top' | 'inline' | 'subheader';
+    isEditable: boolean;
+    recordKey: string | number | undefined;
+    cardProps?: ProCardProps;
+    record?: RecordType;
+};
+declare function ProListItem<RecordType>(props: ItemProps<RecordType>): JSX.Element;
+export default ProListItem;
