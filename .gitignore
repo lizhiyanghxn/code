@@ -43,4 +43,4 @@ screenshot
 /packages/*/dist
 /packages/*/es
 
-!/packages/*/lib/*
+!/packages/*/lib/**
