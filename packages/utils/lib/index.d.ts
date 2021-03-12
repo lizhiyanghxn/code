@@ -30,7 +30,7 @@ import type { ProSchema, ProSchemaValueEnumMap, ProSchemaValueEnumObj, ProSchema
 import getFieldPropsOrFormItemProps from './getFieldPropsOrFormItemProps';
 import DropdownFooter from './components/DropdownFooter';
 import { runFunction } from './runFunction';
-import type { BaseProFieldFC, ProFieldFCMode, ProFieldFCRenderProps, ProRenderFieldPropsType } from 'dcp-provider';
+import type { BaseProFieldFC, ProFieldFCMode, ProFieldFCRenderProps, ProRenderFieldPropsType } from '@dcp-fe/dcp-provider';
 import ErrorBoundary from './components/ErrorBoundary';
 import dateArrayFormatter from './dateArrayFormatter';
 export type { ProSchema, ProCoreActionType, ProSchemaComponentTypes, ProSchemaValueEnumMap, ProSchemaValueEnumObj, SearchTransformKeyFn, ProTableEditableFnType, RowEditableConfig, RowEditableType, ProFieldRequestData, UseEditableType, UseEditableUtilType, UseEditableMapType, UseEditableMapUtilType, ProFieldValueType, ProRenderFieldPropsType, ProFieldFCRenderProps, ProFieldFCMode, BaseProFieldFC, ProFieldTextType, ProFieldValueEnumType, ProFieldValueObjectType, };

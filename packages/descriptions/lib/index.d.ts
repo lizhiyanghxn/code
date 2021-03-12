@@ -1,8 +1,8 @@
 import React from 'react';
 import type { DescriptionsProps, FormProps } from 'antd';
-import type { ProSchema, ProCoreActionType, RowEditableConfig, UseEditableMapUtilType, ProFieldValueType, ProSchemaComponentTypes } from 'dcp-utils';
+import type { ProSchema, ProCoreActionType, RowEditableConfig, UseEditableMapUtilType, ProFieldValueType, ProSchemaComponentTypes } from '@dcp-fe/dcp-utils';
 import type { RequestData } from './useFetchData';
-import type { ProFieldFCMode } from 'dcp-utils';
+import type { ProFieldFCMode } from '@dcp-fe/dcp-utils';
 import './index.less';
 export interface DescriptionsItemProps {
     prefixCls?: string;

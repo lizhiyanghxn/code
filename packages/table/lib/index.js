@@ -155,9 +155,9 @@ Object.defineProperty(exports, "EditableProTable", {
 });
 exports.default = void 0;
 
-var _dcpProvider = require("dcp-provider");
+var _dcpProvider = require("@dcp-fe/dcp-provider");
 
-var _dcpField = require("dcp-field");
+var _dcpField = require("@dcp-fe/dcp-field");
 
 var _Table = _interopRequireDefault(require("./Table"));
 

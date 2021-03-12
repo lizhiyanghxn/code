@@ -29,15 +29,15 @@ var _icons = require("@ant-design/icons");
 
 var _toArray = _interopRequireDefault(require("rc-util/es/Children/toArray"));
 
-var _dcpForm = _interopRequireWildcard(require("dcp-form"));
+var _dcpForm = _interopRequireWildcard(require("@dcp-fe/dcp-form"));
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
 var _get = _interopRequireDefault(require("rc-util/es/utils/get"));
 
 var _useJsonComparison = require("use-json-comparison");
 
-var _dcpSkeleton = _interopRequireDefault(require("dcp-skeleton"));
+var _dcpSkeleton = _interopRequireDefault(require("@dcp-fe/dcp-skeleton"));
 
 var _useFetchData = _interopRequireDefault(require("./useFetchData"));
 

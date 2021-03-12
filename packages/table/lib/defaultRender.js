@@ -11,9 +11,9 @@ var _form = _interopRequireDefault(require("antd/es/form"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _dcpField = _interopRequireDefault(require("dcp-field"));
+var _dcpField = _interopRequireDefault(require("@dcp-fe/dcp-field"));
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

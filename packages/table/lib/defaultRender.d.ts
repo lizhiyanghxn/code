@@ -1,6 +1,6 @@
 import React from 'react';
-import type { ProFieldEmptyText } from 'dcp-field';
-import type { ProSchemaComponentTypes } from 'dcp-utils';
+import type { ProFieldEmptyText } from '@dcp-fe/dcp-field';
+import type { ProSchemaComponentTypes } from '@dcp-fe/dcp-utils';
 import type { ProColumnType } from './index';
 /**
  * 拼接用于编辑的 key

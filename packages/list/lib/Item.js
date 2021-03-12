@@ -26,7 +26,7 @@ var _configProvider = _interopRequireDefault(require("antd/es/config-provider"))
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _dcpCard = _interopRequireDefault(require("dcp-card"));
+var _dcpCard = _interopRequireDefault(require("@dcp-fe/dcp-card"));
 
 var _useMergedState3 = _interopRequireDefault(require("rc-util/es/hooks/useMergedState"));
 

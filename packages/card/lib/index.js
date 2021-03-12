@@ -23,7 +23,7 @@ var _icons = require("@ant-design/icons");
 
 var _useMergedState3 = _interopRequireDefault(require("rc-util/es/hooks/useMergedState"));
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
 var _classnames = _interopRequireDefault(require("classnames"));
 

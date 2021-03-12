@@ -27,13 +27,13 @@ var _table = _interopRequireDefault(require("antd/es/table"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _dcpProvider = require("dcp-provider");
+var _dcpProvider = require("@dcp-fe/dcp-provider");
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _useJsonComparison = require("use-json-comparison");
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
 var _omit = _interopRequireDefault(require("omit.js"));
 

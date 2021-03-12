@@ -8,9 +8,6 @@ import type { GetPageTitleProps } from './getPageTitle';
 import type { LocaleType } from './locales';
 import type { BaseMenuProps } from './components/SiderMenu/BaseMenu';
 import type { SiderMenuProps } from './components/SiderMenu/SiderMenu';
-
-
-
 export declare type BasicLayoutProps = Partial<RouterTypes<Route>> & SiderMenuProps & HeaderViewProps & {
     pure?: boolean;
     /** @name logo url */

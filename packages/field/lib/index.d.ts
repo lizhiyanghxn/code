@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ProFieldValueType, ProFieldValueObjectType, BaseProFieldFC, ProRenderFieldPropsType, ProFieldFCRenderProps, ProFieldTextType } from 'dcp-utils';
+import type { ProFieldValueType, ProFieldValueObjectType, BaseProFieldFC, ProRenderFieldPropsType, ProFieldFCRenderProps, ProFieldTextType } from '@dcp-fe/dcp-utils';
 import FieldPercent from './components/Percent';
 import FieldIndexColumn from './components/IndexColumn';
 import FieldProgress from './components/Progress';

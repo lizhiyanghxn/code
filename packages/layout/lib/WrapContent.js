@@ -11,7 +11,7 @@ var _layout = _interopRequireDefault(require("antd/es/layout"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _dcpProvider = require("dcp-provider");
+var _dcpProvider = require("@dcp-fe/dcp-provider");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

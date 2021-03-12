@@ -29,7 +29,7 @@ var _useJsonComparison = require("use-json-comparison");
 
 var _useMediaAntdQuery = _interopRequireDefault(require("use-media-antd-query"));
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
 var _omit = _interopRequireDefault(require("omit.js"));
 

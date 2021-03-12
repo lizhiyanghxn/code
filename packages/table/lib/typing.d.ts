@@ -1,7 +1,7 @@
-import type { ProFieldEmptyText } from 'dcp-field';
-import type { ProFormProps, QueryFilterProps } from 'dcp-form';
-import type { ParamsType } from 'dcp-provider';
-import type { ProCoreActionType, ProSchema, ProSchemaComponentTypes, SearchTransformKeyFn, ProTableEditableFnType, RowEditableConfig } from 'dcp-utils';
+import type { ProFieldEmptyText } from '@dcp-fe/dcp-field';
+import type { ProFormProps, QueryFilterProps } from '@dcp-fe/dcp-form';
+import type { ParamsType } from '@dcp-fe/dcp-provider';
+import type { ProCoreActionType, ProSchema, ProSchemaComponentTypes, SearchTransformKeyFn, ProTableEditableFnType, RowEditableConfig } from '@dcp-fe/dcp-utils';
 import type { CardProps } from 'antd/lib/card';
 import type { SpinProps } from 'antd/lib/spin';
 import type { TableProps } from 'antd/lib/table';

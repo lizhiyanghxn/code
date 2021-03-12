@@ -28,9 +28,9 @@ var _tooltip = _interopRequireDefault(require("antd/es/tooltip"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
-var _dcpField = require("dcp-field");
+var _dcpField = require("@dcp-fe/dcp-field");
 
 var _get = _interopRequireDefault(require("rc-util/es/utils/get"));
 

@@ -19,7 +19,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _dcpTable = _interopRequireDefault(require("dcp-table"));
+var _dcpTable = _interopRequireDefault(require("@dcp-fe/dcp-table"));
 
 var _ListView = _interopRequireDefault(require("./ListView"));
 

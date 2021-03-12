@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ListProps } from 'antd';
-import type { ProTableProps, ProColumnType } from 'dcp-table';
-import type { ParamsType } from 'dcp-provider';
+import type { ProTableProps, ProColumnType } from '@dcp-fe/dcp-table';
+import type { ParamsType } from '@dcp-fe/dcp-provider';
 import './index.less';
 declare type AntdListProps<RecordType> = Omit<ListProps<RecordType>, 'rowKey'>;
 declare type ProListMeta<T> = Pick<ProColumnType<T>, 'dataIndex' | 'valueType' | 'render' | 'search' | 'title' | 'valueEnum'>;

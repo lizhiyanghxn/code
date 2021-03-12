@@ -1,8 +1,8 @@
 import React from 'react';
 import type { TablePaginationConfig, TableColumnType } from 'antd';
-import type { ProSchemaComponentTypes, UseEditableUtilType } from 'dcp-utils';
-import type { ProFieldEmptyText } from 'dcp-field';
-import type { IntlType } from 'dcp-provider';
+import type { ProSchemaComponentTypes, UseEditableUtilType } from '@dcp-fe/dcp-utils';
+import type { ProFieldEmptyText } from '@dcp-fe/dcp-field';
+import type { IntlType } from '@dcp-fe/dcp-provider';
 import type { ActionType, ProColumns, UseFetchDataAction } from './typing';
 import type { ColumnsState, useContainer } from './container';
 /**

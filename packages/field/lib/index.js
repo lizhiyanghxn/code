@@ -89,9 +89,9 @@ var _avatar = _interopRequireDefault(require("antd/es/avatar"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
-var _dcpProvider = _interopRequireWildcard(require("dcp-provider"));
+var _dcpProvider = _interopRequireWildcard(require("@dcp-fe/dcp-provider"));
 
 var _Percent = _interopRequireDefault(require("./components/Percent"));
 

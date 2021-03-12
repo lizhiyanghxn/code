@@ -1,7 +1,7 @@
-import type { IntlType } from 'dcp-provider';
-import { ConfigProviderWrap, ConfigProvider, ConfigConsumer, createIntl, arEGIntl, zhCNIntl, enUSIntl, viVNIntl, itITIntl, jaJPIntl, esESIntl, ruRUIntl, msMYIntl, zhTWIntl, frFRIntl, ptBRIntl } from 'dcp-provider';
-import type { ProFieldValueType, RowEditableConfig } from 'dcp-utils';
-import { FieldStatus, FieldIndexColumn } from 'dcp-field';
+import type { IntlType } from '@dcp-fe/dcp-provider';
+import { ConfigProviderWrap, ConfigProvider, ConfigConsumer, createIntl, arEGIntl, zhCNIntl, enUSIntl, viVNIntl, itITIntl, jaJPIntl, esESIntl, ruRUIntl, msMYIntl, zhTWIntl, frFRIntl, ptBRIntl } from '@dcp-fe/dcp-provider';
+import type { ProFieldValueType, RowEditableConfig } from '@dcp-fe/dcp-utils';
+import { FieldStatus, FieldIndexColumn } from '@dcp-fe/dcp-field';
 import ProTable from './Table';
 import TableDropdown from './components/Dropdown';
 import type { ListToolBarProps } from './components/ListToolBar';

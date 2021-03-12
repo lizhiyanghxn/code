@@ -7,7 +7,7 @@ exports.default = void 0;
 
 var _react = require("react");
 
-var _dcpUtils = require("dcp-utils");
+var _dcpUtils = require("@dcp-fe/dcp-utils");
 
 var _reactDom = require("react-dom");
 

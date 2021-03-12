@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ProCardProps } from 'dcp-card';
+import type { ProCardProps } from '@dcp-fe/dcp-card';
 import type { ListGridType } from 'antd/lib/list';
 import type { ExpandableConfig } from 'antd/lib/table/interface';
 export declare type RenderExpandIconProps<RecordType> = {

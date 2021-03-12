@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ListProps, TableProps } from 'antd';
 import type { GetRowKey } from 'antd/lib/table/interface';
-import type { ActionType } from 'dcp-table';
+import type { ActionType } from '@dcp-fe/dcp-table';
 declare type AntdListProps<RecordType> = Omit<ListProps<RecordType>, 'rowKey'>;
 export declare type ListViewProps<RecordType> = AntdListProps<RecordType> & Pick<TableProps<RecordType>, 'columns' | 'dataSource' | 'expandable'> & {
     rowKey?: string | GetRowKey<RecordType>;
