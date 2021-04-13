@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, List, Spin, Button } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 
-import './TrainingLogModal.less';
+import './index.less';
 
 type LogType = {
   date: string;

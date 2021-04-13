@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, List, Spin, Button } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-import './TrainingLogModal.less';
+import './index.less';
 export default function Logger(props) {
   const {
     show,

@@ -1,5 +1,5 @@
 // <reference types="react" />
-import './TrainingLogModal.less';
+import './index.less';
 declare type LogType = {
   date: string;
   message: string;
