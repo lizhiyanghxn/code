@@ -1,0 +1,84 @@
+.log-area {
+  position: relative;
+
+  height: 400px;
+  margin: 20px 0 20px;
+  padding: 0 10px;
+
+  overflow-y: scroll;
+
+  background-color: #f3f3f3;
+
+  .log {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .log-time {
+    width: 150px;
+    height: 22px;
+    color: #1890ff;
+    font-size: 13px;
+
+    line-height: 22px;
+  }
+
+  .log-content {
+    margin-left: 30px;
+
+    font-size: 12px;
+    line-height: 22px;
+    white-space: pre;
+    word-break: break-all;
+  }
+
+  .ant-list-item {
+    padding: 10px 0 0 0;
+  }
+
+  .ant-list-split .ant-list-item {
+    padding: 12px 0 0 0;
+    border-bottom: none;
+  }
+}
+
+.refresh-row {
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+
+  color: #fff;
+  line-height: 20px;
+  text-align: center;
+
+  background: #3d66ff;
+  border-radius: 2px;
+
+  cursor: pointer;
+
+  .iconfont {
+    font-size: 12px;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.margin-row {
+  height: 20px;
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.bottom-area {
+  display: flex;
+  justify-content: flex-end;
+}

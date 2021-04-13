@@ -1,4 +1,4 @@
-// <reference types="react" />
+/// <reference types="react" />
 import './index.less';
 declare type LogType = {
   date: string;
