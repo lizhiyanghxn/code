@@ -142,6 +142,10 @@ export default {
         title: '通用',
         children: ['skeleton', 'field'],
       },
+      {
+        title: '动画',
+        children: ['motion'],
+      },
     ],
   },
 };
