@@ -1,5 +1,11 @@
 # @dcp-fe/dcp-motion
 
+提供一些常用的动画组件。
+
+##### 当前支持：
+
+- HeightMotion - 展开和收起动画
+
 ## Install
 
 Using npm:
