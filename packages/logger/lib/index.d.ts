@@ -18,7 +18,7 @@ declare type LoggerParamsType = {
     onDownload?: (...rest: any) => void;
     logEmptyMsg?: string;
     title?: string;
-    downLoadText?: string
+    downLoadText: string;
 };
 export default function Logger(props: LoggerParamsType): JSX.Element;
 export {};

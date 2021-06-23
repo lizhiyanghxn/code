@@ -24,6 +24,7 @@ type LoggerParamsType = {
   onDownload?: (...rest: any) => void;
   logEmptyMsg?: string;
   title?: string;
+  downLoadText: string;
 };
 
 export default function Logger(props: LoggerParamsType) {

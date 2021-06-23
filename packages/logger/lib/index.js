@@ -50,7 +50,9 @@ function Logger(props) {
       _props$logEmptyMsg = props.logEmptyMsg,
       logEmptyMsg = _props$logEmptyMsg === void 0 ? '日志为空' : _props$logEmptyMsg,
       _props$title = props.title,
-      title = _props$title === void 0 ? '日志' : _props$title;
+      title = _props$title === void 0 ? '日志' : _props$title,
+      _props$downLoadText = props.downLoadText,
+      downLoadText = _props$downLoadText === void 0 ? '下载日志' : _props$downLoadText;
   var emptyMsg = logs.length === 0 && hasLoadedData ? logEmptyMsg : '.';
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_modal.default, {
     title: title,
@@ -103,5 +105,5 @@ function Logger(props) {
     size: "small",
     className: "btn-link-custom",
     onClick: onDownload
-  }, "\u4E0B\u8F7D\u65E5\u5FD7"))));
+  }, downLoadText))));
 }
