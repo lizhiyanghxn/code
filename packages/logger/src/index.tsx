@@ -42,6 +42,7 @@ export default function Logger(props: LoggerParamsType) {
     onDownload,
     logEmptyMsg = '日志为空',
     title = '日志',
+    downLoadText = '下载日志',
   } = props;
 
   const emptyMsg = logs.length === 0 && hasLoadedData ? logEmptyMsg : '.';
@@ -95,7 +96,7 @@ export default function Logger(props: LoggerParamsType) {
         {showDownLoad && (
           <div className="bottom-area">
             <Button type="link" size="small" className="btn-link-custom" onClick={onDownload}>
-              下载日志
+              {downLoadText}
             </Button>
           </div>
         )}
