@@ -140,7 +140,7 @@ export default {
       },
       {
         title: '通用',
-        children: ['skeleton', 'field'],
+        children: ['skeleton', 'field', 'logger'],
       },
       {
         title: '动画',
