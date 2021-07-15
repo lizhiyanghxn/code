@@ -5,7 +5,7 @@ import Logger from '../index';
 const loggerConfig = {
   showDownLoad: true,
   hasLoadedData: false,
-  title: '日志标题',
+  title: '日志',
   downLoadText: '下载',
   logEmptyMsg: '暂无日志',
 };
@@ -25,7 +25,34 @@ export default () => {
       </Button>
       <Logger
         {...loggerConfig}
-        logs={logs}
+        logTabs={[
+          {
+            title: '数据格式转换',
+            key: 'key1',
+            active: true,
+            processList: [
+              { label: 'Jack', value: 'Jack' },
+              { label: 'Jack2', value: 'Jack2' },
+            ],
+            processId: 'jack',
+            logs: logs,
+            emptyMsg: '',
+            showLoading: false,
+          },
+          {
+            title: '测试',
+            key: 'key2',
+            active: false,
+            processList: [
+              { label: 'Jack', value: 'Jack' },
+              { label: 'Jack2', value: 'Jack2' },
+            ],
+            processId: 'Jack2',
+            logs: logs,
+            emptyMsg: '',
+            showLoading: false,
+          },
+        ]}
         show={visible}
         showRefresh={true}
         hasMore={false}
