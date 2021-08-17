@@ -27,7 +27,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default {
   title: 'DCP-Components',
   mode: 'site',
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/logo.svg',
   extraBabelPlugins: [
     [
       'import',
@@ -38,6 +38,9 @@ export default {
       },
     ],
   ],
+  sass: {
+    implementation: require('node-sass'),
+  },
   metas: [
     {
       property: 'og:site_name',
@@ -70,17 +73,13 @@ export default {
     },
   ],
   alias,
-  // 用于切换 antd 暗黑模式
-  // antd: {
-  //   dark: true,
-  // },
   resolve: {
     includes: [...tailPkgList, 'docs'],
   },
-  // locales: [
-  //   ['zh-CN', '中文'],
-  //   ['en-US', 'English'],
-  // ],
+  locales: [
+    ['zh-CN', '中文'],
+    ['en-US', 'English'],
+  ],
   navs: {
     'zh-CN': [
       null,
@@ -116,36 +115,40 @@ export default {
       : [],
   menus: {
     '/components': [
+      // {
+      //   title: '架构设计',
+      //   children: ['components.md'],
+      // },
       {
-        title: '架构设计',
-        children: ['components.md'],
+        title: 'SPE 系统',
+        children: ['spe', 'logger', 'View/index', 'Breadcrumb/index', 'Steps/index'],
       },
-      {
-        title: '布局',
-        children: ['layout', 'PageContainer/index', 'card'],
-      },
-      {
-        title: '数据录入',
-        children: [
-          'form',
-          'FieldSet/index',
-          'QueryFilter/index',
-          'StepsForm/index',
-          'ModalForm/index',
-        ],
-      },
-      {
-        title: '数据展示',
-        children: ['table', 'EditableTable/index', 'list', 'description'],
-      },
-      {
-        title: '通用',
-        children: ['skeleton', 'field', 'logger'],
-      },
-      {
-        title: '动画',
-        children: ['motion'],
-      },
+      // {
+      //   title: '布局',
+      //   children: ['layout', 'PageContainer/index', 'card'],
+      // },
+      // {
+      //   title: '数据录入',
+      //   children: [
+      //     'form',
+      //     'FieldSet/index',
+      //     'QueryFilter/index',
+      //     'StepsForm/index',
+      //     'ModalForm/index',
+      //   ],
+      // },
+      // {
+      //   title: '数据展示',
+      //   children: ['table', 'EditableTable/index', 'list', 'description'],
+      // },
+      // {
+      //   title: '通用',
+      //   children: ['skeleton', 'field', 'logger'],
+      // },
+      // {
+      //   title: '动画',
+      //   children: ['motion'],
+      // },
     ],
   },
 };

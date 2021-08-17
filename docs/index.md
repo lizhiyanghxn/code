@@ -4,7 +4,7 @@ order: 10
 sidebar: false
 hero:
   title: DCP-Components
-  desc: 🏆 DCP ProComponents!
+  desc: 🏆 收纳平台工程组前端通用组件!
   actions:
     - text: 🥳 快速开始 →
       link: /docs/getting-started

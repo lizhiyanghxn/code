@@ -1,5 +1,5 @@
 ---
-title: Logger - 日志组件
+title: SPE - 日志组件
 order: 1
 group:
   path: /

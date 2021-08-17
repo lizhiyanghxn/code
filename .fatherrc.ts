@@ -1,6 +1,8 @@
 import { readdirSync } from 'fs';
 import { join } from 'path';
 
+console.log('123');
+
 // utils must build before core
 // runtime must build before renderer-react
 // components dependencies order: form -> table -> list
@@ -14,6 +16,7 @@ const headPkgs: string[] = [
   'card',
   'list',
   'logger',
+  'spe',
 ];
 const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
   (pkg) => pkg.charAt(0) !== '.' && !headPkgs.includes(pkg),
@@ -22,8 +25,7 @@ const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
 export default {
   cjs: { type: 'babel', lazy: true },
   esm: {
-    type: 'babel',
-    importLibToEs: true,
+    type: 'rollup',
   },
   pkgs: [...headPkgs, ...tailPkgs],
   extraBabelPlugins: [

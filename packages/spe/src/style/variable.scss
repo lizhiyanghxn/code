@@ -1,0 +1,79 @@
+/* ================== 文字相关 ======================== */
+$router-color: rgb(89, 89, 89); //路由字体颜色
+$router-active-color: rgb(31, 136, 250); //路由字体颜色
+$router-size: 15px; //路由字体大小
+$gray-color: rgb(145, 145, 145); //灰色文字
+$gray2-color: rgb(89, 89, 89); //灰色文字2
+$gray555-color: rgb(196, 35, 35); //灰色文字2
+$gray3-color: rgb(126, 126, 126); //灰色文字3
+$gray4-color: rgb(219, 220, 223); //灰色文字3
+$black-fade-color: #474747; //黑色减弱
+
+/* ================== 线条颜色 ======================== */
+$gray-border-line: #ebebeb;
+$gray-border-line2: #d9d9d9;
+
+/* ================== 背景颜色 ======================== */
+$bg-gray-color: rgb(240, 242, 245); //灰色背景色
+$bg-gray-color2: rgb(247, 248, 250); //灰色背景色
+$bg-table-color: #e5eeff; //表格的hover背景色
+
+/* ================== 辅助颜色 ======================== */
+$auxiliary-color1: #66c; //辅助颜色，首页色块
+$auxiliary-color2: #7abecc; //辅助颜色，首页色块
+$auxiliary-color3: #f2c261; //辅助颜色，首页色块
+$auxiliary-color4: #b8c7e5; //辅助颜色，首页色块
+
+/* ================== 状态颜色 ======================== */
+$status-success-color: #6ccc3d; //成功色
+$status-success-color-bg: #e4f5dc; //成功色背景
+$status-warning-color: #ffc20d; //警告色
+$status-warning-color-bg: #fff5d9; //警告色背景
+$status-error-color: #f25555; //错误色
+$status-error-color-bg: #ffe5e5; //错误色背景
+
+/* ================== 背景色 ======================== */
+$page-bg: #fff; //面板背景色
+$bg-color-4: #fafafa; //卡片背景色/表格表头色
+$bg-color-5: #f5f5f5; //卡片上的表格表头色
+$bg-color-6: #ebeef5; //底部背景色
+
+/* ================== 透明度 ======================== */
+
+/* ================== 其他 ======================== */
+$page-theme-color: #679aff; //主题色
+// $page-theme-color: #5190FA; //主题色
+$page-lighten-color: #94b4f9; //主题色减淡
+$page-pressed-color: #e6e6ff; //辅助按压色 - 主色控件的按压
+$page-hover-color: #8db3ff; //辅助划过色 - 主色控件的 hover
+
+$hover-lighten-color: rgba(103, 154, 255, 0.2); //主题色减淡 - 顶栏/侧栏 hover
+
+$bg-page: #ebeef5; //页面的主背景色
+$bg-color-1: #292c33; //顶部菜单背景色
+$bg-color-2: #3d424d; //左侧菜单背景色
+$bg-color-3: #575c66; //左侧菜单工作空间背景色
+$bg-color-top-3: #c4c4c4; //顶部菜单笑脸背景
+$bg-color-left-4: rgba(255, 255, 255, 0.2); //左侧菜单
+
+$text-color-1: #4b4b4b; //大数字色
+$text-color-2: #a1a1a1; //小标题色
+$text-color-3: #3d66ff; //蓝色文字
+$text-color-4: rgba(199, 199, 199, 1); //顶部菜单文字色
+$text-color-5: rgb(140, 141, 145); //灰色
+$text-color-6: rgba(24, 27, 35, 1); //黑色
+$text-color-7: rgba(75, 75, 75, 0.6); //灰色
+$text-color-8: rgba(255, 255, 255, 0.8); //白色
+$text-color-9: rgb(255, 255, 255); //白色
+
+$text-size-small: 12px; //普通文字大小偏小
+$text-size-normal: 14px; //普通文字大小
+$text-size-mid: 16px; //普通文字偏大，左侧菜单
+
+$height-top: 56px; //顶部菜单高度
+
+$pad-32: 32px; //顶部菜单高度
+
+$text-font-family: 'Helvetica Neue', Helvetica, 'DIN Condensed Bold', Arial, 'Source Han Sans CN',
+  'PingFang SC', 'Microsoft YaHei';
+$text-font-family-bold: 'PingFang SC Bold'; //顶部菜单高度

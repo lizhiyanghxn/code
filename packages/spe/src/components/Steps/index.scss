@@ -1,0 +1,129 @@
+@import '../../style/variable.scss';
+
+.model-steps {
+  margin-bottom: 24px;
+  padding: 16px 0;
+
+  background: #f5f5f5;
+
+  &.is-page {
+    margin: 0 -24px;
+    padding: 20px 112px;
+
+    background-color: $bg-color-4;
+    border-bottom: 1px solid #ebebeb;
+
+    ul {
+      justify-content: inherit !important;
+
+      li {
+        margin-right: 16px;
+        padding-right: 152px !important;
+
+        &::after {
+          right: 0;
+
+          width: 120px !important;
+        }
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 0 24px;
+
+    li {
+      position: relative;
+      // padding-right: 112px;
+
+      padding-right: 52px;
+
+      .ms-serial-number {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        color: rgba(200, 200, 200, 1);
+
+        font-size: 14px;
+        line-height: 23px;
+        text-align: center;
+
+        background: #fff;
+        border: 1px solid rgba(200, 200, 200, 1);
+        border-radius: 50%;
+      }
+
+      .ms-name {
+        display: inline-block;
+        color: #a1a1a1;
+        font-weight: 500;
+        font-size: 14px;
+
+        font-family: PingFangSC-Medium, PingFang SC;
+        line-height: 20px;
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: -4px;
+
+        width: 50px;
+        height: 0;
+        border-bottom: 1px solid rgba(200, 200, 200, 1);
+        content: '';
+      }
+
+      &:last-child {
+        margin-right: 0;
+        padding-right: 0;
+
+        &::after {
+          width: 0;
+          height: 0;
+          border: none;
+        }
+      }
+
+      &.current-step {
+        .ms-serial-number {
+          color: #fff;
+
+          background: $page-theme-color;
+          border: 1px solid $page-theme-color;
+        }
+
+        .ms-name {
+          color: $page-theme-color;
+        }
+      }
+
+      &.completed-step {
+        .ms-serial-number {
+          color: $page-theme-color;
+
+          background: transparent;
+          border: 1px solid $page-theme-color;
+        }
+
+        .ms-name {
+          color: $page-theme-color;
+
+          opacity: 0.5;
+        }
+
+        &::after {
+          border-color: $page-theme-color;
+        }
+      }
+    }
+  }
+
+  .flex-center {
+    justify-content: center;
+  }
+}
