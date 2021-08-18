@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from 'antd';
 import { View } from '../../../index';
 
+console.log('View', View);
+
 const topEle = <>顶部内容</>;
 const titleRight = <Button>右侧按钮</Button>;
 const footerEle = <>copyright 2021</>;
@@ -18,19 +20,22 @@ const pagingConfig = {
 
 export default () => (
   <View
-    style={{
-      height: '500px',
-    }}
     viewType="Details"
     topEle={topEle}
     footerEle={footerEle}
     pagingConfig={pagingConfig}
     headerRightEle={titleRight}
-    titleConfig={{
-      routers: [{ name: '列表', path: '/', backType: 'replace' }, { name: '详情' }],
-    }}
-    titleAutoTrigger={true}
-    bodyNoScroll
+    routersList={[
+      { title: '列表' },
+      {
+        title: '可点击项',
+        click: () => {
+          console.log('click item 2');
+        },
+      },
+      { title: '详情', click: () => {} },
+    ]}
+    bodyNoScroll={true}
   >
     View Body Content
   </View>

@@ -3,8 +3,6 @@ import type { HTMLAttributes } from 'react';
 import cs from 'classnames';
 import './index.scss';
 
-// enum StepUsage { Page = 'page', Modal = 'modal' }
-
 export type StepsPropsType = HTMLAttributes<HTMLDivElement> & {
   currentStep?: number; // 当前步
   stepsConfig?: string[]; // 步骤配置 ['第一步', '第二步']
@@ -16,7 +14,7 @@ const Steps: React.FC<StepsPropsType> = (props) => {
   const { usage = 'modal', stepsConfig = [], currentStep = 1, isCenter = false } = props;
 
   const stepInPage = (): boolean => usage === 'page';
-  const stepInModal = (): boolean => usage === 'modal';
+  // const stepInModal = (): boolean => usage === 'modal';
 
   return (
     <div className={cs('model-steps', { 'is-page': stepInPage() })}>

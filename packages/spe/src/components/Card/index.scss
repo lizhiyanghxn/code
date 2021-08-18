@@ -1,4 +1,4 @@
-@import 'spe-theme/src/sass/variable.scss';
+@import '../../style/variable.scss';
 
 .content-box-comp {
   width: 100%;
@@ -33,6 +33,7 @@
 
       .sub-title-text {
         display: inline-block;
+        margin-left: 8px;
         color: rgb(110, 110, 110);
 
         font-size: 12px;

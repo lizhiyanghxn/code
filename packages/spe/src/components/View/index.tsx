@@ -1,72 +1,107 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import cs from 'classnames';
 import { Pagination } from 'antd';
 import type { PaginationProps } from 'antd/lib/pagination';
 import './index.scss';
 import Breadcrumb from '../Breadcrumb';
+import Tabs from '../Tabs';
+import { isFunc } from '../../utils';
 import type { BreadcrumbPropsType } from '../Breadcrumb';
+import type { TabsPropsType } from '../Tabs';
 
-export type ViewPropsType = BreadcrumbPropsType & {
-  viewType?: string; // List: 常用列表 / IncludeSublist: 包含子列表 /  Details: 详情页 / Step: 步骤页
-  topEle?: React.ReactNode; // 自定义内容区顶部的元素
-  footerEle?: React.ReactNode; // 自定义底部元素
-  pagingConfig?: PaginationProps; // 分页的原始配置
-  children?: React.ReactNode;
-  headerRightEle?: React.ReactNode;
-  bodyNoScroll?: boolean;
-};
+export type ViewPropsType = BreadcrumbPropsType &
+  TabsPropsType & {
+    viewType?: string; // List: 常用列表 / IncludeSublist: 包含子列表 / TabList: 切换列表 /  Details: 详情页 / Step: 步骤页
+    topEle?: React.ReactElement; // 自定义内容区顶部的元素
+    footerEle?: React.ReactElement; // 自定义底部元素
+    pagingConfig?: PaginationProps; // 分页的原始配置
+    headerRightEle?: React.ReactElement;
+    bodyNoScroll?: boolean;
+  };
 
 const View: React.FC<ViewPropsType> = (props) => {
   const {
-    titleConfig = null,
-    titleAutoTrigger = false,
-    viewType = 'List',
-    topEle = null,
-    footerEle = null,
-    pagingConfig = {},
+    routersList,
+    viewType,
+    topEle,
+    footerEle,
+    pagingConfig,
     children,
-    headerRightEle = null,
-    bodyNoScroll = false,
-    ...rest
+    headerRightEle,
+    bodyNoScroll,
+    onTabChange = () => {},
+    tabsConfig,
   } = props;
 
   const bsRef = useRef(null);
+  const [activeTab, setActiveTab] = useState(1);
 
   const isList = useMemo(() => viewType === 'List', [viewType]);
   const isSubList = useMemo(() => viewType === 'IncludeSublist', [viewType]);
   const isStep = useMemo(() => viewType === 'Step', [viewType]);
+  const isTabList = useMemo(() => viewType === 'TabList', [viewType]);
 
-  const getPagination = pagingConfig?.total ? (
+  /** TabList 的 children 为函数 */
+
+  const computedChildren = useMemo(() => {
+    if (isTabList && isFunc(children)) {
+      return children(activeTab);
+    }
+    return children;
+  }, [activeTab, children]);
+
+  const getPagination = pagingConfig?.total && (
     <Pagination className="page-custom" {...pagingConfig} />
-  ) : null;
+  );
 
   return (
-    <div className="view-comp" {...rest}>
+    <div className="view-comp">
       <header className={cs({ 'no-border-bottom': isStep }, 'view-header')}>
-        <section className="view-header-left">
-          <Breadcrumb titleConfig={titleConfig} titleAutoTrigger={titleAutoTrigger} />
-        </section>
-        <section className="view-header-right">{headerRightEle}</section>
+        <div className="view-base-title">
+          <section className="view-header-left">
+            <Breadcrumb routersList={routersList} />
+          </section>
+          <section className="view-header-right">{headerRightEle}</section>
+        </div>
+        {isTabList && (
+          <div className="view-tab-switch">
+            <Tabs
+              defaultActive={activeTab}
+              onTabChange={(index) => {
+                setActiveTab(index);
+                onTabChange(index);
+              }}
+              tabsConfig={tabsConfig}
+            />
+          </div>
+        )}
       </header>
       <main
         className={cs('view-main', {
-          'view-is-list': isList || isSubList,
+          'view-is-list': isList || isSubList || isTabList,
           'is-sublist': isSubList,
         })}
+        style={{ height: `calc(100% - 64px${isTabList ? ' - 40px' : ''})` }}
       >
-        {topEle && <section className="top-section">{topEle}</section>}
+        <section className="top-section">{topEle}</section>
         <section className="body-section" ref={bsRef}>
-          {isList || isSubList ? (
+          {isList || isSubList || isTabList ? (
             <div className={cs('body-section-list', { 'no-scroll': bodyNoScroll })}>
-              {children}
+              {computedChildren &&
+                React.cloneElement(computedChildren, {
+                  furef: bsRef,
+                })}
               {isSubList && <div className="body-show-paging">{getPagination}</div>}
             </div>
           ) : (
-            children
+            computedChildren &&
+            React.cloneElement(computedChildren, {
+              furef: bsRef,
+            })
           )}
         </section>
-        {footerEle || isList ? (
-          <footer className={cs('view-footer', { 'show-paging': isList })}>
+        {footerEle || isList || isTabList ? (
+          <footer className={cs('view-footer ', { 'show-paging': isList || isTabList })}>
             {footerEle || getPagination}
           </footer>
         ) : null}

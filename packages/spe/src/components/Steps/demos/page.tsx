@@ -3,7 +3,7 @@ import { Switch } from 'antd';
 import { Steps } from '../../../index';
 
 export default () => {
-  const [isCenter, setIsCenter] = useState(true);
+  const [isCenter, setIsCenter] = useState(false);
   return (
     <>
       <Steps
@@ -12,7 +12,14 @@ export default () => {
         usage="page"
         isCenter={isCenter}
       />
-      切换是否居中: <Switch onChange={() => setIsCenter(!isCenter)} />
+      <div
+        style={{
+          margin: '24px',
+          textAlign: 'center',
+        }}
+      >
+        切换是否居中: <Switch onChange={() => setIsCenter(!isCenter)} />
+      </div>
     </>
   );
 };

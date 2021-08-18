@@ -18,7 +18,9 @@ Breadcrumb 封装了 SPE 样式的面包屑，入参 routersList 控制面包屑
 }]
 ```
 
-click 不传则为不可点击，最后一个 item 不可点击
+click 不传则为不可点击，最后一个 item 不可点击。
+
+目前 Breadcrumb 主要配合 View 组件一起使用。
 
 ### 代码演示
 

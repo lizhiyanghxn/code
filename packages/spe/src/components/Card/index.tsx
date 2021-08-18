@@ -1,49 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
+import type { HTMLAttributes } from 'react';
 import cs from 'classnames';
-import PropTypes from 'prop-types';
-import './ContentBox.scss';
-import { getSlotContent } from 'common/utils/publicMethod';
+import './index.scss';
+import { getSlotContent } from '../../utils';
 
-class ContentBox extends Component {
-  static propTypes = {
-    // eslint-disable-next-line react/forbid-prop-types
-    titleText: PropTypes.any, // 标题
-    subTitleText: PropTypes.string, // 子标题
-    showHead: PropTypes.bool, // 是否展示头
-    headClass: PropTypes.string, // 头部样式class
-  };
+export type CardPropsType = HTMLAttributes<HTMLDivElement> & {
+  titleText: any; // 主标题
+  subTitleText?: any; // 副标题
+  showHead?: boolean; // 是否展示头
+  headClass?: string; // 头部样式class
+  // className?: string; // 最外层 div 样式
+};
 
-  static defaultProps = {
-    titleText: '',
-    subTitleText: '',
-    showHead: true,
-    headClass: 'head-style-1',
-  };
-
-  render() {
-    return (
-      <div className={cs('content-box-comp', this.props.className)}>
-        {this.props.showHead ? (
-          <div className={cs('head', this.props.headClass)}>
-            <div className="head-left">
-              {this.props.titleText ? (
-                <div>
-                  {this.props.titleText}{' '}
-                  {this.props.subTitleText ? (
-                    <span className="sub-title-text">({this.props.subTitleText})</span>
-                  ) : null}
-                </div>
-              ) : (
-                getSlotContent(this.props.children, 'headLeft')
-              )}
-            </div>
-            <div className="head-right">{getSlotContent(this.props.children, 'headRight')}</div>
+const Card: React.FC<CardPropsType> = (props) => {
+  const {
+    children,
+    className,
+    titleText = '',
+    subTitleText = '',
+    showHead = true,
+    headClass = 'head-style-1',
+    ...rest
+  } = props;
+  return (
+    <div className={cs('content-box-comp', className)} {...rest}>
+      {showHead && (
+        <div className={cs('head', headClass)}>
+          <div className="head-left">
+            {titleText ? (
+              <div>
+                {titleText} {subTitleText && <span className="sub-title-text">{subTitleText}</span>}
+              </div>
+            ) : (
+              getSlotContent(children, 'headLeft')
+            )}
           </div>
-        ) : null}
-        <div className="content">{getSlotContent(this.props.children, 'content')}</div>
-      </div>
-    );
-  }
-}
+          <div className="head-right">{getSlotContent(children, 'headRight')}</div>
+        </div>
+      )}
+      <div className="content">{getSlotContent(children, 'content')}</div>
+    </div>
+  );
+};
 
-export default ContentBox;
+export default Card;
