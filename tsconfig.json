@@ -22,7 +22,9 @@
       "@dcp-fe/dcp-provider": ["./packages/provider/src/index.tsx"],
       "@dcp-fe/dcp-descriptions": ["./packages/descriptions/src/index.tsx"],
       "@dcp-fe/dcp-utils": ["./packages/utils/src/index.tsx"],
-      "@dcp-fe/dcp-card": ["./packages/card/src/index.tsx"]
+      "@dcp-fe/dcp-card": ["./packages/card/src/index.tsx"],
+      "@dcp-fe/spe": ["./packages/spe/src/index.tsx"],
+      "@dcp-fe/dcp-logger": ["./packages/logger/src/index.tsx"]
     }
   },
   "include": [

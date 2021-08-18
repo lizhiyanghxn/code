@@ -85,7 +85,7 @@ export default {
       null,
       {
         title: 'GitLab',
-        path: 'https://github.com/ant-design/pro-components',
+        path: 'https://gitlab.sz.sensetime.com/dcp-fe/dcp-components',
       },
     ],
   },

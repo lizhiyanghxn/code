@@ -13,15 +13,21 @@ Steps 封装了 SPE 的步骤条
 
 ## 代码演示
 
+### 弹框中步骤条
+
+<code src="./demos/modal.tsx" iframe="500px" />
+
 ### 页面中步骤条
 
-<code src="./demos/basic.tsx" iframe="500px" title="Steps 页面中步骤条" desc="Steps 页面中步骤条" />
+<code src="./demos/page.tsx" iframe="200px"/>
 
 ## API
 
 View
 
-| 参数             | 说明           | 类型         | 默认值 |
-| ---------------- | -------------- | ------------ | ------ |
-| titleConfig      | 标题配置       | 数组 or 对象 | []     |
-| titleAutoTrigger | 标题是否可点击 | boolean      | false  |
+| 参数        | 说明           | 类型             | 默认值  |
+| ----------- | -------------- | ---------------- | ------- |
+| currentStep | 当前步骤       | number           | 1       |
+| stepsConfig | 步骤条配置     | string[]         | []      |
+| usage       | 步骤条使用场景 | 'modal' / 'page' | 'modal' |
+| isCenter    | 步骤条是否居中 | boolean          | false   |

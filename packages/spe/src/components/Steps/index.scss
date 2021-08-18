@@ -14,16 +14,14 @@
     border-bottom: 1px solid #ebebeb;
 
     ul {
-      justify-content: inherit !important;
-
       li {
         margin-right: 16px;
-        padding-right: 152px !important;
+        padding-right: 152px;
 
         &::after {
           right: 0;
 
-          width: 120px !important;
+          width: 120px;
         }
       }
     }
@@ -31,15 +29,13 @@
 
   ul {
     display: flex;
-    justify-content: center;
     margin-bottom: 0;
     padding: 0 24px;
 
     li {
       position: relative;
-      // padding-right: 112px;
 
-      padding-right: 52px;
+      padding-right: 60px;
 
       .ms-serial-number {
         display: inline-block;
@@ -70,9 +66,9 @@
       &::after {
         position: absolute;
         top: 50%;
-        right: -4px;
+        right: 10px;
 
-        width: 50px;
+        width: 40px;
         height: 0;
         border-bottom: 1px solid rgba(200, 200, 200, 1);
         content: '';
