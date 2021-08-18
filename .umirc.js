@@ -121,7 +121,15 @@ export default {
       // },
       {
         title: 'SPE 系统',
-        children: ['spe', 'logger', 'View/index', 'Breadcrumb/index', 'Steps/index'],
+        children: [
+          'spe',
+          'logger',
+          'Breadcrumb/index',
+          'Tabs/index',
+          'Card/index',
+          'Steps/index',
+          'View/index',
+        ],
       },
       // {
       //   title: '布局',
