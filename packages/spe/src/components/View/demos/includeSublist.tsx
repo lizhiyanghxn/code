@@ -1,9 +1,7 @@
 import React from 'react';
-import { Button } from 'antd';
-import { View } from '../../../index';
-
-const topEle = <>顶部内容</>;
-const titleRight = <Button>右侧按钮</Button>;
+import { Button, Form, Input } from 'antd';
+import { BasicView } from '../../../index';
+import CollapseTableDemo from '../../CollapseTable/demos/basic';
 
 const pagingConfig = {
   className: 'page-custom',
@@ -15,24 +13,33 @@ const pagingConfig = {
   onChange: () => {},
 };
 
-export default () => (
-  <View
-    viewType="IncludeSublist"
-    topEle={topEle}
-    pagingConfig={pagingConfig}
-    headerRightEle={titleRight}
-    routersList={[
-      { title: '列表' },
-      {
-        title: '可点击项',
-        click: () => {
-          console.log('click item 2');
-        },
-      },
-      { title: '详情', click: () => {} },
-    ]}
-    bodyNoScroll
-  >
-    View Body Content
-  </View>
-);
+export default () => {
+  const routersList = [{ title: '用户列表' }];
+
+  const toolEle = (
+    <Form name="horizontal_login" layout="inline">
+      <Form.Item name="username" initialValue="">
+        <Input placeholder="Username" />
+      </Form.Item>
+      <Form.Item name="password" initialValue="">
+        <Input type="password" placeholder="Password" />
+      </Form.Item>
+      <Form.Item>
+        <Button>查询</Button>
+      </Form.Item>
+    </Form>
+  );
+
+  return (
+    <BasicView
+      viewType="IncludeSublist"
+      bodyNoScroll
+      routersList={routersList}
+      headerRightEle={<Button type="primary">操作区域</Button>}
+      toolEle={toolEle}
+      pagingConfig={pagingConfig}
+    >
+      <CollapseTableDemo />
+    </BasicView>
+  );
+};

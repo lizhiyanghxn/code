@@ -1,38 +1,51 @@
 import React from 'react';
-import { Button } from 'antd';
-import { View } from '../../../index';
+import { Button, Form, Input } from 'antd';
+import { BasicView, Steps } from '../../../index';
 
-const topEle = <>顶部内容</>;
-const titleRight = <Button>右侧按钮</Button>;
+export default () => {
+  const routersList = [{ title: '模型部署' }, { title: '创建部署任务' }];
 
-const pagingConfig = {
-  className: 'page-custom',
-  current: 1,
-  total: 50,
-  defaultPageSize: 10,
-  showSizeChanger: false,
-  showQuickJumper: true,
-  onChange: () => {},
+  const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
+
+  const toolEle = (
+    <Form {...layout} name="nest-messages" style={{ width: '50%', margin: '48px auto' }}>
+      <Form.Item name={['user', 'name']} label="Name" rules={[{ required: true }]}>
+        <Input />
+      </Form.Item>
+      <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
+        <Input />
+      </Form.Item>
+      <Form.Item name={['user', 'website']} label="Website">
+        <Input />
+      </Form.Item>
+      <Form.Item name={['user', 'introduction']} label="Introduction">
+        <Input.TextArea />
+      </Form.Item>
+    </Form>
+  );
+
+  return (
+    <BasicView
+      style={{
+        height: 500,
+      }}
+      viewType="Step"
+      routersList={routersList}
+      toolEle={null}
+      pagingConfig={null}
+      headerRightEle={<Button type="primary">操作区域</Button>}
+      bodyNoScroll
+    >
+      <Steps
+        currentStep={2}
+        stepsConfig={['第一步', '第二步', '第三步']}
+        usage="page"
+        isCenter={false}
+      />
+      {toolEle}
+    </BasicView>
+  );
 };
-
-export default () => (
-  <View
-    viewType="Step"
-    topEle={topEle}
-    pagingConfig={pagingConfig}
-    headerRightEle={titleRight}
-    routersList={[
-      { title: '列表' },
-      {
-        title: '可点击项',
-        click: () => {
-          console.log('click item 2');
-        },
-      },
-      { title: '详情', click: () => {} },
-    ]}
-    bodyNoScroll
-  >
-    View Body Content
-  </View>
-);

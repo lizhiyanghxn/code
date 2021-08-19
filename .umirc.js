@@ -122,10 +122,10 @@ export default {
       {
         title: 'SPE 系统',
         children: [
-          'spe',
-          'logger',
+          'Logger/index',
           'Breadcrumb/index',
           'Tabs/index',
+          'CollapseTable/index',
           'Card/index',
           'Steps/index',
           'View/index',

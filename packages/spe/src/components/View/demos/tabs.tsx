@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, Table, Form, Input } from 'antd';
+import { Button, Table, Form, Input, Tabs } from 'antd';
 import { BasicView } from '../../../index';
+import CollapseTableDemo from '../../CollapseTable/demos/basic';
+
+const { TabPane } = Tabs;
 
 const pagingConfig = {
   className: 'page-custom',
@@ -71,14 +74,27 @@ export default () => {
 
   return (
     <BasicView
-      viewType="List"
+      viewType="TabList"
       bodyNoScroll
       routersList={routersList}
+      toolEle={null}
       headerRightEle={<Button type="primary">操作区域</Button>}
-      toolEle={toolEle}
-      pagingConfig={pagingConfig}
+      pagingConfig={null}
     >
-      <Table columns={columns} dataSource={dataSource} pagination={false} />
+      <Tabs defaultActiveKey="1" onChange={(activeKey) => console.log('tab activeKey', activeKey)}>
+        <TabPane tab="Tab 1" key="1">
+          <>
+            <div style={{ margin: '24px' }}>{toolEle}</div>
+            <Table columns={columns} dataSource={dataSource} pagination={false} />
+          </>
+        </TabPane>
+        <TabPane tab="Tab 2" key="2">
+          <CollapseTableDemo />
+        </TabPane>
+        <TabPane tab="Tab 3" key="3">
+          <div style={{ margin: '24px', textAlign: 'center' }}>you can put anything here</div>
+        </TabPane>
+      </Tabs>
     </BasicView>
   );
 };

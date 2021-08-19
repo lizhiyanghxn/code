@@ -13,18 +13,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "paths": {
-      "@dcp-fe/dcp-layout": ["./packages/layout/src/index.tsx"],
-      "@dcp-fe/dcp-form": ["./packages/form/src/index.tsx"],
-      "@dcp-fe/dcp-table": ["./packages/table/src/index.tsx"],
-      "@dcp-fe/dcp-field": ["./packages/field/src/index.tsx"],
-      "@dcp-fe/dcp-skeleton": ["./packages/skeleton/src/index.tsx"],
-      "@dcp-fe/dcp-list": ["./packages/list/src/index.tsx"],
-      "@dcp-fe/dcp-provider": ["./packages/provider/src/index.tsx"],
-      "@dcp-fe/dcp-descriptions": ["./packages/descriptions/src/index.tsx"],
-      "@dcp-fe/dcp-utils": ["./packages/utils/src/index.tsx"],
-      "@dcp-fe/dcp-card": ["./packages/card/src/index.tsx"],
-      "@dcp-fe/spe": ["./packages/spe/src/index.tsx"],
-      "@dcp-fe/dcp-logger": ["./packages/logger/src/index.tsx"]
+      "@dcp-fe/spe": ["./packages/spe/src/index.tsx"]
     }
   },
   "include": [

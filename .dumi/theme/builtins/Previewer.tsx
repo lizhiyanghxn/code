@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import LazyLoad from 'react-lazyload';
 // @ts-ignore
-// import ProSkeleton from '@dcp-fe/dcp-skeleton';
 import PreView, { IPreviewerProps } from 'dumi-theme-default/src/builtins/Previewer';
 import { Spin } from 'antd';
 
@@ -25,7 +24,6 @@ export default ({
             }}
           >
             加载中
-            {/* <ProSkeleton type="descriptions" /> */}
           </div>
         ) : (
           <div style={{ paddingTop: 100, textAlign: 'center' }}>

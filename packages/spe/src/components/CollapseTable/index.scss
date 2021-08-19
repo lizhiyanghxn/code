@@ -1,0 +1,212 @@
+@import '../../style/variable.scss';
+
+.collapse-table-comp,
+.pre-collapse-table-comp {
+  .custom-collapse-table {
+    font-size: 14px;
+
+    background: transparent;
+    border-radius: 8px;
+
+    .ant-collapse-item {
+      border: none;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 1px;
+
+      &.ant-collapse-item-active {
+        box-sizing: border-box;
+        background: #fafafa;
+        border-color: #679aff !important;
+
+        border-radius: 8px;
+
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .ant-collapse-item.site-collapse-custom-panel {
+      margin-top: 8px;
+      margin-bottom: 14px;
+
+      background-color: #fafafa;
+      border-radius: 4px;
+
+      .ant-collapse-header {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        height: 68px;
+        padding: 0 0 0 50px;
+
+        & > span {
+          top: 50% !important;
+          left: 20px;
+
+          color: #999;
+
+          transform: translate(0, -50%);
+        }
+      }
+
+      .collapse-small-table {
+        .ant-table-thead > tr > th {
+          padding-top: 13px;
+          padding-bottom: 13px;
+
+          color: #999;
+
+          font-size: 14px;
+
+          background: #f5f5f5;
+          border: none;
+        }
+
+        .ant-table-container table > thead > tr:first-child th:first-child {
+          border-top-left-radius: 0;
+        }
+
+        .ant-table-container table > thead > tr:first-child th:last-child {
+          border-top-right-radius: 0;
+        }
+
+        .ant-table-tbody > tr {
+          &:hover {
+            > td {
+              background: #e0ebff !important;
+            }
+          }
+
+          > td {
+            padding-top: 12px;
+            padding-bottom: 11px;
+
+            color: #333;
+            font-size: 14px;
+
+            background: #fafafa;
+          }
+        }
+
+        .ant-table-row-selected > td {
+          background: #fff;
+          border-bottom-color: #ebebeb;
+        }
+
+        .ant-table-cell.ant-table-selection-column {
+          padding-left: 0;
+        }
+
+        .ant-collapse-content-box {
+          padding-top: 0;
+          padding-right: 26px;
+          padding-left: 16px;
+        }
+
+        .ant-table-selection-column.ant-table-cell-fix-left.ant-table-cell-fix-left-last {
+          // 选择框的父元素不知道为啥改变不了宽度，此处改变了padding
+
+          padding-right: 24px !important;
+        }
+
+        .ant-pagination {
+          margin: 24px 0 13px;
+
+          .ant-pagination-item {
+            a {
+              color: $text-color-6 !important;
+            }
+
+            &.ant-pagination-item-active {
+              background: #679aff;
+              border-radius: 2px;
+
+              & > a {
+                color: #fff !important;
+              }
+            }
+          }
+        }
+      }
+
+      .colums-edition {
+        // 列----版本
+
+        padding-left: 0;
+      }
+
+      .action-but {
+        display: flex;
+        // justify-content: space-between;
+
+        font-size: 14px;
+
+        .ant-btn {
+          &:nth-child(1) {
+            padding-left: 0;
+          }
+
+          &:nth-last-child(1) {
+            padding-right: 6px;
+          }
+        }
+      }
+    }
+
+    .collapseHeader,
+    .rightExta {
+      display: flex;
+
+      font-size: 14px;
+    }
+
+    .rightExta {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+
+      font-family: 'PingFang SC';
+
+      transform: translate(0, -50%);
+
+      i {
+        font-size: 14px;
+      }
+
+      .newEditon {
+        margin-right: 4px;
+
+        color: #999;
+
+        &:nth-child(2) {
+          margin-right: 10px;
+        }
+      }
+
+      .right-exta-btn,
+      .right-exta-btn2 {
+        color: #3d66ff;
+      }
+    }
+  }
+
+  .site-collapse-custom-collapse {
+    .site-collapse-custom-panel {
+      .ant-table-container {
+        .ant-table-content {
+          .colums-edition {
+            // 列----版本
+            // 当没有选择框时执行改代码
+
+            padding-left: 50px !important;
+          }
+        }
+      }
+    }
+  }
+}

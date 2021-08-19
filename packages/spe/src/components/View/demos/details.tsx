@@ -1,42 +1,60 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
-import { View } from '../../../index';
+import { DetailView } from '../../../index';
 
-console.log('View', View);
+export default () => {
+  const history = useHistory();
 
-const topEle = <>顶部内容</>;
-const titleRight = <Button>右侧按钮</Button>;
-const footerEle = <>copyright 2021</>;
-
-const pagingConfig = {
-  className: 'page-custom',
-  current: 1,
-  total: 50,
-  defaultPageSize: 10,
-  showSizeChanger: false,
-  showQuickJumper: true,
-  onChange: () => {},
-};
-
-export default () => (
-  <View
-    viewType="Details"
-    topEle={topEle}
-    footerEle={footerEle}
-    pagingConfig={pagingConfig}
-    headerRightEle={titleRight}
-    routersList={[
-      { title: '列表' },
-      {
-        title: '可点击项',
-        click: () => {
-          console.log('click item 2');
+  const attrData = [
+    {
+      title: '模型简介',
+      values: [
+        { attr: '模型简介', value: '固特异' },
+        { attr: '版本', value: 'v1.0' },
+        {
+          attr: (
+            <>
+              Accuracy <i className="iconfont iconrizhiguanli"></i>
+            </>
+          ),
+          value: 'v1.0',
         },
+      ],
+    },
+    {
+      title: '训练配置',
+      values: [
+        { attr: '数据集', value: '大尺寸mb' },
+        { attr: '算法配置', value: '小模型' },
+        { attr: '停止规则', value: '按迭代轮次停止' },
+      ],
+    },
+  ];
+
+  const routersList = [
+    { title: '模型管理', click: () => history.replace('/modelList') },
+    {
+      title: '模型详情',
+      click: () => {
+        console.log('click item 2');
       },
-      { title: '详情', click: () => {} },
-    ]}
-    bodyNoScroll={true}
-  >
-    View Body Content
-  </View>
-);
+    },
+  ];
+
+  const headerRightEle = <Button>操作按钮</Button>;
+
+  const rightCustomize = <div>rightCustomize here</div>;
+
+  return (
+    <DetailView
+      style={{
+        height: 500,
+      }}
+      attrData={attrData}
+      routersList={routersList}
+      headerRightEle={headerRightEle}
+      rightCustomize={rightCustomize}
+    />
+  );
+};

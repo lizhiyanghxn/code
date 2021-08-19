@@ -13,17 +13,25 @@ View 封装了 SPE 页面级 layout，
 
 ## 代码演示
 
-### 详情页
-
-<code src="./demos/details.tsx" iframe="500px" title="View 详情页" desc="View 详情页" />
-
 ### 列表页
 
-<code src="./demos/list.tsx" iframe="500px" title="View 列表页" desc="View 列表页" />
+<code src="./demos/list.tsx" iframe="500px" />
 
 ### 包含子列表的列表页
 
-<code src="./demos/includeSublist.tsx" iframe="500px" title="View 包含子列表的列表页" desc="View 包含子列表的列表页" />
+<code src="./demos/includeSublist.tsx" iframe="500px" />
+
+### 详情页
+
+<code src="./demos/details.tsx" iframe="500px" />
+
+### Tabs 页面
+
+<code src="./demos/tabs.tsx" iframe="500px" />
+
+### 多步骤页面
+
+<code src="./demos/step.tsx" iframe="500px" />
 
 ## API
 

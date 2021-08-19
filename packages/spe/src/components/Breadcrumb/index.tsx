@@ -16,8 +16,14 @@ const isFunctionEmpty = (func: any): boolean => {
   if (typeof func !== 'function') {
     return true;
   }
-  const functionBody = func.toString().replace(/\s+/g, '').match(/{.*}/g)[0];
-  return functionBody === '{}';
+  const matchItems = func.toString().replace(/\s+/g, '').match(/{.*}/g) || [];
+
+  // () => history.replace('/modelList') 为 false
+  // () => () 为 false
+  if (matchItems.length === 0) {
+    return false;
+  }
+  return matchItems[0] === '{}';
 };
 
 const Breadcrumb: React.FC<BreadcrumbPropsType> = (props) => {

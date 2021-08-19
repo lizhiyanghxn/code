@@ -35,15 +35,7 @@ footer: Open-source MIT Licensed | Copyright © 2021-present
 ## 组件看板
 
 | 组件 | 下载量 | 版本 |
-| --- | --- | --- |
-| pro-layout | [![layout](https://img.shields.io/npm/dw/@dcp-fe/dcp-layout.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-layout) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-layout.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-layout) |
-| pro-table | [![table](https://img.shields.io/npm/dw/@dcp-fe/dcp-table.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-table) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-table.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-table) |
-| pro-field | [![field](https://img.shields.io/npm/dw/@dcp-fe/dcp-field.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-field) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-field.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-field) |
-| pro-form | [![form](https://img.shields.io/npm/dw/@dcp-fe/dcp-form.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-form) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-form.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-form) |
-| pro-skeleton | [![skeleton](https://img.shields.io/npm/dw/@dcp-fe/dcp-skeleton.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-skeleton) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-skeleton.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-skeleton) |
-| pro-list | [![list](https://img.shields.io/npm/dw/@dcp-fe/dcp-list.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-list) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-list.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-list) |
-| pro-card | [![card](https://img.shields.io/npm/dw/@dcp-fe/dcp-card.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-card) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-card.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-card) |
-| pro-descriptions | [![descriptions](https://img.shields.io/npm/dw/@dcp-fe/dcp-card.svg)](https://www.npmjs.com/package/@dcp-fe/dcp-descriptions) | [![npm package](https://img.shields.io/npm/v/@dcp-fe/dcp-descriptions.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@dcp-fe/dcp-descriptions) |
+| ---- | ------ | ---- |
 
 ## 🖥 浏览器兼容性
 
