@@ -10,6 +10,8 @@ const tailPkgs = readdirSync(path.join(__dirname, 'packages')).filter(
   (pkg) => pkg.charAt(0) !== '.',
 );
 
+console.log('in webPackConfigList');
+
 // const tailPkgs = ['table'];
 
 const isCI = process.env.PRO_COMPONENTS_CI === 'CI';
@@ -46,7 +48,7 @@ tailPkgs.forEach((pkg) => {
     },
     mode: 'production',
     resolve: {
-      extensions: ['.ts', '.tsx', '.json', '.css', '.js', '.less'],
+      extensions: ['.ts', '.tsx', '.json', '.css', '.js', '.less', 'scss'],
     },
     optimization: isCI
       ? {
@@ -149,6 +151,10 @@ tailPkgs.forEach((pkg) => {
             },
           ],
         },
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
       ],
     },
     externals: [
@@ -173,5 +179,7 @@ tailPkgs.forEach((pkg) => {
   };
   webPackConfigList.push(config);
 });
+
+console.log('webPackConfigList', webPackConfigList);
 
 module.exports = webPackConfigList;

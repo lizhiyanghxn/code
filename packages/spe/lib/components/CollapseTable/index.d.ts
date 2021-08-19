@@ -1,0 +1,22 @@
+import React from 'react';
+import type { HTMLAttributes } from 'react';
+import './index.scss';
+export declare type CollapseTablePropsType = HTMLAttributes & {
+    columns?: any[];
+    dataSource?: any[];
+    rowSelection?: any;
+    collapseHeader?: (item: any) => React.ReactElement;
+    rightExtra?: (item: any) => React.ReactElement;
+    classNameHeader?: string;
+    classNameExta?: string;
+    onChangeCollapse?: (i: number) => void;
+    identification?: string;
+    subPageSize?: number;
+    subPageApi?: () => void;
+    subPageParams?: () => any[];
+    updateTable?: any;
+    giveFarDataSource?: (item: any, subPagingLength: any) => void;
+    expandIconPosition?: string;
+};
+declare const CollapseTable: React.FC<CollapseTablePropsType>;
+export default CollapseTable;

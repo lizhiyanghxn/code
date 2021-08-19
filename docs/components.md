@@ -1,181 +1,67 @@
 ---
-title: ProComponents - 组件总览
+title: 组件总览
 order: 0
 group:
   path: /
 nav:
-  title: 组件
+  title: 组件库
   path: /components
 ---
 
-# 架构设计
+# SPE 组件
 
-ProComponents 是基于 Ant Design 而开发的模板组件，提供了更高级别的抽象支持，开箱即用。可以显著的提升制作 CRUD 页面的效率，更加专注于页面。
+## layout 页面级
 
-- [ProLayout](/components/layout) 解决布局的问题，提供开箱即用的菜单和面包屑功能
-- [ProTable](/components/table) 表格模板组件，抽象网络请求和表格格式化
-- [ProForm](/components/form) 表单模板组件，预设常见布局和行为
-- [ProCard](/components/card) 提供卡片切分以及栅格布局能力
-- [ProDescriptions](/components/descriptions) 定义列表模板组件，ProTable 的配套组件
-- [ProSkeleton](/components/skeleton) 页面级别的骨架屏
+### 1. 列表页 layout - 左侧 title，右侧 action，有筛选 area，可以带 reset & refeash，下侧是列表显示
 
-## CRUD
+#### CollapseTable
 
-ProTable，ProDescriptions，ProForm 都是基于 ProField 来进行封装。ProTable 和 ProDescriptions 根据 valueType 来渲染不同的 ProField，Form 则是通过不同的 FormField 来实现封装。
+![image-20210817111235853](./images/image-20210817111235853.png)
 
-使用同样的底层实现为 ProTable，ProDescriptions，ProForm 打通带来了便利。ProForm 可以很方便的实现只读模式，ProTable 可以快速实现查询表单和可编辑表格。ProDescriptions 可以实现节点编辑，以下有个例子可以切换三个组件。
+#### table
 
-<code src="../packages/table/src/demos/crud.tsx">
+![image-20210817111739794](./images/image-20210817111739794.png)
 
-## Form 的 layout 切换
+### 2. 详情 layout - 顶层 breadcrumb，右侧 action，内容部分左右布局，左侧小标题 + kv 结构，右侧自定义内容区
 
-ProForm 的主要功能是预设了很多 layout，如果需要切换只需要改变外面包裹的 Layout 即可，以下是个 demo。
+![image-20210817134144747](./images/image-20210817134144747.png)
 
-<code src="../packages/form/src/demos/layout-change.tsx">
+### 3. Tab layout - 顶层 breadcrumb，右侧 action，Tabs 区域，右侧自定义内容区
 
-## 与网络请求库配置使用
+![image-20210819101547140](./images/image-20210819101547140.png)
 
-ProTable，ProList 使用了新的数据结构，如果你使用了我们约定的参数使用起来会非常简单。
+### 4. step layout - 顶层 breadcrumb，右侧 action，Tabs 区域，右侧自定义内容区
 
-```tsx | pure
-const msg: {
-  data: T[];
-  page: number;
-  success: boolean;
-  total: number;
-} = {
-  data: [],
-  page: 1,
-  success: true,
-  total: 0,
-};
-```
+![image-20210819101724057](./images/image-20210819101724057.png)
 
-如果你的后端数据使用了自己熟悉的 url，虽然我们可以用的 request 来转化，但是每个 table 都需要配置就比较麻烦。如果你使用 umi 的 request，我们可以定义一个全局的转化器。我们需要在 app.tsx 中配置
+## 显示
 
-```tsx | pure
-import { RequestConfig } from 'umi';
+### Breadcrumb - 面包屑
 
-export const request: RequestConfig = {
-  errorConfig: {
-    adaptor: (resData) => {
-      // resData 是我们自己的数据
-      return {
-        ...resData,
-        total: resData.sum,
-        success: resData.ok,
-        errorMessage: resData.message,
-      };
-    },
-  },
-};
+<img src="./images/image-20210819101754879.png" alt="image-20210819101754879" style="zoom:50%;" />
 
-// 使用时
-import { request } from 'umi';
+### Logger
 
-<ProTable request={request('/list')} />;
-```
+除部署侧的 logger 外，其他的都已经统一到 logger
 
-如果使用了 fetch ，可以对 fetch 进行自定义。
+<img src="./images/image-20210819101817097.png" alt="image-20210819101817097" style="zoom:50%;" />
 
-```tsx | pure
-const request = (url, options) => {
-  return fetch(url, options)
-    .then((res) => res.json())
-    .then((resData) => {
-      return Promise.resolve({
-        ...resData,
-        total: resData.sum,
-        success: resData.ok,
-        errorMessage: resData.message,
-      });
-    });
-};
+### Steps
 
-// 使用时
-<ProTable request={request('/list')} />;
-```
+页面中
 
-## 通用配置
+![image-20210819101848803](./images/image-20210819101848803.png)
 
-ProTable，ProDescriptions 公用一套配置，可以使用同样的 columns 和 request 来生成数据，唯一的不同是 Table 需要数组，而 ProDescriptions 只需要一个对象。以下是具体的配置：
+弹框中
 
-```tsx | pure
-export type ProSchema<T = unknown, U = string, Extra = unknown> = {
-  /** @name 确定这个列的唯一值 */
-  key?: React.ReactText;
-  /**
-   * 支持一个数字，[a,b] 会转化为 obj.a.b
-   *
-   * @name 与实体映射的key
-   */
-  dataIndex?: string | number | (string | number)[];
-  /** 选择如何渲染相应的模式 */
-  valueType?: ((entity: T, type: ProSchemaComponentTypes) => U) | U;
+### Card
 
-  /**
-   * 支持 ReactNode 和 方法
-   *
-   * @name 标题
-   */
-  title?:
-    | ((
-        schema: ProSchema<T, U, Extra>,
-        type: ProSchemaComponentTypes,
-        dom: React.ReactNode,
-      ) => React.ReactNode)
-    | React.ReactNode;
+<img src="./images/image-20210817112306320.png" alt="image-20210817112306320" style="zoom:50%;" />
 
-  /** @name 展示一个 icon，hover 是展示一些提示信息 */
-  tooltip?: string;
+<img src="./images/image-20210817112318693.png" alt="image-20210817112318693" style="zoom:50%;" />
 
-  /** @deprecated 你可以使用 tooltip，这个更改是为了与 antd 统一 */
-  tip?: string;
+## 走查问题
 
-  render?: (
-    dom: React.ReactNode,
-    entity: T,
-    index: number,
-    action: ProCoreActionType,
-    schema: ProSchema<T, U, Extra>,
-  ) => React.ReactNode;
+弹框切换 tab 改成使用 antd
 
-  /**
-   * 返回一个node，会自动包裹 value 和 onChange
-   *
-   * @name 自定义编辑模式
-   */
-  renderFormItem?: (
-    item: ProSchema<T, U, Extra>,
-    config: {
-      index?: number;
-      value?: any;
-      onSelect?: (value: any) => void;
-      type: ProSchemaComponentTypes;
-      defaultRender: (newItem: ProSchema<T, U, Extra>) => JSX.Element | null;
-    },
-    form: FormInstance,
-  ) => React.ReactNode;
-
-  /**
-   * 必须要返回 string
-   *
-   * @name 自定义 render
-   */
-  renderText?: (text: any, record: T, index: number, action: ProCoreActionType) => any;
-
-  fieldProps?: any;
-  /** @name 映射值的类型 */
-  valueEnum?: ProSchemaValueEnumObj | ProSchemaValueEnumMap;
-
-  /** @name 从服务器请求枚举 */
-  request?: ProFieldRequestData<ProSchema>;
-
-  /** @name 从服务器请求的参数，改变了会触发 reload */
-  params?: {
-    [key: string]: any;
-  };
-  /** @name 隐藏在 descriptions */
-  hideInDescriptions?: boolean;
-} & Extra;
-```
+![image-20210817112620032](./images/image-20210817112620032.png)

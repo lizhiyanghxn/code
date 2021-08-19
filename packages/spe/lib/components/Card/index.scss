@@ -1,0 +1,128 @@
+@import '../../style/variable.scss';
+
+.content-box-comp {
+  width: 100%;
+
+  background-color: #fff;
+
+  border-radius: 4px;
+
+  &.bg-page {
+    background-color: $bg-page !important;
+  }
+
+  &.margin-b {
+    margin-bottom: 32px;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .head-left {
+      display: flex;
+      align-items: center;
+      width: 300px;
+      padding-bottom: 10px;
+      color: rgba(75, 75, 75, 1);
+      font-weight: 600;
+
+      font-size: 16px;
+      line-height: 20px;
+
+      .sub-title-text {
+        display: inline-block;
+        margin-left: 8px;
+        color: rgb(110, 110, 110);
+
+        font-size: 12px;
+      }
+    }
+
+    .head-right {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-end;
+
+      // .tour-guide-btn {
+      //   height: 28px;
+
+      //   margin-bottom: 10px;
+      //   border-radius: 4px;
+      //   padding: 0 10px;
+
+      //   font-size: 14px;
+      //   color: #fff;
+      //   text-align: center;
+      //   line-height: 28px;
+
+      //   background: #c7000b;
+
+      //   cursor: pointer;
+      //   user-select: none;
+
+      //   &:hover {
+      //     opacity: 0.7;
+      //   }
+      // }
+    }
+
+    &.head-style-1 {
+      padding: 8px 16px;
+
+      color: #333 !important;
+      border-bottom: 1px solid rgba(217, 217, 217, 1) !important;
+
+      > div {
+        line-height: 34px;
+      }
+
+      .head-left {
+        padding-bottom: 0;
+
+        font-size: 16px !important;
+      }
+    }
+
+    &.head-style-2 {
+      padding: 8px 24px;
+      color: rgb(89, 89, 89) !important;
+
+      font-size: 14px !important;
+      border-bottom: 1px dashed rgb(232, 232, 232) !important;
+    }
+
+    &.head-style-3 {
+      padding: 8px 24px;
+      color: #333 !important;
+
+      font-size: 14px !important;
+      border-bottom: 1px dashed rgb(232, 232, 232) !important;
+    }
+
+    &.head-style-4 {
+      padding: 8px 16px;
+
+      color: #333 !important;
+
+      > div {
+        line-height: 34px;
+      }
+
+      .head-left {
+        padding-bottom: 0;
+
+        font-size: 16px !important;
+      }
+    }
+  }
+
+  > .content {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+  }
+}

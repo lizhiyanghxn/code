@@ -59,6 +59,7 @@
     "@umijs/fabric": "^2.0.0",
     "@umijs/plugin-analytics": "^0.2.2",
     "@umijs/plugin-antd": "^0.9.0",
+    "@umijs/plugin-sass": "^1.1.1",
     "@umijs/test": "^3.2.10",
     "@umijs/test-utils": "^3.2.10",
     "@umijs/utils": "^3.2.11",
@@ -69,6 +70,8 @@
     "chalk": "^4.1.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
+    "sass-loader": "^10.x",
+    "node-sass": "^4.x",
     "dumi": "next",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.4.3",
@@ -124,61 +127,5 @@
   "gitHooks": {
     "pre-commit": "pretty-quick --staged",
     "commit-msg": "node scripts/verifyCommit.js"
-  },
-  "size-limit": [
-    {
-      "path": "packages/card/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/descriptions/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/field/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/form/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/layout/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/list/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/provider/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/skeleton/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/table/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    }
-  ]
+  }
 }
