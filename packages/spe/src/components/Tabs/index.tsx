@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import type { HTMLAttributes } from 'react';
 import cs from 'classnames';

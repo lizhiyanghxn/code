@@ -1,23 +1,10 @@
 import { readdirSync } from 'fs';
 import { join } from 'path';
 
-console.log('123');
-
 // utils must build before core
 // runtime must build before renderer-react
 // components dependencies order: form -> table -> list
-const headPkgs: string[] = [
-  'provider',
-  'utils',
-  'field',
-  'skeleton',
-  'form',
-  'table',
-  'card',
-  'list',
-  'logger',
-  'spe',
-];
+const headPkgs: string[] = ['spe'];
 const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
   (pkg) => pkg.charAt(0) !== '.' && !headPkgs.includes(pkg),
 );

@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import { Table, Collapse } from 'antd';
@@ -66,7 +67,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
     }
   };
 
-  const subTableOnChange = (item, index, current) => {
+  const subTableOnChange = (item: any, index: any, current: number) => {
     callApi(item, index, current);
   };
   /**
@@ -76,7 +77,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
    * @param {any} index 当前操作行的下标
    * @param {any} current 当前页码
    */
-  const callApi = async (item, index, current) => {
+  const callApi = async (item: any, index: number, current: number) => {
     try {
       const res = await subPageApi(
         ...subPageParams(item, subPaging[index]),
@@ -150,7 +151,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
             activeKey={activeKey}
             expandIconPosition={expandIconPosition}
           >
-            {dataSource.map((item: any, index) => (
+            {dataSource.map((item: any, index: string | number) => (
               <Panel
                 header={header(item)} // 折叠面板的自定义头部div
                 key={index}
