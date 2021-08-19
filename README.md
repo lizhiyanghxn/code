@@ -3,14 +3,14 @@
 这里放置了 DCP 系统的通用组件库，目前包含 SPE 系统的通用组件如下
 
 | 系统 | 组件 | 功能 | 版本 |
-| SPE | Breadcrumb | SPE 样式面包屑 | --- |
-| SPE | Card | SPE Card 容器组件 | --- |
-| SPE | CollapseTable | SPE 手风琴表格组件 | --- |
-| SPE | Logger | SPE 日志组件 | --- |
-| SPE | Steps | SPE 步骤组件 | --- |
-| SPE | Tabs | SPE 页签组件 | --- |
-| SPE | View | SPE 页容器组件 | --- |
-
+|  ----  | ----  | ----  | ----  |
+| SPE | Breadcrumb | SPE 样式面包屑 | 1.0.0 |
+| SPE | Card | SPE Card 容器组件 | 1.0.0 |
+| SPE | CollapseTable | SPE 手风琴表格组件 | 1.0.0 |
+| SPE | Logger | SPE 日志组件 | 1.0.0 |
+| SPE | Steps | SPE 步骤组件 | 1.0.0 |
+| SPE | Tabs | SPE 页签组件 | 1.0.0 |
+| SPE | View | SPE 页容器组件 | 1.0.0 |
 
 ## layout 页面级
 
