@@ -66,7 +66,7 @@ tailPkgs.forEach((pkg) => {
     module: {
       rules: [
         {
-          test: /\.(png|jpg|gif|svg)$/i,
+          test: /\.(png|jpg|gif|svg|woff|woff2|ttf)$/i,
           use: [
             {
               loader: 'url-loader',
@@ -153,7 +153,17 @@ tailPkgs.forEach((pkg) => {
         },
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: (resourcePath, context) =>
+                  `${path.relative(path.dirname(resourcePath), context)}/`,
+              },
+            },
+            'css-loader',
+            'sass-loader',
+          ],
         },
       ],
     },

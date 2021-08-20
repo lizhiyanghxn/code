@@ -12,7 +12,8 @@ const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
 export default {
   cjs: { type: 'babel', lazy: true },
   esm: {
-    type: 'rollup',
+    type: 'babel',
+    importLibToEs: true,
   },
   pkgs: [...headPkgs, ...tailPkgs],
   extraBabelPlugins: [
