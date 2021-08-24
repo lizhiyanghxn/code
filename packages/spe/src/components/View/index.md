@@ -9,7 +9,7 @@ nav:
 
 # View
 
-View 封装了 SPE 页面级 layout，
+View 封装了 SPE 页面级 layout，分 BasicView 和 DetailView 两种类型，BasicView 主要用于 spe 各主页面布局，DetailView 主要用于详情页布局
 
 ## 代码演示
 
@@ -37,7 +37,9 @@ View 封装了 SPE 页面级 layout，
 
 View
 
-| 参数             | 说明           | 类型         | 默认值 |
-| ---------------- | -------------- | ------------ | ------ |
-| titleConfig      | 标题配置       | 数组 or 对象 | []     |
-| titleAutoTrigger | 标题是否可点击 | boolean      | false  |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| titleConfig | 标题配置 | 数组 or 对象 | [] |
+| titleAutoTrigger | 标题是否可点击 | boolean | false |
+| attrData | DetailView 组件自定义内容区左侧的元素 例子 attrData={title: any;values: [{attr: any;value: any}]} | arry[] | - |
+| rightCustomize | DetailView 组件自定义内容区右侧部的元素 | ReactNode | - |

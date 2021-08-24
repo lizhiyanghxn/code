@@ -38,7 +38,6 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
 
   const isList = useMemo(() => viewType === 'List', [viewType]);
   const isSubList = useMemo(() => viewType === 'IncludeSublist', [viewType]);
-  const isStep = useMemo(() => viewType === 'Step', [viewType]);
   const isTabList = useMemo(() => viewType === 'TabList', [viewType]);
 
   /** TabList 的 children 为函数 */

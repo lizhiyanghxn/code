@@ -24,6 +24,26 @@ click 不传则为不可点击，最后一个 item 不可点击。
 
 ### 代码演示
 
+```javascript
+import React from 'react';
+import { Breadcrumb } from '../../../index';
+
+export default () => {
+  const click = () => {
+    console.warn('可以点击');
+  };
+  const routersList = [
+    { title: '列表' },
+    {
+      title: '可点击项',
+      click: click,
+    },
+    { title: '详情', click: () => {} },
+  ];
+  return <Breadcrumb routersList={routersList} />;
+};
+```
+
 #### 基本使用
 
 <code src="./demos/basic.tsx" iframe="200px"/>

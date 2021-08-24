@@ -14,40 +14,51 @@ const nopeNode = () => <></>;
 
 // 折叠面板需要的数据 dataSource
 export type CollapseTablePropsType = HTMLAttributes & {
+  onChangeCollapse?: (i: number) => void;
+  subPageApi?: () => void; // 子表格的获取数据的api
+  subPageParams?: () => any[]; // 子表格api调用时参数的处理，返回一个数组
+  subPageSize?: number; // 子表格一页条数
+  updateTable?: any; // 父组件回调
+  giveFarDataSource?: (item: any, subPagingLength: any) => void; // 给父组件传递DataSource
+
   columns?: any[];
   dataSource?: any[];
   rowSelection?: any;
   collapseHeader?: (item: any) => React.ReactElement; // 折叠面板自定义标题div
   rightExtra?: (item: any) => React.ReactElement; // 折叠面板右上角自定义div
-  classNameHeader?: string; // 折叠面板头部标题最外层div的类名
-  classNameExta?: string; // 折叠面板右上角最外层div的类名
-  onChangeCollapse?: (i: number) => void;
-  identification?: string; // 标识是训练还是模型
-  subPageSize?: number; // 子表格一页条数
-  subPageApi?: () => void; // 子表格的获取数据的api
-  subPageParams?: () => any[]; // 子表格api调用时参数的处理，返回一个数组
-  updateTable?: any; // 父组件回调
-  giveFarDataSource?: (item: any, subPagingLength: any) => void; // 给父组件传递DataSource
   expandIconPosition?: string; // 是否需要展开箭头
+  flag?: boolean;
+  tableDataSource?: any[];
+  panelClick?: (item: any) => void;
+  collapseLeftTitleClassName?: string;
+  pagination?: object;
+  rowKey?: any;
+  tableParameter?: object;
 };
 
 const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
   const {
-    columns = [],
+    onChangeCollapse = nope, //----
+    subPageApi = nope, //----
+    subPageParams = () => [], // ----
+    subPageSize = 5, // ----
+    updateTable = nope, // ----
+    giveFarDataSource = nope, // ----
+
     dataSource = [],
     rightExtra = nopeNode,
+    columns = [],
     collapseHeader = nopeNode,
     rowSelection = null,
-    classNameHeader = 'collapseHeader',
-    classNameExta = 'rightExta',
-    onChangeCollapse = nope,
-    subPageApi = nope,
-    subPageParams = () => [],
-    subPageSize = 5,
-    updateTable = nope,
-    giveFarDataSource = nope,
     expandIconPosition = 'left',
     className = '',
+    flag = false,
+    tableDataSource = [],
+    panelClick = nope,
+    collapseLeftTitleClassName = '',
+    pagination = {},
+    rowKey = 'id',
+    tableParameter = {},
   } = props;
 
   const [subPaging, setSubPaging] = useState([]);
@@ -109,9 +120,19 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
   };
 
   // 折叠面板的header
-  const header = (item: any) => <div className={classNameHeader}>{collapseHeader(item)}</div>;
-  // 折叠面板最右上角div
-  const extra = (item: any) => <div className={classNameExta}>{rightExtra(item)}</div>;
+  const header = (item) => (
+    <div
+      className="collapseHeader"
+      onClick={() => {
+        panelClick(item);
+      }}
+    >
+      <div className={`collapseLeftTitle ${collapseLeftTitleClassName}`}>
+        {collapseHeader(item)}
+      </div>
+      <div className="rightExta">{rightExtra(item)}</div>
+    </div>
+  );
 
   useEffect(() => {
     const index = activeKey[0];
@@ -136,6 +157,33 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
     }
   }, [dataSource]);
 
+  let collapseParams = {};
+  if (flag) {
+    collapseParams = {
+      onChange: (index) => onChange(index),
+      activeKey: activeKey,
+    };
+  }
+  const handleTableDataSource = (index) => {
+    if (flag) {
+      return subList[index];
+    }
+    return tableDataSource;
+  };
+  const tablePagination = (index) => {
+    if (flag) {
+      return {
+        size: 'small',
+        pageSize: subPageSize,
+        onChange: (num) => subTableOnChange(item, index, num),
+        total: subPaging[index]?.total || 0,
+        current: subPaging[index]?.current || 0,
+        showSizeChanger: false,
+      };
+    }
+    return pagination;
+  };
+
   return (
     <>
       {dataSource.length > 0 ? (
@@ -147,8 +195,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
               { 'site-collapse-custom-collapse': !rowSelection },
               'custom-collapse-table',
             )}
-            onChange={onChange}
-            activeKey={activeKey}
+            {...collapseParams}
             expandIconPosition={expandIconPosition}
           >
             {dataSource.map((item: any, index: string | number) => (
@@ -156,21 +203,14 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
                 header={header(item)} // 折叠面板的自定义头部div
                 key={index}
                 className="site-collapse-custom-panel"
-                extra={extra(item)} // 折叠面板右上角自定义div
               >
                 <Table
                   className="collapse-small-table"
                   columns={columns}
-                  dataSource={subList[index]}
-                  pagination={{
-                    size: 'small',
-                    pageSize: subPageSize,
-                    onChange: (num) => subTableOnChange(item, index, num),
-                    total: subPaging[index]?.total || 0,
-                    current: subPaging[index]?.current || 0,
-                    showSizeChanger: false,
-                  }}
-                  rowKey="id"
+                  dataSource={handleTableDataSource(index)}
+                  pagination={tablePagination(index)}
+                  rowKey={rowKey}
+                  {...tableParameter}
                 />
               </Panel>
             ))}
