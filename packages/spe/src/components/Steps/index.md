@@ -97,9 +97,9 @@ export default () => {
 
 View
 
-| 参数        | 说明                                    | 类型     | 默认值  |
-| ----------- | --------------------------------------- | -------- | ------- |
-| currentStep | 当前步骤                                | number   | 1       |
-| stepsConfig | 步骤条配置                              | string[] | []      |
-| usage       | 步骤条使用场景，取值'modal' 或者 'page' | string   | 'modal' |
-| isCenter    | 步骤条是否居中                          | boolean  | false   |
+| 参数        | 说明                                    | 类型       | 默认值  |
+| ----------- | --------------------------------------- | ---------- | ------- |
+| currentStep | 当前步骤                                | `number`   | 1       |
+| stepsConfig | 步骤条配置                              | `string[]` | []      |
+| usage       | 步骤条使用场景，取值'modal' 或者 'page' | `string`   | 'modal' |
+| isCenter    | 步骤条是否居中                          | `boolean`  | false   |

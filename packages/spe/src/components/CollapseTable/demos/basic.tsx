@@ -85,6 +85,9 @@ export default () => {
       title: '第六行',
     },
   ];
+  const tableParameter = {
+    bordered: true,
+  };
   const [diffColumns, setDiffColumns] = useState([]);
   const rightExtra = (item: any) => {
     console.warn('item', item);
@@ -120,6 +123,7 @@ export default () => {
         total: tableDataSource?.length || 0,
         showSizeChanger: false,
       }}
+      tableParameter={tableParameter}
     />
   );
 };

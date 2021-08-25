@@ -10,7 +10,7 @@ nav:
 
 # Logger
 
-spe 统一的日志展示组件,字段名称、整体样式较为固定，使用前先和 spe 已经存在的日志组件进行交互和视觉对比。
+spe 统一的日志展示组件,该组件字段名称、整体样式较为固定，使用前先和 spe 已经存在的日志组件进行交互和视觉对比。
 
 ## 代码演示
 
@@ -38,7 +38,7 @@ export default () => {
       processId: 'type',
       logs,
       emptyMsg: '',
-      showLoading: false,
+      showLoading: true,
     },
     {
       title: '测试',
@@ -71,10 +71,9 @@ export default () => {
         show={visible}
         width={600}
         title={'这里是日志组件弹框标题'}
+        showDownLoad={true}
         downLoadText={'下载按钮文字'}
         showRefresh={true}
-        hasMore={false}
-        showLoading={false}
         onLoadMore={() => {}}
         onClose={() => setVisible(false)}
         onDownload={onDownload}

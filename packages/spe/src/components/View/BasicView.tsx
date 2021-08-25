@@ -30,7 +30,6 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
     children,
     headerRightEle,
     bodyNoScroll,
-    tabsConfig,
     ...rest
   } = props;
 

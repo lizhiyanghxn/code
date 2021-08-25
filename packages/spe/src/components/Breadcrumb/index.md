@@ -38,7 +38,7 @@ export default () => {
       title: '可点击项',
       click: click,
     },
-    { title: '详情', click: () => {} },
+    { title: '详情', click: click },
   ];
   return <Breadcrumb routersList={routersList} />;
 };
@@ -52,6 +52,6 @@ export default () => {
 
 Breadcrumb
 
-| 参数        | 说明     | 类型 | 默认值 |
-| ----------- | -------- | ---- | ------ |
-| routersList | 标题配置 | 数组 | []     |
+| 参数        | 说明     | 类型                            | 默认值 |
+| ----------- | -------- | ------------------------------- | ------ |
+| routersList | 标题配置 | `{title: string,click: func}[]` | []     |

@@ -5,16 +5,6 @@ import CollapseTableDemo from '../../CollapseTable/demos/basic';
 
 const { TabPane } = Tabs;
 
-const pagingConfig = {
-  className: 'page-custom',
-  current: 1,
-  total: 50,
-  defaultPageSize: 10,
-  showSizeChanger: false,
-  showQuickJumper: true,
-  onChange: () => {},
-};
-
 export default () => {
   const routersList = [{ title: '用户列表' }];
 

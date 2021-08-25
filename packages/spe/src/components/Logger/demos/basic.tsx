@@ -21,7 +21,7 @@ export default () => {
       processId: 'type',
       logs,
       emptyMsg: '',
-      showLoading: false,
+      showLoading: true,
     },
     {
       title: '测试',
@@ -54,10 +54,9 @@ export default () => {
         show={visible}
         width={600}
         title={'这里是日志组件弹框标题'}
+        showDownLoad={true}
         downLoadText={'下载按钮文字'}
         showRefresh={true}
-        hasMore={false}
-        showLoading={false}
         onLoadMore={() => {}}
         onClose={() => setVisible(false)}
         onDownload={onDownload}

@@ -95,6 +95,11 @@ export default () => {
       address: '新疆',
     },
   ];
+  // 支持antd table组件的api
+  const tableParameter = {
+    bordered: true,
+  };
+
   const [diffColumns, setDiffColumns] = useState([]);
 
   const rightExtra = (collapseItem) => {
@@ -131,6 +136,7 @@ export default () => {
         total: tableDataSource?.length || 0,
         showSizeChanger: false,
       }}
+      tableParameter={tableParameter}
     />
   );
 };
@@ -146,19 +152,24 @@ Breadcrumb
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| columns | 展开后的 table 所需要的 columns | array[] | [] |
-| dataSource | Collapse 手风琴的数据 | array[] | [] |
-| tableDataSource | 展开后的 table 所需要的数据 | array[] | [] |
-| collapseHeader | 可选， 整个 Collapse 手风琴面板 div, collapseItem 是 dataSource 中对应的数据 | (collapseItem: any) => ReactNode | - |
-| rightExtra | 可选， Collapse 手风琴面板右上角 div, collapseItem 是 dataSource 中对应的数据 | (collapseItem: any) => ReactNode | - |
-| expandIconPosition | 可选， Collapse 手风琴面板展开合上 icon 位置 | string | left |
-| panelClick | 可选， 整个 Collapse 手风琴面板的点击事件，collapseItem 是 dataSource 中对应的数据 | (collapseItem:any)=>{} | (collapseItem:any)=>{} |
-| pagination | 可选， 同 antd 中 table 组件的 pagination | object{} | null |
-| rowKey | 可选， 同 antd 中 table 组件的 rowKey | string 或者 function(record): string | id |
-| tableParameter | 可选， 该组件中没有提到的 antd 中 table 的参数，都放到这里 | string 或者 function(record): string | id |
-| flag | 可选， 组件内有训练列表和模型管理的训练模型列表两个页面上的交互逻辑，后期组件的复用根据交互，来区分是否需要复用组件内部逻辑（内部逻辑完全可以通过 panelClick 事件来代替），false 不复用，true 复用 | boolean | false |
-| subPageApi | 子表格的获取数据的 api，条件：flag=true 复用 | () => void | () => {} |
-| subPageParams | 子表格 api 调用时参数的处理，返回一个数组，条件：flag=true 复用 | () => any[] | () => any[] |
-| subPageSize | 子表格一页条数，条件：flag=true 复用 | number | 5 |
-| updateTable | 父组件回调，条件：flag=true 复用， | any，(obj) => void | null |
-| giveFarDataSource | 给父组件传递 tableDataSource，条件：flag=true 复用 | (item: any, subPagingLength: any) => void | (item: any, subPagingLength: any) => void |
+| columns | 表格列的配置描述,和 antd 的 table 组件的 columns 格式以及用法一样 | `object[]` | [] |
+| dataSource | Collapse 手风琴的数据,数组的对象中的字段可根据实际情况随意定，格式可参考上面例子 | `object[]` | [] |
+| tableDataSource | 展开后的 table 所需要的数据,和 antd 的 table 组件的 dataSource 格式一样 | `object[]` | [] |
+| collapseHeader | 可选， 它是整个 Collapse 手风琴面板的 div, collapseItem 是 dataSource 中对应的数据 | `(collapseItem: any) => ReactNode` | - |
+| rightExtra | 可选， Collapse 手风琴面板右上角的 div, collapseItem 是 dataSource 中对应的数据 | `(collapseItem: any) => ReactNode` | - |
+| expandIconPosition | 可选， Collapse 手风琴面板展开合上 icon 位置 | `string` | left |
+| panelClick | 可选， 整个 Collapse 手风琴面板的点击事件，collapseItem 是 dataSource 中对应的数据 | `(collapseItem:any)=>{}` | (collapseItem:any)=>{} |
+| pagination | 可选， 同 antd 中 table 组件的 pagination 用法一样 | `object{}` | null |
+| rowKey | 可选， 同 antd 中 table 组件的 rowKey 用法一样 | `string` 或者 `(record)=> string` | id |
+| tableParameter | 可选， 该组件中没有提到的 antd 中 table 的参数，都放到 tableParameter 中 | `object{}` | {} |
+| flag | 可选， 组件内有训练列表和模型管理的训练模型列表两个页面上的交互逻辑，后期组件的复用根据交互，来区分是否需要复用组件内部逻辑（建议不要再使用内部逻辑了，内部逻辑完全可以通过 panelClick 事件来代替），false 不复用组件内部逻辑，true 复用组件内部逻辑 | `boolean` | false |
+
+## flag flag=true 时需要考虑以下参数
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| subPageApi | 子表格的获取数据的 api | `() => void` | () => {} |
+| subPageParams | 子表格 api 调用时参数的处理，返回一个数组 | `() => any[]` | () => any[] |
+| subPageSize | 子表格一页条数 | `number` | 5 |
+| updateTable | 父组件回调 | ` any，(obj) => void` | null |
+| giveFarDataSource | 给父组件传递 tableDataSource | `(item: any, subPagingLength: any) => void` | (item: any, subPagingLength: any) => void |

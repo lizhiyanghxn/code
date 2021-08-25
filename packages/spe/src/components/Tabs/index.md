@@ -48,8 +48,8 @@ export default () => {
 
 View
 
-| 参数          | 说明           | 类型                 | 默认值               |
-| ------------- | -------------- | -------------------- | -------------------- |
-| defaultActive | 可选，当前步骤 | number               | 1                    |
-| tabsConfig    | tabs 配置      | string[]             | []                   |
-| onTabChange   | 切换 tabs 回调 | (index:number) => {} | (index:number) => {} |
+| 参数          | 说明           | 类型                   | 默认值               |
+| ------------- | -------------- | ---------------------- | -------------------- |
+| defaultActive | 可选，当前步骤 | `number`               | 1                    |
+| tabsConfig    | tabs 配置      | `string[]`             | []                   |
+| onTabChange   | 切换 tabs 回调 | `(index:number) => {}` | (index:number) => {} |

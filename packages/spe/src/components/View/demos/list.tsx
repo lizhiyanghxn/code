@@ -13,7 +13,7 @@ const pagingConfig = {
 };
 
 export default () => {
-  const routersList = [{ title: '用户列表' }];
+  const routersList = [{ title: '列表页' }];
 
   const columns = [
     {

@@ -14,7 +14,7 @@ const pagingConfig = {
 };
 
 export default () => {
-  const routersList = [{ title: '用户列表' }];
+  const routersList = [{ title: '包含子列表的列表页' }];
 
   const toolEle = (
     <Form name="horizontal_login" layout="inline">
