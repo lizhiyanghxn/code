@@ -29,14 +29,12 @@ type LoggerParamsType = {
   width?: number;
   hasMore: boolean;
   logTabs: logTab[];
-  hasLoadedData: boolean;
   showRefresh: boolean;
   showDownLoad: boolean;
   onRefresh?: (...rest: any) => void;
   onLoadMore: (page: number, tabKey: string, processId: string) => void;
   onClose: (...rest: any) => void;
   onDownload?: (...rest: any) => void;
-  logEmptyMsg?: string;
   title?: string;
   downLoadText: string;
 };
@@ -52,7 +50,6 @@ export default function Logger(props: LoggerParamsType) {
     onLoadMore = () => {},
     onClose,
     onDownload,
-    logEmptyMsg = '日志为空',
     title = '日志',
     downLoadText = '下载日志',
   } = props;
