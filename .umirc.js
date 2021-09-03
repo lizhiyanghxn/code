@@ -25,7 +25,7 @@ const tailPkgList = pkgList
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
-  title: 'DCP-Components',
+  title: 'DCP Components',
   mode: 'site',
   logo: '/logo.svg',
   extraBabelPlugins: [
@@ -44,42 +44,14 @@ export default {
   metas: [
     {
       property: 'og:site_name',
-      content: 'DCP-Components',
-    },
-    {
-      'data-rh': 'keywords',
-      property: 'og:image',
-      content: 'https://procomponents.ant.design/icon.png',
-    },
-    {
-      property: 'og:description',
-      content: '🏆 Use Ant Design like a Pro!',
-    },
-    {
-      name: 'keywords',
-      content: '中后台,admin,Ant Design,ant design,Table,react,alibaba',
-    },
-    {
-      name: 'description',
-      content: '🏆 Use Ant Design like a Pro! 包含 table form 等多个组件。',
-    },
-    {
-      name: 'apple-mobile-web-app-capable',
-      content: 'yes',
-    },
-    {
-      name: 'apple-mobile-web-app-status-bar-style"',
-      content: 'black-translucent',
+      content: 'DCP Components',
     },
   ],
   alias,
   resolve: {
     includes: [...tailPkgList, 'docs'],
   },
-  locales: [
-    ['zh-CN', '中文'],
-    ['en-US', 'English'],
-  ],
+  locales: [['zh-CN', '中文']],
   navs: {
     'zh-CN': [
       null,
@@ -114,49 +86,31 @@ export default {
       ? ['https://gw.alipayobjects.com/os/lib/antd/4.8.3/dist/antd.css']
       : [],
   menus: {
-    '/components': [
-      // {
-      //   title: '架构设计',
-      //   children: ['components.md'],
-      // },
+    '/spe': [
       {
-        title: 'SPE 系统',
+        title: '组件总览',
+        children: ['index'],
+      },
+      {
+        title: '页容器组件',
+        children: ['View/index'],
+      },
+      {
+        title: '基础业务组件',
         children: [
           'Logger/index',
+          'ImageAnalyseModal/index',
           'Breadcrumb/index',
-          'Tabs/index',
           'CollapseTable/index',
-          'Card/index',
           'Steps/index',
-          'View/index',
         ],
       },
-      // {
-      //   title: '布局',
-      //   children: ['layout', 'PageContainer/index', 'card'],
-      // },
-      // {
-      //   title: '数据录入',
-      //   children: [
-      //     'form',
-      //     'FieldSet/index',
-      //     'QueryFilter/index',
-      //     'StepsForm/index',
-      //     'ModalForm/index',
-      //   ],
-      // },
-      // {
-      //   title: '数据展示',
-      //   children: ['table', 'EditableTable/index', 'list', 'description'],
-      // },
-      // {
-      //   title: '通用',
-      //   children: ['skeleton', 'field', 'logger'],
-      // },
-      // {
-      //   title: '动画',
-      //   children: ['motion'],
-      // },
+    ],
+    '/dcp': [
+      {
+        title: '基础业务组件',
+        children: ['HelloDCP/index'],
+      },
     ],
   },
 };

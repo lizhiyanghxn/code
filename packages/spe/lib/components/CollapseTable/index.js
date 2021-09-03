@@ -29,6 +29,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -62,21 +64,7 @@ var nopeNode = function nopeNode() {
 };
 
 var CollapseTable = function CollapseTable(props) {
-  var _props$columns = props.columns,
-      columns = _props$columns === void 0 ? [] : _props$columns,
-      _props$dataSource = props.dataSource,
-      dataSource = _props$dataSource === void 0 ? [] : _props$dataSource,
-      _props$rightExtra = props.rightExtra,
-      rightExtra = _props$rightExtra === void 0 ? nopeNode : _props$rightExtra,
-      _props$collapseHeader = props.collapseHeader,
-      collapseHeader = _props$collapseHeader === void 0 ? nopeNode : _props$collapseHeader,
-      _props$rowSelection = props.rowSelection,
-      rowSelection = _props$rowSelection === void 0 ? null : _props$rowSelection,
-      _props$classNameHeade = props.classNameHeader,
-      classNameHeader = _props$classNameHeade === void 0 ? 'collapseHeader' : _props$classNameHeade,
-      _props$classNameExta = props.classNameExta,
-      classNameExta = _props$classNameExta === void 0 ? 'rightExta' : _props$classNameExta,
-      _props$onChangeCollap = props.onChangeCollapse,
+  var _props$onChangeCollap = props.onChangeCollapse,
       onChangeCollapse = _props$onChangeCollap === void 0 ? nope : _props$onChangeCollap,
       _props$subPageApi = props.subPageApi,
       subPageApi = _props$subPageApi === void 0 ? nope : _props$subPageApi,
@@ -90,10 +78,34 @@ var CollapseTable = function CollapseTable(props) {
       updateTable = _props$updateTable === void 0 ? nope : _props$updateTable,
       _props$giveFarDataSou = props.giveFarDataSource,
       giveFarDataSource = _props$giveFarDataSou === void 0 ? nope : _props$giveFarDataSou,
+      _props$dataSource = props.dataSource,
+      dataSource = _props$dataSource === void 0 ? [] : _props$dataSource,
+      _props$rightExtra = props.rightExtra,
+      rightExtra = _props$rightExtra === void 0 ? nopeNode : _props$rightExtra,
+      _props$columns = props.columns,
+      columns = _props$columns === void 0 ? [] : _props$columns,
+      _props$collapseHeader = props.collapseHeader,
+      collapseHeader = _props$collapseHeader === void 0 ? nopeNode : _props$collapseHeader,
+      _props$rowSelection = props.rowSelection,
+      rowSelection = _props$rowSelection === void 0 ? null : _props$rowSelection,
       _props$expandIconPosi = props.expandIconPosition,
       expandIconPosition = _props$expandIconPosi === void 0 ? 'left' : _props$expandIconPosi,
       _props$className = props.className,
-      className = _props$className === void 0 ? '' : _props$className;
+      className = _props$className === void 0 ? '' : _props$className,
+      _props$flag = props.flag,
+      flag = _props$flag === void 0 ? false : _props$flag,
+      _props$tableDataSourc = props.tableDataSource,
+      tableDataSource = _props$tableDataSourc === void 0 ? [] : _props$tableDataSourc,
+      _props$panelClick = props.panelClick,
+      panelClick = _props$panelClick === void 0 ? nope : _props$panelClick,
+      _props$collapseLeftTi = props.collapseLeftTitleClassName,
+      collapseLeftTitleClassName = _props$collapseLeftTi === void 0 ? '' : _props$collapseLeftTi,
+      _props$pagination = props.pagination,
+      pagination = _props$pagination === void 0 ? {} : _props$pagination,
+      _props$rowKey = props.rowKey,
+      rowKey = _props$rowKey === void 0 ? 'id' : _props$rowKey,
+      _props$tableParameter = props.tableParameter,
+      tableParameter = _props$tableParameter === void 0 ? {} : _props$tableParameter;
 
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -111,7 +123,7 @@ var CollapseTable = function CollapseTable(props) {
       setActiveKey = _useState6[1]; // 这里获取的是dataSource的下标
 
 
-  var onChange = function onChange(index) {
+  var _onChange = function onChange(index) {
     onChangeCollapse(index);
     setActiveKey([index]);
 
@@ -195,15 +207,15 @@ var CollapseTable = function CollapseTable(props) {
 
   var header = function header(item) {
     return /*#__PURE__*/_react.default.createElement("div", {
-      className: classNameHeader
-    }, collapseHeader(item));
-  }; // 折叠面板最右上角div
-
-
-  var extra = function extra(item) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      className: classNameExta
-    }, rightExtra(item));
+      className: "collapseHeader",
+      onClick: function onClick() {
+        panelClick(item);
+      }
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "collapseLeftTitle ".concat(collapseLeftTitleClassName)
+    }, collapseHeader(item)), /*#__PURE__*/_react.default.createElement("div", {
+      className: "rightExta"
+    }, rightExtra(item)));
   };
 
   (0, _react.useEffect)(function () {
@@ -230,33 +242,30 @@ var CollapseTable = function CollapseTable(props) {
       }
     }
   }, [dataSource]);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, dataSource.length > 0 ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "collapse-table-comp ".concat(className)
-  }, /*#__PURE__*/_react.default.createElement(_collapse.default, {
-    bordered: false,
-    accordion: true // 手风琴模式
-    ,
-    className: (0, _classnames.default)({
-      'site-collapse-custom-collapse': !rowSelection
-    }, 'custom-collapse-table'),
-    onChange: onChange,
-    activeKey: activeKey,
-    expandIconPosition: expandIconPosition
-  }, dataSource.map(function (item, index) {
-    var _subPaging$index3, _subPaging$index4;
+  var collapseParams = {};
 
-    return /*#__PURE__*/_react.default.createElement(Panel, {
-      header: header(item) // 折叠面板的自定义头部div
-      ,
-      key: index,
-      className: "site-collapse-custom-panel",
-      extra: extra(item) // 折叠面板右上角自定义div
+  if (flag) {
+    collapseParams = {
+      onChange: function onChange(index) {
+        return _onChange(index);
+      },
+      activeKey: activeKey
+    };
+  }
 
-    }, /*#__PURE__*/_react.default.createElement(_table.default, {
-      className: "collapse-small-table",
-      columns: columns,
-      dataSource: subList[index],
-      pagination: {
+  var handleTableDataSource = function handleTableDataSource(index) {
+    if (flag) {
+      return subList[index];
+    }
+
+    return tableDataSource;
+  };
+
+  var tablePagination = function tablePagination(index) {
+    if (flag) {
+      var _subPaging$index3, _subPaging$index4;
+
+      return {
         size: 'small',
         pageSize: subPageSize,
         onChange: function onChange(num) {
@@ -265,9 +274,36 @@ var CollapseTable = function CollapseTable(props) {
         total: ((_subPaging$index3 = subPaging[index]) === null || _subPaging$index3 === void 0 ? void 0 : _subPaging$index3.total) || 0,
         current: ((_subPaging$index4 = subPaging[index]) === null || _subPaging$index4 === void 0 ? void 0 : _subPaging$index4.current) || 0,
         showSizeChanger: false
-      },
-      rowKey: "id"
-    }));
+      };
+    }
+
+    return pagination;
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, dataSource.length > 0 ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "collapse-table-comp ".concat(className)
+  }, /*#__PURE__*/_react.default.createElement(_collapse.default, _extends({
+    bordered: false,
+    accordion: true // 手风琴模式
+    ,
+    className: (0, _classnames.default)({
+      'site-collapse-custom-collapse': !rowSelection
+    }, 'custom-collapse-table')
+  }, collapseParams, {
+    expandIconPosition: expandIconPosition
+  }), dataSource.map(function (item, index) {
+    return /*#__PURE__*/_react.default.createElement(Panel, {
+      header: header(item) // 折叠面板的自定义头部div
+      ,
+      key: index,
+      className: "site-collapse-custom-panel"
+    }, /*#__PURE__*/_react.default.createElement(_table.default, _extends({
+      className: "collapse-small-table",
+      columns: columns,
+      dataSource: handleTableDataSource(index),
+      pagination: tablePagination(index),
+      rowKey: rowKey
+    }, tableParameter)));
   }))) : /*#__PURE__*/_react.default.createElement(_table.default, {
     className: "common-table-custom",
     columns: columns,

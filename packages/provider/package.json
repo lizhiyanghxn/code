@@ -1,0 +1,44 @@
+{
+  "name": "@dcp-fe/provider",
+  "version": "1.0.0",
+  "description": "@dcp-fe/provider",
+  "keywords": [
+    "antd",
+    "provider"
+  ],
+  "homepage": "https://gitlab.sh.sensetime.com/dcp/sensegear/frontend",
+  "bugs": "https://gitlab.sh.sensetime.com/dcp/sensegear/frontend/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.sh.sensetime.com/dcp/sensegear/frontend"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "dist",
+    "es"
+  ],
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ],
+  "dependencies": {
+    "rc-util": "^5.0.1"
+  },
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": "^16.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "chencheng <sorrycc@gmail.com> (https://github.com/sorrycc)",
+    "chenshuai2144 <qixian.cs@outlook.com> (https://github.com/chenshuai2144)"
+  ]
+}

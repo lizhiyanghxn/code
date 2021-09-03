@@ -1,10 +1,11 @@
 ---
-title: SPE - 面包屑组件
+title: 面包屑 Breadcrumb
 group:
-  path: /
-nav:
-  title: 组件
+  title: 基础业务组件
   path: /components
+nav:
+  path: /spe
+  title: SPE 组件
 ---
 
 ## Breadcrumb

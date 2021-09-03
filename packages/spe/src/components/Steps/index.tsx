@@ -14,7 +14,6 @@ const Steps: React.FC<StepsPropsType> = (props) => {
   const { usage = 'modal', stepsConfig = [], currentStep = 1, isCenter = false } = props;
 
   const stepInPage = (): boolean => usage === 'page';
-  // const stepInModal = (): boolean => usage === 'modal';
 
   return (
     <div className={cs('model-steps', { 'is-page': stepInPage() })}>

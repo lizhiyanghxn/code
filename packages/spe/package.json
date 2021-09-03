@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "@dcp-fe/spe",
   "keywords": [
-    "antd"
+    "antd",
+    "spe",
+    "components"
   ],
   "homepage": "",
   "bugs": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ant-design/pro-components"
+    "url": "https://gitlab.sz.sensetime.com/dcp-fe/dcp-components"
   },
   "license": "MIT",
   "main": "lib/index.js",

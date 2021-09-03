@@ -19,14 +19,12 @@ declare type LoggerParamsType = {
     width?: number;
     hasMore: boolean;
     logTabs: logTab[];
-    hasLoadedData: boolean;
     showRefresh: boolean;
     showDownLoad: boolean;
     onRefresh?: (...rest: any) => void;
     onLoadMore: (page: number, tabKey: string, processId: string) => void;
     onClose: (...rest: any) => void;
     onDownload?: (...rest: any) => void;
-    logEmptyMsg?: string;
     title?: string;
     downLoadText: string;
 };

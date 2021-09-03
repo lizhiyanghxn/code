@@ -1,21 +1,18 @@
 import React, { useMemo, useRef } from 'react';
 import cs from 'classnames';
 import { Pagination } from 'antd';
-import type { PaginationProps } from 'antd/lib/pagination';
-import './BasicView.scss';
 import Breadcrumb from '../Breadcrumb';
-// import Tabs from '../Tabs';
+import type { PaginationProps } from 'antd/lib/pagination';
 import type { BreadcrumbPropsType } from '../Breadcrumb';
-import type { TabsPropsType } from '../Tabs';
+import './BasicView.scss';
 
-export type BasicViewPropsType = BreadcrumbPropsType &
-  TabsPropsType & {
-    viewType?: string; // List: 常用列表 / IncludeSublist: 包含子列表 / TabList: 切换列表 /  Details: 详情页 / Step: 步骤页
-    toolEle?: any; // 自定义内容区顶部的元素
-    pagingConfig?: null | PaginationProps; // 分页的原始配置
-    headerRightEle?: React.ReactElement;
-    bodyNoScroll?: boolean;
-  };
+export type BasicViewPropsType = BreadcrumbPropsType & {
+  viewType?: string; // List: 常用列表 / IncludeSublist: 包含子列表 / TabList: 切换列表 /  Details: 详情页 / Step: 步骤页
+  toolEle?: any; // 自定义内容区顶部的元素
+  pagingConfig?: null | PaginationProps; // 分页的原始配置
+  headerRightEle?: React.ReactElement;
+  bodyNoScroll?: boolean;
+};
 
 /*
  * 功能：基础 layout view，衍生出详情页，列表页，手风琴列表页，tabs子页面，Step 步骤页

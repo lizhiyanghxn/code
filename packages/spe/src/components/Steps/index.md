@@ -1,93 +1,20 @@
 ---
-title: SPE - 步骤条组件
+title: 步骤条 Steps
 group:
-  path: /
-nav:
-  title: 组件
+  title: 基础业务组件
   path: /components
+nav:
+  path: /spe
+  title: SPE 组件
 ---
 
 # Steps 步骤条
 
 Steps 封装了 SPE 的步骤条
 
-## 代码演示
-
-```javascript
-import React, { useState } from 'react';
-import { Button, Switch, Modal } from 'antd';
-import { Steps } from '../../../index';
-
-export default () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [isCenter, setIsCenter] = useState(false);
-
-  const showModal = () => setModalVisible(true);
-  const closeModal = () => setModalVisible(false);
-
-  return (
-    <>
-      <div>
-        <Button
-          type="primary"
-          onClick={showModal}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            right: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          查看效果
-        </Button>
-      </div>
-      <Modal title="Basic Modal" visible={modalVisible} onOk={closeModal} onCancel={closeModal}>
-        <Steps
-          currentStep={2}
-          stepsConfig={['第一步', '第二步', '第三步']}
-          usage="modal"
-          isCenter={isCenter}
-        />
-        切换是否居中: <Switch onChange={() => setIsCenter(!isCenter)} />
-      </Modal>
-    </>
-  );
-};
-```
-
 ### 弹框中步骤条
 
-<code src="./demos/modal.tsx" iframe="500px" />
-
-## 代码演示
-
-```javascript
-import React, { useState } from 'react';
-import { Switch } from 'antd';
-import { Steps } from '../../../index';
-
-export default () => {
-  const [isCenter, setIsCenter] = useState(false);
-  return (
-    <>
-      <Steps
-        currentStep={2}
-        stepsConfig={['第一步', '第二步', '第三步']}
-        usage="page"
-        isCenter={isCenter}
-      />
-      <div
-        style={{
-          margin: '24px',
-          textAlign: 'center',
-        }}
-      >
-        切换是否居中: <Switch onChange={() => setIsCenter(!isCenter)} />
-      </div>
-    </>
-  );
-};
-```
+<code src="./demos/modal.tsx" iframe="400px" />
 
 ### 页面中步骤条
 

@@ -1,11 +1,12 @@
 ---
-title: SPE - 日志组件
+title: 日志 Logger
 order: 1
 group:
-  path: /
-nav:
-  title: 组件
+  title: 基础业务组件
   path: /components
+nav:
+  path: /spe
+  title: SPE 组件
 ---
 
 # Logger
