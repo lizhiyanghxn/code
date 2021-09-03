@@ -42,15 +42,11 @@
         display: flex;
         align-items: center;
         height: 68px;
-        padding: 0 0 0 50px;
-
+        padding: 0 0 0 0px;
         & > span {
-          top: 50% !important;
-          left: 20px;
-
+          position: initial;
+          padding: 0 16px;
           color: #999;
-
-          transform: translate(0, -50%);
         }
       }
 
@@ -164,14 +160,21 @@
 
       font-size: 14px;
     }
+    .collapseHeader {
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      .collapseLeftTitle {
+        display: flex;
+        width: 65%;
+      }
+    }
 
     .rightExta {
       position: absolute;
       top: 50%;
       right: 16px;
-
       font-family: 'PingFang SC';
-
       transform: translate(0, -50%);
 
       i {

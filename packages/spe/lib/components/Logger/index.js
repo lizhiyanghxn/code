@@ -73,8 +73,6 @@ function Logger(props) {
       onLoadMore = _props$onLoadMore === void 0 ? function () {} : _props$onLoadMore,
       onClose = props.onClose,
       onDownload = props.onDownload,
-      _props$logEmptyMsg = props.logEmptyMsg,
-      logEmptyMsg = _props$logEmptyMsg === void 0 ? '日志为空' : _props$logEmptyMsg,
       _props$title = props.title,
       title = _props$title === void 0 ? '日志' : _props$title,
       _props$downLoadText = props.downLoadText,

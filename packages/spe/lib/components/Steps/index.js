@@ -25,8 +25,7 @@ var Steps = function Steps(props) {
 
   var stepInPage = function stepInPage() {
     return usage === 'page';
-  }; // const stepInModal = (): boolean => usage === 'modal';
-
+  };
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _classnames.default)('model-steps', {

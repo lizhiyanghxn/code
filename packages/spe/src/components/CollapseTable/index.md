@@ -1,10 +1,11 @@
 ---
-title: SPE - 手风琴表格组件
+title: 手风琴表格 CollapseTable
 group:
-  path: /
-nav:
-  title: 组件
+  title: 基础业务组件
   path: /components
+nav:
+  path: /spe
+  title: SPE 组件
 ---
 
 ## CollapseTable

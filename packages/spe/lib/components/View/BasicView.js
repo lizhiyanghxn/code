@@ -15,9 +15,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-require("./BasicView.scss");
-
 var _Breadcrumb = _interopRequireDefault(require("../Breadcrumb"));
+
+require("./BasicView.scss");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -42,8 +42,7 @@ var BasicView = function BasicView(props) {
       children = props.children,
       headerRightEle = props.headerRightEle,
       bodyNoScroll = props.bodyNoScroll,
-      tabsConfig = props.tabsConfig,
-      rest = _objectWithoutProperties(props, ["routersList", "viewType", "toolEle", "pagingConfig", "children", "headerRightEle", "bodyNoScroll", "tabsConfig"]);
+      rest = _objectWithoutProperties(props, ["routersList", "viewType", "toolEle", "pagingConfig", "children", "headerRightEle", "bodyNoScroll"]);
 
   var bsRef = (0, _react.useRef)(null);
   var isList = (0, _react.useMemo)(function () {
@@ -51,9 +50,6 @@ var BasicView = function BasicView(props) {
   }, [viewType]);
   var isSubList = (0, _react.useMemo)(function () {
     return viewType === 'IncludeSublist';
-  }, [viewType]);
-  var isStep = (0, _react.useMemo)(function () {
-    return viewType === 'Step';
   }, [viewType]);
   var isTabList = (0, _react.useMemo)(function () {
     return viewType === 'TabList';

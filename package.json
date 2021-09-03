@@ -17,7 +17,7 @@
     "site": "dumi build",
     "size": "npm run build && size-limit",
     "size:build": "cross-env PRO_COMPONENTS_CI='CI' webpack",
-    "static": "cross-env NODE_OPTIONS='--max-old-space-size=4096' dumi dev",
+    "start": "cross-env NODE_OPTIONS='--max-old-space-size=4096' dumi dev",
     "sync:tnpm": "node -e 'require(\"./scripts/syncTNPM\")()'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",

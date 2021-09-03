@@ -1,0 +1,233 @@
+@import '../../style/variable.scss';
+
+.detail-page-view {
+  height: 100%;
+
+  .content {
+    max-height: fit-content !important;
+  }
+
+  .detail-content {
+    display: flex;
+
+    height: 100%;
+    padding-left: 24px;
+
+    .detail-text-info {
+      width: 376px;
+      min-height: 100%;
+      padding: 8px 0 16px;
+
+      background-color: #fff;
+
+      & > .sub-text-title:not(:first-child) {
+        margin-top: 16px;
+      }
+
+      & > .sub-text-title {
+        width: 100%;
+        padding: 16px 24px;
+
+        font-size: $text-size-mid;
+
+        span:first-child {
+          position: relative;
+
+          display: inline-block;
+
+          font-weight: 600;
+
+          &::after {
+            position: absolute;
+            top: 2px;
+            left: -14px;
+
+            width: 22px;
+            height: 22px;
+            border-left: 3px solid #679aff;
+            content: '';
+          }
+        }
+
+        .lrd-refresh-btn {
+          display: inline-block;
+          margin-left: 40px !important;
+
+          .iconfont {
+            display: inline-block;
+            margin-right: 8px;
+          }
+        }
+      }
+
+      & > .sub-text-content-box {
+        display: flex;
+        margin-bottom: 16px;
+        padding: 0 16px 0 32px;
+
+        &.line-height-2 {
+          margin-bottom: 8px;
+
+          line-height: 2;
+        }
+
+        .left-title {
+          width: 37%;
+          margin-right: 16px;
+          color: $text-color-2;
+
+          font-size: 14px;
+          word-break: break-all;
+        }
+
+        .right-desc {
+          flex: 1;
+          color: $text-color-1;
+
+          font-size: 14px;
+          word-break: break-all;
+        }
+      }
+    }
+
+    .detail-chart-info {
+      flex: 1;
+      max-width: calc(100% - 392px);
+      min-height: 100%;
+
+      padding: 24px 0 24px 32px;
+
+      overflow-y: scroll;
+
+      background-color: #fff;
+      border-left: 1px solid $gray-border-line;
+
+      .detail-performance-chart {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 32px;
+
+        .margin-row {
+          height: 16px;
+        }
+
+        .timsg {
+          display: inline-block;
+          margin-left: 8px;
+          color: rgba(24, 27, 35, 0.2);
+
+          font-size: 12px;
+
+          cursor: pointer;
+
+          &.form-t {
+            position: absolute;
+            right: -16px;
+
+            line-height: 23px;
+          }
+        }
+
+        .line-chart {
+          position: relative;
+
+          width: 800px;
+
+          padding: 4px 0 16px 24px;
+
+          .btn-refresh {
+            position: absolute;
+            top: 24px;
+            right: 70px;
+            z-index: 1;
+
+            width: 24px;
+            height: 24px;
+
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+
+            background: #3d66ff;
+            border-radius: 2px;
+
+            cursor: pointer;
+
+            .iconfont {
+              font-size: 12px;
+            }
+
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+        }
+
+        .line-spot-desc {
+          padding-right: 70px;
+          padding-left: 44px;
+
+          .spot-table-header {
+            display: flex;
+            margin-bottom: 8px;
+            color: $text-color-7;
+
+            font-size: 12px;
+
+            background: #fbfbfb;
+            border: 1px solid #f1efef;
+            border-radius: 4px;
+
+            .spot-name,
+            .spot-pindex,
+            .spot-iteration,
+            .spot-value {
+              flex: 1;
+              padding: 8px 16px;
+            }
+          }
+
+          .spot-table-body {
+            display: flex;
+
+            color: $text-color-1;
+
+            font-size: 12px;
+            border: 1px solid #f1efef;
+            border-radius: 4px;
+
+            .spot-body-left {
+              flex: 1;
+              border-right: 1px solid #f1efef;
+
+              .spot-name {
+                padding: 8px 16px;
+              }
+            }
+
+            .spot-body-right {
+              flex: 3;
+
+              .spot-body-tr {
+                display: flex;
+                width: 100%;
+                border-bottom: 1px solid #f1efef;
+
+                &:last-child {
+                  border-bottom: none;
+                }
+
+                .spot-pindex,
+                .spot-iteration,
+                .spot-value {
+                  flex: 1;
+                  padding: 8px 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
