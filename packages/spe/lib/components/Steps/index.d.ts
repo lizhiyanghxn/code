@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 import './index.scss';
 export declare type StepsPropsType = HTMLAttributes<HTMLDivElement> & {
     currentStep?: number;
-    stepsConfig?: string[];
+    stepsConfig?: (string | React.ReactElement)[];
     usage?: string;
     isCenter?: boolean;
 };

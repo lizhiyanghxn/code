@@ -5,7 +5,7 @@ import './index.scss';
 
 export type StepsPropsType = HTMLAttributes<HTMLDivElement> & {
   currentStep?: number; // 当前步
-  stepsConfig?: string[]; // 步骤配置 ['第一步', '第二步']
+  stepsConfig?: (string | React.ReactElement)[]; // 步骤配置 ['第一步', ReactElement]
   usage?: string; // 步骤条在哪个地方使用，目前有页面和弹框两个地方，会影响样式表现
   isCenter?: boolean; // 是否居中
 };
@@ -18,9 +18,9 @@ const Steps: React.FC<StepsPropsType> = (props) => {
   return (
     <div className={cs('model-steps', { 'is-page': stepInPage() })}>
       <ul className={cs({ 'flex-center': isCenter })}>
-        {stepsConfig.map((item: string, index: number) => (
+        {stepsConfig.map((item: string | React.ReactElement, index: number) => (
           <li
-            key={item}
+            key={index}
             className={cs(
               { 'completed-step': currentStep > index + 1 },
               { 'current-step': currentStep === index + 1 },

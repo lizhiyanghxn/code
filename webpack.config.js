@@ -10,8 +10,6 @@ const tailPkgs = readdirSync(path.join(__dirname, 'packages')).filter(
   (pkg) => pkg.charAt(0) !== '.',
 );
 
-console.log('in webPackConfigList');
-
 // const tailPkgs = ['table'];
 
 const isCI = process.env.PRO_COMPONENTS_CI === 'CI';

@@ -37,7 +37,7 @@ var Steps = function Steps(props) {
     })
   }, stepsConfig.map(function (item, index) {
     return /*#__PURE__*/_react.default.createElement("li", {
-      key: item,
+      key: index,
       className: (0, _classnames.default)({
         'completed-step': currentStep > index + 1
       }, {
