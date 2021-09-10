@@ -2,65 +2,77 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import Logger from '../index';
 
-export default () => {
-  const [visible, setVisible] = useState(false);
+const getProcessLabel = (id: number) => `进程${id}`;
 
-  const logs = [
-    { date: '2021-07-14 16:05:59', message: '日志正文' },
-    { date: '2021-07-14 16:05:59', message: '日志第二行' },
-  ];
-  const logTabs = [
-    {
-      title: '数据格式转换',
-      key: 'tabKey1',
-      active: false,
-      processList: [
-        { label: '类型1', value: 'type' },
-        { label: '类型2', value: 'type2' },
-      ],
-      processId: 'type',
-      logs,
-      emptyMsg: '',
-      showLoading: true,
-    },
-    {
-      title: '测试',
-      key: 'tabKey2',
-      active: true,
-      processList: [
-        { label: '测试类型1', value: 'testType' },
-        { label: '测试类型2', value: 'testType2' },
-      ],
-      processId: 'testType2',
-      logs,
-      emptyMsg: '',
-      showLoading: false,
-    },
-  ];
-  const onRefresh = (tabPaneKey: string, selectValue: string) => {
-    console.warn('tab的key', tabPaneKey, '下拉框的value', selectValue);
-  };
-  const onDownload = () => {
-    console.warn('这是下载事件');
-  };
+const initialLogTabs = [
+  {
+    title: '数据格式转换',
+    activeTitle: '数据格式转换(当前)',
+    defaultTitle: '数据格式转换',
+    key: 'dataconverter',
+    processList: [{ label: getProcessLabel(0), value: 0 }],
+    logs: [],
+  },
+  {
+    title: '测试',
+    activeTitle: '测试(当前)',
+    defaultTitle: '测试',
+    key: 'test',
+    processList: [{ label: getProcessLabel(0), value: 0 }],
+    logs: [],
+  },
+];
+
+export default () => {
+  const [show, setShow] = useState(false);
+
+  const testId = '123';
+
+  const getTestLogs = (testId: string, params: any) =>
+    new Promise((resolve) => {
+      console.log('params', params);
+      setTimeout(() => {
+        if (params.page >= 4 || params.page <= 0) {
+          resolve({
+            list: [],
+            total: 60,
+          });
+        }
+        const list = [];
+        for (let i = 0; i < 20; i++) {
+          list[i] = {
+            date: `2021/09/01 13:59:${i}`,
+            message:
+              '[359.718.0.0.out] Begin analyzing results [359.718.0.0.out] Begin analyzing results[359.718.0.0.out] Begin analyzing results',
+          };
+        }
+        resolve({
+          list,
+          total: 60,
+        });
+      }, 500);
+    });
 
   return (
     <div>
-      <Button type="primary" onClick={() => setVisible(!visible)}>
+      <Button type="primary" onClick={() => setShow(!show)}>
         展开日志
       </Button>
       <Logger
-        logTabs={logTabs}
-        show={visible}
-        width={600}
-        title={'这里是日志组件弹框标题'}
-        showDownLoad={true}
-        downLoadText={'下载按钮文字'}
-        showRefresh={true}
-        onLoadMore={() => {}}
-        onClose={() => setVisible(false)}
-        onDownload={onDownload}
-        onRefresh={onRefresh}
+        show={show}
+        showInit={show && testId}
+        initialLogTabs={initialLogTabs}
+        gpuPodNumber={4}
+        initialActiveKey="dataconverter"
+        logApi={(params = {}) => getTestLogs(testId, params)}
+        onDownload={() => alert('下载中...')}
+        onClose={(e) => setShow(e)}
+        getProcessLabel={getProcessLabel}
+        showDownLoad
+        title="日志"
+        downLoadText="下载日志"
+        confirmText="确认"
+        logEmptyMsg="该任务日志为空"
       />
     </div>
   );

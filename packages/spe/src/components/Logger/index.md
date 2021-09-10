@@ -20,65 +20,77 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import Logger from '../index';
 
-export default () => {
-  const [visible, setVisible] = useState(false);
+const getProcessLabel = (id: number) => `进程${id}`;
 
-  const logs = [
-    { date: '2021-07-14 16:05:59', message: '日志正文' },
-    { date: '2021-07-14 16:05:59', message: '日志第二行' },
-  ];
-  const logTabs = [
-    {
-      title: '数据格式转换',
-      key: 'tabKey1',
-      active: false,
-      processList: [
-        { label: '类型1', value: 'type' },
-        { label: '类型2', value: 'type2' },
-      ],
-      processId: 'type',
-      logs,
-      emptyMsg: '',
-      showLoading: true,
-    },
-    {
-      title: '测试',
-      key: 'tabKey2',
-      active: true,
-      processList: [
-        { label: '测试类型1', value: 'testType' },
-        { label: '测试类型2', value: 'testType2' },
-      ],
-      processId: 'testType2',
-      logs,
-      emptyMsg: '',
-      showLoading: false,
-    },
-  ];
-  const onRefresh = (tabPaneKey: string, selectValue: string) => {
-    console.warn('tab的key', tabPaneKey, '下拉框的value', selectValue);
-  };
-  const onDownload = () => {
-    console.warn('这是下载事件');
-  };
+const initialLogTabs = [
+  {
+    title: '数据格式转换',
+    activeTitle: '数据格式转换(当前)',
+    defaultTitle: '数据格式转换',
+    key: 'dataconverter',
+    processList: [{ label: getProcessLabel(0), value: 0 }],
+    logs: [],
+  },
+  {
+    title: '测试',
+    activeTitle: '测试(当前)',
+    defaultTitle: '测试',
+    key: 'test',
+    processList: [{ label: getProcessLabel(0), value: 0 }],
+    logs: [],
+  },
+];
+
+export default () => {
+  const [show, setShow] = useState(false);
+
+  const testId = '123';
+
+  const getTestLogs = (testId: string, params: any) =>
+    new Promise((resolve) => {
+      console.log('params', params);
+      setTimeout(() => {
+        if (params.page >= 4 || params.page <= 0) {
+          resolve({
+            list: [],
+            total: 60,
+          });
+        }
+        const list = [];
+        for (let i = 0; i < 20; i++) {
+          list[i] = {
+            date: `2021/09/01 13:59:${i}`,
+            message:
+              '[359.718.0.0.out] Begin analyzing results [359.718.0.0.out] Begin analyzing results[359.718.0.0.out] Begin analyzing results',
+          };
+        }
+        resolve({
+          list,
+          total: 60,
+        });
+      }, 500);
+    });
 
   return (
     <div>
-      <Button type="primary" onClick={() => setVisible(!visible)}>
+      <Button type="primary" onClick={() => setShow(!show)}>
         展开日志
       </Button>
       <Logger
-        logTabs={logTabs}
-        show={visible}
-        width={600}
-        title={'这里是日志组件弹框标题'}
-        showDownLoad={true}
-        downLoadText={'下载按钮文字'}
-        showRefresh={true}
-        onLoadMore={() => {}}
-        onClose={() => setVisible(false)}
-        onDownload={onDownload}
-        onRefresh={onRefresh}
+        show={show}
+        showInit={show && testId}
+        initialLogTabs={initialLogTabs}
+        gpuPodNumber={4}
+        initialActiveKey="dataconverter"
+        logApi={(params = {}) => getTestLogs(testId, params)}
+        onDownload={() => alert('下载中...')}
+        onClose={(e) => setShow(e)}
+        getProcessLabel={getProcessLabel}
+        showDownLoad
+        title="日志"
+        downLoadText="下载日志"
+        confirmText="确认"
+        logEmptyMsg="该任务日志为空"
       />
     </div>
   );
@@ -94,26 +106,29 @@ export default () => {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | show | 日志组件弹框显示和隐藏 | `boolean` | false |
-| width | 日志组件弹框的宽度 | `number` | 750 |
-| title | 日志组件弹框的标题 | `string` | 日志 |
-| downLoadText | 日志组件弹框下载按钮的文字 | `string` | 日志下载 |
-| logTabs | 日志组件渲染时必要的参数,具体项见下表 | `logTabs[]` | 750 |
-| showRefresh | 是否展示日志组件顶部刷新按钮 | `boolean` | true |
-| showDownLoad | 是否展示日志组件左下角下载按钮 | `boolean` | false |
-| onRefresh | 日志组件刷新按钮事件，回传接受两个 string 类型参数，tabPaneKey 是 tabPane 的 key，selectValue 是日志组件中下拉框的 value | `function(tabPaneKey,selectValue)` | () => {} |
-| onLoadMore | 日志组件滑动滚动条加载更多事件,回传接受三个参数，page 是分页的页码，tabPaneKey 是 tabPane 的 key，selectValue 是日志组件中下拉框的 value | `function(page, tabPaneKey, selectValue)` | () => {} |
-| onClose | 日志组件弹框关闭或者取消事件 | `function()` | () => {} |
-| onDownload | 日志组件弹框下载事件 | `function()` | () => {} |
+| showInit | 弹框打开时控制刷新日志（show 和 id 等变化时触发） | `any` | false |
+| initialLogTabs | 日志 | `Array` | [] |
+| gpuPodNumber | 进程数量 | `number` | 1 |
+| initialActiveKey | 初始激活 TAB（当前） | `string` | dataconverter |
+| logApi | 获取 LOG 的 API 接口，path 参数请预先传入，组件内只传 params 参数 | `(params: {}) => Promise<{list:[], total:number}>` |  |
+| onDownload | 下载 log 的接口，参数请预先传入 | `Function` | ()=>{} |
+| onClose | 控制弹框 show 状态 | `Function` |  |
+| getProcessLabel | 进程 label 展示 | `Function` | ()=>'' |
+| showRefresh | 刷新按钮展示 | `boolean` | true |
+| showDownLoad | 下载按钮展示 | `boolean` | false |
+| width | 宽度 | `number` | 750 |
+| title | 标题 | `string` | 日志 |
+| downLoadText | 左下按钮 | `string` | 下载日志 |
+| confirmText | 右下按钮 | `string` | 确定 |
+| logEmptyMsg | 内容为空时展示 | `string` | 日志为空 |
 
 ## logTabs
 
-| 参数        | 说明                             | 类型                               | 默认值 |
-| ----------- | -------------------------------- | ---------------------------------- | ------ |
-| title       | 日志组件 tabPane 的标题          | `string`                           | -      |
-| key         | 日志组件 tabPane 的 key          | `string`                           | -      |
-| active      | 控制日志组件‘进行中’的显示和隐藏 | `boolean`                          | -      |
-| processList | 日志组件下拉框选项               | `{ label, value }[]`               | -      |
-| logs        | 日志组件正文                     | `{date: string;message: string}[]` | -      |
-| emptyMsg    | 日志组件为空时的提示文案         | `string`                           | -      |
-| showLoading | 日志组件内部的 loading           | `boolean`                          | -      |
-| processId   | 日志组件下拉框 value 属性的值    | `string`                           | -      |
+| 参数        | 说明                          | 类型                               | 默认值 |
+| ----------- | ----------------------------- | ---------------------------------- | ------ |
+| title       | 日志组件 tabPane 的标题       | `string`                           | -      |
+| activeTitle | 为当前状态时 tabPane 的标题   | `string`                           | -      |
+| activeTitle | 不为当前状态时 tabPane 的标题 | `string`                           | -      |
+| key         | 日志组件 tabPane 的 key       | `string`                           | -      |
+| processList | 日志组件下拉框选项            | `{ label, value }[]`               | -      |
+| logs        | 日志组件正文                  | `{date: string;message: string}[]` | -      |

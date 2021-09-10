@@ -1,3 +1,4 @@
+import { Logger, LoggerParamsType } from './components/Logger';
 import Breadcrumb from './components/Breadcrumb';
 import type { BreadcrumbPropsType } from './components/Breadcrumb';
 import { BasicView } from './components/View';
@@ -9,5 +10,5 @@ import type { StepsPropsType } from './components/Steps';
 import CollapseTable from './components/CollapseTable';
 import type { CollapseTablePropsType } from './components/CollapseTable';
 import './index.scss';
-export { Breadcrumb, BasicView, DetailView, Steps, CollapseTable };
-export type { BreadcrumbPropsType, BasicViewPropsType, DetailViewPropsType, StepsPropsType, CollapseTablePropsType, };
+export { Logger, Breadcrumb, BasicView, DetailView, Steps, CollapseTable };
+export type { LoggerParamsType, BreadcrumbPropsType, BasicViewPropsType, DetailViewPropsType, StepsPropsType, CollapseTablePropsType, };

@@ -1,3 +1,4 @@
+import React from 'react';
 import './index.less';
 declare type LogType = {
     date: string;
@@ -5,28 +6,29 @@ declare type LogType = {
 };
 declare type logTab = {
     title: string;
+    activeTitle: string;
+    defaultTitle: string;
     key: string;
-    active: boolean;
     processList: any[];
     logs: LogType[];
-    emptyMsg: string;
-    showLoading: boolean;
-    processId: string;
 };
-declare type LoggerParamsType = {
+export declare type LoggerParamsType = {
     show: boolean;
-    showLoading: boolean;
+    showInit: boolean | string;
+    initialLogTabs: logTab[];
+    gpuPodNumber: number;
+    initialActiveKey: string;
+    logApi: (params: any) => Promise<any>;
+    onDownload: () => void;
+    onClose: (status: boolean) => void;
+    getProcessLabel: (id: number) => string;
+    showRefresh?: boolean;
+    showDownLoad?: boolean;
     width?: number;
-    hasMore: boolean;
-    logTabs: logTab[];
-    showRefresh: boolean;
-    showDownLoad: boolean;
-    onRefresh?: (...rest: any) => void;
-    onLoadMore: (page: number, tabKey: string, processId: string) => void;
-    onClose: (...rest: any) => void;
-    onDownload?: (...rest: any) => void;
-    title?: string;
+    title: string;
     downLoadText: string;
+    confirmText: string;
+    logEmptyMsg: string;
 };
-export default function Logger(props: LoggerParamsType): JSX.Element;
+export declare const Logger: React.FC<LoggerParamsType>;
 export {};

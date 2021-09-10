@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "Logger", {
+  enumerable: true,
+  get: function get() {
+    return _Logger.Logger;
+  }
+});
 Object.defineProperty(exports, "Breadcrumb", {
   enumerable: true,
   get: function get() {
@@ -33,6 +39,8 @@ Object.defineProperty(exports, "CollapseTable", {
     return _CollapseTable.default;
   }
 });
+
+var _Logger = require("./components/Logger");
 
 var _Breadcrumb = _interopRequireDefault(require("./components/Breadcrumb"));
 
