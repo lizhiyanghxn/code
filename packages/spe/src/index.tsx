@@ -1,5 +1,8 @@
 // // import React, { useEffect, useState } from 'react';
-import { Logger, LoggerParamsType } from './components/Logger';
+import Logger from './components/Logger';
+import type { LoggerParamsType } from './components/Logger';
+import ImageAnalysis from './components/ImageAnalysis';
+import type { ImageAnalysisType } from './components/ImageAnalysis';
 import Breadcrumb from './components/Breadcrumb';
 import type { BreadcrumbPropsType } from './components/Breadcrumb';
 import { BasicView } from './components/View';
@@ -13,10 +16,11 @@ import type { CollapseTablePropsType } from './components/CollapseTable';
 
 import './index.scss';
 
-export { Logger, Breadcrumb, BasicView, DetailView, Steps, CollapseTable };
+export { Logger, ImageAnalysis, Breadcrumb, BasicView, DetailView, Steps, CollapseTable };
 
 export type {
   LoggerParamsType,
+  ImageAnalysisType,
   BreadcrumbPropsType,
   BasicViewPropsType,
   DetailViewPropsType,

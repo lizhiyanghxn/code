@@ -3232,6 +3232,13 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@sensetime/annotation@1.3.1-alpha-3":
+  version "1.3.1-alpha-3"
+  resolved "http://npm-registry.sensetime.com/@sensetime/annotation/download/@sensetime/annotation-1.3.1-alpha-3.tgz#14e3a6d56bae69d98edd51ab55051fb116e6448c"
+  integrity sha1-FOOm1WuuadmO3VGrVQUfsRbmRIw=
+  dependencies:
+    lodash "^4.17.20"
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.npm.taobao.org/@sindresorhus/is/download/@sindresorhus/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"

@@ -41,7 +41,7 @@ nav:
 
 <code src="./components/Logger/demos/basic.tsx"/>
 
-### 图片分析组件 - [ImageAnalyseModal](./components/image-analyse-modal)
+### 图片分析组件 - [ImageAnalysis](./components/image-analysis)
 
 ### 面包屑 - [Breadcrumb](./components/breadcrumb)
 

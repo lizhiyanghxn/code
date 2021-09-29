@@ -99,7 +99,7 @@ export default {
         title: '基础业务组件',
         children: [
           'Logger/index',
-          'ImageAnalyseModal/index',
+          'ImageAnalysis/index',
           'Breadcrumb/index',
           'CollapseTable/index',
           'Steps/index',

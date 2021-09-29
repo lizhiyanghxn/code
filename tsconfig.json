@@ -12,6 +12,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "declaration": true,
     "skipLibCheck": true,
+    "noImplicitThis": false,
     "paths": {
       "@dcp-fe/spe": ["./packages/spe/src/index.tsx"]
     }

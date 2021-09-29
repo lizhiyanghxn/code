@@ -50,7 +50,7 @@ const defaultLogPageConfig = {
   page: 1,
 };
 
-export const Logger: React.FC<LoggerParamsType> = (props) => {
+const Logger: React.FC<LoggerParamsType> = (props) => {
   const {
     show, // 日志弹框展示
     showInit = false, // 弹框打开时控制刷新日志（show 和 id等变化时触发）
@@ -337,3 +337,5 @@ export const Logger: React.FC<LoggerParamsType> = (props) => {
     </>
   );
 };
+
+export default Logger;
