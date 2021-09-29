@@ -30,5 +30,5 @@ export declare type LoggerParamsType = {
     confirmText: string;
     logEmptyMsg: string;
 };
-export declare const Logger: React.FC<LoggerParamsType>;
-export {};
+declare const Logger: React.FC<LoggerParamsType>;
+export default Logger;

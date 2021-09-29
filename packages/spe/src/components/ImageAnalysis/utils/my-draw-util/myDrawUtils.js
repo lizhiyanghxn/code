@@ -2,22 +2,11 @@ import _ from 'lodash';
 import { DrawUtils, AxisUtils } from '@sensetime/annotation';
 import { isPointInPolygon, drawAlphaMask, setArrBack } from '../common';
 
-export interface Result {
-  type: string;
-  tool: string;
-  id: string;
-  pointList: any;
-  color: string;
-  labelIndex: number;
-  attribute: string;
-  textAttribute: string;
-}
-
 export function drawPolygon(polygonList = this.resultList) {
   const localPolygonList = _.cloneDeep(polygonList);
   const ctx = this.canvas.getContext('2d');
   setArrBack(localPolygonList, this.hoverID, 'id');
-  localPolygonList?.forEach((polygon: Result) => {
+  localPolygonList?.forEach((polygon) => {
     const thickness = this.hoverID.includes(polygon.id) ? 4 : 2;
 
     if (polygon.tool === 'rect') {
@@ -69,7 +58,7 @@ export function drawPolygon(polygonList = this.resultList) {
           imgAttribute: this._imgAttribute,
         });
       } else {
-        drawAlphaMask(polygon.pointList).then((dataUrl: any) => {
+        drawAlphaMask(polygon.pointList).then((dataUrl) => {
           const el = document.createElement('p');
           el.innerHTML = `<img src="${dataUrl}" />`;
           const image = el.firstChild;
@@ -147,14 +136,14 @@ export function drawPolygon(polygonList = this.resultList) {
  * @param {Function} setHoverId
  * @param {String[]} hoverID
  */
-export function setHoverID(setHoverLabel = (id: string) => {}, hoverID: string[]) {
+export function setHoverID(setHoverLabel = (id) => {}, hoverID) {
   this.hoverID = hoverID;
-  const hoverResult = this.resultList?.find((result: Result) => result.id === hoverID[0]);
+  const hoverResult = this.resultList?.find((result) => result.id === hoverID[0]);
   setHoverLabel(hoverResult?.id ?? '');
   this.render();
 }
 
-export function onMouseMove(e: MouseEvent) {
+export function onMouseMove(e) {
   if (!this.canvas || this.isImgError) {
     return true;
   }
@@ -162,9 +151,9 @@ export function onMouseMove(e: MouseEvent) {
   const coord = this.getCoordinate(e);
 
   // hover多边形
-  const ZoomedResultList: Result[] = this.resultList
-    ?.filter((result: Result) => ['rect', 'polygon'].includes(result.tool))
-    ?.map((result: Result) => {
+  const ZoomedResultList = this.resultList
+    ?.filter((result) => ['rect', 'polygon'].includes(result.tool))
+    ?.map((result) => {
       let pointList = result.pointList;
       if (result.tool === 'rect') {
         const { x, y, width, height } = pointList;
@@ -229,7 +218,7 @@ export function onMouseMove(e: MouseEvent) {
   }
 }
 
-export function advancedRender(setZoom = (zoom: number) => {}, setPos = (pos: any) => {}) {
+export function advancedRender(setZoom = (zoom) => {}, setPos = (pos) => {}) {
   if (!this.canvas || !this.ctx || !this.imgNode) {
     return;
   }

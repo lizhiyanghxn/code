@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Logger = void 0;
+exports.default = void 0;
 
 require("antd/es/modal/style");
 
@@ -607,4 +607,5 @@ var Logger = function Logger(props) {
   }))));
 };
 
-exports.Logger = Logger;
+var _default = Logger;
+exports.default = _default;

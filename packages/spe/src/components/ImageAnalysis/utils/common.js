@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import colorPalette from './toolStyle/colorPalette';
+import colorPalette from './tool-style/colorPalette';
 
-export const jsonParser = (content: any, defaultValue = {}) => {
+export const jsonParser = (content, defaultValue = {}) => {
   try {
     if (typeof content === 'string') {
       return JSON.parse(content);
@@ -12,7 +12,7 @@ export const jsonParser = (content: any, defaultValue = {}) => {
   }
 };
 
-export function swapArr(arr: any[], i: number, j: number) {
+export function swapArr(arr, i, j) {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
@@ -48,7 +48,7 @@ export function setArrBack(arr1 = [], arr2 = [], valKey = '') {
  * @param {Array} poly 多边形顶点，数组成员的格式同p[]
  * @returns {Boolean} 点 p 和多边形 poly 的几何关系
  */
-export function isPointInPolygon(p: any, poly: any) {
+export function isPointInPolygon(p, poly) {
   if (typeof p === 'string') {
     p = {
       x: p.split(' ')[0],
@@ -96,17 +96,17 @@ export function isPointInPolygon(p: any, poly: any) {
 }
 
 /** Base64图片计算标签 */
-export function getLabels(modelTagsList: string[], base64: string) {
+export function getLabels(modelTagsList, base64) {
   return new Promise((resolve) => {
     const canvas = document.createElement('canvas');
     const image = new Image();
-    const result: any[] = [];
+    const result = [];
     image.onload = () => {
       canvas.width = image.width;
       canvas.height = image.height;
       const ctx = canvas.getContext('2d');
-      ctx!.drawImage(image, 0, 0);
-      const imgData = ctx!.getImageData(0, 0, canvas.width, canvas.height).data;
+      ctx.drawImage(image, 0, 0);
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
       for (let i = 0; i < imgData.length; i++) {
         if ((i + 1) % 4 !== 0) {
           result.push(imgData[i]);
@@ -121,7 +121,7 @@ export function getLabels(modelTagsList: string[], base64: string) {
 }
 
 /** Mask图加颜色和透明度 */
-export function drawAlphaMask(dataUrl: string) {
+export function drawAlphaMask(dataUrl) {
   return new Promise((resolve) => {
     const image = new Image();
     const canvas = document.createElement('canvas');
@@ -130,8 +130,8 @@ export function drawAlphaMask(dataUrl: string) {
       canvas.width = image.width;
       canvas.height = image.height;
       const ctx = canvas.getContext('2d');
-      ctx!.drawImage(image, 0, 0, image.width, image.height);
-      const imgData = ctx!.getImageData(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(image, 0, 0, image.width, image.height);
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < imgData.data.length; i += 4) {
         const val = imgData.data[i];
         const rgbColor = colorPalette[val] || [val, val, val];
@@ -140,7 +140,7 @@ export function drawAlphaMask(dataUrl: string) {
         imgData.data[i + 2] = rgbColor[2];
         imgData.data[i + 3] = 70;
       }
-      ctx!.putImageData(imgData, 0, 0); // 将获取的图片数据放回去。
+      ctx.putImageData(imgData, 0, 0); // 将获取的图片数据放回去。
       resolve(canvas.toDataURL());
     };
     image.src = dataUrl;

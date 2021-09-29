@@ -13,7 +13,7 @@ const DEFAULT_PRELOAD_CACHE = 3;
 // }
 
 /* 使用url获取图片的base64 */
-const getImageBase64 = (url: string, callback: Function) => {
+const getImageBase64 = (url, callback) => {
   const xhr = new XMLHttpRequest();
   xhr.onload = () => {
     const reader = new FileReader();
@@ -67,7 +67,7 @@ class ImageManager {
     ImageManager.imgListMap = new Map();
   }
 
-  static getImageNode(imgList: any[], imgIndex: number) {
+  static getImageNode(imgList, imgIndex) {
     const imageUrl = ImageManager.getUrl(imgList, imgIndex);
     // 暂时不要图片base64缓存（有跨域问题）
     // ImageManager.updateCache(imgList, imgIndex)
@@ -77,7 +77,7 @@ class ImageManager {
     return createImageElement(imageUrl);
   }
 
-  static getUrl(imgList: any[], imgIndex: number) {
+  static getUrl(imgList, imgIndex) {
     try {
       return imgList[imgIndex].url;
     } catch (e) {
@@ -85,24 +85,24 @@ class ImageManager {
     }
   }
 
-  static updateCache(imgList: any[], imgIndex: number) {
+  static updateCache(imgList, imgIndex) {
     if (ImageManager.checkNeedPreLoad(imgList, imgIndex)) {
       ImageManager.addToMap(imgList, imgIndex);
     }
   }
 
-  static addToMap(imgList: any[], imgIndex: number) {
+  static addToMap(imgList, imgIndex) {
     const { page, size } = ImageManager.getPageSize(imgList, imgIndex);
     const cacheList = imgList.slice(page * size, page * size + DEFAULT_PRELOAD_SIZE);
     cacheList.forEach((item) => {
-      getImageBase64(item.url, (base64: string) => {
+      getImageBase64(item.url, (base64) => {
         ImageManager.imgListMap.set(item.url, base64);
       });
     });
   }
 
-  static getPageSize = (imgList: any[], imgIndex: number) => {
-    let page = parseInt(`${imgIndex / DEFAULT_PRELOAD_SIZE}`, 10);
+  static getPageSize = (imgList, imgIndex) => {
+    let page = parseInt(imgIndex / DEFAULT_PRELOAD_SIZE, 10);
     if (
       ImageManager.needLateLoad(imgList, imgIndex) &&
       ImageManager.hadPreload(imgList, imgIndex)
@@ -120,22 +120,22 @@ class ImageManager {
     };
   };
 
-  static hadPreload = (imgList: any[], imgIndex: number) => {
+  static hadPreload = (imgList, imgIndex) => {
     const imageUrl = ImageManager.getUrl(imgList, imgIndex);
     return ImageManager.imgListMap.get(imageUrl);
   };
 
-  static needPreLoad = (imgList: any[], imgIndex: number) => {
+  static needPreLoad = (imgList, imgIndex) => {
     const imageUrl = ImageManager.getUrl(imgList, imgIndex - DEFAULT_PRELOAD_CACHE || 0);
     return !ImageManager.imgListMap.get(imageUrl);
   };
 
-  static needLateLoad = (imgList: any[], imgIndex: number) => {
+  static needLateLoad = (imgList, imgIndex) => {
     const imageUrl = ImageManager.getUrl(imgList, imgIndex + DEFAULT_PRELOAD_CACHE);
     return !ImageManager.imgListMap.get(imageUrl);
   };
 
-  static checkNeedPreLoad = (imgList: any[], imgIndex: number) =>
+  static checkNeedPreLoad = (imgList, imgIndex) =>
     ImageManager.needPreLoad(imgList, imgIndex) || ImageManager.needLateLoad(imgList, imgIndex);
 }
 

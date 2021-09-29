@@ -1,10 +1,11 @@
 import { toolUtils } from '@sensetime/annotation';
 import _ from 'lodash';
 import React, { Component } from 'react';
+// @ts-ignore
 import ImageManager from './preloadImg';
-import { getAttributeColors, getToolColors } from './toolStyle';
-import { drawPolygon, onMouseMove, setHoverID, advancedRender } from './myDrawUtil/myDrawUtils';
-
+// @ts-ignore
+import { drawPolygon, onMouseMove, setHoverID, advancedRender } from './my-draw-util/myDrawUtils';
+// @ts-ignore
 export { getLabels } from './common';
 
 export const constant = {
@@ -174,9 +175,8 @@ class AnnotationCanvas extends Component<any> {
       container: this.canvasRef?.current,
       size: canvasSize ?? { width: 500, height: 500 },
       // config: this.props.config,
-      style: this.getStyle(9),
+      // style: this.getStyle(9),
     });
-    console.log('toolName', toolName);
     toolInstance.base64MaskImageNode = {}; // 存储base64Msak的Node
     toolInstance.drawPolygon = drawPolygon.bind(toolInstance);
     toolInstance.onMouseMove = onMouseMove.bind(toolInstance);
@@ -197,16 +197,6 @@ class AnnotationCanvas extends Component<any> {
     if (preProps.currentIndex !== this.props.currentIndex) {
       this.drawOriginalImage();
     }
-  }
-
-  getStyle(opacity: number) {
-    return {
-      color: 1,
-      width: 2,
-      opacity: 9,
-      toolColor: getToolColors(opacity),
-      attributeColor: getAttributeColors(opacity),
-    };
   }
 
   drawOriginalImage = async (currentIndex = this.props.currentIndex) => {
