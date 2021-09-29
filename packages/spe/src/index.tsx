@@ -3,6 +3,11 @@ import Logger from './components/Logger';
 import type { LoggerParamsType } from './components/Logger';
 import ImageAnalysis from './components/ImageAnalysis';
 import type { ImageAnalysisType } from './components/ImageAnalysis';
+import AnnotationCanvas, {
+  constant,
+  formatInitResult,
+  getLabels,
+} from './components/ImageAnalysis/utils/AnnotationCanvas';
 import Breadcrumb from './components/Breadcrumb';
 import type { BreadcrumbPropsType } from './components/Breadcrumb';
 import { BasicView } from './components/View';
@@ -17,6 +22,7 @@ import type { CollapseTablePropsType } from './components/CollapseTable';
 import './index.scss';
 
 export { Logger, ImageAnalysis, Breadcrumb, BasicView, DetailView, Steps, CollapseTable };
+export { AnnotationCanvas, constant, formatInitResult, getLabels };
 
 export type {
   LoggerParamsType,
