@@ -183,7 +183,13 @@ var Logger = function Logger(props) {
 
   var onQuickSkipTop = function onQuickSkipTop() {
     setIsReverse(false);
-    updateLogTabs(activeKey);
+    setLogTabs(function (logTabs) {
+      return logTabs.map(function (tab) {
+        return _objectSpread(_objectSpread({}, tab), {}, {
+          logs: []
+        });
+      });
+    });
     logPageConfig = _objectSpread(_objectSpread({}, defaultLogPageConfig), {}, {
       page: 1
     });
@@ -200,7 +206,13 @@ var Logger = function Logger(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               setIsReverse(true);
-              updateLogTabs(activeKey);
+              setLogTabs(function (logTabs) {
+                return logTabs.map(function (tab) {
+                  return _objectSpread(_objectSpread({}, tab), {}, {
+                    logs: []
+                  });
+                });
+              });
               fetchLogs({
                 pageConfig: defaultLogPageConfig
               });
@@ -311,7 +323,7 @@ var Logger = function Logger(props) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              updateLogTabs(initialActiveKey);
+              updateLogTabs();
               setActiveKey(initialActiveKey);
               setHasMore(true);
               fetchLogs({
@@ -334,7 +346,7 @@ var Logger = function Logger(props) {
   /** 初始化清空日志内容 */
 
 
-  var updateLogTabs = function updateLogTabs(activeKey) {
+  var updateLogTabs = function updateLogTabs() {
     var processList = [];
 
     for (var i = 0; i < gpuPodNumber; i++) {
@@ -345,7 +357,7 @@ var Logger = function Logger(props) {
     }
 
     logTabs.forEach(function (tab) {
-      if (tab.key === activeKey) {
+      if (tab.key === initialActiveKey) {
         tab.title = tab.activeTitle;
       } else {
         tab.title = tab.defaultTitle;

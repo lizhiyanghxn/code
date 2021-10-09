@@ -94,7 +94,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
   const onQuickSkipTop = () => {
     setIsReverse(false);
-    updateLogTabs(activeKey);
+    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
     logPageConfig = {
       ...defaultLogPageConfig,
       page: 1,
@@ -104,7 +104,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
   const onQuickSkipBottom = async () => {
     setIsReverse(true);
-    updateLogTabs(activeKey);
+    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
     fetchLogs({ pageConfig: defaultLogPageConfig });
   };
 
@@ -138,20 +138,20 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
   };
 
   const showLog = async () => {
-    updateLogTabs(initialActiveKey);
+    updateLogTabs();
     setActiveKey(initialActiveKey);
     setHasMore(true);
     fetchLogs({ pageConfig: defaultLogPageConfig, job: initialActiveKey });
   };
 
   /** 初始化清空日志内容 */
-  const updateLogTabs = (activeKey: string) => {
+  const updateLogTabs = () => {
     const processList = [];
     for (let i = 0; i < gpuPodNumber; i++) {
       processList.push({ label: getProcessLabel(i), value: i });
     }
     logTabs.forEach((tab: logTab) => {
-      if (tab.key === activeKey) {
+      if (tab.key === initialActiveKey) {
         tab.title = tab.activeTitle;
       } else {
         tab.title = tab.defaultTitle;
