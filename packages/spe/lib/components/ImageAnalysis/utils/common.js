@@ -49,7 +49,7 @@ function swapArr(arr, i, j) {
   arr[i] = arr[j];
   arr[j] = temp;
 }
-/** arr1中将存在于arr2的元素换到末尾 */
+/** Arr1中将存在于arr2的元素换到末尾 */
 
 
 function setArrBack() {
@@ -77,10 +77,11 @@ function setArrBack() {
 // }
 
 /**
- * @description 射线法判断点是否在多边形内部
+ * 射线法判断点是否在多边形内部
+ *
  * @param {Object} p 待判断的点，格式：{ x: X坐标, y: Y坐标 }或者"170 21"
  * @param {Array} poly 多边形顶点，数组成员的格式同p[]
- * @return {Boolean} 点 p 和多边形 poly 的几何关系
+ * @returns {Boolean} 点 p 和多边形 poly 的几何关系
  */
 
 
@@ -132,7 +133,7 @@ function isPointInPolygon(p, poly) {
 
   return flag;
 }
-/** base64图片计算标签 */
+/** Base64图片计算标签 */
 
 
 function getLabels(modelTagsList, base64) {
@@ -169,7 +170,7 @@ function getLabels(modelTagsList, base64) {
     image.src = "data:image/png;base64,".concat(base64);
   });
 }
-/** mask图加颜色和透明度 */
+/** Mask图加颜色和透明度 */
 
 
 function drawAlphaMask(dataUrl) {
