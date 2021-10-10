@@ -5,6 +5,7 @@ export default () => (
   <Breadcrumb
     style={{
       margin: '24px 0',
+      padding: '0 24px',
     }}
     routersList={[
       { title: '列表' },
