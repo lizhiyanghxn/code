@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import Logger from '../index';
 
+const getSubTaskLabel = (id: number) => `超参任务${id}`;
 const getProcessLabel = (id: number) => `进程${id}`;
 
 const initialLogTabs = [
@@ -62,11 +63,13 @@ export default () => {
         show={show}
         showInit={show && testId}
         initialLogTabs={initialLogTabs}
+        subTaskIds={[0, 1, 2, 3]}
         gpuPodNumber={4}
         initialActiveKey="dataconverter"
         logApi={(params = {}) => getTestLogs(testId, params)}
         onDownload={() => alert('下载中...')}
         onClose={(e) => setShow(e)}
+        getSubTaskLabel={getSubTaskLabel}
         getProcessLabel={getProcessLabel}
         showDownLoad
         title="日志"

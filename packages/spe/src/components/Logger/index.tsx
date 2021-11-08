@@ -25,11 +25,13 @@ export type LoggerParamsType = {
   show: boolean;
   showInit: boolean | string; // 弹框打开时控制刷新日志（show 和 id等变化时触发）
   initialLogTabs: logTab[]; // 日志
+  subTaskIds?: number[]; // 超参子任务数量, null或者空数组表示不是超参搜素
   gpuPodNumber: number; // 进程数量
   initialActiveKey: string; // 初始激活TAB（当前）
   logApi: (params: any) => Promise<any>; // 获取LOG的API接口，path参数请预先传入，组件内只传params参数
   onDownload: () => void; // 下载log的接口，参数请预先传入
   onClose: (status: boolean) => void; // 控制弹框show状态
+  getSubTaskLabel?: (id: number) => string; // 超参任务label展示
   getProcessLabel: (id: number) => string; // 进程label展示
   showRefresh?: boolean; // 刷新按钮展示
   showDownLoad?: boolean; // 下载按钮展示
@@ -55,12 +57,14 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     show, // 日志弹框展示
     showInit = false, // 弹框打开时控制刷新日志（show 和 id等变化时触发）
     initialLogTabs = [], // 日志
+    subTaskIds = [], //超参子任务, null或者空数组表示不是超参搜素
     gpuPodNumber = 1, // 进程数量
     initialActiveKey = 'dataconverter', // 初始激活TAB（当前）
     logApi, // 获取LOG的API接口，path参数请预先传入，组件内只传params参数
     onDownload = () => {}, // 下载log的接口，参数请预先传入
     onClose = () => {}, // 控制弹框show状态
-    getProcessLabel = () => '', // 进程label展示
+    getSubTaskLabel = (id) => `超参任务${id}`, // 进程label展示
+    getProcessLabel = (id) => `进程${id}`, // 进程label展示
     showRefresh = true, // 刷新按钮展示
     showDownLoad = false, // 下载按钮展示
     width = 750,
@@ -70,6 +74,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     logEmptyMsg = '日志为空',
   } = props;
 
+  const [subTaskId, setSubTaskId] = useState(subTaskIds?.[0]);
   const [activeKey, setActiveKey] = useState(initialActiveKey);
   const [activeProcessId, setActiveProcessId] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -120,6 +125,16 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     fetchLogs({ pageConfig: newConfig, isLoadMore: true, reverse: isReverse });
   };
 
+  const setLogSubTaskId = async (id: number) => {
+    setHasMore(true);
+    setSubTaskId(id);
+    setActiveKey(initialActiveKey);
+    setActiveProcessId(0);
+    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
+    setIsReverse(true);
+    fetchLogs({ pageConfig: defaultLogPageConfig, taskId: id, job: initialActiveKey, process: 0 });
+  };
+
   const setLogActiveTab = async (tabKey: string) => {
     setHasMore(true);
     setActiveKey(tabKey);
@@ -139,9 +154,16 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
   const showLog = async () => {
     updateLogTabs();
+    setSubTaskId(subTaskIds?.[0]);
     setActiveKey(initialActiveKey);
+    setActiveProcessId(0);
     setHasMore(true);
-    fetchLogs({ pageConfig: defaultLogPageConfig, job: initialActiveKey });
+    fetchLogs({
+      pageConfig: defaultLogPageConfig,
+      taskId: subTaskIds?.[0],
+      job: initialActiveKey,
+      process: 0,
+    });
   };
 
   /** 初始化清空日志内容 */
@@ -168,6 +190,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     pageConfig = {} as any,
     isLoadMore = false,
     reverse = true,
+    taskId = subTaskId,
     job = activeKey,
     process = activeProcessId,
   }) => {
@@ -176,11 +199,12 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     let total = 0;
     if (!isLoadMore && reverse) {
       // 反向初次加载，需要获取总页数，需要额外查询倒数第二页（防止条数过少）
-      const maxPageIndex = await calcMaxPageIndex({ job, process }).catch(() => 0);
+      const maxPageIndex = await calcMaxPageIndex({ taskId, job, process }).catch(() => 0);
       if (maxPageIndex !== 0) {
         const res = await logApi({
           ...pageConfig,
           page: maxPageIndex,
+          sub_task_id: taskId,
           task_job_name: job,
           process_id: process,
         }).then((res) => {
@@ -188,8 +212,9 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
           return res;
         });
         const appendList = await logApi({
-          page_size: pageConfig.page_size,
+          ...pageConfig,
           page: maxPageIndex - 1,
+          sub_task_id: taskId,
           task_job_name: job,
           process_id: process,
         }).then((res) => {
@@ -203,6 +228,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
       const res = await logApi({
         ...pageConfig,
         page: pageConfig.page,
+        sub_task_id: taskId,
         task_job_name: job,
         process_id: process,
       });
@@ -229,10 +255,15 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     }
   };
 
-  const calcMaxPageIndex = async ({ job = activeKey, process = activeProcessId }) => {
+  const calcMaxPageIndex = async ({
+    taskId = subTaskId,
+    job = activeKey,
+    process = activeProcessId,
+  }) => {
     const { total } = await logApi({
       page_size: 1,
       page: 1,
+      sub_task_id: taskId,
       task_job_name: job,
       process_id: process,
     });
@@ -245,7 +276,20 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
   return (
     <>
       <Modal
-        title={title}
+        title={
+          <>
+            {title}
+            {subTaskIds?.length && (
+              <Select value={subTaskId} onChange={setLogSubTaskId}>
+                {subTaskIds.map((taskId) => (
+                  <Option value={taskId} key={taskId}>
+                    {getSubTaskLabel(taskId)}
+                  </Option>
+                ))}
+              </Select>
+            )}
+          </>
+        }
         centered
         visible={show}
         width={width}

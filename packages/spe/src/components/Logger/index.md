@@ -20,6 +20,7 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import Logger from '../index';
 
+const getSubTaskLabel = (id: number) => `超参任务${id}`;
 const getProcessLabel = (id: number) => `进程${id}`;
 
 const initialLogTabs = [
@@ -80,11 +81,13 @@ export default () => {
         show={show}
         showInit={show && testId}
         initialLogTabs={initialLogTabs}
+        subTaskIds={[0, 1, 2, 3]}
         gpuPodNumber={4}
         initialActiveKey="dataconverter"
         logApi={(params = {}) => getTestLogs(testId, params)}
         onDownload={() => alert('下载中...')}
         onClose={(e) => setShow(e)}
+        getSubTaskLabel={getSubTaskLabel}
         getProcessLabel={getProcessLabel}
         showDownLoad
         title="日志"
@@ -108,12 +111,14 @@ export default () => {
 | show | 日志组件弹框显示和隐藏 | `boolean` | false |
 | showInit | 弹框打开时控制刷新日志（show 和 id 等变化时触发） | `any` | false |
 | initialLogTabs | 日志 | `Array` | [] |
+| subTaskIds | 超参子任务 | `Array<number>` | [] |
 | gpuPodNumber | 进程数量 | `number` | 1 |
 | initialActiveKey | 初始激活 TAB（当前） | `string` | dataconverter |
 | logApi | 获取 LOG 的 API 接口，path 参数请预先传入，组件内只传 params 参数 | `(params: {}) => Promise<{list:[], total:number}>` |  |
 | onDownload | 下载 log 的接口，参数请预先传入 | `Function` | ()=>{} |
 | onClose | 控制弹框 show 状态 | `Function` |  |
-| getProcessLabel | 进程 label 展示 | `Function` | ()=>'' |
+| getSubTaskLabel | 超参任务 label 展示 | `Function` | (id) => 'id' |
+| getProcessLabel | 进程 label 展示 | `Function` | (id) => 'id' |
 | showRefresh | 刷新按钮展示 | `boolean` | true |
 | showDownLoad | 下载按钮展示 | `boolean` | false |
 | width | 宽度 | `number` | 750 |
@@ -124,11 +129,11 @@ export default () => {
 
 ## logTabs
 
-| 参数        | 说明                          | 类型                               | 默认值 |
-| ----------- | ----------------------------- | ---------------------------------- | ------ |
-| title       | 日志组件 tabPane 的标题       | `string`                           | -      |
-| activeTitle | 为当前状态时 tabPane 的标题   | `string`                           | -      |
-| activeTitle | 不为当前状态时 tabPane 的标题 | `string`                           | -      |
-| key         | 日志组件 tabPane 的 key       | `string`                           | -      |
-| processList | 日志组件下拉框选项            | `{ label, value }[]`               | -      |
-| logs        | 日志组件正文                  | `{date: string;message: string}[]` | -      |
+| 参数        | 说明                          | 类型                                     |
+| ----------- | ----------------------------- | ---------------------------------------- |
+| title       | 日志组件 tabPane 的标题       | `string`                                 |
+| activeTitle | 为当前状态时 tabPane 的标题   | `string`                                 |
+| activeTitle | 不为当前状态时 tabPane 的标题 | `string`                                 |
+| key         | 日志组件 tabPane 的 key       | `string`                                 |
+| processList | 日志组件下拉框选项            | `Array<{label, value}>`                  |
+| logs        | 日志组件正文                  | `Array<{date: string; message: string}>` |
