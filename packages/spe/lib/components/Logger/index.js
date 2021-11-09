@@ -598,7 +598,7 @@ var Logger = function Logger(props) {
   }();
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_modal.default, {
-    title: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, title, (subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds.length) && /*#__PURE__*/_react.default.createElement(_select.default, {
+    title: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, title, (subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds.length) ? /*#__PURE__*/_react.default.createElement(_select.default, {
       value: subTaskId,
       onChange: setLogSubTaskId
     }, subTaskIds.map(function (taskId) {
@@ -606,7 +606,7 @@ var Logger = function Logger(props) {
         value: taskId,
         key: taskId
       }, getSubTaskLabel(taskId));
-    }))),
+    })) : ''),
     centered: true,
     visible: show,
     width: width,

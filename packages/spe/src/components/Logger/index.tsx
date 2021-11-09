@@ -313,7 +313,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
         title={
           <>
             {title}
-            {subTaskIds?.length && (
+            {subTaskIds?.length ? (
               <Select value={subTaskId} onChange={setLogSubTaskId}>
                 {subTaskIds.map((taskId) => (
                   <Option value={taskId} key={taskId}>
@@ -321,6 +321,8 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
                   </Option>
                 ))}
               </Select>
+            ) : (
+              ''
             )}
           </>
         }
