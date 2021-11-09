@@ -114,8 +114,8 @@ export default () => {
 | subTaskIds | 超参子任务 | `Array<number>` | [] |
 | gpuPodNumber | 进程数量 | `number` | 1 |
 | initialActiveKey | 初始激活 TAB（当前） | `string` | dataconverter |
-| logApi | 获取 LOG 的 API 接口，path 参数请预先传入，组件内只传 params 参数 | `(params: {}) => Promise<{list:[], total:number}>` |  |
-| onDownload | 下载 log 的接口，参数请预先传入 | `Function` | ()=>{} |
+| logApi | 获取 LOG 的 API 接口，path 参数请预先传入 | `(params: any, extraConfig?: any) => Promise<{list: [], total: number}>` | () => {} |
+| onDownload | 下载 log 的接口，参数请预先传入 | `Function` | () => {} |
 | onClose | 控制弹框 show 状态 | `Function` |  |
 | getSubTaskLabel | 超参任务 label 展示 | `Function` | (id) => 'id' |
 | getProcessLabel | 进程 label 展示 | `Function` | (id) => 'id' |

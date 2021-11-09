@@ -28,7 +28,7 @@ export type LoggerParamsType = {
   subTaskIds?: number[]; // 超参子任务数量, null或者空数组表示不是超参搜素
   gpuPodNumber: number; // 进程数量
   initialActiveKey: string; // 初始激活TAB（当前）
-  logApi: (params: any) => Promise<any>; // 获取LOG的API接口，path参数请预先传入，组件内只传params参数
+  logApi: (params: any, extraConfig?: any) => Promise<any>; // 获取LOG的API接口，path参数请预先传入
   onDownload: () => void; // 下载log的接口，参数请预先传入
   onClose: (status: boolean) => void; // 控制弹框show状态
   getSubTaskLabel?: (id: number) => string; // 超参任务label展示
@@ -60,7 +60,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     subTaskIds = [], //超参子任务, null或者空数组表示不是超参搜素
     gpuPodNumber = 1, // 进程数量
     initialActiveKey = 'dataconverter', // 初始激活TAB（当前）
-    logApi, // 获取LOG的API接口，path参数请预先传入，组件内只传params参数
+    logApi, // 获取LOG的API接口，path参数请预先传入
     onDownload = () => {}, // 下载log的接口，参数请预先传入
     onClose = () => {}, // 控制弹框show状态
     getSubTaskLabel = (id) => `超参任务${id}`, // 进程label展示
@@ -81,6 +81,8 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
   const [loading, setLoading] = useState(false);
   const [isReverse, setIsReverse] = useState(true);
   const [logTabs, setLogTabs] = useState(initialLogTabs);
+
+  const axiosCanceler = useRef<any>(null);
 
   const scrollNodeRefs = useRef(logTabs.map(() => React.createRef<HTMLDivElement>()));
 
@@ -195,29 +197,46 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     process = activeProcessId,
   }) => {
     setLoading(true);
+    axiosCanceler.current && axiosCanceler.current();
     let list = [];
     let total = 0;
     if (!isLoadMore && reverse) {
       // 反向初次加载，需要获取总页数，需要额外查询倒数第二页（防止条数过少）
-      const maxPageIndex = await calcMaxPageIndex({ taskId, job, process }).catch(() => 0);
+      const maxPageIndex = await calcMaxPageIndex({ taskId, job, process });
       if (maxPageIndex !== 0) {
-        const res = await logApi({
-          ...pageConfig,
-          page: maxPageIndex,
-          sub_task_id: taskId,
-          task_job_name: job,
-          process_id: process,
-        }).then((res) => {
+        const res = await logApi(
+          {
+            ...pageConfig,
+            page: maxPageIndex,
+            sub_task_id: taskId,
+            task_job_name: job,
+            process_id: process,
+          },
+          {
+            showErr: false,
+            onCancel: (c: any) => {
+              axiosCanceler.current = c;
+            },
+          },
+        ).then((res) => {
           logPageConfig.page = maxPageIndex;
           return res;
         });
-        const appendList = await logApi({
-          ...pageConfig,
-          page: maxPageIndex - 1,
-          sub_task_id: taskId,
-          task_job_name: job,
-          process_id: process,
-        }).then((res) => {
+        const appendList = await logApi(
+          {
+            ...pageConfig,
+            page: maxPageIndex - 1,
+            sub_task_id: taskId,
+            task_job_name: job,
+            process_id: process,
+          },
+          {
+            showErr: false,
+            onCancel: (c: any) => {
+              axiosCanceler.current = c;
+            },
+          },
+        ).then((res) => {
           logPageConfig.page = maxPageIndex - 1;
           return res.list;
         });
@@ -225,13 +244,20 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
         total = res.total;
       }
     } else {
-      const res = await logApi({
-        ...pageConfig,
-        page: pageConfig.page,
-        sub_task_id: taskId,
-        task_job_name: job,
-        process_id: process,
-      });
+      const res = await logApi(
+        {
+          ...pageConfig,
+          sub_task_id: taskId,
+          task_job_name: job,
+          process_id: process,
+        },
+        {
+          showErr: false,
+          onCancel: (c: any) => {
+            axiosCanceler.current = c;
+          },
+        },
+      );
       list = res.list;
       total = res.total;
     }
@@ -260,13 +286,21 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     job = activeKey,
     process = activeProcessId,
   }) => {
-    const { total } = await logApi({
-      page_size: 1,
-      page: 1,
-      sub_task_id: taskId,
-      task_job_name: job,
-      process_id: process,
-    });
+    const { total } = await logApi(
+      {
+        page_size: 1,
+        page: 1,
+        sub_task_id: taskId,
+        task_job_name: job,
+        process_id: process,
+      },
+      {
+        showErr: false,
+        onCancel: (c: any) => {
+          axiosCanceler.current = c;
+        },
+      },
+    );
     const pageSize = logPageConfig.page_size;
     let maxPageIndex = Math.floor(total / pageSize) + 1;
     if (total === 0) maxPageIndex = 0; // 小优化

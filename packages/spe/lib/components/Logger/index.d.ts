@@ -19,7 +19,7 @@ export declare type LoggerParamsType = {
     subTaskIds?: number[];
     gpuPodNumber: number;
     initialActiveKey: string;
-    logApi: (params: any) => Promise<any>;
+    logApi: (params: any, extraConfig?: any) => Promise<any>;
     onDownload: () => void;
     onClose: (status: boolean) => void;
     getSubTaskLabel?: (id: number) => string;
