@@ -1,7 +1,7 @@
 {
-  "name": "@dcp-fe/dcp",
+  "name": "@sensetime/pro-dcp",
   "version": "1.0.1",
-  "description": "@dcp-fe/dcp",
+  "description": "pro-dcp",
   "keywords": [
     "antd",
     "dcp",

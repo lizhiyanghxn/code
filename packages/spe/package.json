@@ -1,7 +1,7 @@
 {
-  "name": "@dcp-fe/spe",
+  "name": "@sensetime/pro-spe",
   "version": "1.0.1",
-  "description": "@dcp-fe/spe",
+  "description": "pro-spe",
   "keywords": [
     "antd",
     "spe",
