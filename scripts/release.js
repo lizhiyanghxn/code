@@ -36,84 +36,86 @@ async function release() {
 
   // Check npm registry
   logStep('check npm registry');
-  const userRegistry = execa.sync('npm', ['config', 'get', 'registry']).stdout;
-  if (userRegistry.includes('https://registry.yarnpkg.com/')) {
-    printErrorAndExit(`Release failed, please use ${chalk.blue('npm run release')}.`);
-  }
-  if (!userRegistry.includes('https://registry.npmjs.org/')) {
-    const registry = chalk.blue('https://registry.npmjs.org/');
-    printErrorAndExit(`Release failed, npm registry must be ${registry}.`);
-  }
+  // const userRegistry = execa.sync('npm', ['config', 'get', 'registry']).stdout;
+  // if (userRegistry.includes('https://registry.yarnpkg.com/')) {
+  //   printErrorAndExit(`Release failed, please use ${chalk.blue('npm run release')}.`);
+  // }
+  // if (!userRegistry.includes('https://registry.npmjs.org/')) {
+  //   const registry = chalk.blue('https://registry.npmjs.org/');
+  //   printErrorAndExit(`Release failed, npm registry must be ${registry}.`);
+  // }
+
+  const userRegistry = 'https://npm-registry.sensetime.com';
 
   let updated = null;
 
-  if (!args.publishOnly) {
-    // Get updated packages
-    logStep('check updated packages');
-    const updatedStdout = execa.sync(lernaCli, ['changed']).stdout;
-    updated = updatedStdout
-      .split('\n')
-      .map((pkg) => {
-        return pkg.split('/')[1];
-      })
-      .filter(Boolean);
-    if (!updated.length) {
-      printErrorAndExit('Release failed, no updated package is updated.');
-    }
+  // if (!args.publishOnly) {
+  //   // Get updated packages
+  //   logStep('check updated packages');
+  //   const updatedStdout = execa.sync(lernaCli, ['changed']).stdout;
+  //   updated = updatedStdout
+  //     .split('\n')
+  //     .map((pkg) => {
+  //       return pkg.split('/')[1];
+  //     })
+  //     .filter(Boolean);
+  //   if (!updated.length) {
+  //     printErrorAndExit('Release failed, no updated package is updated.');
+  //   }
 
-    // Clean
-    logStep('clean');
+  //   // Clean
+  //   logStep('clean');
 
-    // Build
-    if (!args.skipBuild) {
-      logStep('build');
-      await exec('npm', ['run', 'build']);
-    } else {
-      logStep('build is skipped, since args.skipBuild is supplied');
-    }
+  //   // Build
+  //   if (!args.skipBuild) {
+  //     logStep('build');
+  //     await exec('npm', ['run', 'build']);
+  //   } else {
+  //     logStep('build is skipped, since args.skipBuild is supplied');
+  //   }
 
-    // Bump version
-    // Commit
-    // Git Tag
-    // Push
-    logStep('bump version with lerna version');
-    const conventionalGraduate = args.conventionalGraduate
-      ? ['--conventional-graduate'].concat(
-          Array.isArray(args.conventionalGraduate) ? args.conventionalGraduate.join(',') : [],
-        )
-      : [];
-    const conventionalPrerelease = args.conventionalPrerelease
-      ? ['--conventional-prerelease'].concat(
-          Array.isArray(args.conventionalPrerelease) ? args.conventionalPrerelease.join(',') : [],
-        )
-      : [];
-    await exec(
-      lernaCli,
-      [
-        'version',
-        '--exact',
-        // '--no-commit-hooks',
-        // '--no-git-tag-version',
-        // '--no-push',
-        '--message',
-        '🎨 chore(release): Publish',
-        '--conventional-commits',
-      ]
-        .concat(conventionalGraduate)
-        .concat(conventionalPrerelease),
-      {
-        shell: false,
-      },
-    );
-  }
+  //   // Bump version
+  //   // Commit
+  //   // Git Tag
+  //   // Push
+  //   logStep('bump version with lerna version');
+  //   const conventionalGraduate = args.conventionalGraduate
+  //     ? ['--conventional-graduate'].concat(
+  //         Array.isArray(args.conventionalGraduate) ? args.conventionalGraduate.join(',') : [],
+  //       )
+  //     : [];
+  //   const conventionalPrerelease = args.conventionalPrerelease
+  //     ? ['--conventional-prerelease'].concat(
+  //         Array.isArray(args.conventionalPrerelease) ? args.conventionalPrerelease.join(',') : [],
+  //       )
+  //     : [];
+  //   await exec(
+  //     lernaCli,
+  //     [
+  //       'version',
+  //       '--exact',
+  //       // '--no-commit-hooks',
+  //       // '--no-git-tag-version',
+  //       // '--no-push',
+  //       '--message',
+  //       '🎨 chore(release): Publish',
+  //       '--conventional-commits',
+  //     ]
+  //       .concat(conventionalGraduate)
+  //       .concat(conventionalPrerelease),
+  //     {
+  //       shell: false,
+  //     },
+  //   );
+  // }
 
   // Publish
   // Umi must be the latest.
-  const pkgs = args.publishOnly ? getPackages() : updated;
+  const pkgs = getPackages();
   logStep(`publish packages: ${chalk.blue(pkgs.join(', '))}`);
 
   pkgs.forEach((pkg, index) => {
-    const pkgPath = join(cwd, 'packages', pkg.replace('pro-', ''));
+    const pkgPath = join(cwd, 'packages', pkg);
     const { name, version } = require(join(pkgPath, 'package.json'));
     const isNext = isNextVersion(version);
     let isPackageExist = null;
@@ -128,14 +130,16 @@ async function release() {
         `[${index + 1}/${pkgs.length}] Publish package ${name} ${isNext ? 'with next tag' : ''}`,
       );
       const cliArgs = isNext ? ['publish', '--tag', 'next'] : ['publish'];
-      const { stdout } = execa.sync('npm', cliArgs, {
-        cwd: pkgPath,
-      });
-      console.log(stdout);
+
+      console.log('cliArgs', cliArgs, pkgPath);
+      // const { stdout } = execa.sync('npm', cliArgs, {
+      //   cwd: pkgPath,
+      // });
+      // console.log(stdout);
     }
   });
 
-  await exec('npm', ['run', 'prettier']);
+  // await exec('npm', ['run', 'prettier']);
 
   logStep('done');
 }
