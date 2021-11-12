@@ -29,3 +29,11 @@ yarn start
 ```bash
 yarn build
 ```
+
+## 推送公司 npm 仓库
+
+需要首先手动调整 spe 和 dcp 下的版本号
+
+```bash
+yarn release
+```
