@@ -57,7 +57,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     show, // 日志弹框展示
     showInit = false, // 弹框打开时控制刷新日志（show 和 id等变化时触发）
     initialLogTabs = [], // 日志
-    subTaskIds = [], //超参子任务, null或者空数组表示不是超参搜素
+    subTaskIds = [], // 超参子任务, null或者空数组表示不是超参搜素
     gpuPodNumber = 1, // 进程数量
     initialActiveKey = 'dataconverter', // 初始激活TAB（当前）
     logApi, // 获取LOG的API接口，path参数请预先传入
@@ -86,201 +86,6 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
   const scrollNodeRefs = useRef(logTabs.map(() => React.createRef<HTMLDivElement>()));
 
-  useEffect(() => {
-    if (showInit) {
-      showLog();
-    }
-  }, [showInit]);
-
-  const loggerRefresh = async () => {
-    setHasMore(true);
-    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
-    setIsReverse(true);
-    fetchLogs({ pageConfig: defaultLogPageConfig });
-  };
-
-  const onQuickSkipTop = () => {
-    setIsReverse(false);
-    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
-    logPageConfig = {
-      ...defaultLogPageConfig,
-      page: 1,
-    };
-    fetchLogs({ pageConfig: logPageConfig, reverse: false });
-  };
-
-  const onQuickSkipBottom = async () => {
-    setIsReverse(true);
-    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
-    fetchLogs({ pageConfig: defaultLogPageConfig });
-  };
-
-  const loggerLoadMore = () => {
-    if (loading) {
-      return;
-    }
-    const newConfig = {
-      ...logPageConfig,
-      page: isReverse ? logPageConfig.page - 1 : logPageConfig.page + 1,
-    };
-    logPageConfig = newConfig;
-    fetchLogs({ pageConfig: newConfig, isLoadMore: true, reverse: isReverse });
-  };
-
-  const setLogSubTaskId = async (id: number) => {
-    setHasMore(true);
-    setSubTaskId(id);
-    setActiveKey(initialActiveKey);
-    setActiveProcessId(0);
-    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
-    setIsReverse(true);
-    fetchLogs({ pageConfig: defaultLogPageConfig, taskId: id, job: initialActiveKey, process: 0 });
-  };
-
-  const setLogActiveTab = async (tabKey: string) => {
-    setHasMore(true);
-    setActiveKey(tabKey);
-    setActiveProcessId(0);
-    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
-    setIsReverse(true);
-    fetchLogs({ pageConfig: defaultLogPageConfig, job: tabKey, process: 0 });
-  };
-
-  const setLogProgressId = async (id: number) => {
-    setHasMore(true);
-    setActiveProcessId(id);
-    setLogTabs((logTabs: logTab[]) => logTabs.map((tab) => ({ ...tab, logs: [] })));
-    setIsReverse(true);
-    fetchLogs({ pageConfig: defaultLogPageConfig, process: id });
-  };
-
-  const showLog = async () => {
-    updateLogTabs();
-    setSubTaskId(subTaskIds?.[0]);
-    setActiveKey(initialActiveKey);
-    setActiveProcessId(0);
-    setHasMore(true);
-    fetchLogs({
-      pageConfig: defaultLogPageConfig,
-      taskId: subTaskIds?.[0],
-      job: initialActiveKey,
-      process: 0,
-    });
-  };
-
-  /** 初始化清空日志内容 */
-  const updateLogTabs = () => {
-    const processList = [];
-    for (let i = 0; i < gpuPodNumber; i++) {
-      processList.push({ label: getProcessLabel(i), value: i });
-    }
-    logTabs.forEach((tab: logTab) => {
-      if (tab.key === initialActiveKey) {
-        tab.title = tab.activeTitle;
-      } else {
-        tab.title = tab.defaultTitle;
-      }
-    });
-    const newLogTabs = logTabs.slice(0);
-    newLogTabs[0].logs = [];
-    newLogTabs[1].logs = [];
-    newLogTabs[1].processList = processList;
-    setLogTabs(newLogTabs);
-  };
-
-  const fetchLogs = async ({
-    pageConfig = {} as any,
-    isLoadMore = false,
-    reverse = true,
-    taskId = subTaskId,
-    job = activeKey,
-    process = activeProcessId,
-  }) => {
-    setLoading(true);
-    axiosCanceler.current && axiosCanceler.current();
-    let list = [];
-    let total = 0;
-    if (!isLoadMore && reverse) {
-      // 反向初次加载，需要获取总页数，需要额外查询倒数第二页（防止条数过少）
-      const maxPageIndex = await calcMaxPageIndex({ taskId, job, process });
-      if (maxPageIndex !== 0) {
-        const res = await logApi(
-          {
-            ...pageConfig,
-            page: maxPageIndex,
-            sub_task_id: taskId,
-            task_job_name: job,
-            process_id: process,
-          },
-          {
-            showErr: false,
-            onCancel: (c: any) => {
-              axiosCanceler.current = c;
-            },
-          },
-        ).then((res) => {
-          logPageConfig.page = maxPageIndex;
-          return res;
-        });
-        const appendList = await logApi(
-          {
-            ...pageConfig,
-            page: maxPageIndex - 1,
-            sub_task_id: taskId,
-            task_job_name: job,
-            process_id: process,
-          },
-          {
-            showErr: false,
-            onCancel: (c: any) => {
-              axiosCanceler.current = c;
-            },
-          },
-        ).then((res) => {
-          logPageConfig.page = maxPageIndex - 1;
-          return res.list;
-        });
-        list = appendList.concat(res.list);
-        total = res.total;
-      }
-    } else {
-      const res = await logApi(
-        {
-          ...pageConfig,
-          sub_task_id: taskId,
-          task_job_name: job,
-          process_id: process,
-        },
-        {
-          showErr: false,
-          onCancel: (c: any) => {
-            axiosCanceler.current = c;
-          },
-        },
-      );
-      list = res.list;
-      total = res.total;
-    }
-
-    const tabIndex = logTabs.findIndex((tab) => tab.key === job);
-    const tab = logTabs[tabIndex];
-    const newLogs = isLoadMore ? (reverse ? list.concat(tab.logs) : tab.logs.concat(list)) : list;
-    const newTabs = logTabs.slice();
-    newTabs[tabIndex] = {
-      ...tab,
-      logs: newLogs,
-    };
-    setLogTabs(newTabs);
-    setLoading(false);
-    setHasMore(newLogs.length < total && list.length > 0); // 这里多加一个条件，list无数据结束掉更多请求
-
-    // 反向初次加载，滚动条滑到底部
-    if (!isLoadMore && reverse) {
-      const ele = scrollNodeRefs.current[tabIndex].current as HTMLDivElement;
-      ele && (ele.scrollTop = ele.scrollHeight);
-    }
-  };
-
   const calcMaxPageIndex = async ({
     taskId = subTaskId,
     job = activeKey,
@@ -307,12 +112,216 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     return maxPageIndex;
   };
 
+  const fetchLogs = async ({
+    pageConfig = {} as any,
+    isLoadMore = false,
+    reverse = true,
+    taskId = subTaskId,
+    job = activeKey,
+    process = activeProcessId,
+  }) => {
+    setLoading(true);
+    if (axiosCanceler.current) axiosCanceler.current();
+    let list = [];
+    let total = 0;
+    try {
+      if (!isLoadMore && reverse) {
+        // 反向初次加载，需要获取总页数，需要额外查询倒数第二页（防止条数过少）
+        const maxPageIndex = await calcMaxPageIndex({ taskId, job, process });
+        if (maxPageIndex !== 0) {
+          const res = await logApi(
+            {
+              ...pageConfig,
+              page: maxPageIndex,
+              sub_task_id: taskId,
+              task_job_name: job,
+              process_id: process,
+            },
+            {
+              showErr: false,
+              onCancel: (c: any) => {
+                axiosCanceler.current = c;
+              },
+            },
+          ).then((result) => {
+            logPageConfig.page = maxPageIndex;
+            return result;
+          });
+          const appendList = await logApi(
+            {
+              ...pageConfig,
+              page: maxPageIndex - 1,
+              sub_task_id: taskId,
+              task_job_name: job,
+              process_id: process,
+            },
+            {
+              showErr: false,
+              onCancel: (c: any) => {
+                axiosCanceler.current = c;
+              },
+            },
+          ).then((result) => {
+            logPageConfig.page = maxPageIndex - 1;
+            return result.list;
+          });
+          list = appendList.concat(res.list);
+          total = res.total;
+        }
+      } else {
+        const res = await logApi(
+          {
+            ...pageConfig,
+            sub_task_id: taskId,
+            task_job_name: job,
+            process_id: process,
+          },
+          {
+            showErr: false,
+            onCancel: (c: any) => {
+              axiosCanceler.current = c;
+            },
+          },
+        );
+        list = res.list;
+        total = res.total;
+      }
+    } catch (err) {
+      if (err.status) {
+        console.log('fetchLogs error:', err);
+      }
+    }
+
+    const tabIndex = logTabs.findIndex((tab) => tab.key === job);
+    const tab = logTabs[tabIndex];
+    // eslint-disable-next-line no-nested-ternary
+    const newLogs = isLoadMore ? (reverse ? list.concat(tab.logs) : tab.logs.concat(list)) : list;
+    const newTabs = logTabs.slice();
+    newTabs[tabIndex] = {
+      ...tab,
+      logs: newLogs,
+    };
+    setLogTabs(newTabs);
+    setLoading(false);
+    setHasMore(newLogs.length < total && list.length > 0); // 这里多加一个条件，list无数据结束掉更多请求
+
+    // 反向初次加载，滚动条滑到底部
+    if (!isLoadMore && reverse) {
+      const ele = scrollNodeRefs.current[tabIndex].current as HTMLDivElement;
+      if (ele) ele.scrollTop = ele.scrollHeight;
+    }
+  };
+
+  /** 初始化清空日志内容 */
+  const updateLogTabs = () => {
+    const processList = [];
+    for (let i = 0; i < gpuPodNumber; i += 1) {
+      processList.push({ label: getProcessLabel(i), value: i });
+    }
+    logTabs.forEach((tab: logTab) => {
+      if (tab.key === initialActiveKey) {
+        // eslint-disable-next-line no-param-reassign
+        tab.title = tab.activeTitle;
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        tab.title = tab.defaultTitle;
+      }
+    });
+    const newLogTabs = logTabs.slice(0);
+    newLogTabs[0].logs = [];
+    newLogTabs[1].logs = [];
+    newLogTabs[1].processList = processList;
+    setLogTabs(newLogTabs);
+  };
+
+  const showLog = async () => {
+    updateLogTabs();
+    setSubTaskId(subTaskIds?.[0]);
+    setActiveKey(initialActiveKey);
+    setActiveProcessId(0);
+    setHasMore(true);
+    fetchLogs({
+      pageConfig: defaultLogPageConfig,
+      taskId: subTaskIds?.[0],
+      job: initialActiveKey,
+      process: 0,
+    });
+  };
+
+  useEffect(() => {
+    if (showInit) {
+      showLog();
+    }
+  }, [showInit]);
+
+  const loggerRefresh = async () => {
+    setHasMore(true);
+    setLogTabs((tabs: logTab[]) => tabs.map((tab) => ({ ...tab, logs: [] })));
+    setIsReverse(true);
+    fetchLogs({ pageConfig: defaultLogPageConfig });
+  };
+
+  const onQuickSkipTop = () => {
+    setIsReverse(false);
+    setLogTabs((tabs: logTab[]) => tabs.map((tab) => ({ ...tab, logs: [] })));
+    logPageConfig = {
+      ...defaultLogPageConfig,
+      page: 1,
+    };
+    fetchLogs({ pageConfig: logPageConfig, reverse: false });
+  };
+
+  const onQuickSkipBottom = async () => {
+    setIsReverse(true);
+    setLogTabs((tabs: logTab[]) => tabs.map((tab) => ({ ...tab, logs: [] })));
+    fetchLogs({ pageConfig: defaultLogPageConfig });
+  };
+
+  const loggerLoadMore = () => {
+    if (loading) {
+      return;
+    }
+    const newConfig = {
+      ...logPageConfig,
+      page: isReverse ? logPageConfig.page - 1 : logPageConfig.page + 1,
+    };
+    logPageConfig = newConfig;
+    fetchLogs({ pageConfig: newConfig, isLoadMore: true, reverse: isReverse });
+  };
+
+  const setLogSubTaskId = async (id: number) => {
+    setHasMore(true);
+    setSubTaskId(id);
+    setActiveKey(initialActiveKey);
+    setActiveProcessId(0);
+    setLogTabs((tabs: logTab[]) => tabs.map((tab) => ({ ...tab, logs: [] })));
+    setIsReverse(true);
+    fetchLogs({ pageConfig: defaultLogPageConfig, taskId: id, job: initialActiveKey, process: 0 });
+  };
+
+  const setLogActiveTab = async (tabKey: string) => {
+    setHasMore(true);
+    setActiveKey(tabKey);
+    setActiveProcessId(0);
+    setLogTabs((tabs: logTab[]) => tabs.map((tab) => ({ ...tab, logs: [] })));
+    setIsReverse(true);
+    fetchLogs({ pageConfig: defaultLogPageConfig, job: tabKey, process: 0 });
+  };
+
+  const setLogProgressId = async (id: number) => {
+    setHasMore(true);
+    setActiveProcessId(id);
+    setLogTabs((tabs: logTab[]) => tabs.map((tab) => ({ ...tab, logs: [] })));
+    setIsReverse(true);
+    fetchLogs({ pageConfig: defaultLogPageConfig, process: id });
+  };
+
   return (
     <>
       <Modal
         title={
           <>
-            {title}
+            <span className="title">{title}</span>
             {subTaskIds?.length ? (
               <Select value={subTaskId} onChange={setLogSubTaskId}>
                 {subTaskIds.map((taskId) => (
@@ -390,8 +399,8 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
                   <List
                     dataSource={logItem.logs}
                     locale={{ emptyText: hasMore || loading ? '' : logEmptyMsg }}
-                    renderItem={(item, index) => (
-                      <List.Item key={index}>
+                    renderItem={(item, i) => (
+                      <List.Item key={i}>
                         <div className="log">
                           <div className="log-time">{item.date}</div>
                           <div
