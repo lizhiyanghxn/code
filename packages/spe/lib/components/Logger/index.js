@@ -152,7 +152,7 @@ var Logger = function Logger(props) {
       setLogTabs = _useState14[1];
 
   var axiosCanceler = (0, _react.useRef)(null);
-  var scrollNodeRefs = (0, _react.useRef)(logTabs.map(function () {
+  var scrollNodeRefs = (0, _react.useRef)(initialLogTabs.map(function () {
     return /*#__PURE__*/_react.default.createRef();
   }));
 
@@ -203,40 +203,66 @@ var Logger = function Logger(props) {
 
   var fetchLogs = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(_ref3) {
-      var _ref3$pageConfig, pageConfig, _ref3$isLoadMore, isLoadMore, _ref3$reverse, reverse, _ref3$taskId, taskId, _ref3$job, job, _ref3$process, process, list, total, maxPageIndex, res, appendList, _res, tabIndex, tab, newLogs, newTabs, ele;
+      var _ref3$pageConfig,
+          pageConfig,
+          _ref3$isLoadMore,
+          isLoadMore,
+          _ref3$reverse,
+          reverse,
+          _ref3$taskId,
+          taskId,
+          _ref3$job,
+          job,
+          _ref3$process,
+          process,
+          _logTabs,
+          list,
+          total,
+          maxPageIndex,
+          res,
+          appendList,
+          _res,
+          tabIndex,
+          tab,
+          newLogs,
+          newTabs,
+          _scrollNodeRefs$curre,
+          ele,
+          _args2 = arguments;
 
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _ref3$pageConfig = _ref3.pageConfig, pageConfig = _ref3$pageConfig === void 0 ? {} : _ref3$pageConfig, _ref3$isLoadMore = _ref3.isLoadMore, isLoadMore = _ref3$isLoadMore === void 0 ? false : _ref3$isLoadMore, _ref3$reverse = _ref3.reverse, reverse = _ref3$reverse === void 0 ? true : _ref3$reverse, _ref3$taskId = _ref3.taskId, taskId = _ref3$taskId === void 0 ? subTaskId : _ref3$taskId, _ref3$job = _ref3.job, job = _ref3$job === void 0 ? activeKey : _ref3$job, _ref3$process = _ref3.process, process = _ref3$process === void 0 ? activeProcessId : _ref3$process;
+              _logTabs = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : logTabs;
               setLoading(true);
               if (axiosCanceler.current) axiosCanceler.current();
               list = [];
               total = 0;
-              _context2.prev = 5;
+              _context2.prev = 6;
 
               if (!(!isLoadMore && reverse)) {
-                _context2.next = 21;
+                _context2.next = 22;
                 break;
               }
 
-              _context2.next = 9;
+              _context2.next = 10;
               return calcMaxPageIndex({
                 taskId: taskId,
                 job: job,
                 process: process
               });
 
-            case 9:
+            case 10:
               maxPageIndex = _context2.sent;
 
               if (!(maxPageIndex !== 0)) {
-                _context2.next = 19;
+                _context2.next = 20;
                 break;
               }
 
-              _context2.next = 13;
+              _context2.next = 14;
               return logApi(_objectSpread(_objectSpread({}, pageConfig), {}, {
                 page: maxPageIndex,
                 sub_task_id: taskId,
@@ -252,9 +278,9 @@ var Logger = function Logger(props) {
                 return result;
               });
 
-            case 13:
+            case 14:
               res = _context2.sent;
-              _context2.next = 16;
+              _context2.next = 17;
               return logApi(_objectSpread(_objectSpread({}, pageConfig), {}, {
                 page: maxPageIndex - 1,
                 sub_task_id: taskId,
@@ -270,17 +296,17 @@ var Logger = function Logger(props) {
                 return result.list;
               });
 
-            case 16:
+            case 17:
               appendList = _context2.sent;
               list = appendList.concat(res.list);
               total = res.total;
 
-            case 19:
-              _context2.next = 26;
+            case 20:
+              _context2.next = 27;
               break;
 
-            case 21:
-              _context2.next = 23;
+            case 22:
+              _context2.next = 24;
               return logApi(_objectSpread(_objectSpread({}, pageConfig), {}, {
                 sub_task_id: taskId,
                 task_job_name: job,
@@ -292,31 +318,31 @@ var Logger = function Logger(props) {
                 }
               });
 
-            case 23:
+            case 24:
               _res = _context2.sent;
               list = _res.list;
               total = _res.total;
 
-            case 26:
-              _context2.next = 31;
+            case 27:
+              _context2.next = 32;
               break;
 
-            case 28:
-              _context2.prev = 28;
-              _context2.t0 = _context2["catch"](5);
+            case 29:
+              _context2.prev = 29;
+              _context2.t0 = _context2["catch"](6);
 
               if (_context2.t0.status) {
                 console.log('fetchLogs error:', _context2.t0);
               }
 
-            case 31:
-              tabIndex = logTabs.findIndex(function (tab) {
+            case 32:
+              tabIndex = _logTabs.findIndex(function (tab) {
                 return tab.key === job;
               });
-              tab = logTabs[tabIndex]; // eslint-disable-next-line no-nested-ternary
+              tab = _logTabs[tabIndex]; // eslint-disable-next-line no-nested-ternary
 
               newLogs = isLoadMore ? reverse ? list.concat(tab.logs) : tab.logs.concat(list) : list;
-              newTabs = logTabs.slice();
+              newTabs = _logTabs.slice();
               newTabs[tabIndex] = _objectSpread(_objectSpread({}, tab), {}, {
                 logs: newLogs
               });
@@ -326,16 +352,16 @@ var Logger = function Logger(props) {
               // 反向初次加载，滚动条滑到底部
 
               if (!isLoadMore && reverse) {
-                ele = scrollNodeRefs.current[tabIndex].current;
+                ele = (_scrollNodeRefs$curre = scrollNodeRefs.current[tabIndex]) === null || _scrollNodeRefs$curre === void 0 ? void 0 : _scrollNodeRefs$curre.current;
                 if (ele) ele.scrollTop = ele.scrollHeight;
               }
 
-            case 40:
+            case 41:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[5, 28]]);
+      }, _callee2, null, [[6, 29]]);
     }));
 
     return function fetchLogs(_x2) {
@@ -345,7 +371,7 @@ var Logger = function Logger(props) {
   /** 初始化清空日志内容 */
 
 
-  var updateLogTabs = function updateLogTabs() {
+  var updateLogTabs = function updateLogTabs(_logTabs) {
     var processList = [];
 
     for (var i = 0; i < gpuPodNumber; i += 1) {
@@ -355,64 +381,42 @@ var Logger = function Logger(props) {
       });
     }
 
-    logTabs.forEach(function (tab) {
-      if (tab.key === initialActiveKey) {
-        // eslint-disable-next-line no-param-reassign
-        tab.title = tab.activeTitle;
-      } else {
-        // eslint-disable-next-line no-param-reassign
-        tab.title = tab.defaultTitle;
-      }
+    var newLogTabs = _logTabs.map(function (logTab, index) {
+      return _objectSpread(_objectSpread({}, logTab), {}, {
+        logs: [],
+        processList: index === 1 ? processList : logTab.processList,
+        title: logTab.key === initialActiveKey ? logTab.activeTitle : logTab.defaultTitle
+      });
     });
-    var newLogTabs = logTabs.slice(0);
-    newLogTabs[0].logs = [];
-    newLogTabs[1].logs = [];
-    newLogTabs[1].processList = processList;
-    setLogTabs(newLogTabs);
+
+    return newLogTabs;
   };
 
-  var showLog = /*#__PURE__*/function () {
+  (0, _react.useEffect)(function () {
+    if (show) {
+      var newLogTabs = updateLogTabs(initialLogTabs);
+      setLogTabs(newLogTabs);
+      scrollNodeRefs.current = newLogTabs.map(function () {
+        return /*#__PURE__*/_react.default.createRef();
+      });
+      setSubTaskId(subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds[0]);
+      setActiveKey(initialActiveKey);
+      setActiveProcessId(0);
+      setHasMore(true);
+      fetchLogs({
+        pageConfig: defaultLogPageConfig,
+        taskId: (subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds[0]) || '',
+        job: initialActiveKey,
+        process: 0
+      }, newLogTabs);
+    }
+  }, [showInit, subTaskIds, initialActiveKey, initialLogTabs]);
+
+  var loggerRefresh = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
       return regeneratorRuntime.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
-            case 0:
-              updateLogTabs();
-              setSubTaskId(subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds[0]);
-              setActiveKey(initialActiveKey);
-              setActiveProcessId(0);
-              setHasMore(true);
-              fetchLogs({
-                pageConfig: defaultLogPageConfig,
-                taskId: subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds[0],
-                job: initialActiveKey,
-                process: 0
-              });
-
-            case 6:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-
-    return function showLog() {
-      return _ref5.apply(this, arguments);
-    };
-  }();
-
-  (0, _react.useEffect)(function () {
-    if (showInit) {
-      showLog();
-    }
-  }, [showInit]);
-
-  var loggerRefresh = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-      return regeneratorRuntime.wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
             case 0:
               setHasMore(true);
               setLogTabs(function (tabs) {
@@ -429,14 +433,14 @@ var Logger = function Logger(props) {
 
             case 4:
             case "end":
-              return _context4.stop();
+              return _context3.stop();
           }
         }
-      }, _callee4);
+      }, _callee3);
     }));
 
     return function loggerRefresh() {
-      return _ref6.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -459,10 +463,10 @@ var Logger = function Logger(props) {
   };
 
   var onQuickSkipBottom = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+      return regeneratorRuntime.wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
               setIsReverse(true);
               setLogTabs(function (tabs) {
@@ -478,14 +482,14 @@ var Logger = function Logger(props) {
 
             case 3:
             case "end":
-              return _context5.stop();
+              return _context4.stop();
           }
         }
-      }, _callee5);
+      }, _callee4);
     }));
 
     return function onQuickSkipBottom() {
-      return _ref7.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
 
@@ -507,10 +511,10 @@ var Logger = function Logger(props) {
   };
 
   var setLogSubTaskId = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(id) {
-      return regeneratorRuntime.wrap(function _callee6$(_context6) {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(id) {
+      return regeneratorRuntime.wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context6.prev = _context6.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
               setHasMore(true);
               setSubTaskId(id);
@@ -533,22 +537,22 @@ var Logger = function Logger(props) {
 
             case 7:
             case "end":
-              return _context6.stop();
+              return _context5.stop();
           }
         }
-      }, _callee6);
+      }, _callee5);
     }));
 
     return function setLogSubTaskId(_x3) {
-      return _ref8.apply(this, arguments);
+      return _ref7.apply(this, arguments);
     };
   }();
 
   var setLogActiveTab = /*#__PURE__*/function () {
-    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(tabKey) {
-      return regeneratorRuntime.wrap(function _callee7$(_context7) {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(tabKey) {
+      return regeneratorRuntime.wrap(function _callee6$(_context6) {
         while (1) {
-          switch (_context7.prev = _context7.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               setHasMore(true);
               setActiveKey(tabKey);
@@ -569,22 +573,22 @@ var Logger = function Logger(props) {
 
             case 6:
             case "end":
-              return _context7.stop();
+              return _context6.stop();
           }
         }
-      }, _callee7);
+      }, _callee6);
     }));
 
     return function setLogActiveTab(_x4) {
-      return _ref9.apply(this, arguments);
+      return _ref8.apply(this, arguments);
     };
   }();
 
   var setLogProgressId = /*#__PURE__*/function () {
-    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(id) {
-      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(id) {
+      return regeneratorRuntime.wrap(function _callee7$(_context7) {
         while (1) {
-          switch (_context8.prev = _context8.next) {
+          switch (_context7.prev = _context7.next) {
             case 0:
               setHasMore(true);
               setActiveProcessId(id);
@@ -603,14 +607,14 @@ var Logger = function Logger(props) {
 
             case 5:
             case "end":
-              return _context8.stop();
+              return _context7.stop();
           }
         }
-      }, _callee8);
+      }, _callee7);
     }));
 
     return function setLogProgressId(_x5) {
-      return _ref10.apply(this, arguments);
+      return _ref9.apply(this, arguments);
     };
   }();
 

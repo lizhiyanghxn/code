@@ -84,7 +84,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
   const axiosCanceler = useRef<any>(null);
 
-  const scrollNodeRefs = useRef(logTabs.map(() => React.createRef<HTMLDivElement>()));
+  const scrollNodeRefs = useRef(initialLogTabs.map(() => React.createRef<HTMLDivElement>()));
 
   const calcMaxPageIndex = async ({
     taskId = subTaskId,
@@ -112,14 +112,17 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     return maxPageIndex;
   };
 
-  const fetchLogs = async ({
-    pageConfig = {} as any,
-    isLoadMore = false,
-    reverse = true,
-    taskId = subTaskId,
-    job = activeKey,
-    process = activeProcessId,
-  }) => {
+  const fetchLogs = async (
+    {
+      pageConfig = {} as any,
+      isLoadMore = false,
+      reverse = true,
+      taskId = subTaskId as any,
+      job = activeKey,
+      process = activeProcessId,
+    },
+    _logTabs = logTabs,
+  ) => {
     setLoading(true);
     if (axiosCanceler.current) axiosCanceler.current();
     let list = [];
@@ -192,11 +195,11 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
       }
     }
 
-    const tabIndex = logTabs.findIndex((tab) => tab.key === job);
-    const tab = logTabs[tabIndex];
+    const tabIndex = _logTabs.findIndex((tab) => tab.key === job);
+    const tab = _logTabs[tabIndex];
     // eslint-disable-next-line no-nested-ternary
     const newLogs = isLoadMore ? (reverse ? list.concat(tab.logs) : tab.logs.concat(list)) : list;
-    const newTabs = logTabs.slice();
+    const newTabs = _logTabs.slice();
     newTabs[tabIndex] = {
       ...tab,
       logs: newLogs,
@@ -207,52 +210,48 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
     // 反向初次加载，滚动条滑到底部
     if (!isLoadMore && reverse) {
-      const ele = scrollNodeRefs.current[tabIndex].current as HTMLDivElement;
+      const ele = scrollNodeRefs.current[tabIndex]?.current as HTMLDivElement;
       if (ele) ele.scrollTop = ele.scrollHeight;
     }
   };
 
   /** 初始化清空日志内容 */
-  const updateLogTabs = () => {
-    const processList = [];
+  const updateLogTabs = (_logTabs: logTab[]) => {
+    const processList: any[] = [];
     for (let i = 0; i < gpuPodNumber; i += 1) {
       processList.push({ label: getProcessLabel(i), value: i });
     }
-    logTabs.forEach((tab: logTab) => {
-      if (tab.key === initialActiveKey) {
-        // eslint-disable-next-line no-param-reassign
-        tab.title = tab.activeTitle;
-      } else {
-        // eslint-disable-next-line no-param-reassign
-        tab.title = tab.defaultTitle;
-      }
+    const newLogTabs = _logTabs.map((logTab, index) => {
+      return {
+        ...logTab,
+        logs: [],
+        processList: index === 1 ? processList : logTab.processList,
+        title: logTab.key === initialActiveKey ? logTab.activeTitle : logTab.defaultTitle,
+      };
     });
-    const newLogTabs = logTabs.slice(0);
-    newLogTabs[0].logs = [];
-    newLogTabs[1].logs = [];
-    newLogTabs[1].processList = processList;
-    setLogTabs(newLogTabs);
-  };
-
-  const showLog = async () => {
-    updateLogTabs();
-    setSubTaskId(subTaskIds?.[0]);
-    setActiveKey(initialActiveKey);
-    setActiveProcessId(0);
-    setHasMore(true);
-    fetchLogs({
-      pageConfig: defaultLogPageConfig,
-      taskId: subTaskIds?.[0],
-      job: initialActiveKey,
-      process: 0,
-    });
+    return newLogTabs;
   };
 
   useEffect(() => {
-    if (showInit) {
-      showLog();
+    if (show) {
+      const newLogTabs = updateLogTabs(initialLogTabs);
+      setLogTabs(newLogTabs);
+      scrollNodeRefs.current = newLogTabs.map(() => React.createRef<HTMLDivElement>());
+      setSubTaskId(subTaskIds?.[0]);
+      setActiveKey(initialActiveKey);
+      setActiveProcessId(0);
+      setHasMore(true);
+      fetchLogs(
+        {
+          pageConfig: defaultLogPageConfig,
+          taskId: subTaskIds?.[0] || '',
+          job: initialActiveKey,
+          process: 0,
+        },
+        newLogTabs,
+      );
     }
-  }, [showInit]);
+  }, [showInit, subTaskIds, initialActiveKey, initialLogTabs]);
 
   const loggerRefresh = async () => {
     setHasMore(true);
