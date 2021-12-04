@@ -251,7 +251,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
         newLogTabs,
       );
     }
-  }, [showInit, subTaskIds, initialActiveKey, initialLogTabs]);
+  }, [showInit]);
 
   const loggerRefresh = async () => {
     setHasMore(true);

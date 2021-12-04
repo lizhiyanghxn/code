@@ -410,7 +410,7 @@ var Logger = function Logger(props) {
         process: 0
       }, newLogTabs);
     }
-  }, [showInit, subTaskIds, initialActiveKey, initialLogTabs]);
+  }, [showInit]);
 
   var loggerRefresh = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
