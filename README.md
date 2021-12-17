@@ -32,7 +32,7 @@ yarn build
 
 ## 推送公司 npm 仓库
 
-需要首先手动调整 spe 和 dcp 下的版本号
+- 包含 build 构建过程，自动升级版本，changelog 生成，发布 npm 仓库等。参考脚本说明 [release.js](./scripts/release.js)
 
 ```bash
 yarn release
