@@ -23,7 +23,8 @@
     "tsc": "tsc --noEmit",
     "tsc:duplicate": "tsc -p ./tests/tsconfig.duplicate.json",
     "update:deps": "yarn upgrade-interactive --latest",
-    "release": "cross-env GL_API_URL=https://gitlab.sz.sensetime.com/api/v4 GL_TOKEN=UVNcY-BmSshm9w4W1jWY node ./scripts/release.js"
+    "release": "cross-env GL_API_URL=https://gitlab.sz.sensetime.com/api/v4 GL_TOKEN=UVNcY-BmSshm9w4W1jWY node ./scripts/release.js",
+    "yalc-push:spe": "npm run build && cd './packages/spe' && yalc push"
   },
   "browserslist": [
     "last 2 versions",

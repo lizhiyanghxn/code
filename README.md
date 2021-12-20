@@ -32,8 +32,36 @@ yarn build
 
 ## 推送公司 npm 仓库
 
-- 包含 build 构建过程，自动升级版本，changelog 生成，发布 npm 仓库等。参考脚本说明 [release.js](./scripts/release.js)
+包含 build 构建过程，自动升级版本，changelog 生成，发布 npm 仓库等。参考脚本说明 [release.js](./scripts/release.js)
 
 ```bash
 yarn release
+```
+
+## 本地在业务项目中调试
+
+1. 前置准备：全局安装 yalc
+
+```bash
+yarn global add yalc
+```
+
+2. 发布 Spe 组件库到本地，每次修改代码后也需要执行（已经包含了 build）
+
+```bash
+yarn yalc-push:spe
+```
+
+3. 业务项目
+
+- 开启调试：添加本地依赖
+
+```bash
+yarn yalc-add:spe
+```
+
+- 结束调试：恢复线上依赖
+
+```bash
+yarn yalc-remove
 ```
