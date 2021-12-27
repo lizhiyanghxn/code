@@ -12,9 +12,23 @@
     "**/*.e2e.ts",
     "**/demos/**",
     "**/fixtures/**",
-    "**/dist/**",
-    "**/lib/**",
-    "**/es/**",
     "**/test/**"
-  ]
+  ],
+  "changelogPreset": {
+    "name": "conventionalcommits",
+    "issueUrlFormat": "jira.sensetime.com/browse/{{id}}"
+  },
+  "command": {
+    "version": {
+      "allowBranch": ["master", "dev/release-taomin"],
+      "conventionalCommits": true,
+      "createRelease": "gitlab",
+      "exact": true,
+      "message": "🎨 chore(release): publish"
+    },
+    "publish": {
+      "allowBranch": ["master", "dev/release-taomin"],
+      "registry": "https://npm-registry.sensetime.com"
+    }
+  }
 }
