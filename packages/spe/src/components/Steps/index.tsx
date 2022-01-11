@@ -1,7 +1,6 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
 import cs from 'classnames';
-import './index.scss';
 
 export type StepsPropsType = HTMLAttributes<HTMLDivElement> & {
   currentStep?: number; // 当前步

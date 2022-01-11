@@ -1,82 +1,63 @@
-import React, { useMemo, useRef } from 'react';
-import cs from 'classnames';
-import { Pagination } from 'antd';
-import Breadcrumb from '../Breadcrumb';
-import type { PaginationProps } from 'antd/lib/pagination';
-import type { BreadcrumbPropsType } from '../Breadcrumb';
-import './BasicView.scss';
-
-export type BasicViewPropsType = BreadcrumbPropsType & {
-  viewType?: string; // List: 常用列表 / IncludeSublist: 包含子列表 / TabList: 切换列表 /  Details: 详情页 / Step: 步骤页
-  toolEle?: any; // 自定义内容区顶部的元素
-  pagingConfig?: null | PaginationProps; // 分页的原始配置
-  headerRightEle?: React.ReactElement;
-  bodyNoScroll?: boolean;
-};
+import React from 'react';
+import { Breadcrumb } from '../../index';
 
 /*
- * 功能：基础 layout view，衍生出详情页，列表页，手风琴列表页，tabs子页面，Step 步骤页
+ * BasicView
+ * 配置 routers, headerRightElement, footerActions(按钮数组)
+ * 面包屑导航 + Content + 页脚按钮
+ * 使用场景：基础布局，基础布局2
  */
+
+export type BasicViewPropsType = {
+  noHeader?: boolean; // 是否显示头部信息
+  routers?: []; // [{ title: '列表', click: fn }]
+  headerRightElement?: React.ReactElement;
+  footerActions?: React.ReactElement[];
+  className?: string;
+};
 
 const BasicView: React.FC<BasicViewPropsType> = (props) => {
   const {
-    routersList,
-    viewType,
-    toolEle,
-    pagingConfig,
+    noHeader = false,
+    routers,
+    headerRightElement,
+    footerActions = [],
+    className = '',
     children,
-    headerRightEle,
-    bodyNoScroll,
     ...rest
   } = props;
 
-  const bsRef = useRef(null);
-
-  const isList = useMemo(() => viewType === 'List', [viewType]);
-  const isSubList = useMemo(() => viewType === 'IncludeSublist', [viewType]);
-  const isTabList = useMemo(() => viewType === 'TabList', [viewType]);
-
-  /** TabList 的 children 为函数 */
-  const getPagination = pagingConfig?.total && (
-    <Pagination className="page-custom" {...pagingConfig} />
+  const renderHeader = () => (
+    <header className="view-header">
+      <div className="view-base-title">
+        <section className="view-header-left">
+          <Breadcrumb routersList={routers} />
+        </section>
+        <section className="view-header-right">{headerRightElement}</section>
+      </div>
+    </header>
   );
 
-  const headerHasBottomBorder = isTabList;
+  const renderFooterAction = () => {
+    if (footerActions.length > 0) {
+      return (
+        <div className="footer-actions">
+          <div className="btn">
+            {footerActions.map((item, i) => React.cloneElement(item, { key: i }))}
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
-    <div className="view-comp" {...rest}>
-      <header className={cs({ 'no-border-bottom': headerHasBottomBorder }, 'view-header')}>
-        <div className="view-base-title">
-          <section className="view-header-left">
-            <Breadcrumb routersList={routersList} />
-          </section>
-          <section className="view-header-right">{headerRightEle}</section>
-        </div>
-      </header>
-      <main
-        className={cs('view-main', {
-          'view-is-list': isList || isSubList || isTabList,
-          'is-sublist': isSubList,
-        })}
-        style={{ height: `calc(100% - 64px${isTabList ? ' - 40px' : ''})` }}
-      >
-        {toolEle && <section className="tool-section">{toolEle}</section>}
-        <section className="body-section" ref={bsRef}>
-          {isList || isSubList || isTabList ? (
-            <div className={cs('body-section-list', { 'no-scroll': bodyNoScroll })}>
-              {children}
-              {isSubList && <div className="body-show-paging">{getPagination}</div>}
-            </div>
-          ) : (
-            children
-          )}
-        </section>
-        {isList || isTabList ? (
-          <footer className={cs('view-footer ', { 'show-paging': isList || isTabList })}>
-            {getPagination}
-          </footer>
-        ) : null}
-      </main>
+    <div className={`page-box ${className}`} {...rest}>
+      <div className="basic-view">
+        {!noHeader && renderHeader()}
+        <section className="view-main-body">{children}</section>
+        {renderFooterAction()}
+      </div>
     </div>
   );
 };

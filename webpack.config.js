@@ -132,8 +132,8 @@ tailPkgs.forEach((pkg) => {
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                publicPath: (resourcePath, context) =>
-                  `${path.relative(path.dirname(resourcePath), context)}/`,
+                // publicPath: (resourcePath, context) =>
+                //   `${path.relative(path.dirname(resourcePath), context)}/`,
               },
             },
             {
@@ -155,8 +155,8 @@ tailPkgs.forEach((pkg) => {
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                publicPath: (resourcePath, context) =>
-                  `${path.relative(path.dirname(resourcePath), context)}/`,
+                // publicPath: (resourcePath, context) =>    // 导致字体引用路径错误，注释掉
+                //   `${path.relative(path.dirname(resourcePath), context)}/`,
               },
             },
             'css-loader',

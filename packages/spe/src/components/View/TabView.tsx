@@ -1,51 +1,42 @@
 import React from 'react';
-import type { BasicViewPropsType } from './BasicView';
+import classNames from 'classnames';
+import { Tabs } from 'antd';
 import BasicView from './BasicView';
-import './DetailView.scss';
 
-interface AttrSections {
-  title: any;
-  values: AttrItem[];
-}
+const { TabPane } = Tabs;
 
-interface AttrItem {
-  attr: any;
-  value: any;
-}
+/*
+ * TabView
+ * 继承于 BasicView, 配置 tabsConfig, currentTab
+ * 面包屑导航 + (Tab + 内容居中) + 页脚按钮
+ * 使用场景：步骤页布局
+ */
 
-export type DetailViewPropsType = BasicViewPropsType & {
-  attrData?: AttrSections[]; // 自定义内容区顶部的元素
-  rightCustomize?: React.ReactElement; // 自定义底部元素
+export type TabViewPropsType = {
+  tabsConfig: { key1: { tab: '选项一'; children: React.ReactNode } };
+  defaultTabKey: string;
+  className: string;
 };
 
-const DetailView: React.FC<DetailViewPropsType> = (props) => {
-  const { attrData = [], rightCustomize, ...rest } = props;
+const TabView: React.FC<TabViewPropsType> = (props) => {
+  const { tabsConfig, defaultTabKey = '', children, className, ...rest } = props;
 
-  const getLeftPart = () =>
-    attrData.map((attrSection: AttrSections, sectionIndex: number) => (
-      <React.Fragment key={sectionIndex}>
-        <div className="sub-text-title">
-          <span>{attrSection.title}</span>
-        </div>
-        {attrSection.values.map((attrItem, index) => (
-          <div className="sub-text-content-box line-height-2" key={index}>
-            <div className="left-title">{attrItem.attr}</div>
-            <div className="right-desc">{attrItem.value}</div>
-          </div>
-        ))}
-      </React.Fragment>
-    ));
+  const wrapperClassNames = classNames(`tab-view list-view`, className);
 
   return (
-    <BasicView viewType="Details" {...rest}>
-      <div className={`detail-page-view`}>
-        <div className="detail-content">
-          <div className="detail-text-info">{getLeftPart()}</div>
-          <div className="detail-chart-info">{rightCustomize}</div>
-        </div>
-      </div>
+    <BasicView {...rest} className={wrapperClassNames}>
+      <Tabs defaultActiveKey={defaultTabKey}>
+        {Object.entries(tabsConfig).map((tabConfig) => {
+          const [key, tabPane] = tabConfig;
+          return (
+            <TabPane tab={tabPane.tab} key={key}>
+              {tabPane?.children}
+            </TabPane>
+          );
+        })}
+      </Tabs>
     </BasicView>
   );
 };
 
-export default DetailView;
+export default TabView;

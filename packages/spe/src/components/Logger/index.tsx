@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Modal, List, Spin, Button, Tabs, Select } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 
-import './index.less';
-
 const { TabPane } = Tabs;
 const { Option } = Select;
 

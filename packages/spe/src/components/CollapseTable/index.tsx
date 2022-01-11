@@ -5,7 +5,6 @@ import type { HTMLAttributes } from 'react';
 import { Table, Collapse } from 'antd';
 import cs from 'classnames';
 import { notEmpty } from '../../utils';
-import './index.scss';
 
 const { Panel } = Collapse;
 

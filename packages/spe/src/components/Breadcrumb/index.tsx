@@ -1,7 +1,6 @@
 import React, { Fragment, useMemo } from 'react';
 import type { HTMLAttributes } from 'react';
 import cs from 'classnames';
-import './index.scss';
 
 interface IRouterListItem {
   title: string;
