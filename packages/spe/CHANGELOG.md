@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.0.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.0.0...@sensetime/pro-spe@2.0.1) (2022-01-12)
+
+### Bug Fixes
+
+- tabView 样式[@extend](https://gitlab.sz.sensetime.com/extend)问题修复 ([54c7080](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/54c7080d85cf71d7bab9a494a4d209e38265fc40))
+
 ## 2.0.0 (2022-01-12)
 
 ### Features
