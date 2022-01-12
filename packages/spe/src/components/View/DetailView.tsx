@@ -1,6 +1,7 @@
 import React from 'react';
 import BasicView from './BasicView';
 import cs from 'classnames';
+import type { BasicViewPropsType } from './BasicView';
 
 /*
  * DetailView
@@ -9,8 +10,11 @@ import cs from 'classnames';
  * 使用场景：详情页布局
  */
 
-export type DetailViewPropsType = {
-  leftAttrData: []; // [{ attr: string, value: any }]
+export type DetailViewPropsType = BasicViewPropsType & {
+  leftAttrData: {
+    title: React.ReactNode;
+    values: { attr: React.ReactNode; value: React.ReactNode }[];
+  }[];
   rightPart: React.ReactElement;
   className?: string;
 };

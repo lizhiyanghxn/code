@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 import cs from 'classnames';
 
 interface IRouterListItem {
-  title: string;
+  title: React.ReactNode;
   click?: () => void;
 }
 

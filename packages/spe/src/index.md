@@ -1,5 +1,5 @@
 ---
-title: 组件总览
+title: SPE 组件总览
 order: 0
 group:
   path: /components
@@ -15,33 +15,31 @@ nav:
 
 ## 页面容器组件
 
+### 基础页布局容器 - [BasicView](./components/view#基础页布局容器---basicview)
+
+<code src="./components/View/demos/basic.tsx" iframe="500px" />
+
 ### 详情页布局容器 - [DetailView](./components/view#详情页布局容器---detailview)
 
-<code src="./components/View/demos/details.tsx" iframe="500px" />
+<code src="./components/View/demos/detail.tsx" iframe="500px" />
 
-### 表单表格页布局容器 - [ListView](./components/view#表单表格页布局容器---listview)
+### 列表页布局容器 - [ListView](./components/view#列表页布局容器---listview)
 
 <code src="./components/View/demos/list.tsx" iframe="500px" />
-
-### 表单手风琴表格页布局容器 - [CallapseListView](./components/view#表单手风琴表格页布局容器---callapselistview)
-
-<code src="./components/View/demos/includeSublist.tsx" iframe="500px" />
-
-### 标签页布局容器 - [TabView](./components/view#标签页布局容器---tabview)
-
-<code src="./components/View/demos/tabs.tsx" iframe="500px" />
 
 ### 步骤页布局容器 - [StepView](./components/view#步骤页布局容器---stepview)
 
 <code src="./components/View/demos/step.tsx" iframe="500px" />
+
+### Tab 页布局容器 - [TabView](./components/view#tab页布局容器---tabview)
+
+<code src="./components/View/demos/tab.tsx" iframe="500px" />
 
 ## 基础业务组件
 
 ### 日志 - [Logger](./components/logger)
 
 <code src="./components/Logger/demos/basic.tsx"/>
-
-### 图片分析组件 - [ImageAnalysis](./components/image-analysis)
 
 ### 面包屑 - [Breadcrumb](./components/breadcrumb)
 

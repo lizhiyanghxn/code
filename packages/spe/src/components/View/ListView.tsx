@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import cs from 'classnames';
 import { Pagination } from 'antd';
 import BasicView from './BasicView';
+import type { BasicViewPropsType } from './BasicView';
 
 /*
  * ListView
@@ -10,12 +11,12 @@ import BasicView from './BasicView';
  * 使用场景：Table 列表布局(页签固定)，Table 子列表布局
  */
 
-export type ListViewPropsType = {
-  headExtra: []; // [{ title: '列表', click: fn }]
+export type ListViewPropsType = BasicViewPropsType & {
+  headExtra?: React.ReactNode;
   searchArea?: React.ReactElement;
   pagingConfig: any;
-  fixPagination: boolean;
-  children: React.ReactElement[];
+  fixPagination?: boolean;
+  children: React.ReactElement;
   className?: string;
 };
 
@@ -39,7 +40,7 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
   };
 
   const getBodySection = () => {
-    const childrenWithRef = React.Children.map(children, (item) =>
+    const childrenWithRef = React.Children.map(children, (item: React.ReactElement) =>
       React.cloneElement(item, { furef: bodySectionRef }),
     );
     return <div className="body-section-list">{childrenWithRef}</div>;

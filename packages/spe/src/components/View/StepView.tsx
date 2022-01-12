@@ -2,19 +2,19 @@ import React from 'react';
 import Steps from '../Steps';
 import BasicView from './BasicView';
 import cs from 'classnames';
+import type { BasicViewPropsType } from './BasicView';
 
 /*
  * StepView
- * 继承于 BasicView, 配置 stepsConfig, currentPage
+ * 继承于 BasicView, 配置 stepsConfig
  * 面包屑导航 + (Step + 内容居中) + 页脚按钮
  * 使用场景：步骤页布局
  */
 
-export type StepViewPropsType = {
+export type StepViewPropsType = BasicViewPropsType & {
   currentStep: number;
-  stepsConfig: []; // ['第一步', '第二步']
-  currentPage: number;
-  className: string;
+  stepsConfig: (string | React.ReactElement)[]; // ['第一步', '第二步']
+  className?: string;
   scrollRef?: React.RefObject<HTMLDivElement>;
 };
 

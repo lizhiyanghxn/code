@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb } from '../../index';
+import Breadcrumb from '../Breadcrumb';
 
 /*
  * BasicView
@@ -10,7 +10,7 @@ import { Breadcrumb } from '../../index';
 
 export type BasicViewPropsType = {
   noHeader?: boolean; // 是否显示头部信息
-  routers?: []; // [{ title: '列表', click: fn }]
+  routers?: { title: React.ReactNode; click?: (...rest: any[]) => any }[]; // [{ title: '列表', click: fn }]
   headerRightElement?: React.ReactElement;
   footerActions?: React.ReactElement[];
   className?: string;
