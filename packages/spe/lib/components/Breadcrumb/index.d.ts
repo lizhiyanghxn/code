@@ -1,8 +1,7 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
-import './index.scss';
 interface IRouterListItem {
-    title: string;
+    title: React.ReactNode;
     click?: () => void;
 }
 export declare type BreadcrumbPropsType = HTMLAttributes<HTMLDivElement> & {

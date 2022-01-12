@@ -1,0 +1,32 @@
+@import './ListView.scss';
+
+.tab-view {
+  & > .basic-view {
+    .view-header {
+      border-bottom: 0;
+    }
+    .view-main-body {
+      div[role='tablist'] {
+        margin: 0 24px;
+      }
+      .ant-tabs {
+        height: 100%;
+        .ant-tabs-content-holder {
+          height: calc(100% - 64px);
+
+          .ant-tabs-content {
+            @extend .view-main-body;
+            height: 100%;
+            .content-view {
+              height: calc(100% - 80px);
+              overflow: scroll;
+              .paging {
+                @extend .view-footer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

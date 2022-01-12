@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _BasicView = _interopRequireDefault(require("./BasicView"));
 
-require("./DetailView.scss");
+var _classnames = _interopRequireDefault(require("classnames"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,13 +20,14 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var DetailView = function DetailView(props) {
-  var _props$attrData = props.attrData,
-      attrData = _props$attrData === void 0 ? [] : _props$attrData,
-      rightCustomize = props.rightCustomize,
-      rest = _objectWithoutProperties(props, ["attrData", "rightCustomize"]);
+  var _props$leftAttrData = props.leftAttrData,
+      leftAttrData = _props$leftAttrData === void 0 ? [] : _props$leftAttrData,
+      rightPart = props.rightPart,
+      children = props.children,
+      rest = _objectWithoutProperties(props, ["leftAttrData", "rightPart", "children"]);
 
   var getLeftPart = function getLeftPart() {
-    return attrData.map(function (attrSection, sectionIndex) {
+    return leftAttrData.map(function (attrSection, sectionIndex) {
       return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
         key: sectionIndex
       }, /*#__PURE__*/_react.default.createElement("div", {
@@ -44,17 +45,15 @@ var DetailView = function DetailView(props) {
     });
   };
 
-  return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({
-    viewType: "Details"
-  }, rest), /*#__PURE__*/_react.default.createElement("div", {
-    className: "detail-page-view"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
+    className: (0, _classnames.default)([rest.className, 'detail-view'])
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: "detail-content"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "detail-text-info"
   }, getLeftPart()), /*#__PURE__*/_react.default.createElement("div", {
     className: "detail-chart-info"
-  }, rightCustomize))));
+  }, rightPart), children));
 };
 
 var _default = DetailView;

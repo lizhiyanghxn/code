@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.less';
 declare type LogType = {
     date: string;
     message: string;

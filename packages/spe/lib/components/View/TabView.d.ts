@@ -1,17 +1,12 @@
 import React from 'react';
 import type { BasicViewPropsType } from './BasicView';
-import './DetailView.scss';
-interface AttrSections {
-    title: any;
-    values: AttrItem[];
-}
-interface AttrItem {
-    attr: any;
-    value: any;
-}
-export declare type DetailViewPropsType = BasicViewPropsType & {
-    attrData?: AttrSections[];
-    rightCustomize?: React.ReactElement;
+export declare type TabViewPropsType = BasicViewPropsType & {
+    tabsConfig: Record<string, {
+        tab: React.ReactNode;
+        children: React.ReactNode;
+    }>;
+    defaultTabKey: string;
+    className?: string;
 };
-declare const DetailView: React.FC<DetailViewPropsType>;
-export default DetailView;
+declare const TabView: React.FC<TabViewPropsType>;
+export default TabView;

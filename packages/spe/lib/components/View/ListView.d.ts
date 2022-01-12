@@ -1,17 +1,12 @@
 import React from 'react';
 import type { BasicViewPropsType } from './BasicView';
-import './DetailView.scss';
-interface AttrSections {
-    title: any;
-    values: AttrItem[];
-}
-interface AttrItem {
-    attr: any;
-    value: any;
-}
-export declare type DetailViewPropsType = BasicViewPropsType & {
-    attrData?: AttrSections[];
-    rightCustomize?: React.ReactElement;
+export declare type ListViewPropsType = BasicViewPropsType & {
+    headExtra?: React.ReactNode;
+    searchArea?: React.ReactElement;
+    pagingConfig: any;
+    fixPagination?: boolean;
+    children: React.ReactElement;
+    className?: string;
 };
-declare const DetailView: React.FC<DetailViewPropsType>;
-export default DetailView;
+declare const ListView: React.FC<ListViewPropsType>;
+export default ListView;

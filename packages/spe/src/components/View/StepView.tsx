@@ -23,7 +23,7 @@ const StepView: React.FC<StepViewPropsType> = (props) => {
   return (
     <BasicView {...rest} className={cs([rest.className, 'step-view'])}>
       {stepsConfig.length > 0 ? (
-        <Steps currentStep={currentStep} stepsConfig={stepsConfig} />
+        <Steps currentStep={currentStep} stepsConfig={stepsConfig} usage="page" />
       ) : (
         <></>
       )}

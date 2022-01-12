@@ -1,6 +1,5 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
-import './index.scss';
 export declare type StepsPropsType = HTMLAttributes<HTMLDivElement> & {
     currentStep?: number;
     stepsConfig?: (string | React.ReactElement)[];

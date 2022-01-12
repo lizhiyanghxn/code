@@ -1,0 +1,19 @@
+@import '../../../style/mixin.scss';
+
+.step-view {
+  .view-main-body {
+    display: flex;
+    overflow: hidden;
+
+    .steps {
+      position: relative;
+      margin: 0;
+    }
+
+    .stepview-scorll-container {
+      flex: 1 1;
+      overflow: auto;
+      @include scroll-mini(8px, 8px, #dce2eed7, #ebeef5d7);
+    }
+  }
+}

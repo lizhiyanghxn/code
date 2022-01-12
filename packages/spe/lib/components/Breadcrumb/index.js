@@ -11,8 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-require("./index.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }

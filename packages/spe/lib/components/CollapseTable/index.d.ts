@@ -1,6 +1,5 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
-import './index.scss';
 export declare type CollapseTablePropsType = HTMLAttributes & {
     onChangeCollapse?: (i: number) => void;
     subPageApi?: () => void;
