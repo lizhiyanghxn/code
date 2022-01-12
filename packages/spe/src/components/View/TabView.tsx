@@ -22,7 +22,7 @@ export type TabViewPropsType = BasicViewPropsType & {
 const TabView: React.FC<TabViewPropsType> = (props) => {
   const { tabsConfig, defaultTabKey = '', children, className, ...rest } = props;
 
-  const wrapperClassNames = classNames(`tab-view list-view`, className);
+  const wrapperClassNames = classNames(`tab-view`, className);
 
   return (
     <BasicView {...rest} className={wrapperClassNames}>

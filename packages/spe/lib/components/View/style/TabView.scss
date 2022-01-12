@@ -1,4 +1,4 @@
-@import './ListView.scss';
+@use './ListView.scss';
 
 .tab-view {
   & > .basic-view {
@@ -15,13 +15,13 @@
           height: calc(100% - 64px);
 
           .ant-tabs-content {
-            @extend .view-main-body;
+            @extend %view-main-body;
             height: 100%;
             .content-view {
               height: calc(100% - 80px);
               overflow: scroll;
               .paging {
-                @extend .view-footer;
+                @extend %view-footer;
               }
             }
           }

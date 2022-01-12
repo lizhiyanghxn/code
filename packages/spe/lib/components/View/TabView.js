@@ -45,7 +45,7 @@ var TabView = function TabView(props) {
       className = props.className,
       rest = _objectWithoutProperties(props, ["tabsConfig", "defaultTabKey", "children", "className"]);
 
-  var wrapperClassNames = (0, _classnames.default)("tab-view list-view", className);
+  var wrapperClassNames = (0, _classnames.default)("tab-view", className);
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
     className: wrapperClassNames
   }), /*#__PURE__*/_react.default.createElement(_tabs.default, {

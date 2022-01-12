@@ -1,99 +1,107 @@
 @import '../../../style/variable.scss';
 @import '../../../style/mixin.scss';
 
-.list-view {
-  .view-main-body {
-    padding: 0;
+%view-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 24px;
+}
 
-    &.is-tablist {
-      height: calc(100% - 64px - 40px);
-    }
+%view-main-body {
+  padding: 0;
 
-    .search-area {
-      position: sticky;
-      top: 0;
-      z-index: 1;
+  &.is-tablist {
+    height: calc(100% - 64px - 40px);
+  }
 
+  .search-area {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 24px 24px 0;
+    background-color: #fff;
+
+    .search-area-left {
       display: flex;
-      flex-direction: row;
+      flex: 2;
+      align-items: center;
+      color: rgba(75, 75, 75, 1);
+      font-weight: 600;
+
+      font-size: 18px;
+
+      form {
+        .ant-form-item {
+          min-width: 160px;
+          margin-right: 16px;
+        }
+      }
+    }
+
+    .search-area-right {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-end;
+
+      .refresh {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+
+        border: 1px solid $text-color-7;
+        border-radius: 5px;
+
+        & > i {
+          font-weight: bolder;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .body-section {
+    flex-grow: 1;
+
+    padding: 24px 24px 0;
+    overflow: auto;
+
+    &.set-height {
+      height: calc(100% - 80px - 80px);
+    }
+    &.set-height-nosearch {
+      height: calc(100% - 80px);
+    }
+
+    @include scroll-mini(9px, 9px, #ccc, #ddd);
+
+    .body-section-list {
       width: 100%;
-      padding: 24px 24px 0;
-      background-color: #fff;
-
-      .search-area-left {
-        display: flex;
-        flex: 2;
-        align-items: center;
-        color: rgba(75, 75, 75, 1);
-        font-weight: 600;
-
-        font-size: 18px;
-
-        form {
-          .ant-form-item {
-            min-width: 160px;
-            margin-right: 16px;
-          }
-        }
-      }
-
-      .search-area-right {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: flex-end;
-
-        .refresh {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 32px;
-          height: 32px;
-
-          border: 1px solid $text-color-7;
-          border-radius: 5px;
-
-          & > i {
-            font-weight: bolder;
-            cursor: pointer;
-          }
-        }
-      }
+      height: 100%;
+      overflow: hidden;
     }
 
-    .body-section {
-      flex-grow: 1;
-
-      padding: 24px 24px 0;
-      overflow: auto;
-
-      &.set-height {
-        height: calc(100% - 80px - 80px);
-      }
-      &.set-height-nosearch {
-        height: calc(100% - 80px);
-      }
-
-      @include scroll-mini(9px, 9px, #ccc, #ddd);
-
-      .body-section-list {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .body-show-paging {
-        display: flex;
-        justify-content: flex-end;
-        padding: 16px 0;
-      }
-    }
-
-    .view-footer {
+    .body-show-paging {
       display: flex;
       justify-content: flex-end;
-      width: 100%;
-      padding: 24px;
+      padding: 16px 0;
     }
+  }
+
+  .view-footer {
+    @extend %view-footer;
+  }
+}
+
+.list-view {
+  .view-main-body {
+    @extend %view-main-body;
   }
 }
