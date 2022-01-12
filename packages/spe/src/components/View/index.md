@@ -16,7 +16,7 @@ SPE 统一的页容器组件，整合了常用页面类型的排版和样式。
 - [详情页布局容器](#详情页布局容器---detailview) -- [API](#api-1)
 - [列表页布局容器](#列表页布局容器---listview) -- [API](#api-2)
 - [步骤页布局容器](#步骤页布局容器---stepview) -- [API](#api-3)
-- [Tab 页布局容器](#列表页布局容器---tabview) -- [API](#api-4)
+- [Tab 页布局容器](#tab-页布局容器---tabview) -- [API](#api-4)
 
 ### 基础页布局容器 - [BasicView](#基础页布局容器---basicview)
 
@@ -74,7 +74,7 @@ SPE 统一的页容器组件，整合了常用页面类型的排版和样式。
 | stepsConfig | 步骤条配置                        | `Array<string \| React.ReactElement>` | []     |
 | scrollRef   | 传入一个 ref 用来绑定页面滚动容器 | `React.RefObject<HTMLDivElement>`     |        |
 
-### Tab 页布局容器 - [TabView](#tab页布局容器---tabview)
+### Tab 页布局容器 - [TabView](#tab-页布局容器---tabview)
 
 <code src="./demos/tab.tsx" iframe="500px" />
 

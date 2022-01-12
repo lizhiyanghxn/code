@@ -31,7 +31,7 @@ nav:
 
 <code src="./components/View/demos/step.tsx" iframe="500px" />
 
-### Tab 页布局容器 - [TabView](./components/view#tab页布局容器---tabview)
+### Tab 页布局容器 - [TabView](./components/view#tab-页布局容器---tabview)
 
 <code src="./components/View/demos/tab.tsx" iframe="500px" />
 
