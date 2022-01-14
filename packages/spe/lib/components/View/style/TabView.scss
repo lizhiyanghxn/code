@@ -12,16 +12,26 @@
       .ant-tabs {
         height: 100%;
         .ant-tabs-content-holder {
-          height: calc(100% - 64px);
+          flex: 1 1 auto;
+          overflow: hidden;
 
           .ant-tabs-content {
-            @extend %view-main-body;
             height: 100%;
-            .content-view {
-              height: calc(100% - 80px);
-              overflow: scroll;
-              .paging {
-                @extend %view-footer;
+            .ant-tabs-tabpane {
+              @extend %view-main-body;
+
+              .search-area {
+                padding-bottom: 0;
+              }
+
+              .content-view {
+                flex: 1 1;
+                overflow: auto;
+                @include scroll-mini(8px, 8px, #ccc, #ddd);
+
+                .paging {
+                  @extend %view-footer;
+                }
               }
             }
           }

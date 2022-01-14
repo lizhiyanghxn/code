@@ -3,7 +3,7 @@ import type { BasicViewPropsType } from './BasicView';
 export declare type ListViewPropsType = BasicViewPropsType & {
     headExtra?: React.ReactNode;
     searchArea?: React.ReactElement;
-    pagingConfig: any;
+    pagingConfig?: any;
     fixPagination?: boolean;
     children: React.ReactElement;
     className?: string;

@@ -68,18 +68,27 @@ var ListView = function ListView(props) {
     }, childrenWithRef);
   };
 
-  var getMainBody = function getMainBody() {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, getHeadExtraArea(), getSearchArea(), /*#__PURE__*/_react.default.createElement("section", {
-      className: (0, _classnames.default)('body-section', {
-        'set-height': fixPagination,
-        'set-height-nosearch': !searchArea
-      }),
-      ref: bodySectionRef
-    }, getBodySection()), /*#__PURE__*/_react.default.createElement("footer", {
-      className: "view-footer"
+  var getFooter = function getFooter() {
+    return /*#__PURE__*/_react.default.createElement("footer", {
+      className: (0, _classnames.default)({
+        'view-footer': true,
+        'no-footer': !pagingConfig
+      })
     }, (pagingConfig === null || pagingConfig === void 0 ? void 0 : pagingConfig.total) ? /*#__PURE__*/_react.default.createElement(_pagination.default, _extends({
       className: "page-custom"
-    }, pagingConfig)) : null));
+    }, pagingConfig)) : null);
+  };
+
+  var getMainBody = function getMainBody() {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, getHeadExtraArea(), getSearchArea(), /*#__PURE__*/_react.default.createElement("div", {
+      className: "scroll-container"
+    }, /*#__PURE__*/_react.default.createElement("section", {
+      className: (0, _classnames.default)({
+        'body-section': true,
+        'scroll-in-table': fixPagination
+      }),
+      ref: bodySectionRef
+    }, getBodySection()), !fixPagination && getFooter()), fixPagination && getFooter());
   };
 
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
