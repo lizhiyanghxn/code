@@ -14,7 +14,7 @@ import type { BasicViewPropsType } from './BasicView';
 export type ListViewPropsType = BasicViewPropsType & {
   headExtra?: React.ReactNode;
   searchArea?: React.ReactElement;
-  pagingConfig: any;
+  pagingConfig?: any;
   fixPagination?: boolean;
   children: React.ReactElement;
   className?: string;
@@ -46,22 +46,26 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
     return <div className="body-section-list">{childrenWithRef}</div>;
   };
 
+  const getFooter = () => (
+    <footer className={cs({ 'view-footer': true, 'no-footer': !pagingConfig })}>
+      {pagingConfig?.total ? <Pagination className="page-custom" {...pagingConfig} /> : null}
+    </footer>
+  );
+
   const getMainBody = () => (
     <>
       {getHeadExtraArea()}
       {getSearchArea()}
-      <section
-        className={cs('body-section', {
-          'set-height': fixPagination,
-          'set-height-nosearch': !searchArea,
-        })}
-        ref={bodySectionRef}
-      >
-        {getBodySection()}
-      </section>
-      <footer className="view-footer">
-        {pagingConfig?.total ? <Pagination className="page-custom" {...pagingConfig} /> : null}
-      </footer>
+      <div className="scroll-container">
+        <section
+          className={cs({ 'body-section': true, 'scroll-in-table': fixPagination })}
+          ref={bodySectionRef}
+        >
+          {getBodySection()}
+        </section>
+        {!fixPagination && getFooter()}
+      </div>
+      {fixPagination && getFooter()}
     </>
   );
 
