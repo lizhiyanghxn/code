@@ -30,7 +30,6 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.x",
-    "@sensetime/annotation": "1.3.1-alpha-3",
     "classnames": "^2.3.1",
     "react-infinite-scroller": "^1.2.4"
   },
