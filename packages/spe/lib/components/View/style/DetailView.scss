@@ -1,4 +1,5 @@
 @import '../../../style/variable.scss';
+@import '../../../style/mixin.scss';
 
 .detail-view {
   .view-main-body {
@@ -12,7 +13,10 @@
         min-height: 100%;
         padding: 8px 0 16px;
 
+        overflow: auto;
+
         background-color: #fff;
+        @include scroll-mini(8px, 8px, #ccc, #ddd);
 
         & > .sub-text-title:not(:first-child) {
           margin-top: 16px;
