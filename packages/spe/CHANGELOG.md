@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.0.2...@sensetime/pro-spe@2.1.0) (2022-01-20)
+
+### Features
+
+- listview 分页器样式调整 ([06d1c55](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/06d1c5571601c244349857390f146708ae9cc6a1))
+
 ### [2.0.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.0.1...@sensetime/pro-spe@2.0.2) (2022-01-14)
 
 ### Bug Fixes
