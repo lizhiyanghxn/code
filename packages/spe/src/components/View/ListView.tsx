@@ -48,7 +48,9 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
 
   const getFooter = () => (
     <footer className={cs({ 'view-footer': true, 'no-footer': !pagingConfig })}>
-      {pagingConfig?.total ? <Pagination className="page-custom" {...pagingConfig} /> : null}
+      {pagingConfig?.total && (
+        <Pagination className="page-custom" showSizeChanger showQuickJumper {...pagingConfig} />
+      )}
     </footer>
   );
 
