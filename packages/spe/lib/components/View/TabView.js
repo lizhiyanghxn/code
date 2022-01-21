@@ -39,26 +39,31 @@ var TabPane = _tabs.default.TabPane;
 
 var TabView = function TabView(props) {
   var tabsConfig = props.tabsConfig,
+      _props$tabWrapConfig = props.tabWrapConfig,
+      tabWrapConfig = _props$tabWrapConfig === void 0 ? {} : _props$tabWrapConfig,
       _props$defaultTabKey = props.defaultTabKey,
       defaultTabKey = _props$defaultTabKey === void 0 ? '' : _props$defaultTabKey,
-      children = props.children,
       className = props.className,
-      rest = _objectWithoutProperties(props, ["tabsConfig", "defaultTabKey", "children", "className"]);
+      rest = _objectWithoutProperties(props, ["tabsConfig", "tabWrapConfig", "defaultTabKey", "className"]);
 
   var wrapperClassNames = (0, _classnames.default)("tab-view", className);
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
     className: wrapperClassNames
-  }), /*#__PURE__*/_react.default.createElement(_tabs.default, {
+  }), /*#__PURE__*/_react.default.createElement(_tabs.default, _extends({
     defaultActiveKey: defaultTabKey
-  }, Object.entries(tabsConfig).map(function (tabConfig) {
+  }, tabWrapConfig), Object.entries(tabsConfig).map(function (tabConfig) {
     var _tabConfig = _slicedToArray(tabConfig, 2),
         key = _tabConfig[0],
         tabPane = _tabConfig[1];
 
-    return /*#__PURE__*/_react.default.createElement(TabPane, {
-      tab: tabPane.tab,
+    var tab = tabPane.tab,
+        children = tabPane.children,
+        paneConfig = _objectWithoutProperties(tabPane, ["tab", "children"]);
+
+    return /*#__PURE__*/_react.default.createElement(TabPane, _extends({
+      tab: tab,
       key: key
-    }, tabPane === null || tabPane === void 0 ? void 0 : tabPane.children);
+    }, paneConfig), children);
   })));
 };
 
