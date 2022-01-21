@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.1.3](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.2...@sensetime/pro-spe@2.1.3) (2022-01-21)
+
+### Bug Fixes
+
+- TabView 兼容 antd-tabs 配置 ([a82276a](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/a82276adc29a515de482e06118bee56ec554c2ff))
+
 ### [2.1.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.1...@sensetime/pro-spe@2.1.2) (2022-01-21)
 
 ### Bug Fixes
