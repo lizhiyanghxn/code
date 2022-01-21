@@ -75,7 +75,10 @@ var ListView = function ListView(props) {
         'no-footer': !pagingConfig
       })
     }, (pagingConfig === null || pagingConfig === void 0 ? void 0 : pagingConfig.total) ? /*#__PURE__*/_react.default.createElement(_pagination.default, _extends({
-      className: "page-custom",
+      className: (0, _classnames.default)({
+        'page-custom': true,
+        'no-quick-jumper': (pagingConfig === null || pagingConfig === void 0 ? void 0 : pagingConfig.total) <= (pagingConfig === null || pagingConfig === void 0 ? void 0 : pagingConfig.pageSize)
+      }),
       showSizeChanger: true,
       showQuickJumper: true
     }, pagingConfig)) : null);
