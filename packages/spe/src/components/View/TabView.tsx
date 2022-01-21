@@ -15,23 +15,25 @@ const { TabPane } = Tabs;
 
 export type TabViewPropsType = BasicViewPropsType & {
   tabsConfig: Record<string, { tab: React.ReactNode; children: React.ReactNode }>;
+  tabWrapConfig: Record<string, any>;
   defaultTabKey: string;
   className?: string;
 };
 
 const TabView: React.FC<TabViewPropsType> = (props) => {
-  const { tabsConfig, defaultTabKey = '', children, className, ...rest } = props;
+  const { tabsConfig, tabWrapConfig = {}, defaultTabKey = '', className, ...rest } = props;
 
   const wrapperClassNames = classNames(`tab-view`, className);
 
   return (
     <BasicView {...rest} className={wrapperClassNames}>
-      <Tabs defaultActiveKey={defaultTabKey}>
+      <Tabs defaultActiveKey={defaultTabKey} {...tabWrapConfig}>
         {Object.entries(tabsConfig).map((tabConfig) => {
           const [key, tabPane] = tabConfig;
+          const { tab, children, ...paneConfig } = tabPane;
           return (
-            <TabPane tab={tabPane.tab} key={key}>
-              {tabPane?.children}
+            <TabPane tab={tab} key={key} {...paneConfig}>
+              {children}
             </TabPane>
           );
         })}
