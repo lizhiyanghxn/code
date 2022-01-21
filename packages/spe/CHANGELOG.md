@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.1.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.0...@sensetime/pro-spe@2.1.1) (2022-01-21)
+
+### Bug Fixes
+
+- 分页器 toutol=0 时修复 ([881f992](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/881f99251b499ab261bbe170a97a64c45f1c190d))
+
 ## [2.1.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.0.2...@sensetime/pro-spe@2.1.0) (2022-01-20)
 
 ### Features
