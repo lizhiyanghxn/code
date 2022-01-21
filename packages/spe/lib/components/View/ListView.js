@@ -74,11 +74,11 @@ var ListView = function ListView(props) {
         'view-footer': true,
         'no-footer': !pagingConfig
       })
-    }, (pagingConfig === null || pagingConfig === void 0 ? void 0 : pagingConfig.total) && /*#__PURE__*/_react.default.createElement(_pagination.default, _extends({
+    }, (pagingConfig === null || pagingConfig === void 0 ? void 0 : pagingConfig.total) ? /*#__PURE__*/_react.default.createElement(_pagination.default, _extends({
       className: "page-custom",
       showSizeChanger: true,
       showQuickJumper: true
-    }, pagingConfig)));
+    }, pagingConfig)) : null);
   };
 
   var getMainBody = function getMainBody() {
