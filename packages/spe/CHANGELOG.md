@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.1.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.1...@sensetime/pro-spe@2.1.2) (2022-01-21)
+
+### Bug Fixes
+
+- 分页器 toutol<pageSize 时样式优化 ([cff5c6d](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/cff5c6d12b33a853c9263aa9d5fb614636189b77))
+
 ### [2.1.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.0...@sensetime/pro-spe@2.1.1) (2022-01-21)
 
 ### Bug Fixes
