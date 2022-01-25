@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0-alpha.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.3...@sensetime/pro-spe@2.2.0-alpha.0) (2022-01-25)
+
+### Features
+
+- BasicView 支持 spaning 加载状态 ([465ae23](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/465ae23f6299ec9316d13bc4d4dfd6f4bf694a32))
+
 ### [2.1.3](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.2...@sensetime/pro-spe@2.1.3) (2022-01-21)
 
 ### Bug Fixes
