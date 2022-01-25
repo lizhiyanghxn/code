@@ -1,4 +1,6 @@
 import React from 'react';
+import cs from 'classnames';
+import { Spin } from 'antd';
 import Breadcrumb from '../Breadcrumb';
 
 /*
@@ -13,6 +15,7 @@ export type BasicViewPropsType = {
   routers?: { title: React.ReactNode; click?: (...rest: any[]) => any }[]; // [{ title: '列表', click: fn }]
   headerRightElement?: React.ReactElement;
   footerActions?: React.ReactElement[];
+  spinning?: boolean;
   className?: string;
 };
 
@@ -22,6 +25,7 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
     routers,
     headerRightElement,
     footerActions = [],
+    spinning = false,
     className = '',
     children,
     ...rest
@@ -55,7 +59,10 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
     <div className={`page-box ${className}`} {...rest}>
       <div className="basic-view">
         {!noHeader && renderHeader()}
-        <section className="view-main-body">{children}</section>
+        <section className={cs({ 'view-main-body': true, 'is-spinning': spinning })}>
+          <Spin spinning={spinning} />
+          {children}
+        </section>
         {renderFooterAction()}
       </div>
     </div>

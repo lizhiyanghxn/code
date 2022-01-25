@@ -45,6 +45,22 @@
 
     overflow: auto;
     @include scroll-mini(8px, 8px, #dce2eed7, #ebeef5d7);
+
+    &.is-spinning {
+      opacity: 0.5;
+    }
+
+    .ant-spin {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 999;
+      .ant-spin-dot {
+        top: calc(10% + 80px);
+      }
+    }
   }
 
   .footer-actions {

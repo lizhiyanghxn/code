@@ -30,6 +30,7 @@ SPE 统一的页容器组件，整合了常用页面类型的排版和样式。
 | routers | 页头左侧导航面包屑 | `Array<{ title: React.ReactNode; click?: (...rest: any[]) => any }>` | [] |
 | headerRightElement | 页头右侧 | `React.ReactElement` |  |
 | footerActions | 页面底部 | `Array<React.ReactElement>` | [] |
+| spainning | 加载状态 | `boolean` | false |
 | className | 自定义样式类名 | `string` |  |
 
 ### 详情页布局容器 - [DetailView](#详情页布局容器---detailview)
