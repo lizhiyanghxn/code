@@ -5,7 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/spin/style");
+
+var _spin = _interopRequireDefault(require("antd/es/spin"));
+
 var _react = _interopRequireDefault(require("react"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Breadcrumb = _interopRequireDefault(require("../Breadcrumb"));
 
@@ -24,10 +30,12 @@ var BasicView = function BasicView(props) {
       headerRightElement = props.headerRightElement,
       _props$footerActions = props.footerActions,
       footerActions = _props$footerActions === void 0 ? [] : _props$footerActions,
+      _props$spinning = props.spinning,
+      spinning = _props$spinning === void 0 ? false : _props$spinning,
       _props$className = props.className,
       className = _props$className === void 0 ? '' : _props$className,
       children = props.children,
-      rest = _objectWithoutProperties(props, ["noHeader", "routers", "headerRightElement", "footerActions", "className", "children"]);
+      rest = _objectWithoutProperties(props, ["noHeader", "routers", "headerRightElement", "footerActions", "spinning", "className", "children"]);
 
   var renderHeader = function renderHeader() {
     return /*#__PURE__*/_react.default.createElement("header", {
@@ -64,8 +72,13 @@ var BasicView = function BasicView(props) {
   }, rest), /*#__PURE__*/_react.default.createElement("div", {
     className: "basic-view"
   }, !noHeader && renderHeader(), /*#__PURE__*/_react.default.createElement("section", {
-    className: "view-main-body"
-  }, children), renderFooterAction()));
+    className: (0, _classnames.default)({
+      'view-main-body': true,
+      'is-spinning': spinning
+    })
+  }, /*#__PURE__*/_react.default.createElement(_spin.default, {
+    spinning: spinning
+  }), children), renderFooterAction()));
 };
 
 var _default = BasicView;

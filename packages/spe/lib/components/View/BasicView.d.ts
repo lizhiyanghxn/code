@@ -7,6 +7,7 @@ export declare type BasicViewPropsType = {
     }[];
     headerRightElement?: React.ReactElement;
     footerActions?: React.ReactElement[];
+    spinning?: boolean;
     className?: string;
 };
 declare const BasicView: React.FC<BasicViewPropsType>;
