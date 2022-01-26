@@ -20,20 +20,19 @@
 
     .view-base-title {
       display: flex;
+      justify-content: space-between;
       height: 64px;
       padding: 0 24px;
 
       .view-header-left {
         display: flex;
-        flex: 1;
+        flex: 0 1 auto;
         align-items: center;
       }
 
       .view-header-right {
         display: flex;
-        flex: 1;
         align-items: center;
-        justify-content: flex-end;
       }
     }
   }
