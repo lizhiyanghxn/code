@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0-alpha.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.2.0-alpha.0...@sensetime/pro-spe@2.2.0-alpha.1) (2022-01-26)
+
+### Features
+
+- BasicView header 样式优化 ([b668246](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/b6682467ed3c7eafbc4564361da9aae68072cef8))
+
 ## [2.2.0-alpha.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.1.3...@sensetime/pro-spe@2.2.0-alpha.0) (2022-01-25)
 
 ### Features
