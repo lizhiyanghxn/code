@@ -1,9 +1,12 @@
 /**
+ * （1）Learn会自动检测有变动的包，自动根据Conventional Commits升级版本号，无特殊需求可以不带参数运行此脚本。
+ * （2）脚本已包含build过程，建议之前的commit不要包含build后的文件（lib和es目录文件）
+ *
  * @example
  *   yarn run release // 不带任何参数，发布监测到变动的包，自动根据 Conventional Commits 升级版本(feat->次要版本, 只有fix->补丁版本)
  *   yarn run release -- --prerelease @sensetime/pro-spe // 指定spe发布预发布版本alpha; 其他包和不传参效果一样
  *   yarn run release -- --graduate @sensetime/pro-spe // 若spe包处于预发布状态则升级为稳定版本（即使无变动); 若spe不处于预发布版本和不传参数效果一样; 其他包和不传参效果一样
- *   yarn run release -- --skip-build // 跳过build步骤
+ *   yarn run release -- --release-as 1.0.0 // 发布所有包而不管是否有更新，可以二次确认和修改各个子包的升级版本
  *
  * @param prerelease 发布预发布版本alpha, 可以指定包名 --prerelease package1,package2, 没有指定的包如果有变动也会发布（和不传参效果一样）
  * @param graduate 指定包名 --graduate package1,package2，对于处于预发布的包升级为稳定版本并具有forcePublish的效果，其他包与不传参效果一样
@@ -11,8 +14,6 @@
  * @param skipBuild 跳过 npm run build
  * @param isNext Npm publish 的 dist-tag 为 next，用户执行 npm install 时不会升级此版本
  * @param forcePublish 强制发布指定包（--force-publish package1,package2）或所有包（不带值），会跳过 lerna changed 检测
- *
- * 参数说明：(1)可以不传任何参数，自动根据提交记录升级版本。(2)指定releaseas，会发布所有包而不管是否有更新，并且在需要二次确认和修改各个子包的升级版本
  */
 
 const exec = require('./utils/exec');
