@@ -60,7 +60,7 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
       <div className="basic-view">
         {!noHeader && renderHeader()}
         <section className={cs({ 'view-main-body': true, 'is-spinning': spinning })}>
-          <Spin spinning={spinning} />
+          <Spin className="basic-view-spin" spinning={spinning} />
           {children}
         </section>
         {renderFooterAction()}
