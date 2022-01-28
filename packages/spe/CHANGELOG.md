@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.2.0-alpha.1...@sensetime/pro-spe@2.2.0) (2022-01-28)
+
+### Bug Fixes
+
+- BasicView spining 样式覆盖层级控制 ([c6d580b](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/c6d580bf6d463a6080ffc609d46983ec07f2987b))
+
 ## [2.2.0-alpha.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.2.0-alpha.0...@sensetime/pro-spe@2.2.0-alpha.1) (2022-01-26)
 
 ### Features
