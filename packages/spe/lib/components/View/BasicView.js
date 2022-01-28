@@ -77,6 +77,7 @@ var BasicView = function BasicView(props) {
       'is-spinning': spinning
     })
   }, /*#__PURE__*/_react.default.createElement(_spin.default, {
+    className: "basic-view-spin",
     spinning: spinning
   }), children), renderFooterAction()));
 };
