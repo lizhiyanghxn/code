@@ -17,7 +17,7 @@ DCP 所属业务下的产品基本都是使用 React 技术栈开发，其组件
 
 DCP Components 是基于 Antd 基础进行封装，按照使用频率，组件初步设计为页容器组件和业务基础组件
 
-- [页容器 View](/components/spe/view)
+- [页容器 View](/spe/components/view)
 
   - BasicView - 基础页布局容器
   - DetailView - 详情页布局容器
@@ -25,11 +25,11 @@ DCP Components 是基于 Antd 基础进行封装，按照使用频率，组件�
   - TabView - 标签页布局容器
   - StepView - 步骤页布局容器
 
-- [业务基础组件](/components/spe/basic)
-  - [日志 Logger](/components/spe/logger)
-  - [手风琴表格 CollapseTable](/components/spe/collaspetable)
-  - [面包屑 Breadcrumb](/components/spe/breadcrumb)
-  - [步骤条 Steps](/components/spe/steps)
+- 业务基础组件
+  - [日志 Logger](/spe/components/logger)
+  - [面包屑 Breadcrumb](/spe/components/breadcrumb)
+  - [手风琴表格 CollapseTable](/spe/components/collapse-table)
+  - [步骤条 Steps](/spe/components/steps)
 
 ### 设计与样式
 

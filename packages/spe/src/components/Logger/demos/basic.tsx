@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import { Radio } from 'antd';
 import Logger from '../index';
 
 const getSubTaskLabel = (id: number) => `超参任务${id}`;
@@ -25,7 +25,7 @@ const initialLogTabs = [
 ];
 
 export default () => {
-  const [show, setShow] = useState(false);
+  const [showMode, setShowMode] = useState('page');
 
   const testId = '123';
 
@@ -56,19 +56,26 @@ export default () => {
 
   return (
     <div>
-      <Button type="primary" onClick={() => setShow(!show)}>
-        展开日志
-      </Button>
+      <Radio.Group
+        options={[
+          { label: '页面模式', value: 'page' },
+          { label: '弹框模式', value: 'modal' },
+        ]}
+        onChange={(e) => setShowMode(e.target.value)}
+        value={showMode}
+        optionType="button"
+      />
       <Logger
-        show={show}
-        showInit={show && testId}
+        show={showMode === 'modal'}
+        showInit={showMode && testId}
+        isPageMode={showMode === 'page'}
         initialLogTabs={initialLogTabs}
         subTaskIds={[0, 1, 2, 3]}
         gpuPodNumber={4}
         initialActiveKey="dataconverter"
         logApi={(params = {}) => getTestLogs(testId, params)}
         onDownload={() => alert('下载中...')}
-        onClose={(e) => setShow(e)}
+        onClose={() => setShowMode('')}
         getSubTaskLabel={getSubTaskLabel}
         getProcessLabel={getProcessLabel}
         showDownLoad

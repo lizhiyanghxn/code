@@ -85,5 +85,6 @@ SPE 统一的页容器组件，整合了常用页面类型的排版和样式。
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| tabsConfig | Tab 配置 | `Record<string, { tab: React.ReactNode; children: React.ReactNode }>` |  |
-| defaultTabKey | 默认 Tab 的 key | `string` | '' |
+| tabWrapConfig | 配置 antd.Tabs | `antd.Tabs` | {} |
+| tabsConfig | 配置 antd.Tabs.TabPane，children 可以配置 TabPane 的内容 | `antd.Tabs.TabPane` |  |
+| defaultTabKey | 默认 Tab 的 key， 也可以在 tabWrapConfig 中设置 | `string` | '' |

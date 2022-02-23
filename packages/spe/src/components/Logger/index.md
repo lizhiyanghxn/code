@@ -13,96 +13,9 @@ nav:
 
 spe 统一的日志展示组件,该组件字段名称、整体样式较为固定，使用前先和 spe 已经存在的日志组件进行交互和视觉对比。
 
-## 代码演示
-
-```javascript
-import React, { useState } from 'react';
-import { Button } from 'antd';
-import Logger from '../index';
-
-const getSubTaskLabel = (id: number) => `超参任务${id}`;
-const getProcessLabel = (id: number) => `进程${id}`;
-
-const initialLogTabs = [
-  {
-    title: '数据格式转换',
-    activeTitle: '数据格式转换(当前)',
-    defaultTitle: '数据格式转换',
-    key: 'dataconverter',
-    processList: [{ label: getProcessLabel(0), value: 0 }],
-    logs: [],
-  },
-  {
-    title: '测试',
-    activeTitle: '测试(当前)',
-    defaultTitle: '测试',
-    key: 'test',
-    processList: [{ label: getProcessLabel(0), value: 0 }],
-    logs: [],
-  },
-];
-
-export default () => {
-  const [show, setShow] = useState(false);
-
-  const testId = '123';
-
-  const getTestLogs = (testId: string, params: any) =>
-    new Promise((resolve) => {
-      console.log('params', params);
-      setTimeout(() => {
-        if (params.page >= 4 || params.page <= 0) {
-          resolve({
-            list: [],
-            total: 60,
-          });
-        }
-        const list = [];
-        for (let i = 0; i < 20; i++) {
-          list[i] = {
-            date: `2021/09/01 13:59:${i}`,
-            message:
-              '[359.718.0.0.out] Begin analyzing results [359.718.0.0.out] Begin analyzing results[359.718.0.0.out] Begin analyzing results',
-          };
-        }
-        resolve({
-          list,
-          total: 60,
-        });
-      }, 500);
-    });
-
-  return (
-    <div>
-      <Button type="primary" onClick={() => setShow(!show)}>
-        展开日志
-      </Button>
-      <Logger
-        show={show}
-        showInit={show && testId}
-        initialLogTabs={initialLogTabs}
-        subTaskIds={[0, 1, 2, 3]}
-        gpuPodNumber={4}
-        initialActiveKey="dataconverter"
-        logApi={(params = {}) => getTestLogs(testId, params)}
-        onDownload={() => alert('下载中...')}
-        onClose={(e) => setShow(e)}
-        getSubTaskLabel={getSubTaskLabel}
-        getProcessLabel={getProcessLabel}
-        showDownLoad
-        title="日志"
-        downLoadText="下载日志"
-        confirmText="确认"
-        logEmptyMsg="该任务日志为空"
-      />
-    </div>
-  );
-};
-```
-
 ### 基础用法
 
-<code src="./demos/basic.tsx" background="#f0f2f5" />
+<code src="./demos/basic.tsx" />
 
 ## API
 
@@ -110,6 +23,7 @@ export default () => {
 | --- | --- | --- | --- |
 | show | 日志组件弹框显示和隐藏 | `boolean` | false |
 | showInit | 弹框打开时控制刷新日志（show 和 id 等变化时触发） | `any` | false |
+| isPageMode | 是否为页面模式，页面模式下 show 参数无需设置 | `boolean` | false |
 | initialLogTabs | 日志 | `Array` | [] |
 | subTaskIds | 超参子任务 | `Array<number>` | [] |
 | gpuPodNumber | 进程数量 | `number` | 1 |
