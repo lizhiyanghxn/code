@@ -1,3 +1,92 @@
+@import '../../../style/mixin.scss';
+
+%logger-content {
+  .operate-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .right-top-btns {
+      .ant-btn {
+        margin-left: 8px;
+        vertical-align: top;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        .iconfont {
+          color: #999;
+          font-size: 16px;
+        }
+        &:hover {
+          border-color: #40a9ff;
+          .iconfont {
+            color: #40a9ff;
+          }
+        }
+      }
+      .refresh-row {
+        margin-right: 5px;
+        padding: 0 6px;
+        .iconfont {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .log-area {
+    position: relative;
+    height: 505px;
+    margin-top: 10px;
+
+    margin-right: 5px;
+    padding: 0 10px;
+    overflow-y: auto;
+    background-color: #fafafa;
+
+    &:not(.scroll-small) {
+      @include scroll-mini(8px, 8px, #ccc, #ddd);
+    }
+
+    .log {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .log-time {
+      flex-shrink: 0;
+      width: 150px;
+      height: 22px;
+      // color: #1890ff;
+
+      font-size: 13px;
+      line-height: 22px;
+    }
+
+    .log-content {
+      margin-left: 30px;
+
+      font-size: 12px;
+      line-height: 22px;
+      word-break: break-all;
+    }
+
+    .ant-list-item {
+      padding: 10px 0 0 0;
+    }
+
+    .ant-list-split .ant-list-item {
+      padding: 12px 0 0 0;
+      border-bottom: none;
+    }
+
+    .loading-container {
+      padding: 10px 0;
+      text-align: center;
+    }
+  }
+}
+
+// 弹框模式log组件
 .logger-modal-comp {
   .ant-modal-content {
     border-radius: 8px;
@@ -77,86 +166,7 @@
         }
       }
 
-      .operate-area {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .right-top-btns {
-          .ant-btn {
-            margin-left: 8px;
-            vertical-align: top;
-            border: 1px solid #d9d9d9;
-            border-radius: 4px;
-            .iconfont {
-              color: #999;
-              font-size: 16px;
-            }
-            &:hover {
-              border-color: #40a9ff;
-              .iconfont {
-                color: #40a9ff;
-              }
-            }
-          }
-          .refresh-row {
-            margin-right: 5px;
-            padding: 0 6px;
-            .iconfont {
-              font-size: 20px;
-            }
-          }
-        }
-      }
-
-      .log-area {
-        position: relative;
-        height: 505px;
-        margin-top: 10px;
-
-        margin-right: 5px;
-        padding: 0 10px;
-        overflow-y: auto;
-
-        background-color: #f3f3f3;
-
-        .log {
-          display: flex;
-          align-items: flex-start;
-        }
-
-        .log-time {
-          flex-shrink: 0;
-          width: 150px;
-          height: 22px;
-          // color: #1890ff;
-
-          font-size: 13px;
-          line-height: 22px;
-        }
-
-        .log-content {
-          margin-left: 30px;
-
-          font-size: 12px;
-          line-height: 22px;
-          word-break: break-all;
-        }
-
-        .ant-list-item {
-          padding: 10px 0 0 0;
-        }
-
-        .ant-list-split .ant-list-item {
-          padding: 12px 0 0 0;
-          border-bottom: none;
-        }
-
-        .loading-container {
-          padding: 10px 0;
-          text-align: center;
-        }
-      }
+      @extend %logger-content;
     }
 
     .ant-modal-footer {
@@ -171,5 +181,18 @@
         border-radius: 4px;
       }
     }
+  }
+}
+
+// 页面模式log组件
+.logger-page-comp {
+  @extend %logger-content;
+
+  .log-area {
+    margin-top: 16px;
+    margin-right: 0;
+    border-color: #fafafa;
+    border-style: solid;
+    border-width: 12px 0 12px 14px;
   }
 }

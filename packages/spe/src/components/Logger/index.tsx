@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Modal, List, Spin, Button, Tabs, Select } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
+import cs from 'classnames';
 
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -22,6 +23,7 @@ type logTab = {
 export type LoggerParamsType = {
   show: boolean;
   showInit: boolean | string; // 弹框打开时控制刷新日志（show 和 id等变化时触发）
+  isPageMode: boolean;
   initialLogTabs: logTab[]; // 日志
   subTaskIds?: number[]; // 超参子任务数量, null或者空数组表示不是超参搜素
   gpuPodNumber: number; // 进程数量
@@ -54,6 +56,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
   const {
     show, // 日志弹框展示
     showInit = false, // 弹框打开时控制刷新日志（show 和 id等变化时触发）
+    isPageMode = false, // 页面模式，为true时show参数无效
     initialLogTabs = [], // 日志
     subTaskIds = [], // 超参子任务, null或者空数组表示不是超参搜素
     gpuPodNumber = 1, // 进程数量
@@ -231,7 +234,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
   };
 
   useEffect(() => {
-    if (show) {
+    if (show || isPageMode) {
       const newLogTabs = updateLogTabs(initialLogTabs);
       setLogTabs(newLogTabs);
       scrollNodeRefs.current = newLogTabs.map(() => React.createRef<HTMLDivElement>());
@@ -313,114 +316,128 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     fetchLogs({ pageConfig: defaultLogPageConfig, process: id });
   };
 
-  return (
-    <>
-      <Modal
-        title={
-          <>
-            <span className="title">{title}</span>
-            {subTaskIds?.length ? (
-              <Select value={subTaskId} onChange={setLogSubTaskId}>
-                {subTaskIds.map((taskId) => (
-                  <Option value={taskId} key={taskId}>
-                    {getSubTaskLabel(taskId)}
+  const mainContent = (
+    <Tabs activeKey={activeKey} onChange={setLogActiveTab}>
+      {logTabs.map((logItem, index) => (
+        <TabPane tab={logItem.title} key={logItem.key}>
+          <div className="operate-area">
+            <div className="left-top-action">
+              <Select value={activeProcessId} style={{ width: 146 }} onChange={setLogProgressId}>
+                {logItem.processList.map((item) => (
+                  <Option value={item.value} key={item.value}>
+                    {item.label}
                   </Option>
                 ))}
               </Select>
-            ) : (
-              ''
-            )}
-          </>
-        }
-        centered
-        visible={show}
-        width={width}
-        wrapClassName="logger-modal-comp"
-        closeIcon={<i className="iconfont iconguanbi11" />}
-        onCancel={() => onClose(false)}
-        footer={
-          <>
-            {showDownLoad && <Button onClick={onDownload}>{downLoadText}</Button>}
-            <Button type="primary" onClick={() => onClose(false)}>
-              {confirmText}
-            </Button>
-          </>
-        }
-      >
-        <Tabs activeKey={activeKey} onChange={setLogActiveTab}>
-          {logTabs.map((logItem, index) => (
-            <TabPane tab={logItem.title} key={logItem.key}>
-              <div className="operate-area">
-                <Select value={activeProcessId} style={{ width: 146 }} onChange={setLogProgressId}>
-                  {logItem.processList.map((item) => (
-                    <Option value={item.value} key={item.value}>
-                      {item.label}
-                    </Option>
-                  ))}
-                </Select>
-                <div className="right-top-btns">
-                  <Button
-                    className="quick-skip"
-                    onClick={onQuickSkipTop}
-                    icon={<i className="iconfont iconquicktop" />}
-                  />
-                  <Button
-                    className="quick-skip"
-                    onClick={onQuickSkipBottom}
-                    icon={<i className="iconfont iconquickbuttom" />}
-                  />
-                  {showRefresh && (
-                    <Button
-                      className="refresh-row"
-                      onClick={loggerRefresh}
-                      icon={<i className="iconfont iconshuaxin2" />}
-                    />
-                  )}
+              {isPageMode && showDownLoad && (
+                <Button type="link" onClick={onDownload}>
+                  {downLoadText}
+                </Button>
+              )}
+            </div>
+            <div className="right-top-btns">
+              <Button
+                className="quick-skip"
+                onClick={onQuickSkipTop}
+                icon={<i className="iconfont iconquicktop" />}
+              />
+              <Button
+                className="quick-skip"
+                onClick={onQuickSkipBottom}
+                icon={<i className="iconfont iconquickbuttom" />}
+              />
+              {showRefresh && (
+                <Button
+                  className="refresh-row"
+                  onClick={loggerRefresh}
+                  icon={<i className="iconfont iconshuaxin2" />}
+                />
+              )}
+            </div>
+          </div>
+          <div
+            className={cs({ 'log-area': true, 'scroll-small': !isPageMode })}
+            ref={scrollNodeRefs.current[index]}
+          >
+            <InfiniteScroll
+              initialLoad={false}
+              isReverse={isReverse}
+              pageStart={0}
+              loadMore={loggerLoadMore}
+              hasMore={hasMore && !loading}
+              useWindow={false}
+              threshold={300}
+            >
+              {loading && isReverse && (
+                <div className="loading-container">
+                  <Spin />
                 </div>
-              </div>
-              <div className="log-area scroll-small" ref={scrollNodeRefs.current[index]}>
-                <InfiniteScroll
-                  initialLoad={false}
-                  isReverse={isReverse}
-                  pageStart={0}
-                  loadMore={loggerLoadMore}
-                  hasMore={hasMore && !loading}
-                  useWindow={false}
-                  threshold={300}
-                >
-                  {loading && isReverse && (
-                    <div className="loading-container">
-                      <Spin />
+              )}
+              <List
+                dataSource={logItem.logs}
+                locale={{ emptyText: hasMore || loading ? '' : logEmptyMsg }}
+                renderItem={(item, i) => (
+                  <List.Item key={i}>
+                    <div className="log">
+                      <div className="log-time">{item.date}</div>
+                      <div
+                        className="log-content"
+                        dangerouslySetInnerHTML={{ __html: item.message }}
+                      />
                     </div>
-                  )}
-                  <List
-                    dataSource={logItem.logs}
-                    locale={{ emptyText: hasMore || loading ? '' : logEmptyMsg }}
-                    renderItem={(item, i) => (
-                      <List.Item key={i}>
-                        <div className="log">
-                          <div className="log-time">{item.date}</div>
-                          <div
-                            className="log-content"
-                            dangerouslySetInnerHTML={{ __html: item.message }}
-                          />
-                        </div>
-                      </List.Item>
-                    )}
-                  >
-                    {loading && !isReverse && (
-                      <div className="loading-container">
-                        <Spin />
-                      </div>
-                    )}
-                  </List>
-                </InfiniteScroll>
-              </div>
-            </TabPane>
-          ))}
-        </Tabs>
-      </Modal>
-    </>
+                  </List.Item>
+                )}
+              >
+                {loading && !isReverse && (
+                  <div className="loading-container">
+                    <Spin />
+                  </div>
+                )}
+              </List>
+            </InfiniteScroll>
+          </div>
+        </TabPane>
+      ))}
+    </Tabs>
+  );
+
+  return isPageMode ? (
+    <div className="logger-page-comp">{mainContent}</div>
+  ) : (
+    <Modal
+      title={
+        <>
+          <span className="title">{title}</span>
+          {subTaskIds?.length ? (
+            <Select value={subTaskId} onChange={setLogSubTaskId}>
+              {subTaskIds.map((taskId) => (
+                <Option value={taskId} key={taskId}>
+                  {getSubTaskLabel(taskId)}
+                </Option>
+              ))}
+            </Select>
+          ) : (
+            ''
+          )}
+        </>
+      }
+      centered
+      visible={show}
+      width={width}
+      wrapClassName="logger-modal-comp"
+      closeIcon={<i className="iconfont iconguanbi11" />}
+      onCancel={() => onClose(false)}
+      footer={
+        <>
+          {showDownLoad && <Button onClick={onDownload}>{downLoadText}</Button>}
+          <Button type="primary" onClick={() => onClose(false)}>
+            {confirmText}
+          </Button>
+        </>
+      }
+    >
+      {mainContent}
+    </Modal>
   );
 };
 
