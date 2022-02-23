@@ -14,6 +14,7 @@ declare type logTab = {
 export declare type LoggerParamsType = {
     show: boolean;
     showInit: boolean | string;
+    isPageMode: boolean;
     initialLogTabs: logTab[];
     subTaskIds?: number[];
     gpuPodNumber: number;

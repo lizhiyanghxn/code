@@ -35,6 +35,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactInfiniteScroller = _interopRequireDefault(require("react-infinite-scroller"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -78,6 +80,8 @@ var Logger = function Logger(props) {
   var show = props.show,
       _props$showInit = props.showInit,
       showInit = _props$showInit === void 0 ? false : _props$showInit,
+      _props$isPageMode = props.isPageMode,
+      isPageMode = _props$isPageMode === void 0 ? false : _props$isPageMode,
       _props$initialLogTabs = props.initialLogTabs,
       initialLogTabs = _props$initialLogTabs === void 0 ? [] : _props$initialLogTabs,
       _props$subTaskIds = props.subTaskIds,
@@ -391,7 +395,7 @@ var Logger = function Logger(props) {
   };
 
   (0, _react.useEffect)(function () {
-    if (show) {
+    if (show || isPageMode) {
       var newLogTabs = updateLogTabs(initialLogTabs);
       setLogTabs(newLogTabs);
       scrollNodeRefs.current = newLogTabs.map(function () {
@@ -616,37 +620,7 @@ var Logger = function Logger(props) {
     };
   }();
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_modal.default, {
-    title: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("span", {
-      className: "title"
-    }, title), (subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds.length) ? /*#__PURE__*/_react.default.createElement(_select.default, {
-      value: subTaskId,
-      onChange: setLogSubTaskId
-    }, subTaskIds.map(function (taskId) {
-      return /*#__PURE__*/_react.default.createElement(Option, {
-        value: taskId,
-        key: taskId
-      }, getSubTaskLabel(taskId));
-    })) : ''),
-    centered: true,
-    visible: show,
-    width: width,
-    wrapClassName: "logger-modal-comp",
-    closeIcon: /*#__PURE__*/_react.default.createElement("i", {
-      className: "iconfont iconguanbi11"
-    }),
-    onCancel: function onCancel() {
-      return onClose(false);
-    },
-    footer: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, showDownLoad && /*#__PURE__*/_react.default.createElement(_button.default, {
-      onClick: onDownload
-    }, downLoadText), /*#__PURE__*/_react.default.createElement(_button.default, {
-      type: "primary",
-      onClick: function onClick() {
-        return onClose(false);
-      }
-    }, confirmText))
-  }, /*#__PURE__*/_react.default.createElement(_tabs.default, {
+  var mainContent = /*#__PURE__*/_react.default.createElement(_tabs.default, {
     activeKey: activeKey,
     onChange: setLogActiveTab
   }, logTabs.map(function (logItem, index) {
@@ -655,6 +629,8 @@ var Logger = function Logger(props) {
       key: logItem.key
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "operate-area"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "left-top-action"
     }, /*#__PURE__*/_react.default.createElement(_select.default, {
       value: activeProcessId,
       style: {
@@ -666,7 +642,10 @@ var Logger = function Logger(props) {
         value: item.value,
         key: item.value
       }, item.label);
-    })), /*#__PURE__*/_react.default.createElement("div", {
+    })), isPageMode && showDownLoad && /*#__PURE__*/_react.default.createElement(_button.default, {
+      type: "link",
+      onClick: onDownload
+    }, downLoadText)), /*#__PURE__*/_react.default.createElement("div", {
       className: "right-top-btns"
     }, /*#__PURE__*/_react.default.createElement(_button.default, {
       className: "quick-skip",
@@ -687,7 +666,10 @@ var Logger = function Logger(props) {
         className: "iconfont iconshuaxin2"
       })
     }))), /*#__PURE__*/_react.default.createElement("div", {
-      className: "log-area scroll-small",
+      className: (0, _classnames.default)({
+        'log-area': true,
+        'scroll-small': !isPageMode
+      }),
       ref: scrollNodeRefs.current[index]
     }, /*#__PURE__*/_react.default.createElement(_reactInfiniteScroller.default, {
       initialLoad: false,
@@ -721,7 +703,41 @@ var Logger = function Logger(props) {
     }, loading && !isReverse && /*#__PURE__*/_react.default.createElement("div", {
       className: "loading-container"
     }, /*#__PURE__*/_react.default.createElement(_spin.default, null))))));
-  }))));
+  }));
+
+  return isPageMode ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "logger-page-comp"
+  }, mainContent) : /*#__PURE__*/_react.default.createElement(_modal.default, {
+    title: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("span", {
+      className: "title"
+    }, title), (subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds.length) ? /*#__PURE__*/_react.default.createElement(_select.default, {
+      value: subTaskId,
+      onChange: setLogSubTaskId
+    }, subTaskIds.map(function (taskId) {
+      return /*#__PURE__*/_react.default.createElement(Option, {
+        value: taskId,
+        key: taskId
+      }, getSubTaskLabel(taskId));
+    })) : ''),
+    centered: true,
+    visible: show,
+    width: width,
+    wrapClassName: "logger-modal-comp",
+    closeIcon: /*#__PURE__*/_react.default.createElement("i", {
+      className: "iconfont iconguanbi11"
+    }),
+    onCancel: function onCancel() {
+      return onClose(false);
+    },
+    footer: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, showDownLoad && /*#__PURE__*/_react.default.createElement(_button.default, {
+      onClick: onDownload
+    }, downLoadText), /*#__PURE__*/_react.default.createElement(_button.default, {
+      type: "primary",
+      onClick: function onClick() {
+        return onClose(false);
+      }
+    }, confirmText))
+  }, mainContent);
 };
 
 var _default = Logger;
