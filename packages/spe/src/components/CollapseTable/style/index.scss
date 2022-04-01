@@ -41,11 +41,15 @@
         display: flex;
         align-items: center;
         height: 68px;
-        padding: 0 0 0 0px;
+        padding: 0 0 0 50px !important;
+
         & > span {
-          position: initial;
-          padding: 0 16px;
+          position: absolute !important;
+          top: 50% !important;
+          // left: 9px !important;
+
           color: #999;
+          transform: translate(0, -50%);
         }
       }
 
@@ -137,78 +141,58 @@
 
       .action-but {
         display: flex;
+        align-items: center;
+        padding-right: 6px;
         // justify-content: space-between;
 
         font-size: 14px;
+      }
+    }
 
-        .ant-btn {
-          &:nth-child(1) {
-            padding-left: 0;
-          }
+    .action-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
 
-          &:nth-last-child(1) {
-            padding-right: 6px;
-          }
+.collapseHeader,
+.rightExta {
+  display: flex;
+
+  font-size: 14px;
+}
+
+.collapseHeader {
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .collapseLeftTitle {
+    display: flex;
+    width: 65%;
+  }
+}
+
+.site-collapse-custom-collapse {
+  .site-collapse-custom-panel {
+    .ant-table-container {
+      .ant-table-content {
+        .colums-edition {
+          // 列----版本
+          // 当没有选择框时执行改代码
+
+          padding-left: 50px !important;
         }
-      }
-    }
-
-    .collapseHeader,
-    .rightExta {
-      display: flex;
-
-      font-size: 14px;
-    }
-    .collapseHeader {
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      .collapseLeftTitle {
-        display: flex;
-        width: 65%;
-      }
-    }
-
-    .rightExta {
-      position: absolute;
-      top: 50%;
-      right: 16px;
-      font-family: 'PingFang SC';
-      transform: translate(0, -50%);
-
-      i {
-        font-size: 14px;
-      }
-
-      .newEditon {
-        margin-right: 4px;
-
-        color: #999;
-
-        &:nth-child(2) {
-          margin-right: 10px;
-        }
-      }
-
-      .right-exta-btn,
-      .right-exta-btn2 {
-        color: #3d66ff;
       }
     }
   }
+}
 
-  .site-collapse-custom-collapse {
-    .site-collapse-custom-panel {
-      .ant-table-container {
-        .ant-table-content {
-          .colums-edition {
-            // 列----版本
-            // 当没有选择框时执行改代码
-
-            padding-left: 50px !important;
-          }
-        }
-      }
+.common-table-custom.common-table-custom-null .ant-table .ant-table-tbody {
+  > tr:not(.ant-table-measure-row) {
+    > td {
+      border-bottom: none !important;
     }
   }
 }

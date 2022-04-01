@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CollapseTable } from '../../../index';
 
 export default () => {
@@ -17,13 +17,6 @@ export default () => {
       title: 'Address',
       dataIndex: 'address',
       key: 'address',
-    },
-  ];
-  const columns2 = [
-    {
-      title: 'title',
-      dataIndex: 'title',
-      key: 'title',
     },
   ];
 
@@ -85,10 +78,7 @@ export default () => {
       title: '第六行',
     },
   ];
-  const tableParameter = {
-    bordered: true,
-  };
-  const [diffColumns, setDiffColumns] = useState([]);
+
   const rightExtra = (item: any) => {
     console.warn('item', item);
     return <>{item.rightContent}</>;
@@ -99,31 +89,21 @@ export default () => {
     return <>{item.title}</>;
   };
 
-  const panelClick = (item: any) => {
-    console.warn('item', item);
-    if (item.title === '手风琴面板1') {
-      setDiffColumns(columns);
-    } else {
-      setDiffColumns(columns2);
-    }
-  };
-
   return (
     <CollapseTable
-      columns={diffColumns} // table的列
-      dataSource={dataSource} // 列表数据，非 Table 里层数据
+      modelList={dataSource} // 列表数据，非 Table 里层数据
       rightExtra={rightExtra} // 折叠面板右侧自定义div(按钮文字)
+      columns={columns} // table的列
+      dataSource={tableDataSource}
       collapseHeader={collapseHeader} // 折叠板的头部
-      tableDataSource={tableDataSource} // table的数据
-      panelClick={panelClick} // 折叠Panel面板的点击事件，例如：通过该点击事件给父组件传递参数，解决不知道是不是第一次展开，Panel展开后columns不同问题等
-      rowKey={(record: any) => record.key}
+      rowKey="key"
       pagination={{
         size: 'small',
         pageSize: 5,
         total: tableDataSource?.length || 0,
         showSizeChanger: false,
       }}
-      tableParameter={tableParameter}
+      showArrow={false}
     />
   );
 };
