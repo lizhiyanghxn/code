@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.3.0...@sensetime/pro-spe@2.4.0) (2022-04-02)
+
+### Features
+
+- 日志组件增加进程下拉框展示控制 ([0123655](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/0123655403b97c6cb9bbe3d31302893bbf2441a6))
+- 手风琴组件同步 ([65de899](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/65de899f682eaa317748cafffd1d519ee9f352a6))
+
 ## [2.3.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.2.0...@sensetime/pro-spe@2.3.0) (2022-02-23)
 
 ### Features
