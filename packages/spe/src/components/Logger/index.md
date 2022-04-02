@@ -35,6 +35,7 @@ spe 统一的日志展示组件,该组件字段名称、整体样式较为固定
 | getProcessLabel | 进程 label 展示 | `Function` | (id) => 'id' |
 | showRefresh | 刷新按钮展示 | `boolean` | true |
 | showDownLoad | 下载按钮展示 | `boolean` | false |
+| showProcessSelect | 进程下拉选择展示 | `boolean` | true |
 | width | 宽度 | `number` | 750 |
 | title | 标题 | `string` | 日志 |
 | downLoadText | 左下按钮 | `string` | 下载日志 |

@@ -26,15 +26,16 @@ export type LoggerParamsType = {
   isPageMode: boolean;
   initialLogTabs: logTab[]; // 日志
   subTaskIds?: number[]; // 超参子任务数量, null或者空数组表示不是超参搜素
-  gpuPodNumber: number; // 进程数量
+  gpuPodNumber?: number; // 进程数量
   initialActiveKey: string; // 初始激活TAB（当前）
   logApi: (params: any, extraConfig?: any) => Promise<any>; // 获取LOG的API接口，path参数请预先传入
   onDownload: () => void; // 下载log的接口，参数请预先传入
   onClose: (status: boolean) => void; // 控制弹框show状态
   getSubTaskLabel?: (id: number) => string; // 超参任务label展示
-  getProcessLabel: (id: number) => string; // 进程label展示
+  getProcessLabel?: (id: number) => string; // 进程label展示
   showRefresh?: boolean; // 刷新按钮展示
   showDownLoad?: boolean; // 下载按钮展示
+  showProcessSelect?: boolean; // 进程下拉选择展示
   width?: number;
   title: string;
   downLoadText: string;
@@ -68,6 +69,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     getProcessLabel = (id) => `进程${id}`, // 进程label展示
     showRefresh = true, // 刷新按钮展示
     showDownLoad = false, // 下载按钮展示
+    showProcessSelect = true, // 进程下拉选择展示
     width = 750,
     title = '日志',
     downLoadText = '下载日志',
@@ -322,13 +324,15 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
         <TabPane tab={logItem.title} key={logItem.key}>
           <div className="operate-area">
             <div className="left-top-action">
-              <Select value={activeProcessId} style={{ width: 146 }} onChange={setLogProgressId}>
-                {logItem.processList.map((item) => (
-                  <Option value={item.value} key={item.value}>
-                    {item.label}
-                  </Option>
-                ))}
-              </Select>
+              {showProcessSelect && (
+                <Select value={activeProcessId} style={{ width: 146 }} onChange={setLogProgressId}>
+                  {logItem.processList.map((item) => (
+                    <Option value={item.value} key={item.value}>
+                      {item.label}
+                    </Option>
+                  ))}
+                </Select>
+              )}
               {isPageMode && showDownLoad && (
                 <Button type="link" onClick={onDownload}>
                   {downLoadText}
