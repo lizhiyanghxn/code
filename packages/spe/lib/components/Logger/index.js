@@ -118,7 +118,9 @@ var Logger = function Logger(props) {
       _props$confirmText = props.confirmText,
       confirmText = _props$confirmText === void 0 ? '确定' : _props$confirmText,
       _props$logEmptyMsg = props.logEmptyMsg,
-      logEmptyMsg = _props$logEmptyMsg === void 0 ? '日志为空' : _props$logEmptyMsg;
+      logEmptyMsg = _props$logEmptyMsg === void 0 ? '日志为空' : _props$logEmptyMsg,
+      _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className;
 
   var _useState = (0, _react.useState)(subTaskIds === null || subTaskIds === void 0 ? void 0 : subTaskIds[0]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -708,7 +710,7 @@ var Logger = function Logger(props) {
   }));
 
   return isPageMode ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "logger-page-comp"
+    className: (0, _classnames.default)(['logger-page-comp', className])
   }, mainContent) : /*#__PURE__*/_react.default.createElement(_modal.default, {
     title: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("span", {
       className: "title"
@@ -724,7 +726,7 @@ var Logger = function Logger(props) {
     centered: true,
     visible: show,
     width: width,
-    wrapClassName: "logger-modal-comp",
+    wrapClassName: (0, _classnames.default)(['logger-modal-comp', className]),
     closeIcon: /*#__PURE__*/_react.default.createElement("i", {
       className: "iconfont iconguanbi11"
     }),
