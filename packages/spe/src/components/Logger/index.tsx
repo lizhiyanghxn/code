@@ -41,6 +41,7 @@ export type LoggerParamsType = {
   downLoadText: string;
   confirmText: string;
   logEmptyMsg: string;
+  className?: string;
 };
 
 let logPageConfig = {
@@ -75,6 +76,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     downLoadText = '下载日志',
     confirmText = '确定',
     logEmptyMsg = '日志为空',
+    className = '',
   } = props;
 
   const [subTaskId, setSubTaskId] = useState(subTaskIds?.[0]);
@@ -406,7 +408,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
   );
 
   return isPageMode ? (
-    <div className="logger-page-comp">{mainContent}</div>
+    <div className={cs(['logger-page-comp', className])}>{mainContent}</div>
   ) : (
     <Modal
       title={
@@ -428,7 +430,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
       centered
       visible={show}
       width={width}
-      wrapClassName="logger-modal-comp"
+      wrapClassName={cs(['logger-modal-comp', className])}
       closeIcon={<i className="iconfont iconguanbi11" />}
       onCancel={() => onClose(false)}
       footer={

@@ -41,6 +41,7 @@ spe 统一的日志展示组件,该组件字段名称、整体样式较为固定
 | downLoadText | 左下按钮 | `string` | 下载日志 |
 | confirmText | 右下按钮 | `string` | 确定 |
 | logEmptyMsg | 内容为空时展示 | `string` | 日志为空 |
+| className | 组件的 className | `string` | '' |
 
 ## logTabs
 
