@@ -17,15 +17,16 @@ export declare type LoggerParamsType = {
     isPageMode: boolean;
     initialLogTabs: logTab[];
     subTaskIds?: number[];
-    gpuPodNumber: number;
+    gpuPodNumber?: number;
     initialActiveKey: string;
     logApi: (params: any, extraConfig?: any) => Promise<any>;
     onDownload: () => void;
     onClose: (status: boolean) => void;
     getSubTaskLabel?: (id: number) => string;
-    getProcessLabel: (id: number) => string;
+    getProcessLabel?: (id: number) => string;
     showRefresh?: boolean;
     showDownLoad?: boolean;
+    showProcessSelect?: boolean;
     width?: number;
     title: string;
     downLoadText: string;

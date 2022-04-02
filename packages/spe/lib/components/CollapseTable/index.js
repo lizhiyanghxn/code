@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/spin/style");
+
+var _spin = _interopRequireDefault(require("antd/es/spin"));
+
 require("antd/es/table/style");
 
 var _table = _interopRequireDefault(require("antd/es/table"));
@@ -28,6 +32,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -54,18 +64,15 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Panel = _collapse.default.Panel;
-
-var nope = function nope() {};
-
-var nopeNode = function nopeNode() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
-};
+var oldlist = '';
 
 var CollapseTable = function CollapseTable(props) {
   var _props$onChangeCollap = props.onChangeCollapse,
-      onChangeCollapse = _props$onChangeCollap === void 0 ? nope : _props$onChangeCollap,
+      onChangeCollapse = _props$onChangeCollap === void 0 ? function () {} : _props$onChangeCollap,
+      _props$onCollapseOpen = props.onCollapseOpen,
+      onCollapseOpen = _props$onCollapseOpen === void 0 ? function () {} : _props$onCollapseOpen,
       _props$subPageApi = props.subPageApi,
-      subPageApi = _props$subPageApi === void 0 ? nope : _props$subPageApi,
+      subPageApi = _props$subPageApi === void 0 ? function () {} : _props$subPageApi,
       _props$subPageParams = props.subPageParams,
       subPageParams = _props$subPageParams === void 0 ? function () {
     return [];
@@ -73,72 +80,73 @@ var CollapseTable = function CollapseTable(props) {
       _props$subPageSize = props.subPageSize,
       subPageSize = _props$subPageSize === void 0 ? 5 : _props$subPageSize,
       _props$updateTable = props.updateTable,
-      updateTable = _props$updateTable === void 0 ? nope : _props$updateTable,
+      updateTable = _props$updateTable === void 0 ? function () {} : _props$updateTable,
       _props$giveFarDataSou = props.giveFarDataSource,
-      giveFarDataSource = _props$giveFarDataSou === void 0 ? nope : _props$giveFarDataSou,
-      _props$dataSource = props.dataSource,
-      dataSource = _props$dataSource === void 0 ? [] : _props$dataSource,
+      giveFarDataSource = _props$giveFarDataSou === void 0 ? function () {} : _props$giveFarDataSou,
+      _props$modelList = props.modelList,
+      modelList = _props$modelList === void 0 ? [] : _props$modelList,
       _props$rightExtra = props.rightExtra,
-      rightExtra = _props$rightExtra === void 0 ? nopeNode : _props$rightExtra,
-      _props$columns = props.columns,
-      columns = _props$columns === void 0 ? [] : _props$columns,
-      _props$collapseHeader = props.collapseHeader,
-      collapseHeader = _props$collapseHeader === void 0 ? nopeNode : _props$collapseHeader,
-      _props$rowSelection = props.rowSelection,
-      rowSelection = _props$rowSelection === void 0 ? null : _props$rowSelection,
+      rightExtra = _props$rightExtra === void 0 ? function () {
+    return '';
+  } : _props$rightExtra,
+      columns = props.columns,
+      collapseHeader = props.collapseHeader,
+      rowSelection = props.rowSelection,
       _props$expandIconPosi = props.expandIconPosition,
       expandIconPosition = _props$expandIconPosi === void 0 ? 'left' : _props$expandIconPosi,
       _props$className = props.className,
       className = _props$className === void 0 ? '' : _props$className,
       _props$flag = props.flag,
       flag = _props$flag === void 0 ? false : _props$flag,
-      _props$tableDataSourc = props.tableDataSource,
-      tableDataSource = _props$tableDataSourc === void 0 ? [] : _props$tableDataSourc,
+      _props$dataSource = props.dataSource,
+      dataSource = _props$dataSource === void 0 ? [] : _props$dataSource,
       _props$panelClick = props.panelClick,
-      panelClick = _props$panelClick === void 0 ? nope : _props$panelClick,
+      panelClick = _props$panelClick === void 0 ? function () {} : _props$panelClick,
       _props$collapseLeftTi = props.collapseLeftTitleClassName,
       collapseLeftTitleClassName = _props$collapseLeftTi === void 0 ? '' : _props$collapseLeftTi,
       _props$pagination = props.pagination,
       pagination = _props$pagination === void 0 ? {} : _props$pagination,
       _props$rowKey = props.rowKey,
       rowKey = _props$rowKey === void 0 ? 'id' : _props$rowKey,
-      _props$tableParameter = props.tableParameter,
-      tableParameter = _props$tableParameter === void 0 ? {} : _props$tableParameter;
+      _props$showArrow = props.showArrow,
+      showArrow = _props$showArrow === void 0 ? true : _props$showArrow,
+      _props$doNotReset = props.doNotReset,
+      doNotReset = _props$doNotReset === void 0 ? false : _props$doNotReset;
 
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      subPaging = _useState2[0],
-      setSubPaging = _useState2[1];
+      activeKey = _useState2[0],
+      setActiveKey = _useState2[1]; // 如果展开不需要请求或者使用onclick参数，则不需要关注以下组件内部的逻辑
+
 
   var _useState3 = (0, _react.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      subList = _useState4[0],
-      setSubList = _useState4[1];
+      subPaging = _useState4[0],
+      setSubPaging = _useState4[1];
 
   var _useState5 = (0, _react.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      activeKey = _useState6[0],
-      setActiveKey = _useState6[1]; // 这里获取的是dataSource的下标
+      subList = _useState6[0],
+      setSubList = _useState6[1];
 
+  var _useState7 = (0, _react.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      subLoading = _useState8[0],
+      setSubLoading = _useState8[1];
 
-  var _onChange = function onChange(index) {
-    onChangeCollapse(index);
-    setActiveKey([index]);
+  var collapseParams = {};
 
-    if ((0, _utils.notEmpty)(index) && subList[index].length === 0) {
-      callApi(dataSource[index], index, 1);
-    } // 每次展开时都给父组件传递值（第一次展开，通过callApi给父组件传递data），为了table选择框
-
-
-    if ((0, _utils.notEmpty)(index) && subList[index].length !== 0) {
-      var _subPaging$index;
-
-      giveFarDataSource(subList[index], (_subPaging$index = subPaging[index]) === null || _subPaging$index === void 0 ? void 0 : _subPaging$index.total);
+  var collapseChange = function collapseChange(index) {
+    if (index) {
+      setActiveKey([Number(index)]);
+      onCollapseOpen(Number(index));
+    } else {
+      setActiveKey([]);
     }
   };
 
-  var subTableOnChange = function subTableOnChange(item, index, current) {
-    callApi(item, index, current);
+  var collapseClick = function collapseClick(item) {
+    panelClick(item);
   };
   /**
    * 子 List 数据请求
@@ -157,13 +165,14 @@ var CollapseTable = function CollapseTable(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              _context.next = 3;
+              setSubLoading(true);
+              _context.next = 4;
               return subPageApi.apply(void 0, _toConsumableArray(subPageParams(item, subPaging[index])).concat([{
                 page_size: subPageSize,
                 page: current
               }, item]));
 
-            case 3:
+            case 4:
               res = _context.sent;
 
               if (res && res.list) {
@@ -173,45 +182,98 @@ var CollapseTable = function CollapseTable(props) {
                   total: res.total,
                   current: current
                 };
-                updateTable && updateTable(dataSource, index, current, res.list, setActiveKey);
-                subListNew[index] = res.list;
+                updateTable(modelList, index, current, res.list, setActiveKey);
+                subListNew[index] = res.list.map(function (iitem) {
+                  return _objectSpread(_objectSpread({}, iitem), {}, {
+                    rowTotal: res.total
+                  });
+                });
                 giveFarDataSource(res.list, res.total); // 第一展开传递值
 
                 setSubPaging(subPagingNew);
                 setSubList(subListNew);
               }
 
-              _context.next = 10;
+              setSubLoading(false);
+              _context.next = 13;
               break;
 
-            case 7:
-              _context.prev = 7;
+            case 9:
+              _context.prev = 9;
               _context.t0 = _context["catch"](0);
+              setSubLoading(false);
               console.log(_context.t0);
 
-            case 10:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 7]]);
+      }, _callee, null, [[0, 9]]);
     }));
 
     return function callApi(_x, _x2, _x3) {
       return _ref.apply(this, arguments);
     };
-  }(); // 折叠面板的header
+  }(); // 这里获取的是modelList的下标
 
 
-  var header = function header(item) {
+  var _onChange = function onChange(index) {
+    onChangeCollapse(index);
+    setActiveKey([index]);
+
+    if ((0, _utils.notEmpty)(index) && subList[index].length === 0) {
+      callApi(modelList[index], index, 1);
+    } // 每次展开时都给父组件传递值（第一次展开，通过callApi给父组件传递data），为了table选择框
+
+
+    if ((0, _utils.notEmpty)(index) && subList[index].length !== 0) {
+      var _subPaging$index;
+
+      giveFarDataSource(subList[index], (_subPaging$index = subPaging[index]) === null || _subPaging$index === void 0 ? void 0 : _subPaging$index.total);
+    }
+  };
+
+  if (!flag) {
+    collapseParams = {
+      onChange: function onChange(index) {
+        return collapseChange(index);
+      }
+    };
+  }
+
+  if (flag) {
+    collapseParams = {
+      onChange: function onChange(index) {
+        return _onChange(index);
+      }
+    };
+  }
+
+  (0, _react.useEffect)(function () {
+    if (!doNotReset) {
+      setActiveKey([]);
+    }
+
+    if (flag) {
+      oldlist = JSON.stringify(modelList);
+    }
+  }, [modelList]);
+
+  var subTableOnChange = function subTableOnChange(item, index, current) {
+    callApi(item, index, current);
+  }; // 折叠面板的header
+
+
+  var header = function header(item, index) {
     return /*#__PURE__*/_react.default.createElement("div", {
       className: "collapseHeader",
       onClick: function onClick() {
-        panelClick(item);
+        return collapseClick(item);
       }
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "collapseLeftTitle ".concat(collapseLeftTitleClassName)
-    }, collapseHeader(item)), /*#__PURE__*/_react.default.createElement("div", {
+    }, collapseHeader(item, index)), /*#__PURE__*/_react.default.createElement("div", {
       className: "rightExta"
     }, rightExtra(item)));
   };
@@ -219,47 +281,39 @@ var CollapseTable = function CollapseTable(props) {
   (0, _react.useEffect)(function () {
     var index = activeKey[0];
 
-    if (activeKey && (0, _utils.notEmpty)(index)) {
-      callApi(dataSource[index], index, 1); // 每次展开时都给父组件传递值（第一次展开，通过callApi给父组件传递data），为了table选择框
+    if (flag) {
+      if (activeKey && (0, _utils.notEmpty)(index) && oldlist !== JSON.stringify(modelList)) {
+        callApi(modelList[index], index, 1); // 每次展开时都给父组件传递值（第一次展开，通过callApi给父组件传递data），为了table选择框
 
-      if (subList[index].length !== 0) {
-        var _subPaging$index2;
+        if (subList[index].length !== 0) {
+          var _subPaging$index2;
 
-        giveFarDataSource(subList[index], (_subPaging$index2 = subPaging[index]) === null || _subPaging$index2 === void 0 ? void 0 : _subPaging$index2.total);
-      }
-    } else {
-      setActiveKey([]);
+          giveFarDataSource(subList[index], (_subPaging$index2 = subPaging[index]) === null || _subPaging$index2 === void 0 ? void 0 : _subPaging$index2.total);
+        }
+      } else {
+        setActiveKey([]);
 
-      if (dataSource.length > 0) {
-        var len = dataSource.length;
-        setSubPaging(new Array(len).fill({
-          total: 0,
-          current: 1
-        }));
-        setSubList(new Array(len).fill([]));
+        if (modelList.length > 0) {
+          var len = modelList.length;
+          setSubPaging(new Array(len).fill({
+            total: 0,
+            current: 1
+          }));
+          setSubList(new Array(len).fill([]));
+        }
       }
     }
-  }, [dataSource]);
-  var collapseParams = {};
+  }, [modelList]);
 
-  if (flag) {
-    collapseParams = {
-      onChange: function onChange(index) {
-        return _onChange(index);
-      },
-      activeKey: activeKey
-    };
-  }
-
-  var handleTableDataSource = function handleTableDataSource(index) {
+  var tableDataSource = function tableDataSource(index) {
     if (flag) {
       return subList[index];
     }
 
-    return tableDataSource;
+    return dataSource;
   };
 
-  var tablePagination = function tablePagination(index) {
+  var tablePagination = function tablePagination(index, item) {
     if (flag) {
       var _subPaging$index3, _subPaging$index4;
 
@@ -278,7 +332,7 @@ var CollapseTable = function CollapseTable(props) {
     return pagination;
   };
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, dataSource.length > 0 ? /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, modelList.length > 0 ? /*#__PURE__*/_react.default.createElement("div", {
     className: "collapse-table-comp ".concat(className)
   }, /*#__PURE__*/_react.default.createElement(_collapse.default, _extends({
     bordered: false,
@@ -288,23 +342,32 @@ var CollapseTable = function CollapseTable(props) {
       'site-collapse-custom-collapse': !rowSelection
     }, 'custom-collapse-table')
   }, collapseParams, {
-    expandIconPosition: expandIconPosition
-  }), dataSource.map(function (item, index) {
+    expandIconPosition: expandIconPosition,
+    activeKey: activeKey
+  }), modelList.map(function (item, index) {
     return /*#__PURE__*/_react.default.createElement(Panel, {
-      header: header(item) // 折叠面板的自定义头部div
+      header: header(item, index) // 折叠面板的自定义头部div
       ,
       key: index,
-      className: "site-collapse-custom-panel"
-    }, /*#__PURE__*/_react.default.createElement(_table.default, _extends({
+      className: "site-collapse-custom-panel",
+      showArrow: showArrow
+    }, item.childJSX ? item.childJSX(item, index) : /*#__PURE__*/_react.default.createElement(_spin.default, {
+      spinning: subLoading
+    }, /*#__PURE__*/_react.default.createElement(_table.default, {
       className: "collapse-small-table",
       columns: columns,
-      dataSource: handleTableDataSource(index),
-      pagination: tablePagination(index),
-      rowKey: rowKey
-    }, tableParameter)));
+      rowSelection: rowSelection,
+      dataSource: tableDataSource(index),
+      pagination: tablePagination(index, item),
+      rowKey: rowKey,
+      scroll: {
+        x: 1216
+      }
+    })));
   }))) : /*#__PURE__*/_react.default.createElement(_table.default, {
-    className: "common-table-custom",
+    className: "common-table-custom common-table-custom-null",
     columns: columns,
+    showHeader: false,
     dataSource: [],
     pagination: false,
     rowKey: "id"

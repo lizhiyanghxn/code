@@ -107,6 +107,8 @@ var Logger = function Logger(props) {
       showRefresh = _props$showRefresh === void 0 ? true : _props$showRefresh,
       _props$showDownLoad = props.showDownLoad,
       showDownLoad = _props$showDownLoad === void 0 ? false : _props$showDownLoad,
+      _props$showProcessSel = props.showProcessSelect,
+      showProcessSelect = _props$showProcessSel === void 0 ? true : _props$showProcessSel,
       _props$width = props.width,
       width = _props$width === void 0 ? 750 : _props$width,
       _props$title = props.title,
@@ -631,7 +633,7 @@ var Logger = function Logger(props) {
       className: "operate-area"
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "left-top-action"
-    }, /*#__PURE__*/_react.default.createElement(_select.default, {
+    }, showProcessSelect && /*#__PURE__*/_react.default.createElement(_select.default, {
       value: activeProcessId,
       style: {
         width: 146
