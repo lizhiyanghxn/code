@@ -6,6 +6,8 @@ import Steps from './components/Steps';
 import type { StepsPropsType } from './components/Steps';
 import CollapseTable from './components/CollapseTable';
 import type { CollapseTablePropsType } from './components/CollapseTable';
+import ResizeTable from './components/ResizeTable';
+import type { ResizeTableType } from './components/ResizeTable';
 
 import './index.scss';
 
@@ -13,7 +15,7 @@ require('./index-style-only'); // 引入所有组件样式
 
 export { BasicView, DetailView, ListView, StepView, TabView } from './components/View';
 
-export { Logger, Breadcrumb, Steps, CollapseTable };
+export { Logger, Breadcrumb, Steps, CollapseTable, ResizeTable };
 
 export type {
   BasicViewPropsType,
@@ -23,4 +25,10 @@ export type {
   TabViewPropsType,
 } from './components/View';
 
-export type { LoggerParamsType, BreadcrumbPropsType, StepsPropsType, CollapseTablePropsType };
+export type {
+  LoggerParamsType,
+  BreadcrumbPropsType,
+  StepsPropsType,
+  CollapseTablePropsType,
+  ResizeTableType,
+};

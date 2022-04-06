@@ -29,6 +29,7 @@ DCP Components 是基于 Antd 基础进行封装，按照使用频率，组件�
   - [日志 Logger](/spe/components/logger)
   - [面包屑 Breadcrumb](/spe/components/breadcrumb)
   - [手风琴表格 CollapseTable](/spe/components/collapse-table)
+  - [弹性表格 ResizeTable](/spe/components/resize-table)
   - [步骤条 Steps](/spe/components/steps)
 
 ### 设计与样式

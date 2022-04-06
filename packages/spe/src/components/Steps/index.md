@@ -8,7 +8,7 @@ nav:
   title: SPE 组件
 ---
 
-# Steps 步骤条
+## Steps 步骤条
 
 Steps 封装了 SPE 的步骤条
 
@@ -20,7 +20,7 @@ Steps 封装了 SPE 的步骤条
 
 <code src="./demos/page.tsx" iframe="200px"/>
 
-## API
+### API
 
 View
 

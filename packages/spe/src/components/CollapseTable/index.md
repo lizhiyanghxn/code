@@ -18,8 +18,6 @@ CollapseTable 结合 antd 的 Collapse 和 Table 形成的手风琴 table 组件
 
 ### API
 
-Breadcrumb
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | modelList | 构成折叠面板列表的数据 | `object[]` | [] |

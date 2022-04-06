@@ -97,7 +97,13 @@ export default {
       },
       {
         title: '基础业务组件',
-        children: ['Logger/index', 'Breadcrumb/index', 'CollapseTable/index', 'Steps/index'],
+        children: [
+          'Logger/index',
+          'Breadcrumb/index',
+          'CollapseTable/index',
+          'ResizeTable/index',
+          'Steps/index',
+        ],
       },
     ],
     '/dcp': [

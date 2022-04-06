@@ -49,6 +49,10 @@ nav:
 
 <code src="./components/Breadcrumb/demos/basic.tsx"/>
 
+### 弹性表格 - [ResizeTable](./components/resize-table)
+
+<code src="./components/ResizeTable/demos/basic.tsx"/>
+
 ### 步骤条 - [Steps](./components/steps)
 
 页面中
