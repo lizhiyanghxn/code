@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResizeTable } from '../../../index';
+import ResizeTable from '../index';
 
 export default () => {
   const columns = [

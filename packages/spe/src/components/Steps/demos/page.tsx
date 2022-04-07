@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch } from 'antd';
-import { Steps } from '../../../index';
+import Steps from '../index';
 
 export default () => {
   const [isCenter, setIsCenter] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import { BasicView } from '../../../index';
+import { BasicView } from '../index';
 
 import './pageBox.scss';
 

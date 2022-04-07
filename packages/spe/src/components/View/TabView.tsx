@@ -15,8 +15,8 @@ const { TabPane } = Tabs;
 
 export type TabViewPropsType = BasicViewPropsType & {
   tabsConfig: Record<string, { tab: React.ReactNode; children: React.ReactNode }>;
-  tabWrapConfig: Record<string, any>;
-  defaultTabKey: string;
+  tabWrapConfig?: Record<string, any>;
+  defaultTabKey?: string;
   className?: string;
 };
 

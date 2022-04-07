@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
-import { ListView } from '../../../index';
+import { ListView } from '../index';
 
 import './pageBox.scss';
 

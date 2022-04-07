@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { TabView } from '../../../index';
+import { TabView } from '../index';
 
 import './pageBox.scss';
 

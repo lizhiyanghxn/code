@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Switch, Modal } from 'antd';
-import { Steps } from '../../../index';
+import Steps from '../index';
 
 export default () => {
   const [modalVisible, setModalVisible] = useState(false);
