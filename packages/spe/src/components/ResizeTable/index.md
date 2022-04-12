@@ -14,11 +14,11 @@ ResizeTable 可以自动适应页容器的高度和宽度，解决 Table 表头�
 
 ### 基本使用
 
-<code src="./demos/basic.tsx"/>
+<code src="./demos/basic.tsx" iframe="400px"/>
 
 ### API
 
-扩展自 antd.Table
+扩展自[antd.Table](https://ant.design/components/table-cn/#API)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

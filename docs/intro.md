@@ -31,6 +31,9 @@ DCP Components 是基于 Antd 基础进行封装，按照使用频率，组件�
   - [手风琴表格 CollapseTable](/spe/components/collapse-table)
   - [弹性表格 ResizeTable](/spe/components/resize-table)
   - [步骤条 Steps](/spe/components/steps)
+  - [提示 CommonTip](/spe/components/common-tip)
+  - [省略时提示 EllipsisTip](/spe/components/ellipsis-tip)
+  - [图表 Echarts](/spe/components/echarts)
 
 ### 设计与样式
 

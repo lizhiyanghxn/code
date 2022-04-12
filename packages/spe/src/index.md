@@ -47,7 +47,7 @@ nav:
 
 ### 手风琴表格 - [CollapseTable](./components/collapse-table)
 
-<code src="./components/Breadcrumb/demos/basic.tsx"/>
+<code src="./components/CollapseTable/demos/basic.tsx"/>
 
 ### 弹性表格 - [ResizeTable](./components/resize-table)
 
@@ -62,3 +62,21 @@ nav:
 弹框中
 
 <code src="./components/Steps/demos/modal.tsx" iframe="500px"/>
+
+### 提示 - [CommonTip](./components/CommonTip)
+
+<code src="./components/CommonTip/demos/basic.tsx" />
+
+### 省略时提示 - [EllipsisTip](./components/EllipsisTip)
+
+单独使用
+
+<code src="./components/EllipsisTip/demos/basic.tsx" iframe="200px"/>
+
+Table 中使用
+
+<code src="./components/EllipsisTip/demos/useintable.tsx" iframe="300px"/>
+
+### 图表 - [Echarts](./components/Echarts)
+
+<code src="./components/Echarts/demos/basic.tsx" />

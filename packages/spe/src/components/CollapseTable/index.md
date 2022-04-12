@@ -24,7 +24,7 @@ CollapseTable 结合 antd 的 Collapse 和 Table 形成的手风琴 table 组件
 | rightExtra | 可选， Collapse 手风琴面板右上角的 div, collapseItem 是 dataSource 中对应的数据 | `(collapseItem: any) => ReactNode` | - |
 | columns | 表格列的配置描述,和 antd 的 table 组件的 columns 格式以及用法一样 | `object[]` | [] |
 | collapseHeader | 可选， 它是整个 Collapse 手风琴面板的 div, collapseItem 是 dataSource 中对应的数据 | `(collapseItem: any) => ReactNode` | - |
-| rowSelection | Table 的 rowSelection | 参考 antd.Table 组件 |  |
+| rowSelection | Table 的 rowSelection | 参考 [antd.Table](https://ant.design/components/table-cn/#API) 组件 |  |
 | expandIconPosition | 可选， Collapse 手风琴面板展开合上 icon 位置 | `string` | left |
 | rowKey | 可选， 同 antd 中 table 组件的 rowKey 用法一样 | `string` 或者 `(record)=> string` | id |
 | className | 组件的 className | `string` | '' |

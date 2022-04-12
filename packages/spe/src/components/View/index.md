@@ -54,12 +54,12 @@ SPE 统一的页容器组件，整合了常用页面类型的排版和样式。
 
 扩展自 BasicView-[API](#api)
 
-| 参数          | 说明                   | 类型                 | 默认值 |
-| ------------- | ---------------------- | -------------------- | ------ |
-| headExtra     | 内容区（查询表单上面） | `React.ReactNode`    |        |
-| searchArea    | 查询表单区域           | `React.ReactElement` |        |
-| pagingConfig  | 分页配置               | `Antd.Pagination`    |        |
-| fixPagination | 分页器是否固定页面底部 | `boolean`            | true   |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| headExtra | 内容区（查询表单上面） | `React.ReactNode` |  |
+| searchArea | 查询表单区域 | `React.ReactElement` |  |
+| pagingConfig | 分页配置 | [`Antd.Pagination`](https://ant.design/components/pagination-cn/) |  |
+| fixPagination | 分页器是否固定页面底部 | `boolean` | true |
 
 ### 步骤页布局容器 - [StepView](#步骤页布局容器---stepview)
 
@@ -85,6 +85,6 @@ SPE 统一的页容器组件，整合了常用页面类型的排版和样式。
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| tabWrapConfig | 配置 antd.Tabs | `antd.Tabs` | {} |
-| tabsConfig | 配置 antd.Tabs.TabPane，children 可以配置 TabPane 的内容 | `antd.Tabs.TabPane` |  |
+| tabWrapConfig | 配置 antd.Tabs | [`antd.Tabs`](https://ant.design/components/tabs-cn/#Tabs) | {} |
+| tabsConfig | 配置 antd.Tabs.TabPane，children 可以配置 TabPane 的内容 | [`antd.Tabs.TabPane`](https://ant.design/components/tabs-cn/#Tabs.TabPane) |  |
 | defaultTabKey | 默认 Tab 的 key， 也可以在 tabWrapConfig 中设置 | `string` | '' |
