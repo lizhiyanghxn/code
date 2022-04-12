@@ -74,13 +74,14 @@ docker build -t registry.sensetime.com/sensegear/dcp-components:1.0.0 .
 docker push registry.sensetime.com/sensegear/dcp-components:1.0.0
 ```
 
-注：推送镜像有问题请联系继诚。
+注：推送镜像有问题请联系继诚。 docker push 和 下面的 docker pull 之前都需要登陆：docker login -u xxx -p xxxx registry.sensetime.com
 
 通过跳板机登录到 172.20.52.114 这个机器，更新服务进程
 
 ```bash
 docker pull registry.sensetime.com/sensegear/dcp-components:1.0.0
-docker run -it --rm -p 7000:80 registry.sensetime.com/sensegear/dcp-components:1.0.0
+docker stop [CONTAINER ID]  #需要先停止正在运行的容器，使用 docker container ls 查看运行中的容器。
+docker run -d -it --rm -p 7000:80 registry.sensetime.com/sensegear/dcp-components:1.0.0
 ```
 
 通过 `docker ps` 查看进程是否正常启动
