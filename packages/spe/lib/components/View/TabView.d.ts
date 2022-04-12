@@ -5,8 +5,8 @@ export declare type TabViewPropsType = BasicViewPropsType & {
         tab: React.ReactNode;
         children: React.ReactNode;
     }>;
-    tabWrapConfig: Record<string, any>;
-    defaultTabKey: string;
+    tabWrapConfig?: Record<string, any>;
+    defaultTabKey?: string;
     className?: string;
 };
 declare const TabView: React.FC<TabViewPropsType>;
