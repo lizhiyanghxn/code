@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.4.2...@sensetime/pro-spe@2.5.0) (2022-04-12)
+
+### Features
+
+- 新增的组件导出 ([235676d](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/235676d00e6c71c843aaa7624d72e4682cb7ba58))
+- 新增 CommonTip, EllispeTip, Echarts 组件，文档完善 ([9f14bc8](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/9f14bc875eba828446ed163ab8687330a5f9f23a))
+- 新增 ResizeTable 组件 ([e0dd6ac](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/e0dd6ac40e03cff4f2ddb56c98ed041afb1aa2bc))
+- demo 引用组件的地址修改 ([ebd1f07](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/ebd1f07b5d959748634a3cb41a41f5a7b7552f8e))
+
 ### [2.4.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.4.1...@sensetime/pro-spe@2.4.2) (2022-04-02)
 
 ### Bug Fixes
