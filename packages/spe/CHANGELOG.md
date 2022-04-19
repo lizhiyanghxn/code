@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.5.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.5.0...@sensetime/pro-spe@2.5.1) (2022-04-19)
+
+### Bug Fixes
+
+- EllipsisTip 组件 Resize 依赖子节点 ([720edc6](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/720edc616736b2dea7da6d31a9de2cda70a39e97))
+
 ## [2.5.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.4.2...@sensetime/pro-spe@2.5.0) (2022-04-12)
 
 ### Features
