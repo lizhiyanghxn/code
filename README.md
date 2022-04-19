@@ -74,9 +74,9 @@ docker build -t registry.sensetime.com/sensegear/dcp-components:1.0.0 .
 docker push registry.sensetime.com/sensegear/dcp-components:1.0.0
 ```
 
-注：推送镜像有问题请联系继诚。 docker push 和 下面的 docker pull 之前都需要登陆：docker login -u xxx -p xxxx registry.sensetime.com
+注：推送镜像有问题请联系继诚。 `docker push` 和下面的 `docker pull` 之前都需要登陆：`docker login -u xxx -p xxxx registry.sensetime.com`
 
-通过跳板机登录到 172.20.52.114 这个机器，更新服务进程
+通过跳板机登录到 `172.20.52.114` 这个机器，更新服务进程
 
 ```bash
 docker pull registry.sensetime.com/sensegear/dcp-components:1.0.0

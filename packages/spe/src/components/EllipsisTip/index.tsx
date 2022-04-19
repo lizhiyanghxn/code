@@ -62,15 +62,15 @@ const EllipsisTip: React.FC<EllipsisTipType> = (props) => {
     return () => {
       containerResizeObserver.unobserve(ellipsisRef.current);
     };
-  }, []);
+  }, [childElement]);
 
   return showTooltip ? (
     <Tooltip
+      {...rest}
       placement={placement}
       title={title}
       color={color}
       overlayClassName={cs(['custom-tooltip', rest.overlayClassName])}
-      {...rest}
     >
       {childElement}
     </Tooltip>
