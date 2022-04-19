@@ -110,13 +110,13 @@ var EllipsisTip = function EllipsisTip(props) {
     return function () {
       containerResizeObserver.unobserve(ellipsisRef.current);
     };
-  }, []);
-  return showTooltip ? /*#__PURE__*/_react.default.createElement(_tooltip.default, _extends({
+  }, [childElement]);
+  return showTooltip ? /*#__PURE__*/_react.default.createElement(_tooltip.default, _extends({}, rest, {
     placement: placement,
     title: title,
     color: color,
     overlayClassName: (0, _classnames.default)(['custom-tooltip', rest.overlayClassName])
-  }, rest), childElement) : childElement;
+  }), childElement) : childElement;
 };
 
 var _default = EllipsisTip;
