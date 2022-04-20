@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.5.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.5.1...@sensetime/pro-spe@2.5.2) (2022-04-20)
+
+### Bug Fixes
+
+- Echarts 组件支持 init 的 opts 参数 ([34e6996](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/34e6996ac86961911477688887d86cfd3ee12191))
+
 ### [2.5.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.5.0...@sensetime/pro-spe@2.5.1) (2022-04-19)
 
 ### Bug Fixes
