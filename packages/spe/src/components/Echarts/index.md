@@ -20,6 +20,7 @@ Echarts 基于 echarts，封装了 window.resize、tooltip 等功能。
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| initOpts | echarts init 的第三个参数 opts | 参考[init](https://echarts.apache.org/zh/api.html#echarts.init) | {} |
 | height | 高度 | `string` | '100%' |
 | width | 宽度 | `string` | '100%' |
 | option | echarts 的 setOptions 参数 | 参考[setOptions](https://echarts.apache.org/zh/api.html#echartsInstance.setOption) | {} |

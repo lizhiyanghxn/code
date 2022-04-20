@@ -8,6 +8,7 @@ import CommonTip from '../CommonTip';
 const infographic = require('./infographic.project.json');
 
 export type EchartsType = {
+  initOpts: any;
   height?: string;
   width?: string;
   option: any;
@@ -32,6 +33,7 @@ class Echarts extends Component<EchartsType, { chartInstance: any; option: any }
   }
 
   static propTypes = {
+    initOpts: PropTypes.any,
     height: PropTypes.string,
     width: PropTypes.string,
     option: PropTypes.object,
@@ -42,6 +44,7 @@ class Echarts extends Component<EchartsType, { chartInstance: any; option: any }
   };
 
   static defaultProps = {
+    initOpts: {},
     height: '100%',
     width: '100%',
     option: {},
@@ -57,7 +60,7 @@ class Echarts extends Component<EchartsType, { chartInstance: any; option: any }
   componentDidMount() {
     this.setState(
       {
-        chartInstance: echarts.init(this.instance.current, infographic.theme),
+        chartInstance: echarts.init(this.instance.current, infographic.theme, this.props.initOpts),
       },
       // eslint-disable-next-line func-names
       function () {
