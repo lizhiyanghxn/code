@@ -84,7 +84,7 @@ var Echarts = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        chartInstance: echarts.init(this.instance.current, infographic.theme)
+        chartInstance: echarts.init(this.instance.current, infographic.theme, this.props.initOpts)
       }, // eslint-disable-next-line func-names
       function () {
         this.state.chartInstance.setOption(this.props.option);
@@ -160,6 +160,7 @@ var Echarts = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 Echarts.propTypes = {
+  initOpts: _propTypes.default.any,
   height: _propTypes.default.string,
   width: _propTypes.default.string,
   option: _propTypes.default.object,
@@ -169,6 +170,7 @@ Echarts.propTypes = {
   clear: _propTypes.default.func
 };
 Echarts.defaultProps = {
+  initOpts: {},
   height: '100%',
   width: '100%',
   option: {},

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 export declare type EchartsType = {
+    initOpts: any;
     height?: string;
     width?: string;
     option: any;
@@ -20,6 +21,7 @@ declare class Echarts extends Component<EchartsType, {
 }, any> {
     constructor(props: EchartsType);
     static propTypes: {
+        initOpts: PropTypes.Requireable<any>;
         height: PropTypes.Requireable<string>;
         width: PropTypes.Requireable<string>;
         option: PropTypes.Requireable<object>;
@@ -29,6 +31,7 @@ declare class Echarts extends Component<EchartsType, {
         clear: PropTypes.Requireable<(...args: any[]) => any>;
     };
     static defaultProps: {
+        initOpts: {};
         height: string;
         width: string;
         option: {};
