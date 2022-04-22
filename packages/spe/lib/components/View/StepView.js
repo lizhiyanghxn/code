@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/config-provider/style");
+
+var _configProvider = _interopRequireDefault(require("antd/es/config-provider"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _Steps = _interopRequireDefault(require("../Steps"));
@@ -36,10 +40,14 @@ var StepView = function StepView(props) {
     currentStep: currentStep,
     stepsConfig: stepsConfig,
     usage: "page"
-  }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null), /*#__PURE__*/_react.default.createElement("div", {
+  }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
+    getPopupContainer: function getPopupContainer() {
+      return document.querySelector('.stepview-scorll-container') || document.body;
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "stepview-scorll-container",
     ref: scrollRef
-  }, children));
+  }, children)));
 };
 
 var _default = StepView;

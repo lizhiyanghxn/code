@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/config-provider/style");
+
+var _configProvider = _interopRequireDefault(require("antd/es/config-provider"));
+
 require("antd/es/pagination/style");
 
 var _pagination = _interopRequireDefault(require("antd/es/pagination"));
@@ -98,7 +102,11 @@ var ListView = function ListView(props) {
 
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
     className: (0, _classnames.default)([rest.className, 'list-view'])
-  }), getMainBody());
+  }), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
+    getPopupContainer: function getPopupContainer() {
+      return document.querySelector('.scroll-container') || document.body;
+    }
+  }, getMainBody()));
 };
 
 var _default = ListView;

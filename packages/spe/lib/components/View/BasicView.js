@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/config-provider/style");
+
+var _configProvider = _interopRequireDefault(require("antd/es/config-provider"));
+
 require("antd/es/spin/style");
 
 var _spin = _interopRequireDefault(require("antd/es/spin"));
@@ -79,7 +83,11 @@ var BasicView = function BasicView(props) {
   }, /*#__PURE__*/_react.default.createElement(_spin.default, {
     className: "basic-view-spin",
     spinning: spinning
-  }), children), renderFooterAction()));
+  }), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
+    getPopupContainer: function getPopupContainer() {
+      return document.querySelector('.view-main-body') || document.body;
+    }
+  }, children)), renderFooterAction()));
 };
 
 var _default = BasicView;

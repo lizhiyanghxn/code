@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/config-provider/style");
+
+var _configProvider = _interopRequireDefault(require("antd/es/config-provider"));
+
 require("antd/es/tabs/style");
 
 var _tabs = _interopRequireDefault(require("antd/es/tabs"));
@@ -63,7 +67,11 @@ var TabView = function TabView(props) {
     return /*#__PURE__*/_react.default.createElement(TabPane, _extends({
       tab: tab,
       key: key
-    }, paneConfig), children);
+    }, paneConfig), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
+      getPopupContainer: function getPopupContainer() {
+        return document.querySelector('.scroll-container') || document.querySelector('.content-view') || document.body;
+      }
+    }, children));
   })));
 };
 

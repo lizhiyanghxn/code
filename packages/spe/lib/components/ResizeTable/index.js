@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("antd/es/config-provider/style");
+
+var _configProvider = _interopRequireDefault(require("antd/es/config-provider"));
+
 require("antd/es/table/style");
 
 var _table = _interopRequireDefault(require("antd/es/table"));
@@ -54,7 +58,8 @@ var ResizeTable = function ResizeTable(props) {
       children = props.children,
       _props$visible = props.visible,
       visible = _props$visible === void 0 ? true : _props$visible,
-      dataSource = props.dataSource,
+      _props$dataSource = props.dataSource,
+      dataSource = _props$dataSource === void 0 ? [] : _props$dataSource,
       rest = _objectWithoutProperties(props, ["usage", "columns", "children", "visible", "dataSource"]);
 
   var tableRef = (0, _react.useRef)(null);
@@ -151,60 +156,60 @@ var ResizeTable = function ResizeTable(props) {
     tableProps.scroll = scroll;
   }
 
-  if (columns.length > 0) {
-    tableProps.columns = columns.map(function (column, i) {
-      if (i === 0) {
-        return _objectSpread(_objectSpread({}, column), {}, {
-          fixed: 'left'
-        });
-      }
-
-      if (i === columns.length - 1) {
-        return _objectSpread(_objectSpread({}, column), {}, {
-          fixed: 'right'
-        });
-      }
-
-      return column;
-    });
-    return (
-      /*#__PURE__*/
-      // 这个div不能省还是加上吧
-      _react.default.createElement("div", {
-        ref: tableRef,
-        style: {
-          width: '100%',
-          height: '100%'
+  var getTable = function getTable() {
+    if (columns.length > 0) {
+      tableProps.columns = columns.map(function (column, i) {
+        if (i === 0) {
+          return _objectSpread(_objectSpread({}, column), {}, {
+            fixed: 'left'
+          });
         }
-      }, /*#__PURE__*/_react.default.createElement(_table.default, tableProps))
-    );
-  }
 
-  if (children) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      ref: tableRef,
-      style: {
-        width: '100%',
-        height: '100%'
-      }
-    }, /*#__PURE__*/_react.default.createElement(_table.default, tableProps, _react.default.Children.map(children, function (column, i) {
-      if (i === 0) {
-        return /*#__PURE__*/_react.default.cloneElement(column, {
-          fixed: 'left'
-        });
-      }
+        if (i === columns.length - 1) {
+          return _objectSpread(_objectSpread({}, column), {}, {
+            fixed: 'right'
+          });
+        }
 
-      if (i === children.length - 1) {
-        return /*#__PURE__*/_react.default.cloneElement(column, {
-          fixed: 'right'
-        });
-      }
+        return column;
+      });
+      return /*#__PURE__*/_react.default.createElement(_table.default, tableProps);
+    }
 
-      return /*#__PURE__*/_react.default.cloneElement(column);
-    })));
-  }
+    if (children) {
+      return /*#__PURE__*/_react.default.createElement(_table.default, tableProps, _react.default.Children.map(children, function (column, i) {
+        if (i === 0) {
+          return /*#__PURE__*/_react.default.cloneElement(column, {
+            fixed: 'left'
+          });
+        }
 
-  return null;
+        if (i === children.length - 1) {
+          return /*#__PURE__*/_react.default.cloneElement(column, {
+            fixed: 'right'
+          });
+        }
+
+        return /*#__PURE__*/_react.default.cloneElement(column);
+      }));
+    }
+
+    return null;
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_configProvider.default, {
+    getPopupContainer: dataSource.length > 5 // 保证有一定的空间展示popup
+    ? function () {
+      return document.querySelector('.ant-table-body') || document.body;
+    } : undefined
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "resize-table-comp",
+    ref: tableRef,
+    style: {
+      width: '100%',
+      height: '100%'
+    }
+  }, getTable()));
 };
 
 var _default = ResizeTable;
