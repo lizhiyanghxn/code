@@ -1,6 +1,6 @@
 import React from 'react';
 import cs from 'classnames';
-import { Spin } from 'antd';
+import { Spin, ConfigProvider } from 'antd';
 import Breadcrumb from '../Breadcrumb';
 
 /*
@@ -61,7 +61,11 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
         {!noHeader && renderHeader()}
         <section className={cs({ 'view-main-body': true, 'is-spinning': spinning })}>
           <Spin className="basic-view-spin" spinning={spinning} />
-          {children}
+          <ConfigProvider
+            getPopupContainer={() => document.querySelector('.view-main-body') || document.body}
+          >
+            {children}
+          </ConfigProvider>
         </section>
         {renderFooterAction()}
       </div>

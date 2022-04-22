@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Tabs } from 'antd';
+import { ConfigProvider, Tabs } from 'antd';
 import BasicView from './BasicView';
 import type { BasicViewPropsType } from './BasicView';
 
@@ -33,7 +33,15 @@ const TabView: React.FC<TabViewPropsType> = (props) => {
           const { tab, children, ...paneConfig } = tabPane;
           return (
             <TabPane tab={tab} key={key} {...paneConfig}>
-              {children}
+              <ConfigProvider
+                getPopupContainer={() =>
+                  document.querySelector('.scroll-container') ||
+                  document.querySelector('.content-view') ||
+                  document.body
+                }
+              >
+                {children}
+              </ConfigProvider>
             </TabPane>
           );
         })}

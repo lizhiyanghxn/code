@@ -2,6 +2,7 @@ import React from 'react';
 import Steps from '../Steps';
 import BasicView from './BasicView';
 import cs from 'classnames';
+import { ConfigProvider } from 'antd';
 import type { BasicViewPropsType } from './BasicView';
 
 /*
@@ -27,9 +28,15 @@ const StepView: React.FC<StepViewPropsType> = (props) => {
       ) : (
         <></>
       )}
-      <div className="stepview-scorll-container" ref={scrollRef}>
-        {children}
-      </div>
+      <ConfigProvider
+        getPopupContainer={() =>
+          document.querySelector('.stepview-scorll-container') || document.body
+        }
+      >
+        <div className="stepview-scorll-container" ref={scrollRef}>
+          {children}
+        </div>
+      </ConfigProvider>
     </BasicView>
   );
 };

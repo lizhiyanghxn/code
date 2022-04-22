@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import cs from 'classnames';
-import { Pagination } from 'antd';
+import { ConfigProvider, Pagination } from 'antd';
 import BasicView from './BasicView';
 import type { BasicViewPropsType } from './BasicView';
 
@@ -81,7 +81,11 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
 
   return (
     <BasicView {...rest} className={cs([rest.className, 'list-view'])}>
-      {getMainBody()}
+      <ConfigProvider
+        getPopupContainer={() => document.querySelector('.scroll-container') || document.body}
+      >
+        {getMainBody()}
+      </ConfigProvider>
     </BasicView>
   );
 };

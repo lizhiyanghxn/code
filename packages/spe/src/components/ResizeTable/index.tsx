@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useThrottleFn } from 'ahooks';
-import { Table } from 'antd';
+import { ConfigProvider, Table } from 'antd';
 import { notEmpty } from '../../utils';
 
 import type { TableProps } from 'antd/lib/table';
@@ -14,7 +14,14 @@ export type ResizeTableType = {
 
 /** Visible是对tabs场景下，被隐藏的table再突然显示时，表格高度初始化失败的情况 visible 表格是否被显示，隐藏状态下设置数据为空数组，这样显示时才会刷新高度 */
 const ResizeTable: React.FC<ResizeTableType> = (props) => {
-  const { usage = 'page', columns = [], children, visible = true, dataSource, ...rest } = props;
+  const {
+    usage = 'page',
+    columns = [],
+    children,
+    visible = true,
+    dataSource = [],
+    ...rest
+  } = props;
 
   const tableRef = useRef(null);
   const [data, setData] = useState<any[]>([]);
@@ -84,33 +91,28 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
     tableProps.scroll = scroll;
   }
 
-  if (columns.length > 0) {
-    tableProps.columns = columns.map((column, i) => {
-      if (i === 0) {
-        return {
-          ...column,
-          fixed: 'left',
-        };
-      }
-      if (i === columns.length - 1) {
-        return {
-          ...column,
-          fixed: 'right',
-        };
-      }
-      return column;
-    });
-    return (
-      // 这个div不能省还是加上吧
-      <div ref={tableRef} style={{ width: '100%', height: '100%' }}>
-        <Table {...tableProps} />
-      </div>
-    );
-  }
+  const getTable = () => {
+    if (columns.length > 0) {
+      tableProps.columns = columns.map((column, i) => {
+        if (i === 0) {
+          return {
+            ...column,
+            fixed: 'left',
+          };
+        }
+        if (i === columns.length - 1) {
+          return {
+            ...column,
+            fixed: 'right',
+          };
+        }
+        return column;
+      });
+      return <Table {...tableProps} />;
+    }
 
-  if (children) {
-    return (
-      <div ref={tableRef} style={{ width: '100%', height: '100%' }}>
+    if (children) {
+      return (
         <Table {...tableProps}>
           {React.Children.map(children, (column: any, i) => {
             if (i === 0) {
@@ -122,11 +124,26 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
             return React.cloneElement(column);
           })}
         </Table>
-      </div>
-    );
-  }
+      );
+    }
 
-  return null;
+    return null;
+  };
+
+  return (
+    <ConfigProvider
+      getPopupContainer={
+        dataSource.length > 5 // 保证有一定的空间展示popup
+          ? () => document.querySelector('.ant-table-body') || document.body
+          : undefined
+      }
+    >
+      {/* 这个div不能省还是加上吧 */}
+      <div className="resize-table-comp" ref={tableRef} style={{ width: '100%', height: '100%' }}>
+        {getTable()}
+      </div>
+    </ConfigProvider>
+  );
 };
 
 export default ResizeTable;
