@@ -68,8 +68,8 @@ var TabView = function TabView(props) {
       tab: tab,
       key: key
     }, paneConfig), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
-      getPopupContainer: function getPopupContainer() {
-        return document.querySelector('.scroll-container') || document.querySelector('.content-view') || document.body;
+      getPopupContainer: function getPopupContainer(node) {
+        return node.closest('.scroll-container') || node.closest('.content-view') || document.body;
       }
     }, children));
   })));

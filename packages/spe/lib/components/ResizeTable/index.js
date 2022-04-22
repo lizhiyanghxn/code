@@ -199,8 +199,8 @@ var ResizeTable = function ResizeTable(props) {
 
   return /*#__PURE__*/_react.default.createElement(_configProvider.default, {
     getPopupContainer: dataSource.length > 5 // 保证有一定的空间展示popup
-    ? function () {
-      return document.querySelector('.ant-table-body') || document.body;
+    ? function (node) {
+      return node.closest('.ant-table-body') || document.body;
     } : undefined
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "resize-table-comp",

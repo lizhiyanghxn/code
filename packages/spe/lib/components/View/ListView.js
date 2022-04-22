@@ -89,7 +89,11 @@ var ListView = function ListView(props) {
   };
 
   var getMainBody = function getMainBody() {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, getHeadExtraArea(), getSearchArea(), /*#__PURE__*/_react.default.createElement("div", {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, getHeadExtraArea(), getSearchArea(), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
+      getPopupContainer: function getPopupContainer(node) {
+        return node.closest('.scroll-container') || document.body;
+      }
+    }, /*#__PURE__*/_react.default.createElement("div", {
       className: "scroll-container"
     }, /*#__PURE__*/_react.default.createElement("section", {
       className: (0, _classnames.default)({
@@ -97,16 +101,12 @@ var ListView = function ListView(props) {
         'scroll-in-table': fixPagination
       }),
       ref: bodySectionRef
-    }, getBodySection()), !fixPagination && getFooter()), fixPagination && getFooter());
+    }, getBodySection()), !fixPagination && getFooter())), fixPagination && getFooter());
   };
 
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
     className: (0, _classnames.default)([rest.className, 'list-view'])
-  }), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
-    getPopupContainer: function getPopupContainer() {
-      return document.querySelector('.scroll-container') || document.body;
-    }
-  }, getMainBody()));
+  }), getMainBody());
 };
 
 var _default = ListView;
