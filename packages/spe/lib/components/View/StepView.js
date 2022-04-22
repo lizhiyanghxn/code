@@ -42,7 +42,7 @@ var StepView = function StepView(props) {
     usage: "page"
   }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
     getPopupContainer: function getPopupContainer(node) {
-      return node.closest('.stepview-scorll-container') || document.body;
+      return node && node.closest('.stepview-scorll-container') || document.body;
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "stepview-scorll-container",

@@ -91,7 +91,7 @@ var ListView = function ListView(props) {
   var getMainBody = function getMainBody() {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, getHeadExtraArea(), getSearchArea(), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
       getPopupContainer: function getPopupContainer(node) {
-        return node.closest('.scroll-container') || document.body;
+        return node && node.closest('.scroll-container') || document.body;
       }
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "scroll-container"

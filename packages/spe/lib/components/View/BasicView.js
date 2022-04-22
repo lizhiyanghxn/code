@@ -85,7 +85,7 @@ var BasicView = function BasicView(props) {
     spinning: spinning
   }), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
     getPopupContainer: function getPopupContainer(node) {
-      return node.closest('.view-main-body') || document.body;
+      return node && node.closest('.view-main-body') || document.body;
     }
   }, children)), renderFooterAction()));
 };
