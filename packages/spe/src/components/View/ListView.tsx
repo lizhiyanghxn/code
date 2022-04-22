@@ -67,7 +67,7 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
       {getHeadExtraArea()}
       {getSearchArea()}
       <ConfigProvider
-        getPopupContainer={(node) => node!.closest('.scroll-container') || document.body}
+        getPopupContainer={(node) => (node && node.closest('.scroll-container')) || document.body}
       >
         <div className="scroll-container">
           <section
