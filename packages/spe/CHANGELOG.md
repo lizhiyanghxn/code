@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.1](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.0...@sensetime/pro-spe@2.6.1) (2022-04-22)
+
+### Bug Fixes
+
+- getPopupContainer 配置使用 closest 获取祖先元素更准确 ([82a0920](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/82a0920e57a8446d35d01bc904094b9db2e40a42))
+
 ## [2.6.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.5.2...@sensetime/pro-spe@2.6.0) (2022-04-22)
 
 ### Features
