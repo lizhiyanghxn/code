@@ -34,9 +34,9 @@ const TabView: React.FC<TabViewPropsType> = (props) => {
           return (
             <TabPane tab={tab} key={key} {...paneConfig}>
               <ConfigProvider
-                getPopupContainer={() =>
-                  document.querySelector('.scroll-container') ||
-                  document.querySelector('.content-view') ||
+                getPopupContainer={(node) =>
+                  node!.closest('.scroll-container') ||
+                  node!.closest('.content-view') ||
                   document.body
                 }
               >

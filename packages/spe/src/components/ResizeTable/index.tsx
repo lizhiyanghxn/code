@@ -134,7 +134,7 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
     <ConfigProvider
       getPopupContainer={
         dataSource.length > 5 // 保证有一定的空间展示popup
-          ? () => document.querySelector('.ant-table-body') || document.body
+          ? (node) => node!.closest('.ant-table-body') || document.body
           : undefined
       }
     >

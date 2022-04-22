@@ -62,7 +62,7 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
         <section className={cs({ 'view-main-body': true, 'is-spinning': spinning })}>
           <Spin className="basic-view-spin" spinning={spinning} />
           <ConfigProvider
-            getPopupContainer={() => document.querySelector('.view-main-body') || document.body}
+            getPopupContainer={(node) => node!.closest('.view-main-body') || document.body}
           >
             {children}
           </ConfigProvider>

@@ -66,26 +66,26 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
     <>
       {getHeadExtraArea()}
       {getSearchArea()}
-      <div className="scroll-container">
-        <section
-          className={cs({ 'body-section': true, 'scroll-in-table': fixPagination })}
-          ref={bodySectionRef}
-        >
-          {getBodySection()}
-        </section>
-        {!fixPagination && getFooter()}
-      </div>
+      <ConfigProvider
+        getPopupContainer={(node) => node!.closest('.scroll-container') || document.body}
+      >
+        <div className="scroll-container">
+          <section
+            className={cs({ 'body-section': true, 'scroll-in-table': fixPagination })}
+            ref={bodySectionRef}
+          >
+            {getBodySection()}
+          </section>
+          {!fixPagination && getFooter()}
+        </div>
+      </ConfigProvider>
       {fixPagination && getFooter()}
     </>
   );
 
   return (
     <BasicView {...rest} className={cs([rest.className, 'list-view'])}>
-      <ConfigProvider
-        getPopupContainer={() => document.querySelector('.scroll-container') || document.body}
-      >
-        {getMainBody()}
-      </ConfigProvider>
+      {getMainBody()}
     </BasicView>
   );
 };

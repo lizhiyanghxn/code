@@ -29,9 +29,7 @@ const StepView: React.FC<StepViewPropsType> = (props) => {
         <></>
       )}
       <ConfigProvider
-        getPopupContainer={() =>
-          document.querySelector('.stepview-scorll-container') || document.body
-        }
+        getPopupContainer={(node) => node!.closest('.stepview-scorll-container') || document.body}
       >
         <div className="stepview-scorll-container" ref={scrollRef}>
           {children}
