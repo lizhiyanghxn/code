@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.0](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.5.2...@sensetime/pro-spe@2.6.0) (2022-04-22)
+
+### Features
+
+- 页容器组件增加 antd_ConfigProvider_getPopupContainer 配置 ([4e7f403](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/4e7f403de39ed9582451fb9f365d6df414a195be))
+
 ### [2.5.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.5.1...@sensetime/pro-spe@2.5.2) (2022-04-20)
 
 ### Bug Fixes
