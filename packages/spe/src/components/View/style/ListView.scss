@@ -45,13 +45,13 @@
     display: flex;
     flex: 0 0;
     flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     padding: 24px;
     background-color: #fff;
 
     .search-area-left {
       display: flex;
-      flex: 2;
       align-items: center;
       color: rgba(75, 75, 75, 1);
       font-weight: 600;
@@ -68,7 +68,6 @@
 
     .search-area-right {
       display: flex;
-      flex: 1;
       align-items: center;
       justify-content: flex-end;
 
