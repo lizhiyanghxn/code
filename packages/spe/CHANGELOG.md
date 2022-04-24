@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.5](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.4...@sensetime/pro-spe@2.6.5) (2022-04-24)
+
+### Bug Fixes
+
+- logger 的 Modal 去掉 centerd 控制 ([cc94d33](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/cc94d3338b212565181bec8e6487bba4d9877630))
+
 ### [2.6.4](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.3...@sensetime/pro-spe@2.6.4) (2022-04-24)
 
 ### Bug Fixes
