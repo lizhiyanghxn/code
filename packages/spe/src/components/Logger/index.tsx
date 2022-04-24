@@ -194,7 +194,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
         list = res.list;
         total = res.total;
       }
-    } catch (err) {
+    } catch (err: any) {
       if (err.status) {
         console.log('fetchLogs error:', err);
       }
@@ -427,7 +427,6 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
           )}
         </>
       }
-      centered
       visible={show}
       width={width}
       wrapClassName={cs(['logger-modal-comp', className])}
