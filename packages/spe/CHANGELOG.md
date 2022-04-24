@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.3](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.2...@sensetime/pro-spe@2.6.3) (2022-04-24)
+
+### Bug Fixes
+
+- overlay 定位问题：以上层 getPopupContainer 作为备选 ([486a0e6](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/486a0e685531dd06ff795e1e8cc325d4203a4da7))
+
 ### [2.6.2](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.1...@sensetime/pro-spe@2.6.2) (2022-04-22)
 
 ### Bug Fixes
