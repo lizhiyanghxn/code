@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useThrottleFn } from 'ahooks';
 import { ConfigProvider, Table } from 'antd';
 import { notEmpty } from '../../utils';
+import useInheritGetPopupContainer from '../../utils/useInheritGetPopupContainer';
 
 import type { TableProps } from 'antd/lib/table';
 
@@ -24,6 +25,8 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
   } = props;
 
   const tableRef = useRef(null);
+  const inheritGetPopupContainer = useInheritGetPopupContainer();
+
   const [data, setData] = useState<any[]>([]);
   // 表格的高度是否为0, 防止切换时闪一下
   const [tableHeight, setTableHeight] = useState(true);
@@ -132,10 +135,10 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
 
   return (
     <ConfigProvider
-      getPopupContainer={
-        dataSource.length > 5 // 保证有一定的空间展示popup
-          ? (node) => (node && node.closest('.ant-table-body')) || document.body
-          : undefined
+      getPopupContainer={(node) =>
+        // 保证有一定的空间展示popup
+        (dataSource.length > 5 && node && node.closest('.ant-table-body')) ||
+        inheritGetPopupContainer(node)
       }
     >
       {/* 这个div不能省还是加上吧 */}

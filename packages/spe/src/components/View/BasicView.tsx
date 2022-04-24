@@ -2,6 +2,7 @@ import React from 'react';
 import cs from 'classnames';
 import { Spin, ConfigProvider } from 'antd';
 import Breadcrumb from '../Breadcrumb';
+import useInheritGetPopupContainer from '../../utils/useInheritGetPopupContainer';
 
 /*
  * BasicView
@@ -30,6 +31,8 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
     children,
     ...rest
   } = props;
+
+  const inheritGetPopupContainer = useInheritGetPopupContainer();
 
   const renderHeader = () => (
     <header className="view-header">
@@ -62,7 +65,9 @@ const BasicView: React.FC<BasicViewPropsType> = (props) => {
         <section className={cs({ 'view-main-body': true, 'is-spinning': spinning })}>
           <Spin className="basic-view-spin" spinning={spinning} />
           <ConfigProvider
-            getPopupContainer={(node) => (node && node.closest('.view-main-body')) || document.body}
+            getPopupContainer={(node) =>
+              (node && node.closest('.view-main-body')) || inheritGetPopupContainer(node)
+            }
           >
             {children}
           </ConfigProvider>

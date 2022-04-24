@@ -4,6 +4,7 @@ import BasicView from './BasicView';
 import cs from 'classnames';
 import { ConfigProvider } from 'antd';
 import type { BasicViewPropsType } from './BasicView';
+import useInheritGetPopupContainer from '../../utils/useInheritGetPopupContainer';
 
 /*
  * StepView
@@ -21,6 +22,9 @@ export type StepViewPropsType = BasicViewPropsType & {
 
 const StepView: React.FC<StepViewPropsType> = (props) => {
   const { currentStep = 1, stepsConfig = [], scrollRef, children, ...rest } = props;
+
+  const inheritGetPopupContainer = useInheritGetPopupContainer();
+
   return (
     <BasicView {...rest} className={cs([rest.className, 'step-view'])}>
       {stepsConfig.length > 0 ? (
@@ -30,7 +34,7 @@ const StepView: React.FC<StepViewPropsType> = (props) => {
       )}
       <ConfigProvider
         getPopupContainer={(node) =>
-          (node && node.closest('.stepview-scorll-container')) || document.body
+          (node && node.closest('.stepview-scorll-container')) || inheritGetPopupContainer(node)
         }
       >
         <div className="stepview-scorll-container" ref={scrollRef}>

@@ -3,6 +3,7 @@ import cs from 'classnames';
 import { ConfigProvider, Pagination } from 'antd';
 import BasicView from './BasicView';
 import type { BasicViewPropsType } from './BasicView';
+import useInheritGetPopupContainer from '../../utils/useInheritGetPopupContainer';
 
 /*
  * ListView
@@ -24,6 +25,8 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
   const { headExtra, searchArea, pagingConfig, children, fixPagination = true, ...rest } = props;
 
   const bodySectionRef = useRef(null);
+
+  const inheritGetPopupContainer = useInheritGetPopupContainer();
 
   const getHeadExtraArea = () => {
     if (headExtra) {
@@ -67,7 +70,9 @@ const ListView: React.FC<ListViewPropsType> = (props) => {
       {getHeadExtraArea()}
       {getSearchArea()}
       <ConfigProvider
-        getPopupContainer={(node) => (node && node.closest('.scroll-container')) || document.body}
+        getPopupContainer={(node) =>
+          (node && node.closest('.scroll-container')) || inheritGetPopupContainer(node)
+        }
       >
         <div className="scroll-container">
           <section

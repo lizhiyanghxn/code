@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { ConfigProvider, Tabs } from 'antd';
 import BasicView from './BasicView';
 import type { BasicViewPropsType } from './BasicView';
+import useInheritGetPopupContainer from '../../utils/useInheritGetPopupContainer';
 
 const { TabPane } = Tabs;
 
@@ -23,6 +24,8 @@ export type TabViewPropsType = BasicViewPropsType & {
 const TabView: React.FC<TabViewPropsType> = (props) => {
   const { tabsConfig, tabWrapConfig = {}, defaultTabKey = '', className, ...rest } = props;
 
+  const inheritGetPopupContainer = useInheritGetPopupContainer();
+
   const wrapperClassNames = classNames(`tab-view`, className);
 
   return (
@@ -37,7 +40,7 @@ const TabView: React.FC<TabViewPropsType> = (props) => {
                 getPopupContainer={(node) =>
                   (node && node.closest('.scroll-container')) ||
                   (node && node.closest('.content-view')) ||
-                  document.body
+                  inheritGetPopupContainer(node)
                 }
               >
                 {children}
