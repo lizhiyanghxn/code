@@ -19,6 +19,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _BasicView = _interopRequireDefault(require("./BasicView"));
 
+var _useInheritGetPopupContainer = _interopRequireDefault(require("../../utils/useInheritGetPopupContainer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -50,6 +52,7 @@ var TabView = function TabView(props) {
       className = props.className,
       rest = _objectWithoutProperties(props, ["tabsConfig", "tabWrapConfig", "defaultTabKey", "className"]);
 
+  var inheritGetPopupContainer = (0, _useInheritGetPopupContainer.default)();
   var wrapperClassNames = (0, _classnames.default)("tab-view", className);
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
     className: wrapperClassNames
@@ -69,7 +72,7 @@ var TabView = function TabView(props) {
       key: key
     }, paneConfig), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
       getPopupContainer: function getPopupContainer(node) {
-        return node && node.closest('.scroll-container') || node && node.closest('.content-view') || document.body;
+        return node && node.closest('.scroll-container') || node && node.closest('.content-view') || inheritGetPopupContainer(node);
       }
     }, children));
   })));

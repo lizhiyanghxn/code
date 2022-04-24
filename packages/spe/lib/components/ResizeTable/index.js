@@ -21,6 +21,8 @@ var _ahooks = require("ahooks");
 
 var _utils = require("../../utils");
 
+var _useInheritGetPopupContainer = _interopRequireDefault(require("../../utils/useInheritGetPopupContainer"));
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -63,6 +65,7 @@ var ResizeTable = function ResizeTable(props) {
       rest = _objectWithoutProperties(props, ["usage", "columns", "children", "visible", "dataSource"]);
 
   var tableRef = (0, _react.useRef)(null);
+  var inheritGetPopupContainer = (0, _useInheritGetPopupContainer.default)();
 
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -198,10 +201,11 @@ var ResizeTable = function ResizeTable(props) {
   };
 
   return /*#__PURE__*/_react.default.createElement(_configProvider.default, {
-    getPopupContainer: dataSource.length > 5 // 保证有一定的空间展示popup
-    ? function (node) {
-      return node && node.closest('.ant-table-body') || document.body;
-    } : undefined
+    getPopupContainer: function getPopupContainer(node) {
+      return (// 保证有一定的空间展示popup
+        dataSource.length > 5 && node && node.closest('.ant-table-body') || inheritGetPopupContainer(node)
+      );
+    }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "resize-table-comp",
     ref: tableRef,

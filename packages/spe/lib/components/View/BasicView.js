@@ -19,6 +19,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Breadcrumb = _interopRequireDefault(require("../Breadcrumb"));
 
+var _useInheritGetPopupContainer = _interopRequireDefault(require("../../utils/useInheritGetPopupContainer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -40,6 +42,8 @@ var BasicView = function BasicView(props) {
       className = _props$className === void 0 ? '' : _props$className,
       children = props.children,
       rest = _objectWithoutProperties(props, ["noHeader", "routers", "headerRightElement", "footerActions", "spinning", "className", "children"]);
+
+  var inheritGetPopupContainer = (0, _useInheritGetPopupContainer.default)();
 
   var renderHeader = function renderHeader() {
     return /*#__PURE__*/_react.default.createElement("header", {
@@ -85,7 +89,7 @@ var BasicView = function BasicView(props) {
     spinning: spinning
   }), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
     getPopupContainer: function getPopupContainer(node) {
-      return node && node.closest('.view-main-body') || document.body;
+      return node && node.closest('.view-main-body') || inheritGetPopupContainer(node);
     }
   }, children)), renderFooterAction()));
 };

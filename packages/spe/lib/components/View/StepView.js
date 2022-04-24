@@ -17,6 +17,8 @@ var _BasicView = _interopRequireDefault(require("./BasicView"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _useInheritGetPopupContainer = _interopRequireDefault(require("../../utils/useInheritGetPopupContainer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -34,6 +36,7 @@ var StepView = function StepView(props) {
       children = props.children,
       rest = _objectWithoutProperties(props, ["currentStep", "stepsConfig", "scrollRef", "children"]);
 
+  var inheritGetPopupContainer = (0, _useInheritGetPopupContainer.default)();
   return /*#__PURE__*/_react.default.createElement(_BasicView.default, _extends({}, rest, {
     className: (0, _classnames.default)([rest.className, 'step-view'])
   }), stepsConfig.length > 0 ? /*#__PURE__*/_react.default.createElement(_Steps.default, {
@@ -42,7 +45,7 @@ var StepView = function StepView(props) {
     usage: "page"
   }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null), /*#__PURE__*/_react.default.createElement(_configProvider.default, {
     getPopupContainer: function getPopupContainer(node) {
-      return node && node.closest('.stepview-scorll-container') || document.body;
+      return node && node.closest('.stepview-scorll-container') || inheritGetPopupContainer(node);
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "stepview-scorll-container",
