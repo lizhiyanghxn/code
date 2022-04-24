@@ -723,7 +723,6 @@ var Logger = function Logger(props) {
         key: taskId
       }, getSubTaskLabel(taskId));
     })) : ''),
-    centered: true,
     visible: show,
     width: width,
     wrapClassName: (0, _classnames.default)(['logger-modal-comp', className]),
