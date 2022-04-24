@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.4](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.3...@sensetime/pro-spe@2.6.4) (2022-04-24)
+
+### Bug Fixes
+
+- ListView 的 searchArea 布局问题优化 ([5da96d8](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/5da96d8704473fd36706bcd6338289f453c24393))
+
 ### [2.6.3](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.2...@sensetime/pro-spe@2.6.3) (2022-04-24)
 
 ### Bug Fixes
