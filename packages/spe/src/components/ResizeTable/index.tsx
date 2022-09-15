@@ -11,6 +11,7 @@ export type ResizeTableType = {
   visible?: boolean;
   dataSource: any[];
   children?: any;
+  scrollWidth?: number; // 小于这个宽度时有横向滚动条
 } & TableProps<any>;
 
 /** Visible是对tabs场景下，被隐藏的table再突然显示时，表格高度初始化失败的情况 visible 表格是否被显示，隐藏状态下设置数据为空数组，这样显示时才会刷新高度 */
@@ -21,6 +22,7 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
     children,
     visible = true,
     dataSource = [],
+    scrollWidth = 1216,
     ...rest
   } = props;
 
@@ -73,7 +75,7 @@ const ResizeTable: React.FC<ResizeTableType> = (props) => {
       const getTabelWidth = () => {
         // 页容器中 x 轴 1216 算法为 1440 - 200(菜单) - 24(边距)
         if (usage === 'page') {
-          return 1216;
+          return scrollWidth;
         }
         if (usage === 'modal') {
           return width - 32;
