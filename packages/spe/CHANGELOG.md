@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.7](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.6...@sensetime/pro-spe@2.6.7) (2022-09-15)
+
+### Bug Fixes
+
+- ResizeTable 增加 scroll 控制入参 ([940e5eb](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/940e5eb7572daa8b32f92128c1d3a88e7a774588))
+
 ### [2.6.6](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.5...@sensetime/pro-spe@2.6.6) (2022-09-15)
 
 ### Bug Fixes
