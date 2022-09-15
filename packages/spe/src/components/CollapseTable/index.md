@@ -37,6 +37,7 @@ CollapseTable 结合 antd 的 Collapse 和 Table 形成的手风琴 table 组件
 | doNotReset | 是否重置展开的 key | `boolean` | false |
 | onChangeCollapse | 当前 active 的折叠面板变化回调 | `(index: number) => void` | ()=>{} |
 | onCollapseOpen | 打开折叠面板回调 | `(index: number) => void` | ()=>{} |
+| scrollWidth | 小于该宽度时出现横向滚动条 | `number` | 1216 |
 
 ### flag
 

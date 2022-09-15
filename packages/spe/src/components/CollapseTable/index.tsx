@@ -38,6 +38,7 @@ export type CollapseTablePropsType = {
   flag?: boolean; // 判断展开时是否需要请求
   showArrow?: boolean; // 是否展示向下箭头
   doNotReset?: boolean; // 是否重置展开的key
+  scrollWidth?: number; // 小于该宽度时出现横向滚动条
 };
 
 const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
@@ -65,6 +66,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
     rowKey = 'id',
     showArrow = true,
     doNotReset = false,
+    scrollWidth = 1216,
   } = props;
 
   const [activeKey, setActiveKey] = useState<any[]>([]);
@@ -259,7 +261,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
                       dataSource={tableDataSource(index)}
                       pagination={tablePagination(index, item)}
                       rowKey={rowKey}
-                      scroll={{ x: 1216 }}
+                      scroll={{ x: scrollWidth }}
                     />
                   </Spin>
                 )}
