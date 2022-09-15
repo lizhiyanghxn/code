@@ -111,7 +111,9 @@ var CollapseTable = function CollapseTable(props) {
       _props$showArrow = props.showArrow,
       showArrow = _props$showArrow === void 0 ? true : _props$showArrow,
       _props$doNotReset = props.doNotReset,
-      doNotReset = _props$doNotReset === void 0 ? false : _props$doNotReset;
+      doNotReset = _props$doNotReset === void 0 ? false : _props$doNotReset,
+      _props$scrollWidth = props.scrollWidth,
+      scrollWidth = _props$scrollWidth === void 0 ? 1216 : _props$scrollWidth;
 
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -361,7 +363,7 @@ var CollapseTable = function CollapseTable(props) {
       pagination: tablePagination(index, item),
       rowKey: rowKey,
       scroll: {
-        x: 1216
+        x: scrollWidth
       }
     })));
   }))) : /*#__PURE__*/_react.default.createElement(_table.default, {

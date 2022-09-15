@@ -28,6 +28,7 @@ export declare type CollapseTablePropsType = {
     flag?: boolean;
     showArrow?: boolean;
     doNotReset?: boolean;
+    scrollWidth?: number;
 };
 declare const CollapseTable: React.FC<CollapseTablePropsType>;
 export default CollapseTable;
