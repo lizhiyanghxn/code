@@ -62,7 +62,9 @@ var ResizeTable = function ResizeTable(props) {
       visible = _props$visible === void 0 ? true : _props$visible,
       _props$dataSource = props.dataSource,
       dataSource = _props$dataSource === void 0 ? [] : _props$dataSource,
-      rest = _objectWithoutProperties(props, ["usage", "columns", "children", "visible", "dataSource"]);
+      _props$scrollWidth = props.scrollWidth,
+      scrollWidth = _props$scrollWidth === void 0 ? 1216 : _props$scrollWidth,
+      rest = _objectWithoutProperties(props, ["usage", "columns", "children", "visible", "dataSource", "scrollWidth"]);
 
   var tableRef = (0, _react.useRef)(null);
   var inheritGetPopupContainer = (0, _useInheritGetPopupContainer.default)();
@@ -131,7 +133,7 @@ var ResizeTable = function ResizeTable(props) {
       var getTabelWidth = function getTabelWidth() {
         // 页容器中 x 轴 1216 算法为 1440 - 200(菜单) - 24(边距)
         if (usage === 'page') {
-          return 1216;
+          return scrollWidth;
         }
 
         if (usage === 'modal') {
