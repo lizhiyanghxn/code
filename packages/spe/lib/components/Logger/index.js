@@ -86,8 +86,6 @@ var Logger = function Logger(props) {
       initialLogTabs = _props$initialLogTabs === void 0 ? [] : _props$initialLogTabs,
       _props$subTaskIds = props.subTaskIds,
       subTaskIds = _props$subTaskIds === void 0 ? [] : _props$subTaskIds,
-      _props$gpuPodNumber = props.gpuPodNumber,
-      gpuPodNumber = _props$gpuPodNumber === void 0 ? 1 : _props$gpuPodNumber,
       _props$initialActiveK = props.initialActiveKey,
       initialActiveKey = _props$initialActiveK === void 0 ? 'dataconverter' : _props$initialActiveK,
       logApi = props.logApi,
@@ -378,19 +376,15 @@ var Logger = function Logger(props) {
 
 
   var updateLogTabs = function updateLogTabs(_logTabs) {
-    var processList = [];
-
-    for (var i = 0; i < gpuPodNumber; i += 1) {
-      processList.push({
-        label: getProcessLabel(i),
-        value: i
-      });
-    }
-
-    var newLogTabs = _logTabs.map(function (logTab, index) {
+    var newLogTabs = _logTabs.map(function (logTab) {
       return _objectSpread(_objectSpread({}, logTab), {}, {
         logs: [],
-        processList: index === 1 ? processList : logTab.processList,
+        processList: new Array(logTab.gpuPodNumber || 1).map(function (_, i) {
+          return {
+            label: getProcessLabel(i),
+            value: i
+          };
+        }),
         title: logTab.key === initialActiveKey ? logTab.activeTitle : logTab.defaultTitle
       });
     });

@@ -9,6 +9,7 @@ declare type logTab = {
     defaultTitle: string;
     key: string;
     processList: any[];
+    gpuPodNumber?: number;
     logs: LogType[];
 };
 export declare type LoggerParamsType = {
@@ -17,7 +18,6 @@ export declare type LoggerParamsType = {
     isPageMode: boolean;
     initialLogTabs: logTab[];
     subTaskIds?: number[];
-    gpuPodNumber?: number;
     initialActiveKey: string;
     logApi: (params: any, extraConfig?: any) => Promise<any>;
     onDownload: () => void;
