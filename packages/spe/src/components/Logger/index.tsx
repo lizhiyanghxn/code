@@ -225,7 +225,7 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
       return {
         ...logTab,
         logs: [],
-        processList: new Array(logTab.gpuPodNumber || 1).map((_, i) => ({
+        processList: new Array(logTab.gpuPodNumber || 1).fill('').map((_, i) => ({
           label: getProcessLabel(i),
           value: i,
         })),
