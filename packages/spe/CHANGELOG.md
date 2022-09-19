@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.8](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.7...@sensetime/pro-spe@2.6.8) (2022-09-19)
+
+### Bug Fixes
+
+- log 组件进程下拉列表控制优化 ([c759e78](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/c759e786587e0efb37e35d18f5a786a1680dd317))
+
 ### [2.6.7](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.6...@sensetime/pro-spe@2.6.7) (2022-09-15)
 
 ### Bug Fixes
