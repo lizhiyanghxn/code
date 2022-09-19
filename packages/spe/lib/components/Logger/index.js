@@ -379,7 +379,7 @@ var Logger = function Logger(props) {
     var newLogTabs = _logTabs.map(function (logTab) {
       return _objectSpread(_objectSpread({}, logTab), {}, {
         logs: [],
-        processList: new Array(logTab.gpuPodNumber || 1).map(function (_, i) {
+        processList: new Array(logTab.gpuPodNumber || 1).fill('').map(function (_, i) {
           return {
             label: getProcessLabel(i),
             value: i
