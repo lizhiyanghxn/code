@@ -17,6 +17,7 @@ type logTab = {
   defaultTitle: string;
   key: string;
   processList: any[];
+  gpuPodNumber?: number; // 进程数量
   logs: LogType[];
 };
 
@@ -26,7 +27,6 @@ export type LoggerParamsType = {
   isPageMode: boolean;
   initialLogTabs: logTab[]; // 日志
   subTaskIds?: number[]; // 超参子任务数量, null或者空数组表示不是超参搜素
-  gpuPodNumber?: number; // 进程数量
   initialActiveKey: string; // 初始激活TAB（当前）
   logApi: (params: any, extraConfig?: any) => Promise<any>; // 获取LOG的API接口，path参数请预先传入
   onDownload: () => void; // 下载log的接口，参数请预先传入
@@ -61,7 +61,6 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
     isPageMode = false, // 页面模式，为true时show参数无效
     initialLogTabs = [], // 日志
     subTaskIds = [], // 超参子任务, null或者空数组表示不是超参搜素
-    gpuPodNumber = 1, // 进程数量
     initialActiveKey = 'dataconverter', // 初始激活TAB（当前）
     logApi, // 获取LOG的API接口，path参数请预先传入
     onDownload = () => {}, // 下载log的接口，参数请预先传入
@@ -222,15 +221,14 @@ const Logger: React.FC<LoggerParamsType> = (props) => {
 
   /** 初始化清空日志内容 */
   const updateLogTabs = (_logTabs: logTab[]) => {
-    const processList: any[] = [];
-    for (let i = 0; i < gpuPodNumber; i += 1) {
-      processList.push({ label: getProcessLabel(i), value: i });
-    }
-    const newLogTabs = _logTabs.map((logTab, index) => {
+    const newLogTabs = _logTabs.map((logTab) => {
       return {
         ...logTab,
         logs: [],
-        processList: index === 1 ? processList : logTab.processList,
+        processList: new Array(logTab.gpuPodNumber || 1).map((_, i) => ({
+          label: getProcessLabel(i),
+          value: i,
+        })),
         title: logTab.key === initialActiveKey ? logTab.activeTitle : logTab.defaultTitle,
       };
     });
