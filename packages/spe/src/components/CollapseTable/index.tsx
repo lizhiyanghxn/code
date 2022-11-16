@@ -56,7 +56,7 @@ const CollapseTable: React.FC<CollapseTablePropsType> = (props) => {
     columns,
     collapseHeader,
     rowSelection,
-    expandIconPosition = 'left',
+    expandIconPosition = 'start',
     className = '',
     flag = false,
     dataSource = [],

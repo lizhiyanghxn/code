@@ -103,7 +103,7 @@ export default () => {
         total: tableDataSource?.length || 0,
         showSizeChanger: false,
       }}
-      showArrow={false}
+      // showArrow={false}
     />
   );
 };

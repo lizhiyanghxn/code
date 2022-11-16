@@ -43,10 +43,10 @@
         height: 68px;
         padding: 0 0 0 50px !important;
 
-        & > span {
+        .ant-collapse-arrow {
           position: absolute !important;
           top: 50% !important;
-          // left: 9px !important;
+          left: 16px;
 
           color: #999;
           transform: translate(0, -50%);
