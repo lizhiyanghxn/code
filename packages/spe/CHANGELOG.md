@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.11](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.9...@sensetime/pro-spe@2.6.11) (2022-11-16)
+
+### Bug Fixes
+
+- 手风琴面板兼容antd@4.22.1(上下兼容) ([a179102](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/commit/a179102995e67223ec833a231537c2f8cb8b8f17))
+
 ### [2.6.9](https://gitlab.sz.sensetime.com/dcp-fe/dcp-components/compare/@sensetime/pro-spe@2.6.8...@sensetime/pro-spe@2.6.9) (2022-09-19)
 
 ### Bug Fixes
