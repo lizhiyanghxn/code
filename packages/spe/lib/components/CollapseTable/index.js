@@ -93,7 +93,7 @@ var CollapseTable = function CollapseTable(props) {
       collapseHeader = props.collapseHeader,
       rowSelection = props.rowSelection,
       _props$expandIconPosi = props.expandIconPosition,
-      expandIconPosition = _props$expandIconPosi === void 0 ? 'left' : _props$expandIconPosi,
+      expandIconPosition = _props$expandIconPosi === void 0 ? 'start' : _props$expandIconPosi,
       _props$className = props.className,
       className = _props$className === void 0 ? '' : _props$className,
       _props$flag = props.flag,
